@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/Eyedropper-AppImage/releases/download/2.2.1-1%402026-10-01_1790875954/Eyedropper-2.2.1-1-anylinux-x86_64.AppImage eyedropper-bin
-https://github.com/pkgforge-dev/Fabother-World-AppImage/releases/download/170b7d466%402026-10-01_1790874883/Fabother_World-170b7d466-anylinux-x86_64.AppImage fabother-world-bin
-https://github.com/pkgforge-dev/FeatherPad-AppImage/releases/download/1.6.3-1%402026-10-07_1791382781/FeatherPad-1.6.3-1-anylinux-x86_64.AppImage featherpad-bin
-https://github.com/pkgforge-dev/ffmpeg-AppImage/releases/download/9.0.2-1%402026-10-01_1790876674/ffmpeg-9.0.2-1-anylinux-x86_64.AppImage ffmpeg-bin
-https://github.com/pkgforge-dev/Filelight-AppImage/releases/download/26.08.1-1%402026-10-01_1790871913/Filelight-26.08.1-1-anylinux-x86_64.AppImage filelight-bin
-https://github.com/pkgforge-dev/Firefox-AppImage/releases/download/158.0%402026-10-13_1791907872/Firefox-158.0-anylinux-x86_64.AppImage firefox-bin
-https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced/releases/download/13.0.2%402026-10-10_1791662146/Flacon-13.0.2-anylinux-x86_64.AppImage flacon-bin
-https://github.com/pkgforge-dev/Flashrom-AppImage/releases/download/1.8.0-1%402026-10-01_1790876393/flashrom-1.8.0-1-anylinux-x86_64.AppImage flashrom-bin
-https://github.com/pkgforge-dev/Flycast-AppImage-Enhanced/releases/download/2.7%402026-10-01_1790875174/Flycast-2.7-anylinux-x86_64.AppImage flycast-bin
-https://github.com/pkgforge-dev/foot-AppImage/releases/download/1.28.0-2%402026-10-01_1790876300/Foot-1.28.0-2-anylinux-x86_64.AppImage foot-bin
-https://github.com/pkgforge-dev/fooyin-AppImage/releases/download/0.13.0-1%402026-09-24_1790239832/fooyin-0.13.0-1-anylinux-x86_64.AppImage fooyin-bin
-https://github.com/pkgforge-dev/freac-AppImage-Enhanced/releases/download/9e283e301%402026-10-01_1790876574/fre_ac-9e283e301-anylinux-x86_64.AppImage freac-bin
-https://github.com/pkgforge-dev/GNU-FreeDink-AppImage/releases/download/109.6-2%402026-10-01_1790876460/FreeDink-109.6-2-anylinux-x86_64.AppImage freedink-bin
-https://github.com/pkgforge-dev/FreeTube-Appimage-Enhanced/releases/download/0.25.3-beta%402026-10-01_1790876372/FreeTube-0.25.3-beta-anylinux-x86_64.AppImage freetube-bin
-https://github.com/pkgforge-dev/Fretboard-AppImage/releases/download/9.1-3%402026-10-01_1790876548/Fretboard-9.1-3-anylinux-x86_64.AppImage fretboard-bin
-https://github.com/pkgforge-dev/Galculator-AppImage/releases/download/v2.1.4%402026-09-11_1789134385/Galculator-v2.1.4-anylinux-loongarch64.AppImage galculator-bin
-https://github.com/pkgforge-dev/gamescope-AppImage/releases/download/3.16.31-1%402026-10-01_1790876541/gamescope-3.16.31-1-anylinux-x86_64.AppImage gamescope-bin
-https://github.com/pkgforge-dev/Gapless-AppImage/releases/download/4.6.2-1%402026-10-01_1790876658/Gapless-4.6.2-1-anylinux-x86_64.AppImage gapless-bin
-https://github.com/pkgforge-dev/GCAP2025-AppImage/releases/download/1.6%402026-06-06_1780706767/GCAP_2025-1.6-anylinux-x86_64.AppImage gcap2025-bin
-https://github.com/pkgforge-dev/GCAP2026-AppImage/releases/download/1.2%402026-07-27_1785182338/GCAP_2026-1.2-anylinux-x86_64.AppImage gcap2026-bin
 https://github.com/pkgforge-dev/GCstar-AppImage/releases/download/1.8.0-3%402026-10-01_1790876371/GCstar-1.8.0-3-anylinux-x86_64.AppImage gcstar-bin
 https://github.com/pkgforge-dev/Gearboy-AppImage/releases/download/3.8.16%402026-10-01_1790875612/Gearboy-3.8.16-anylinux-x86_64.AppImage gearboy-bin
 https://github.com/pkgforge-dev/Gearcoleco-AppImage/releases/download/1.7.2%402026-10-01_1790876597/Gearcoleco-1.7.2-anylinux-x86_64.AppImage gearcoleco-bin

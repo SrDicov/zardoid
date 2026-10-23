@@ -1,0 +1,40 @@
+# Template file for 'fretboard-bin'
+pkgname=fretboard-bin
+version=9.1
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of the Fretboard guitar chord lookup
+ application"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/pkgforge-dev/Fretboard-AppImage"
+distfiles="https://github.com/pkgforge-dev/Fretboard-AppImage/releases/download/${version}-3%402026-10-01_1790876548/Fretboard-${version}-3-anylinux-x86_64.AppImage>fretboard-bin-${version}.AppImage"
+checksum=4aaddec548060b1b2c0c84244360cd3b794c2f1cfe02e47ce7217d8029d7097b
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/fretboard-bin
+	vcopy "squashfs-root/*" opt/fretboard-bin
+	vmkdir usr/bin
+	ln -sf "/opt/fretboard-bin/AppRun" "${DESTDIR}/usr/bin/fretboard"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+}

@@ -116,3 +116,12 @@ https://github.com/pkgforge-dev/EDuke32-AppImage/releases/download/20260807-1066
 https://github.com/pkgforge-dev/ETLegacy-AppImage/releases/download/2.86.0.15.g063ef3cc2-1%402026-10-01_1790876556/ET_Legacy-2.86.0.15.g063ef3cc2-1-anylinux-x86_64.AppImage	etlegacy-bin	generacion
 https://github.com/pkgforge-dev/Exult-AppImage/releases/download/b40f232e3%402026-10-11_1791710244/Exult-b40f232e3-anylinux-x86_64.AppImage	exult-bin	generacion
 https://github.com/pkgforge-dev/DOSBox-X-AppImage/releases/download/2026.10.01%402026-10-02_1790940047/DOSBox-X-2026.10.01-anylinux-x86_64.AppImage	dosbox-x-bin	xlint/build
+https://github.com/pkgforge-dev/Fabother-World-AppImage/releases/download/170b7d466%402026-10-01_1790874883/Fabother_World-170b7d466-anylinux-x86_64.AppImage	fabother-world-bin	generacion
+https://github.com/pkgforge-dev/freac-AppImage-Enhanced/releases/download/9e283e301%402026-10-01_1790876574/fre_ac-9e283e301-anylinux-x86_64.AppImage	freac-bin	generacion
+https://github.com/pkgforge-dev/FreeTube-Appimage-Enhanced/releases/download/0.25.3-beta%402026-10-01_1790876372/FreeTube-0.25.3-beta-anylinux-x86_64.AppImage	freetube-bin	generacion
+https://github.com/pkgforge-dev/Filelight-AppImage/releases/download/26.08.1-1%402026-10-01_1790871913/Filelight-26.08.1-1-anylinux-x86_64.AppImage	filelight-bin	xlint/build
+https://github.com/pkgforge-dev/fooyin-AppImage/releases/download/0.13.0-1%402026-09-24_1790239832/fooyin-0.13.0-1-anylinux-x86_64.AppImage	fooyin-bin	xlint/build
+https://github.com/pkgforge-dev/Galculator-AppImage/releases/download/v2.1.4%402026-09-11_1789134385/Galculator-v2.1.4-anylinux-loongarch64.AppImage	galculator-bin	xlint/build
+https://github.com/pkgforge-dev/Gapless-AppImage/releases/download/4.6.2-1%402026-10-01_1790876658/Gapless-4.6.2-1-anylinux-x86_64.AppImage	gapless-bin	xlint/build
+https://github.com/pkgforge-dev/GCAP2025-AppImage/releases/download/1.6%402026-06-06_1780706767/GCAP_2025-1.6-anylinux-x86_64.AppImage	gcap2025-bin	xlint/build
+https://github.com/pkgforge-dev/GCAP2026-AppImage/releases/download/1.2%402026-07-27_1785182338/GCAP_2026-1.2-anylinux-x86_64.AppImage	gcap2026-bin	xlint/build
