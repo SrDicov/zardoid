@@ -1,0 +1,39 @@
+# Template file for 'genovalauncher-bin'
+pkgname=genovalauncher-bin
+version=1.3.2
+revision=1
+archs="x86_64"
+short_desc="Modern graphical launcher for Minecraft: Bedrock Edition on Linux,"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/Ars-byte/GenovaLauncher"
+distfiles="https://github.com/Ars-byte/GenovaLauncher/releases/download/v${version}/GenovaLauncher-${version}-x86_64.AppImage>genovalauncher-bin-${version}.AppImage"
+checksum=f784dfb43a050e4fad44480fdb82261ed2251a1c2bcef616ed1445cee2f044a0
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/genovalauncher-bin
+	vcopy "squashfs-root/*" opt/genovalauncher-bin
+	vmkdir usr/bin
+	ln -sf "/opt/genovalauncher-bin/AppRun" "${DESTDIR}/usr/bin/genovalauncher"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+}

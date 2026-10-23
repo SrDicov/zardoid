@@ -1,0 +1,39 @@
+# Template file for 'gnome-calculator-bin'
+pkgname=gnome-calculator-bin
+version=50.0
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage for Gnome Calculator [Maintainer=@fiftydinar]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/pkgforge-dev/Gnome-Calculator-AppImage"
+distfiles="https://github.com/pkgforge-dev/Gnome-Calculator-AppImage/releases/download/${version}-1%402026-10-01_1790875858/Calculator-${version}-1-anylinux-x86_64.AppImage>gnome-calculator-bin-${version}.AppImage"
+checksum=b0423ac2445bc555fa58a3b51a15e40b6cc237da2591f55236feb9b3188b074f
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/gnome-calculator-bin
+	vcopy "squashfs-root/*" opt/gnome-calculator-bin
+	vmkdir usr/bin
+	ln -sf "/opt/gnome-calculator-bin/AppRun" "${DESTDIR}/usr/bin/gnome-calculator"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+}
