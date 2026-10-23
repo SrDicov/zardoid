@@ -1,0 +1,41 @@
+# Template file for 'skyemu-bin'
+pkgname=skyemu-bin
+version=20260901
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of SkyEmu [Maintainer=@Link4Electronics]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/SkyEmu-AppImage"
+distfiles="https://github.com/pkgforge-dev/SkyEmu-AppImage/releases/download/5%402026-09-01_1788278151/SkyEmu-5-anylinux-x86_64.AppImage>skyemu-bin-${version}.AppImage"
+checksum=9405e30fa99684eac59c61bbc61e92c3691af3608cdafeac3cce3bd41353e8ed
+noshlibprovides=yes
+nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/skyemu-bin
+	vcopy "squashfs-root/*" opt/skyemu-bin
+	vmkdir usr/bin
+	ln -sf "/opt/skyemu-bin/AppRun" "${DESTDIR}/usr/bin/skyemu"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}

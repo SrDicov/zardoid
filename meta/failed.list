@@ -151,3 +151,11 @@ https://github.com/pkgforge-dev/Protontricks-AppImage/releases/download/1.14.1-1
 https://github.com/pkgforge-dev/PyGlossary-AppImage/releases/download/5.2.1-1%402026-10-01_1790876500/PyGlossary-5.2.1-1-anylinux-x86_64.AppImage	pyglossary-bin	xlint/build
 https://github.com/pkgforge-dev/Qmmp-AppImage/releases/download/2.4.1-1%402026-10-01_1790876531/Qmmp-2.4.1-1-anylinux-x86_64.AppImage	qmmp-bin	xlint/build
 https://github.com/pkgforge-dev/QtCreator-AppImage/releases/download/20.0.2-1%402026-10-01_1790876593/Qt_Creator-20.0.2-2-anylinux-x86_64.AppImage	qtcreator-bin	xlint/build
+https://github.com/spotbye/SpotiFLAC/releases/download/v7.2.2/SpotiFLAC.AppImage	spotiflac-bin	generacion
+https://github.com/ivan-hc/Spotify-appimage/releases/download/continuous/Spotify-candidate-1.2.96.518.g366879e1-x86_64.AppImage	spotify-bin	generacion
+https://github.com/pkgforge-dev/RVGL-AppImage/releases/download/0.1.23.1030a3%402026-10-01_1790876501/RVGL_Launcher-0.1.23.1030a3-anylinux-x86_64.AppImage	rvgl-bin	xlint/build
+https://github.com/pkgforge-dev/Readest-AppImage-Enhanced/releases/download/0.12.10-1%402026-10-01_1790875313/Readest-0.12.10-1-anylinux-x86_64.AppImage	readest-bin	xlint/build
+https://github.com/pkgforge-dev/Rewaita-AppImage/releases/download/1.1.7-1%402026-10-01_1790876585/Rewaita-1.1.7-1-anylinux-x86_64.AppImage	rewaita-bin	xlint/build
+https://github.com/pkgforge-dev/Sayonara-Player-AppImage-Enhanced/releases/download/1.12.0-stable1%402026-10-01_1790876682/Sayonara-1.12.0-stable1-anylinux-x86_64.AppImage	sayonara-player-bin	xlint/build
+https://github.com/pkgforge-dev/Secrets-AppImage/releases/download/13.0.1-1%402026-10-01_1790876410/Secrets-13.0.1-1-anylinux-x86_64.AppImage	secrets-bin	xlint/build
+https://github.com/pkgforge-dev/Solaar-AppImage/releases/download/1.1.20-2%402026-10-01_1790876123/Solaar-1.1.20-2-anylinux-x86_64.AppImage	solaar-bin	xlint/build
