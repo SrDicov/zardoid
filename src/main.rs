@@ -287,7 +287,7 @@ fn short_desc(raw: &str, pkg: &str) -> String {
     }
     let start = out.find(|c: char| c.is_alphanumeric()).unwrap_or(0);
     let mut out = out[start..].to_string();
-    for art in ["The ", "A ", "An "] {
+    for art in ["The ", "the ", "A ", "a ", "An ", "an "] {
         if let Some(r) = out.strip_prefix(art) {
             out = r.to_string();
             break;
@@ -469,7 +469,7 @@ fn run(a: Args) -> Res<()> {
     }
 
     if kind == Kind::AppImage {
-        if a.license.is_none() {
+        if a.license.is_none() && (license.is_empty() || needs_vlicense(&license)) {
             license_file = repo_license(&asset_target, &a, &mut license);
         }
         functions.push(("post_extract".into(), image_copy()));
@@ -511,11 +511,12 @@ fn run(a: Args) -> Res<()> {
         if inv.files.is_empty() {
             warnings.push("el archivo extraído está vacío".into());
         }
-        if inv.licenses.is_empty() {
-            warnings.push("sin LICENSE/COPYING en el asset".into());
-            if a.license.is_none() {
-                license_file = repo_license(&asset_target, &a, &mut license);
-            }
+        // Sin SPDX (GitHub devuelve NOASSERTION) hay que preguntar al repo
+        // aunque el asset traiga LICENSE: xlint exige `license=`.
+        if a.license.is_none()
+            && (license.is_empty() || (inv.licenses.is_empty() && needs_vlicense(&license)))
+        {
+            license_file = repo_license(&asset_target, &a, &mut license);
         }
         if kind == Kind::Bin {
             // xbps-src no adivina la extensión de un binario suelto: se salta
@@ -525,7 +526,13 @@ fn run(a: Args) -> Res<()> {
         }
         functions.push((
             "do_install".into(),
-            generic_body(&base, &version, &inv, license_file.is_some()),
+            generic_body(
+                &base,
+                &version,
+                &inv,
+                needs_vlicense(&license),
+                license_file.is_some(),
+            ),
         ));
     }
 
@@ -730,8 +737,85 @@ fn repo_license(target: &Option<forge::Target>, a: &Args, license: &mut String) 
     let (spdx, body) = forge::license_text(t, tok.as_deref())?;
     if license.is_empty() {
         *license = map_license(&spdx);
+        if license.is_empty() {
+            if let Some(detected) = detect_spdx(&body) {
+                *license = detected.to_string();
+            }
+        }
     }
-    Some(body)
+    needs_vlicense(license).then_some(body)
+}
+
+/// xlint exige `vlicense` para MIT/BSD/ISC/X11/AGPL/custom y lo prohíbe para
+/// GPL/LGPL/GFDL/Apache puros.
+fn needs_vlicense(license: &str) -> bool {
+    let l = license.to_ascii_lowercase();
+    if l.is_empty() {
+        return false;
+    }
+    let pure = l
+        .split(", ")
+        .flat_map(|p| p.split(" or "))
+        .flat_map(|p| p.split(" and "))
+        .all(|p| {
+            ["gpl-", "lgpl-", "gfdl-", "apache-"]
+                .iter()
+                .any(|x| p.starts_with(x))
+        });
+    if pure {
+        return false;
+    }
+    ["mit", "bsd", "isc", "x11", "agpl", "custom"]
+        .iter()
+        .any(|k| l.contains(k))
+}
+
+/// GitHub no detecta algunas licencias (spdx `NOASSERTION`). Heurística sobre
+/// el texto para las familias que aparecen en la práctica.
+fn detect_spdx(text: &str) -> Option<&'static str> {
+    let t = text.to_ascii_lowercase();
+    if t.contains("apache license") && t.contains("version 2.0") {
+        return Some("Apache-2.0");
+    }
+    // GPLv3 menciona Affero en la sección 13: solo la cabecera vale.
+    let head: String = t
+        .lines()
+        .filter(|l| !l.trim().is_empty())
+        .take(3)
+        .collect::<Vec<_>>()
+        .join(" ");
+    if head.contains("affero general public license") {
+        return Some("AGPL-3.0-or-later");
+    }
+    if t.contains("gnu lesser general public license") && t.contains("version 3") {
+        return Some("LGPL-3.0-or-later");
+    }
+    if t.contains("gnu lesser general public license") && t.contains("version 2.1") {
+        return Some("LGPL-2.1-or-later");
+    }
+    if t.contains("gnu general public license") && t.contains("version 3") {
+        return Some("GPL-3.0-or-later");
+    }
+    if t.contains("gnu general public license") && t.contains("version 2") {
+        return Some("GPL-2.0-or-later");
+    }
+    if t.contains("mozilla public license") && t.contains("2.0") {
+        return Some("MPL-2.0");
+    }
+    if t.contains("permission is hereby granted, free of charge") {
+        return Some("MIT");
+    }
+    if t.contains("permission to use, copy, modify, and/or distribute") {
+        return Some("ISC");
+    }
+    if t.contains("redistribution and use in source and binary forms") {
+        return Some(if t.contains("neither the name") {
+            "BSD-3-Clause"
+        } else {
+            "BSD-2-Clause"
+        });
+    }
+    None
 }
 
 /// Un asset directo de FreeBSD/macOS/Windows/ARM no sirve en Void x86_64.
@@ -796,7 +880,13 @@ fn appimage_body(base: &str, files_license: bool) -> String {
     out
 }
 
-fn generic_body(base: &str, version: &str, inv: &Inventory, files_license: bool) -> String {
+fn generic_body(
+    base: &str,
+    version: &str,
+    inv: &Inventory,
+    install_licenses: bool,
+    files_license: bool,
+) -> String {
     let stem = base.trim_end_matches("-bin");
     let bin_name = |p: &Path| -> String {
         p.file_name()
@@ -888,8 +978,10 @@ fn generic_body(base: &str, version: &str, inv: &Inventory, files_license: bool)
             ));
         }
     }
-    for l in &inv.licenses {
-        lines.push(format!("vlicense {}", shq_versioned(l, version)));
+    if install_licenses {
+        for l in &inv.licenses {
+            lines.push(format!("vlicense {}", shq_versioned(l, version)));
+        }
     }
     if files_license {
         lines.push("vlicense \"${FILESDIR}/LICENSE\"".to_string());
@@ -1016,6 +1108,30 @@ mod tests {
     }
 
     #[test]
+    fn xlint_license_rules() {
+        assert!(needs_vlicense("MIT"));
+        assert!(needs_vlicense("Apache-2.0 OR MIT"));
+        assert!(needs_vlicense("AGPL-3.0-or-later"));
+        assert!(!needs_vlicense("Apache-2.0"));
+        assert!(!needs_vlicense("GPL-3.0-or-later"));
+        assert!(!needs_vlicense("GPL-2.0-only, LGPL-2.1-or-later"));
+        assert!(!needs_vlicense(""));
+        assert_eq!(
+            detect_spdx("Permission is hereby granted, free of charge, to any"),
+            Some("MIT")
+        );
+        assert_eq!(
+            detect_spdx("Apache License\nVersion 2.0, January 2004"),
+            Some("Apache-2.0")
+        );
+        assert_eq!(
+            detect_spdx("GNU GENERAL PUBLIC LICENSE\nVersion 3, 29 June 2007"),
+            Some("GPL-3.0-or-later")
+        );
+        assert_eq!(detect_spdx("nada que ver"), None);
+    }
+
+    #[test]
     fn foreign_assets() {
         assert_eq!(
             foreign_platform("age-v1.3.2-freebsd-amd64.tar.gz"),
@@ -1093,9 +1209,9 @@ mod sec_tests {
             completions: vec![],
             licenses: vec![],
         };
-        let body = generic_body("demo-bin", "1.0", &inv, false);
+        let body = generic_body("demo-bin", "1.0", &inv, true, false);
         assert!(body.contains("vbin 'bin/a one'"), "{body}");
-        let with_lic = generic_body("demo-bin", "1.0", &inv, true);
+        let with_lic = generic_body("demo-bin", "1.0", &inv, true, true);
         assert!(with_lic.contains("vlicense \"${FILESDIR}/LICENSE\""));
         assert!(body.contains("'\\''"), "comilla simple sin escapar: {body}");
         assert!(!body.contains("vbin bin/x';"), "inyección: {body}");

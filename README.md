@@ -82,10 +82,12 @@ procesan un lote de `LOTE` entradas (20 por defecto):
    commitea. Todo el lote sale de la cola; lo rechazado va a `meta/failed.list`
    con el motivo, para que el siguiente lote no se quede atascado.
 
-Si el asset no trae `LICENSE`, zardoid pide el texto a la API de GitHub
-(`/repos/{o}/{r}/license`) y escribe `srcpkgs/<pkg>/files/LICENSE` con
-`vlicense "${FILESDIR}/LICENSE"`. Sin ese texto (forge no GitHub, o sin
-licencia detectada) el template no pasa xlint y acaba en `failed.list`.
+zardoid pide el SPDX a la API de GitHub (`/repos/{o}/{r}/license`). Si el
+asset no trae `LICENSE` y la licencia lo exige (MIT/BSD/ISC/X11/AGPL/custom),
+baja el texto y escribe `srcpkgs/<pkg>/files/LICENSE` con
+`vlicense "${FILESDIR}/LICENSE"`. Para GPL/LGPL/GFDL/Apache no se instala el
+texto: xlint lo rechaza. Cuando GitHub devuelve `NOASSERTION` se detecta la
+familia por el texto (MIT, Apache, GPL, LGPL, AGPL, MPL, ISC, BSD).
 
 Coste: cada lote descarga sus assets dos veces (generar y compilar). 663
 entradas a 20 por lote son ~34 runs; con AppImages de ~100 MB, cuenta con

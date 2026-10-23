@@ -15,3 +15,10 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
+https://github.com/pkgforge/aeris/releases/download/v0.2.1/aeris-x86_64-linux.tar.xz aeris-bin
+https://github.com/owasp-amass/amass/releases/download/v5.1.1/amass_linux_amd64.tar.gz amass-bin
+https://github.com/jmacdonald/amp/releases/download/0.7.1/amp-x86_64-unknown-linux-musl amp-bin
+https://github.com/pkgforge-dev/appimagetool/releases/download/0.5.3/appimagetool-corresponding-source-dwarfs-0.15.6.tar.xz appimagetool-bin
+https://github.com/arduino/arduino-cli/releases/download/v1.5.1/arduino-cli_1.5.1_Linux_64bit.tar.gz arduino-cli-bin
+https://github.com/BLAKE3-team/BLAKE3/releases/download/1.8.7/b3sum_linux_x64_bin b3sum-bin
+https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-gnu.tar.gz bat-bin
