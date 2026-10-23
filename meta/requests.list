@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/Impression-AppImage/releases/download/3.8.0-1%402026-10-01_1790876552/Impression-3.8.0-1-anylinux-x86_64.AppImage impression-bin
-https://github.com/pkgforge-dev/innoextract-AppImage/releases/download/1.9-17%402026-10-01_1790876661/innoextract-1.9-17-anylinux-x86_64.AppImage innoextract-bin
-https://github.com/pkgforge-dev/ioquake3-AppImage/releases/download/83a776283%402026-10-01_1790875295/Quake_III_Arena-83a776283-anylinux-x86_64.AppImage ioquake3-bin
-https://github.com/pkgforge-dev/Iris-AppImage-Enhanced/releases/download/0.20-alpha%402026-10-01_1790876476/Iris-0.20-alpha-anylinux-x86_64.AppImage iris-bin
-https://github.com/pkgforge-dev/IRPF2025-AppImage/releases/download/1.8%402026-06-05_1780694138/IRPF_2025-1.8-anylinux-x86_64.AppImage irpf2025-bin
-https://github.com/pkgforge-dev/IRPF2026-AppImage/releases/download/1.5%402026-07-27_1785183360/IRPF_2026-1.5-anylinux-x86_64.AppImage irpf2026-bin
-https://github.com/pkgforge-dev/isle-portable-AppImage-Enhanced/releases/download/587eabf79%402026-10-01_1790876186/Isle_Portable-587eabf79-anylinux-x86_64.AppImage isle-portable-bin
-https://github.com/pkgforge-dev/ITGmania-AppImage/releases/download/1.3.0%402026-10-14_1791947802/ITGmania-1.3.0-anylinux-x86_64.AppImage itgmania-bin
-https://github.com/pkgforge-dev/ITR2025-AppImage/releases/download/1.8%402026-09-11_1789094327/ITR_2025-1.8-anylinux-x86_64.AppImage itr2025-bin
-https://github.com/pkgforge-dev/Joplin-Desktop-AppImage/releases/download/v3.6.16%402026-09-02_1788385775/Joplin-v3.6.16-anylinux-x86_64.AppImage joplin-desktop-bin
-https://github.com/pkgforge-dev/kaffeine-AppImage/releases/download/2.0.19-4%402026-10-07_1791382323/Kaffeine-2.0.19-4-anylinux-x86_64.AppImage kaffeine-bin
-https://github.com/pkgforge-dev/Kate-AppImage-Enhanced/releases/download/26.08.1-1%402026-10-01_1790876314/Kate-26.08.1-1-anylinux-x86_64.AppImage kate-bin
-https://github.com/pkgforge-dev/KBlocks-AppImage/releases/download/26.08.1-1%402026-10-01_1790875830/KBlocks-26.08.1-1-anylinux-x86_64.AppImage kblocks-bin
-https://github.com/pkgforge-dev/KCalc-AppImage/releases/download/26.08.1-1%402026-10-01_1790874267/KCalc-26.08.1-1-anylinux-x86_64.AppImage kcalc-bin
-https://github.com/pkgforge-dev/kdeconnect-AppImage/releases/download/26.08.1-1%402026-10-07_1791383193/KDE_Connect-26.08.1-1-anylinux-x86_64.AppImage kdeconnect-bin
-https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced/releases/download/26.08.1-1%402026-10-01_1790876508/Kdenlive-26.08.1-1-anylinux-x86_64.AppImage kdenlive-bin
-https://github.com/pkgforge-dev/KeePassXC-AppImage-Enhanced/releases/download/2.7.12-5%402026-10-01_1790876467/KeePassXC-2.7.12-5-anylinux-x86_64.AppImage keepassxc-bin
-https://github.com/pkgforge-dev/Kega-Fusion-AppImage/releases/download/3.63-17%402026-05-01_1777638966/Kega_Fusion-3.63-17-anylinux-x86_64.AppImage kega-fusion-bin
-https://github.com/pkgforge-dev/Keypunch-AppImage/releases/download/v7.0%402026-10-01_1790876172/Keypunch-v7.0-anylinux-x86_64.AppImage keypunch-bin
-https://github.com/pkgforge-dev/KiCad-AppImage/releases/download/10.0.6-2%402026-10-01_1790876568/KiCad-10.0.6-2-anylinux-x86_64.AppImage kicad-bin
 https://github.com/pkgforge-dev/Kid3-AppImage/releases/download/3.10.1-2%402026-10-01_1790875637/Kid3-3.10.1-2-anylinux-x86_64.AppImage kid3-bin
 https://github.com/pkgforge-dev/KMahjongg-AppImage/releases/download/26.08.1-1%402026-10-01_1790876397/KMahjongg-26.08.1-1-anylinux-x86_64.AppImage kmahjongg-bin
 https://github.com/pkgforge-dev/KMines-AppImage/releases/download/26.08.1-1%402026-10-01_1790876602/KMines-26.08.1-1-anylinux-x86_64.AppImage kmines-bin
