@@ -1,0 +1,41 @@
+# Template file for 'zsnes-bin'
+pkgname=zsnes-bin
+version=20260901
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of ZSNES [Maintainer=@Link4Electronics]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/ZSNES-AppImage"
+distfiles="https://github.com/pkgforge-dev/ZSNES-AppImage/releases/download/24f0eebea%402026-09-01_1788277455/ZSNES-24f0eebea-anylinux-x86_64.AppImage>zsnes-bin-${version}.AppImage"
+checksum=97dde3d9105f2738949a56d7217a95202b805e21ec9f6175b5ecebe509ddfd47
+noshlibprovides=yes
+nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/zsnes-bin
+	vcopy "squashfs-root/*" opt/zsnes-bin
+	vmkdir usr/bin
+	ln -sf "/opt/zsnes-bin/AppRun" "${DESTDIR}/usr/bin/zsnes"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}
