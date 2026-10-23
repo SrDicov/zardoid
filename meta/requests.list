@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/CLK-AppImage/releases/download/2026-04-07%402026-05-01_1777637001/Clock_Signal-2026-04-07-anylinux-x86_64.AppImage clk-bin
-https://github.com/pkgforge-dev/CloneHero-AppImage/releases/download/v1.1.0.6142-final%402026-09-07_1788786700/Clone_Hero-v1.1.0.6142-final-anylinux-x86_64.AppImage clonehero-bin
-https://github.com/pkgforge-dev/Commander-Genius-AppImage/releases/download/58a3c4fd0%402026-10-01_1790876531/Commander_Genius-58a3c4fd0-anylinux-x86_64.AppImage commander-genius-bin
-https://github.com/pkgforge-dev/Cuberite-AppImage/releases/download/r445%402026-10-01_1790874911/Cuberite-r445-anylinux-x86_64.AppImage cuberite-bin
-https://github.com/pkgforge-dev/Claws-Mail-AppImage/releases/download/4.4.0-5%402026-09-07_1788786624/Claws_Mail-4.4.0-5-anylinux-x86_64.AppImage claws-mail-bin
-https://github.com/pkgforge-dev/CollaboraOffice-AppImage/releases/download/26.04.2.4-1%402026-10-01_1790876635/Collabora_Office-26.04.2.4-1-anylinux-x86_64.AppImage collaboraoffice-bin
-https://github.com/pkgforge-dev/Constrict-AppImage/releases/download/26.4%402026-05-16_1778947296/Constrict-26.4-anylinux-x86_64.AppImage constrict-bin
-https://github.com/pkgforge-dev/CorsixTH-AppImage-Enhanced/releases/download/v0.70.1%402026-10-01_1790872179/CorsixTH-v0.70.1-anylinux-x86_64.AppImage corsixth-bin
-https://github.com/pkgforge-dev/Cursor-AppImage-Enhanced/releases/download/3.22.12%402026-10-01_1790875580/Cursor-3.22.12-anylinux-x86_64.AppImage cursor-bin
-https://github.com/pkgforge-dev/cursor-cli-AppImage/releases/download/2026.05.24.1.dda726e-1%402026-07-22_1784721360/cursor-agent-2026.05.24.1.dda726e-1-anylinux-x86_64.AppImage cursor-cli-bin
-https://github.com/pkgforge-dev/D1X-Rebirth-AppImage/releases/download/db1996a7f%402026-10-01_1790876676/D1X-Rebirth-db1996a7f-anylinux-x86_64.AppImage d1x-rebirth-bin
-https://github.com/pkgforge-dev/D2X-Rebirth-AppImage/releases/download/db1996a7f%402026-10-01_1790874987/D2X-Rebirth-db1996a7f-anylinux-x86_64.AppImage d2x-rebirth-bin
-https://github.com/pkgforge-dev/DarkPlaces-AppImage/releases/download/d93f9c429%402026-10-01_1790875747/Darkplaces-d93f9c429-anylinux-x86_64.AppImage darkplaces-bin
-https://github.com/pkgforge-dev/dethrace-AppImage/releases/download/a6d94174b%402026-10-01_1790876488/dethrace-a6d94174b-anylinux-x86_64.AppImage dethrace-bin
-https://github.com/pkgforge-dev/dhewm3-AppImage/releases/download/455b88e8d%402026-10-01_1790876950/Dhewm3-455b88e8d-anylinux-x86_64.AppImage dhewm3-bin
-https://github.com/pkgforge-dev/Dolphin-emu-AppImage/releases/download/2609%402026-10-01_1790876487/Dolphin_Emulator-2609-anylinux-x86_64.AppImage dolphin-emu-bin
-https://github.com/pkgforge-dev/DOOM64EXUltra-AppImage/releases/download/ac890ce59%402026-09-01_1788278266/DOOM64EXUltra-ac890ce59-anylinux-x86_64.AppImage doom64exultra-bin
-https://github.com/pkgforge-dev/DOSBox-Pure-Unleashed-AppImage/releases/download/f0453b42b%402026-10-01_1790868062/DOSBox_Pure_Unleashed-f0453b42b-anylinux-x86_64.AppImage dosbox-pure-unleashed-bin
-https://github.com/pkgforge-dev/dRally-AppImage/releases/download/920d85a7f%402026-09-01_1788264642/dRally-920d85a7f-anylinux-x86_64.AppImage drally-bin
-https://github.com/pkgforge-dev/EDuke32-AppImage/releases/download/20260807-10669-ec5824db8%402026-10-18_1792284058/EDuke32-20260807-10669-ec5824db8-anylinux-x86_64.AppImage eduke32-bin
 https://github.com/pkgforge-dev/ETLegacy-AppImage/releases/download/2.86.0.15.g063ef3cc2-1%402026-10-01_1790876556/ET_Legacy-2.86.0.15.g063ef3cc2-1-anylinux-x86_64.AppImage etlegacy-bin
 https://github.com/pkgforge-dev/Exult-AppImage/releases/download/b40f232e3%402026-10-11_1791710244/Exult-b40f232e3-anylinux-x86_64.AppImage exult-bin
 https://github.com/pkgforge-dev/DOSBox-X-AppImage/releases/download/2026.10.01%402026-10-02_1790940047/DOSBox-X-2026.10.01-anylinux-x86_64.AppImage dosbox-x-bin
