@@ -135,7 +135,7 @@ jobs:
           # user namespaces, que el docker de Actions no deja usar.
           docker run --rm --privileged -v "$PWD:/w" -v /dev:/dev -w /w "$VOID_IMAGE" sh -c '
             set -e
-            xbps-install -Sy bash git curl base-chroot >/dev/null
+            xbps-install -Sy bash git curl base-devel >/dev/null
             git clone --depth 1 https://github.com/void-linux/void-packages /w/vp
             cp -r staging/srcpkgs/* /w/vp/srcpkgs/
             cd /w/vp
@@ -166,9 +166,12 @@ jobs:
   merge:
     name: Merge
     needs: [generate, validate, build]
-    # Corre aunque validate/build fallen o se salten: así los fallos de
-    # generación también salen de la cola.
-    if: always() && needs.generate.result == 'success'
+    # Si no validó o no compiló NADA, huele a infraestructura: no se vacía la
+    # cola. Si no hay nada que generar (count 0), validate/build se saltan y
+    # sí se anotan los fallos de generación.
+    if: >-
+      always() && needs.generate.result == 'success' &&
+      needs.validate.result != 'failure' && needs.build.result != 'failure'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
