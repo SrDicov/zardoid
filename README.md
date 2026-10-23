@@ -72,3 +72,6 @@ Códigos de salida: `0` ok · `1` uso/validación · `2` red/API · `3` verifica
 - `maintainer` y, si el forge no la detecta, `license` son decisiones humanas.
 - `untracked`: los assets con `/latest/` en la URL se congelan a los bytes
   actuales y se avisa por stderr.
+- Las líneas de más de 80 columnas (rutas de iconos largas, URLs) se avisan por
+  stderr pero **no** bloquean: `xlint` no impone ese límite, solo lo recomienda
+  el Manual.

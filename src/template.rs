@@ -167,7 +167,8 @@ pub fn render(spec: &Spec) -> String {
 }
 
 /// Comprobaciones que `format-template.py --check` también hace y que aquí
-/// detectamos antes de escribir: header, comentarios y longitud.
+/// Comprobaciones duras de `xlint`/`format-template.py`: header y comentarios.
+/// La longitud de línea NO es una de ellas (ver `long_lines`).
 pub fn selfcheck(text: &str) -> Vec<String> {
     let mut errs = Vec::new();
     let mut lines = text.lines();
@@ -179,11 +180,6 @@ pub fn selfcheck(text: &str) -> Vec<String> {
         if l.trim_start().starts_with('#') {
             errs.push(format!("comentario # en línea {}", i + 1));
         }
-        // `short_desc` y `distfiles` no se parten nunca (ni xlint ni el
-        // formateador lo hacen), así que no cuentan para las 80 columnas.
-        if l.len() > 80 && !l.contains("://") && !l.starts_with("short_desc=") {
-            errs.push(format!("línea {} supera 80 columnas", i + 1));
-        }
         if l.contains(" \t") || l.starts_with(' ') && l.len() > 1 && !l[1..].starts_with(' ') {
             // continuación válida = exactamente un espacio inicial
             if l.starts_with(' ') && !l.starts_with("  ") && !l.starts_with(" \t") {
@@ -193,6 +189,17 @@ pub fn selfcheck(text: &str) -> Vec<String> {
         }
     }
     errs
+}
+
+/// Líneas de más de 80 columnas. Es convención del Manual, no regla de
+/// `xlint`; se avisa pero no se bloquea la generación.
+pub fn long_lines(text: &str) -> Vec<usize> {
+    text.lines()
+        .enumerate()
+        .skip(1)
+        .filter(|(_, l)| l.len() > 80 && !l.contains("://") && !l.starts_with("short_desc="))
+        .map(|(i, _)| i + 1)
+        .collect()
 }
 
 #[cfg(test)]
@@ -259,6 +266,14 @@ mod tests {
         s.fields.push(("distfiles".into(), url.clone()));
         let t = render(&s);
         assert!(t.contains(&url));
+    }
+
+    #[test]
+    fn long_line_is_warning_not_error() {
+        let t = "# Template file for 'a'\npkgname=a\nversion=1\nrevision=1\n\
+                 do_install() {\n\tvinstall 'una/ruta/muy/larga/que/pasa/de/las/ochenta/columnas/de/ancho/x' 644 usr/share/applications\n}\n";
+        assert!(selfcheck(t).is_empty(), "{:?}", selfcheck(t));
+        assert_eq!(long_lines(t), vec![6]);
     }
 
     #[test]

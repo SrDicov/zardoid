@@ -554,6 +554,12 @@ fn run(a: Args) -> Res<()> {
     }
     verify(&text, &base)?;
 
+    for n in template::long_lines(&text) {
+        warnings.push(format!(
+            "línea {n} supera 80 columnas (convención; xlint no lo exige)"
+        ));
+    }
+
     let warnings_json = warnings
         .iter()
         .map(|w| format!("\"{}\"", json_escape(w)))
