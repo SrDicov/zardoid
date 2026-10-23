@@ -1,0 +1,18 @@
+# Template file for 'ko-bin'
+pkgname=ko-bin
+version=0.19.1
+revision=1
+archs="x86_64*"
+short_desc="Build and deploy Go applications"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://ko.build"
+distfiles="https://github.com/ko-build/ko/releases/download/v${version}/ko_${version}_Linux_x86_64.tar.gz"
+checksum=635ac6ea3fd376c935fee597fbb29ab2c2449f49ef1655085fe3aa9c25fed7a5
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'ko'
+}

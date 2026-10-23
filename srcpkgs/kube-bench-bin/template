@@ -1,0 +1,18 @@
+# Template file for 'kube-bench-bin'
+pkgname=kube-bench-bin
+version=0.16.0
+revision=1
+archs="x86_64*"
+short_desc="Checks whether Kubernetes is deployed according to security best"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/aquasecurity/kube-bench"
+distfiles="https://github.com/aquasecurity/kube-bench/releases/download/v${version}/kube-bench_${version}_linux_amd64.tar.gz"
+checksum=82dbc7e598740dc9344d41f8ad0b8210d57c4c00bdb2c5f1d8a69a2b98baddcf
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'kube-bench'
+}

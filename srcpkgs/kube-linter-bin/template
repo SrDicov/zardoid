@@ -1,0 +1,19 @@
+# Template file for 'kube-linter-bin'
+pkgname=kube-linter-bin
+version=0.8.3
+revision=1
+archs="x86_64*"
+short_desc="KubeLinter is a static analysis tool that checks Kubernetes YAML
+ files"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://docs.kubelinter.io/"
+distfiles="https://github.com/stackrox/kube-linter/releases/download/v${version}/kube-linter-linux.tar.gz"
+checksum=1a6d8419b11971372971fdbc22682b684ebfb7cf1c39591662d1b6ca736c41df
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'kube-linter'
+}

@@ -1,0 +1,18 @@
+# Template file for 'kustomize-bin'
+pkgname=kustomize-bin
+version=5.8.3
+revision=1
+archs="x86_64*"
+short_desc="Customization of kubernetes YAML configurations"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/kubernetes-sigs/kustomize"
+distfiles="https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${version}/kustomize_v${version}_linux_amd64.tar.gz"
+checksum=cb9e31198d3f63b44848bd0afc4c8efc56e6cfef9c93a4a39a211940e6decd61
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'kustomize'
+}

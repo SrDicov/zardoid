@@ -1,0 +1,21 @@
+# Template file for 'lnav-bin'
+pkgname=lnav-bin
+version=0.14.1
+revision=1
+archs="x86_64*"
+hostmakedepends="unzip"
+short_desc="Log file navigator"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="BSD-2-Clause"
+homepage="http://lnav.org"
+distfiles="https://github.com/tstack/lnav/releases/download/v${version}/lnav-${version}-linux-musl-x86_64.zip"
+checksum=ec1750f0a6962eed6bb85ad4249457894f190e961277c56d69c47eecce9e705e
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'lnav'
+	vman 'lnav.1'
+	vlicense "${FILESDIR}/LICENSE"
+}

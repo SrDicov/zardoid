@@ -1,0 +1,19 @@
+# Template file for 'kotofetch-bin'
+pkgname=kotofetch-bin
+version=0.2.23
+revision=1
+archs="x86_64"
+short_desc="Kotofetch is a small, configurable CLI that displays Japanese
+ quotes in"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/hxpe-dev/kotofetch"
+distfiles="https://github.com/hxpe-dev/kotofetch/releases/download/v${version}/kotofetch-v${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=6e7804f4a23e0aacae2cede7107682aaba7d4e660f0c8cb9222cd9afc90ac28c
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'kotofetch'
+	vlicense "${FILESDIR}/LICENSE"
+}

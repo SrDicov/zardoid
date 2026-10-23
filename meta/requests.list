@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/orhun/kmon/releases/download/v1.7.1/kmon-1.7.1-x86_64-unknown-linux-gnu.tar.gz kmon-bin
-https://github.com/ko-build/ko/releases/download/v0.19.1/ko_0.19.1_Linux_x86_64.tar.gz ko-bin
-https://github.com/hxpe-dev/kotofetch/releases/download/v0.2.23/kotofetch-v0.2.23-x86_64-unknown-linux-gnu.tar.gz kotofetch-bin
-https://github.com/aquasecurity/kube-bench/releases/download/v0.16.0/kube-bench_0.16.0_linux_amd64.tar.gz kube-bench-bin
-https://github.com/stackrox/kube-linter/releases/download/v0.8.3/kube-linter-linux.tar.gz kube-linter-bin
-https://github.com/ahmetb/kubectx/releases/download/v0.11.0/kubectx_v0.11.0_linux_x86_64.tar.gz kubectx-bin
-https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v5.8.3/kustomize_v5.8.3_linux_amd64.tar.gz kustomize-bin
-https://github.com/jesseduffield/lazydocker/releases/download/v0.25.2/lazydocker_0.25.2_Linux_x86_64.tar.gz lazydocker-bin
-https://github.com/jesseduffield/lazygit/releases/download/v0.66.2/lazygit_0.66.2_freebsd_x86_64.tar.gz lazygit-bin
-https://github.com/Legcord/Legcord/releases/download/v1.3.1/Legcord-1.3.1-linux-x64.tar.gz legcord-bin
-https://github.com/gokcehan/lf/releases/download/r42/lf-dragonfly-amd64.tar.gz lf-bin
-https://dl.librewolf.net/librewolf/158.0-1/librewolf-158.0-1-linux-x86_64-package.tar.xz librewolf-bin
-https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Linux-x86_64.tar.gz lima-bin
-https://github.com/Limine-Bootloader/Limine/releases/download/v12.9.3/limine-binary.tar.gz limine-bin
-https://github.com/tstack/lnav/releases/download/v0.14.1/lnav-0.14.1-linux-musl-x86_64.zip lnav-bin
-https://github.com/localsend/localsend/releases/download/v1.18.2/LocalSend-1.18.2-linux-arm-64.tar.gz localsend-bin
-https://github.com/lsd-rs/lsd/releases/download/v1.2.0/lsd-v1.2.0-x86_64-unknown-linux-gnu.tar.gz lsd-bin
-https://github.com/cantino/mcfly/releases/download/v0.9.4/mcfly-v0.9.4-x86_64-unknown-linux-musl.tar.gz mcfly-bin
-https://github.com/charmbracelet/melt/releases/download/v0.6.2/melt_0.6.2_Freebsd_x86_64.tar.gz melt-bin
-https://github.com/rachelambda/mfetch/archive/refs/heads/master.tar.gz mfetch-bin
 https://github.com/micro-editor/micro/releases/download/v2.0.15/micro-2.0.15-freebsd32.tar.gz micro-bin
 https://github.com/svenstaro/miniserve/releases/download/v0.35.0/miniserve-0.35.0-x86_64-unknown-linux-gnu miniserve-bin
 https://github.com/jdx/mise/releases/download/v2026.10.13/mise-v2026.10.13-linux-x64-musl.tar.gz mise-bin

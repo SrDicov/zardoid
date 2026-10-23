@@ -34,3 +34,11 @@ https://github.com/helm/helm/releases/download/v4.3.1/helm-v4.3.1-linux-amd64.ta
 https://github.com/casey/intermodal/releases/download/v0.1.16/imdl-v0.1.16-x86_64-unknown-linux-musl.tar.gz	intermodal-bin	xlint/build
 https://download.jetbrains.com/toolbox/jetbrains-toolbox-3.8.1.88030.tar.gz	jetbrains-toolbox-bin	xlint/build
 https://github.com/kovidgoyal/kitty/releases/download/v0.49.2/kitty-0.49.2-x86_64.txz	kitty-bin	xlint/build
+https://github.com/jesseduffield/lazygit/releases/download/v0.66.2/lazygit_0.66.2_freebsd_x86_64.tar.gz	lazygit-bin	generacion
+https://github.com/gokcehan/lf/releases/download/r42/lf-dragonfly-amd64.tar.gz	lf-bin	generacion
+https://github.com/charmbracelet/melt/releases/download/v0.6.2/melt_0.6.2_Freebsd_x86_64.tar.gz	melt-bin	generacion
+https://github.com/rachelambda/mfetch/archive/refs/heads/master.tar.gz	mfetch-bin	generacion
+https://dl.librewolf.net/librewolf/158.0-1/librewolf-158.0-1-linux-x86_64-package.tar.xz	librewolf-bin	xlint/build
+https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Linux-x86_64.tar.gz	lima-bin	xlint/build
+https://github.com/Limine-Bootloader/Limine/releases/download/v12.9.3/limine-binary.tar.gz	limine-bin	xlint/build
+https://github.com/localsend/localsend/releases/download/v1.18.2/LocalSend-1.18.2-linux-arm-64.tar.gz	localsend-bin	xlint/build
