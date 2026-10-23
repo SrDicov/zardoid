@@ -1,0 +1,41 @@
+# Template file for 'etlegacy-bin'
+pkgname=etlegacy-bin
+version=20261001
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of ET: Legacy [Maintainer=@Link4Electronics]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/ETLegacy-AppImage"
+distfiles="https://github.com/pkgforge-dev/ETLegacy-AppImage/releases/download/2.86.0.15.g063ef3cc2-1%402026-10-01_1790876556/ET_Legacy-2.86.0.15.g063ef3cc2-1-anylinux-x86_64.AppImage>etlegacy-bin-${version}.AppImage"
+checksum=0b5178ec3db359c7ede014763908764bfdb4de4ce6a9e841d8a3c840efa9c337
+noshlibprovides=yes
+nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/etlegacy-bin
+	vcopy "squashfs-root/*" opt/etlegacy-bin
+	vmkdir usr/bin
+	ln -sf "/opt/etlegacy-bin/AppRun" "${DESTDIR}/usr/bin/etlegacy"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}

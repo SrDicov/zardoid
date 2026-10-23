@@ -1,0 +1,41 @@
+# Template file for 'exult-bin'
+pkgname=exult-bin
+version=20261011
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of Exult [Maintainer=@Link4Electronics]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/Exult-AppImage"
+distfiles="https://github.com/pkgforge-dev/Exult-AppImage/releases/download/b40f232e3%402026-10-11_1791710244/Exult-b40f232e3-anylinux-x86_64.AppImage>exult-bin-${version}.AppImage"
+checksum=bad9ff4049851acee18cf6be86a7daebb3d6d6b55e0259d15596e5ce82036c2a
+noshlibprovides=yes
+nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/exult-bin
+	vcopy "squashfs-root/*" opt/exult-bin
+	vmkdir usr/bin
+	ln -sf "/opt/exult-bin/AppRun" "${DESTDIR}/usr/bin/exult"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}
