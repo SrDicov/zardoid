@@ -15,4 +15,3 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/casey/just just-bin CC0-1.0

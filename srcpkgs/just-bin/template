@@ -1,0 +1,19 @@
+# Template file for 'just-bin'
+pkgname=just-bin
+version=1.59.0
+revision=1
+archs="x86_64*"
+short_desc="Just a command runner"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="CC0-1.0"
+homepage="https://just.systems"
+distfiles="https://github.com/casey/just/releases/download/${version}/just-${version}-x86_64-unknown-linux-musl.tar.gz"
+checksum=409044617b6f06517c1035e55ca38c8c856ff8b650e41bc2aa1ef82d5903a23e
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'just'
+	vman 'just.1'
+	vlicense 'LICENSE'
+}
