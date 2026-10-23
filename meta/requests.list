@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/Powermanga-AppImage/releases/download/da3de3382%402026-10-07_1791382392/Powermanga-da3de3382-anylinux-x86_64.AppImage powermanga-bin
-https://github.com/pkgforge-dev/Prey2006-AppImage/releases/download/983b171cf%402026-10-01_1790864960/Prey_2006-983b171cf-anylinux-x86_64.AppImage prey2006-bin
-https://github.com/pkgforge-dev/PrimeHack-AppImage/releases/download/1.0.9%402026-10-01_1790876662/PrimeHack-1.0.9-anylinux-x86_64.AppImage primehack-bin
-https://github.com/PrismLauncher/PrismLauncher/releases/download/11.1.1/PrismLauncher-Linux-x86_64.AppImage prism-launcher-bin
-https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced/releases/download/11.1.1-1%402026-10-14_1792002970/Prism_Launcher-11.1.1-1-anylinux-x86_64.AppImage prismlauncher-bin
-https://github.com/pkgforge-dev/Protontricks-AppImage/releases/download/1.14.1-1%402026-10-01_1790876568/Protontricks-1.14.1-1-anylinux-x86_64.AppImage protontricks-bin
-https://github.com/pkgforge-dev/PrusaSlicer-AppImage/releases/download/2.9.6-5%402026-09-21_1789997558/PrusaSlicer-2.9.6-5-anylinux-x86_64.AppImage prusaslicer-bin
-https://github.com/pkgforge-dev/Ptyxis-AppImage/releases/download/50.1-1%402026-10-09_1791554546/Ptyxis-50.1-1-anylinux-x86_64.AppImage ptyxis-bin
-https://github.com/pkgforge-dev/PyGlossary-AppImage/releases/download/5.2.1-1%402026-10-01_1790876500/PyGlossary-5.2.1-1-anylinux-x86_64.AppImage pyglossary-bin
-https://github.com/pkgforge-dev/QElectroTech-AppImage/releases/download/0.100-1%402026-10-01_1790876449/QElectroTech-0.100-1-anylinux-x86_64.AppImage qelectrotech-bin
-https://github.com/pkgforge-dev/QEMU-AppImage/releases/download/11.1.1-4%402026-10-01_1790875330/QEMU-11.1.1-4-anylinux-x86_64.AppImage qemu-bin
-https://github.com/pkgforge-dev/Qimgv-AppImage/releases/download/v1.0.2%402026-10-01_1790876126/qimgv-v1.0.2-anylinux-x86_64.AppImage qimgv-bin
-https://github.com/pkgforge-dev/Qmmp-AppImage/releases/download/2.4.1-1%402026-10-01_1790876531/Qmmp-2.4.1-1-anylinux-x86_64.AppImage qmmp-bin
-https://github.com/pkgforge-dev/QMPlay2-AppImage/releases/download/1c39ae796%402026-10-01_1790875764/QMPlay2-1c39ae796-anylinux-x86_64.AppImage qmplay2-bin
-https://github.com/pkgforge-dev/QOwnNotes-AppImage/releases/download/26.10.5-1/QOwnNotes-26.10.5-1-anylinux-x86_64.AppImage qownnotes-bin
-https://github.com/pkgforge-dev/QtCreator-AppImage/releases/download/20.0.2-1%402026-10-01_1790876593/Qt_Creator-20.0.2-2-anylinux-x86_64.AppImage qtcreator-bin
-https://github.com/pkgforge-dev/QTerminal-AppImage/releases/download/2.4.0-1%402026-10-01_1790876161/QTerminal-2.4.0-1-anylinux-x86_64.AppImage qterminal-bin
-https://github.com/pkgforge-dev/QuantumLauncher-AppImage-Enhanced/releases/download/0.5.1-2%402026-10-01_1790866740/QuantumLauncher-0.5.1-2-anylinux-x86_64.AppImage quantumlauncher-bin
-https://github.com/pkgforge-dev/Quickshell-AppImage/releases/download/0.3.1-1%402026-10-01_1790876646/quickshell-0.3.1-1-anylinux-x86_64.AppImage quickshell-bin
-https://github.com/pkgforge-dev/Raptor-AppImage/releases/download/0019c5dd8%402026-09-22_1790090461/Raptor-0019c5dd8-anylinux-x86_64.AppImage raptor-bin
 https://github.com/pkgforge-dev/Readest-AppImage-Enhanced/releases/download/0.12.10-1%402026-10-01_1790875313/Readest-0.12.10-1-anylinux-x86_64.AppImage readest-bin
 https://github.com/pkgforge-dev/Reco-AppImage/releases/download/5.2.1-1%402026-10-01_1790876596/Reco-5.2.1-1-anylinux-x86_64.AppImage reco-bin
 https://github.com/pkgforge-dev/Rednukem-AppImage/releases/download/497385d64%402026-10-01_1790875563/Rednukem-497385d64-anylinux-x86_64.AppImage rednukem-bin
