@@ -117,18 +117,19 @@ jobs:
       - name: xbps-src pkg
         run: |
           : >built.txt
+          # ethereal: el propio contenedor es el masterdir. uunshare necesita
+          # user namespaces, que el docker de Actions no deja usar.
           docker run --rm --privileged -v "$PWD:/w" -v /dev:/dev -w /w "$VOID_IMAGE" sh -c '
             set -e
-            xbps-install -Sy bash sudo git curl >/dev/null
+            xbps-install -Sy bash git curl >/dev/null
             git clone --depth 1 https://github.com/void-linux/void-packages /w/vp
             cp -r staging/srcpkgs/* /w/vp/srcpkgs/
             cd /w/vp
-            useradd -G xbuilder -M builder 2>/dev/null || true
-            chown -R builder:builder /w/vp
-            sudo -Eu builder ./xbps-src binary-bootstrap
+            ln -sfn / masterdir
+            export XBPS_CHROOT_CMD=ethereal XBPS_ALLOW_CHROOT_BREAKOUT=yes
             while read -r pkg; do
               [ -n "$pkg" ] || continue
-              if sudo -Eu builder ./xbps-src -Q pkg "$pkg"; then
+              if ./xbps-src -Q pkg "$pkg"; then
                 echo "$pkg" >>/w/built.txt
               else
                 echo "build FALLO: $pkg"
