@@ -546,7 +546,10 @@ fn run(a: Args) -> Res<()> {
     }
 
     let mut distfiles = versioned_url(&asset.url, &version);
-    if !distfiles.contains("${version}") {
+    // Los tags de pkgforge llevan la fecha con guiones (`2026-10-01`), que no
+    // es una versión válida para XBPS: se usa `20261001` y la URL va literal.
+    let fecha = version.len() == 8 && version.bytes().all(|b| b.is_ascii_digit());
+    if !distfiles.contains("${version}") && !fecha {
         return Err(Fail(
             3,
             format!(
@@ -680,13 +683,6 @@ fn versioned_url(url: &str, version: &str) -> String {
         },
     };
     let mut out = path.replace(version, "${version}");
-    // Versión fecha (20261001) contra tag con guiones (2026-10-01).
-    if version.len() == 8 && version.bytes().all(|b| b.is_ascii_digit()) {
-        out = out.replace(
-            &format!("{}-{}-{}", &version[..4], &version[4..6], &version[6..]),
-            "${version}",
-        );
-    }
     out = out.replace(&version.replace('.', "%2E"), "${version}");
     format!("{prefix}{out}")
 }
