@@ -25,6 +25,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: templates
@@ -205,3 +206,13 @@ jobs:
           pkgs=$(git diff --cached --name-only -- 'srcpkgs/*/template' | awk -F/ '{print $2}' | tr '\n' ' ')
           git commit -m "templates: ${pkgs}"
           git push
+      - name: Siguiente lote
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if ! grep -v '^#' meta/requests.list | grep -q .; then
+            echo "cola vacía: fin"
+            exit 0
+          fi
+          gh workflow run Templates --ref main || echo "no se pudo encadenar (usa workflow_dispatch)" 
