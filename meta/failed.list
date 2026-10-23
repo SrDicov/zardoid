@@ -74,3 +74,12 @@ https://github.com/zen-browser/desktop/releases/download/1.23.3b/zen.linux-x86_6
 https://github.com/rafalb8/ZeroTierOne-Static/releases/download/1.16.2/zerotier-one-x86_64.tar.gz	zerotierone-static-bin	xlint/build
 https://github.com/ajeetdsouza/zoxide/releases/download/v0.10.0/zoxide-0.10.0-x86_64-unknown-linux-musl.tar.gz	zoxide-bin	xlint/build
 https://github.com/Canop/broot/releases/download/v1.61.0/broot_1.61.0.zip	broot-bin	xlint/build
+https://github.com/ivan-hc/Spotify-appimage/releases/download/continuous/Spotify-candidate-1.2.96.518.g366879e1-x86_64.AppImage.zsync	spotify-appimage-bin	generacion
+https://github.com/pkgforge-dev/anki-AppImage/releases/download/26.09.3-1%402026-10-01_1790876613/Anki-26.09.3-1-anylinux-x86_64.AppImage	anki-bin	xlint/build
+https://github.com/pkgforge-dev/BigPEmu-AppImage/releases/download/1.221%402026-09-01_1788278314/BigPEmu-1.221-anylinux-x86_64.AppImage	bigpemu-bin	xlint/build
+https://github.com/pkgforge-dev/Blender-AppImage/releases/download/5.2.2-3%402026-10-17_1792253150/Blender-5.2.2-3-anylinux-x86_64.AppImage	blender-bin	xlint/build
+https://github.com/pkgforge-dev/Bulky-AppImage/releases/download/4.2-1%402026-10-01_1790875604/Bulky-4.2-1-anylinux-x86_64.AppImage	bulky-bin	xlint/build
+https://github.com/pkgforge-dev/Cartridges-AppImage/releases/download/2.13.1-2%402026-10-01_1790876685/Cartridges-2.13.1-2-anylinux-x86_64.AppImage	cartridges-bin	xlint/build
+https://github.com/pkgforge-dev/Catfish-AppImage/releases/download/4.20.1-2%402026-10-01_1790876297/Catfish_File_Search-4.20.1-2-anylinux-x86_64.AppImage	catfish-bin	xlint/build
+https://github.com/pkgforge-dev/Cine-AppImage/releases/download/v1.8.6%402026-10-01_1790876179/Cine-v1.8.6-anylinux-x86_64.AppImage	cine-bin	xlint/build
+https://github.com/pkgforge-dev/Clapper-AppImage/releases/download/0.10.0%402026-10-01_1790876419/Clapper-0.10.0-anylinux-x86_64.AppImage	clapper-bin	xlint/build
