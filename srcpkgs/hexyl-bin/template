@@ -1,0 +1,18 @@
+# Template file for 'hexyl-bin'
+pkgname=hexyl-bin
+version=0.17.0
+revision=1
+archs="x86_64"
+short_desc="Command-line hex viewer"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/sharkdp/hexyl"
+distfiles="https://github.com/sharkdp/hexyl/releases/download/v${version}/hexyl-v${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=71b7463b8716225b4248525066e24b1874e954e87f397096f53e8804e3360189
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'hexyl'
+	vman 'hexyl.1'
+}

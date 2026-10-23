@@ -1,0 +1,25 @@
+# Template file for 'jq-bin'
+pkgname=jq-bin
+version=1.8.2
+revision=1
+archs="x86_64*"
+short_desc="Command-line JSON processor"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://jqlang.org"
+distfiles="https://github.com/jqlang/jq/releases/download/jq-${version}/jq-linux-amd64"
+checksum=b1c22172dd303f3be49e935aa56aa48a8b7a46e0bc838b4997d3bb451495870f
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="jq-linux-amd64"
+
+post_extract() {
+	local f='jq-linux-amd64'
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	vbin 'jq-linux-amd64' 'jq'
+	vlicense "${FILESDIR}/LICENSE"
+}

@@ -15,5 +15,4 @@ nostrip=yes
 do_install() {
 	vbin 'just'
 	vman 'just.1'
-	vlicense 'LICENSE'
 }

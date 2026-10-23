@@ -1,0 +1,19 @@
+# Template file for 'jqp-bin'
+pkgname=jqp-bin
+version=0.8.0
+revision=1
+archs="x86_64*"
+short_desc="TUI playground to experiment with jq"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/noahgorstein/jqp"
+distfiles="https://github.com/noahgorstein/jqp/releases/download/v${version}/jqp_Linux_x86_64.tar.gz"
+checksum=66b2a100ff114a8bbe45a8e6052269fb2f4c61de4edd5ea57b763bf2ec7c6593
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'jqp'
+	vlicense 'LICENSE'
+}

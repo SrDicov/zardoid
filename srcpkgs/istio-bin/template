@@ -1,0 +1,18 @@
+# Template file for 'istio-bin'
+pkgname=istio-bin
+version=1.31.2
+revision=1
+archs="x86_64*"
+short_desc="Connect, secure, control, and observe services"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://istio.io"
+distfiles="https://github.com/istio/istio/releases/download/${version}/istio-${version}-linux-amd64.tar.gz"
+checksum=b3d58081fcffab9456f16b18e990d4dff8fc08b075259bbc0e82b512337a3575
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bin/istioctl' 'istio'
+}

@@ -1,0 +1,18 @@
+# Template file for 'imgview-bin'
+pkgname=imgview-bin
+version=1.0
+revision=1
+archs="x86_64"
+short_desc="Image viewer for tty in cpp"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/Ars-byte/Imgview"
+distfiles="https://github.com/Ars-byte/Imgview/releases/download/${version}/imgview-x86_64.tar.gz"
+checksum=36851d7d6a00f5f56b4eaa89f59469aea169e4ffcd279e0c0f17e6e3763ae30f
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'imgview'
+	vlicense "${FILESDIR}/LICENSE"
+}

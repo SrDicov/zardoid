@@ -1,0 +1,18 @@
+# Template file for 'jnv-bin'
+pkgname=jnv-bin
+version=0.7.1
+revision=1
+archs="x86_64"
+short_desc="Interactive JSON filter using jq"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/ynqa/jnv"
+distfiles="https://github.com/ynqa/jnv/releases/download/v${version}/jnv-x86_64-unknown-linux-gnu.tar.xz"
+checksum=4c3e7368339a2ecbdb4d2bfe2c3ec5f6fc36810bed95425fe05a65200fae8d15
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'jnv'
+	vlicense 'LICENSE'
+}

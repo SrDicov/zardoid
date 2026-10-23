@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/helm/helm/releases/download/v4.3.1/helm-v4.3.1-linux-amd64.tar.gz.asc helm-bin
-https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.22.4/Heroic-2.22.4-linux-x64.tar.xz heroic-games-launcher-bin
-https://github.com/sharkdp/hexyl/releases/download/v0.17.0/hexyl-v0.17.0-x86_64-unknown-linux-gnu.tar.gz hexyl-bin
-https://github.com/projectdiscovery/httpx/releases/download/v1.12.0/httpx_1.12.0_linux_amd64.zip httpx-bin
-https://github.com/gohugoio/hugo/releases/download/v0.168.0/hugo_0.168.0_dragonfly-amd64.tar.gz hugo-bin
-https://github.com/blacknon/hwatch/releases/download/0.4.2/hwatch-0.4.2.x86_64-unknown-linux-gnu.tar.gz hwatch-bin
-https://github.com/sharkdp/hyperfine/releases/download/v2.0.0/hyperfine-v2.0.0-x86_64-unknown-linux-gnu.tar.gz hyperfine-bin
-https://github.com/Ars-byte/Imgview/releases/download/1.0/imgview-x86_64.tar.gz imgview-bin
-https://github.com/casey/intermodal/releases/download/v0.1.16/imdl-v0.1.16-x86_64-unknown-linux-musl.tar.gz intermodal-bin
-https://github.com/istio/istio/releases/download/1.31.2/istio-1.31.2-linux-amd64.tar.gz istio-bin
-https://github.com/01mf02/jaq/releases/download/v3.1.1/jaq-x86_64-unknown-linux-gnu jaq-bin
-https://download.jetbrains.com/toolbox/jetbrains-toolbox-3.8.1.88030.tar.gz jetbrains-toolbox-bin
-https://github.com/ynqa/jnv/releases/download/v0.7.1/jnv-x86_64-unknown-linux-gnu.tar.xz jnv-bin
-https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-linux-amd64 jq-bin
-https://github.com/yamafaktory/jql/releases/download/jql-v9.0.3/jql-v9.0.3-x86_64-unknown-linux-musl.tar.gz jql-bin
-https://github.com/noahgorstein/jqp/releases/download/v0.8.0/jqp_Linux_x86_64.tar.gz jqp-bin
-https://github.com/casey/just/releases/download/1.59.0/just-1.59.0-x86_64-unknown-linux-musl.tar.gz just-bin
-https://github.com/grafana/k6/releases/download/v2.3.0/k6-v2.3.0-linux-amd64.tar.gz k6-bin
-https://github.com/derailed/k9s/releases/download/v0.51.0/k9s_Freebsd_amd64.tar.gz k9s-bin
-https://github.com/kovidgoyal/kitty/releases/download/v0.49.2/kitty-0.49.2-x86_64.txz kitty-bin
 https://github.com/orhun/kmon/releases/download/v1.7.1/kmon-1.7.1-x86_64-unknown-linux-gnu.tar.gz kmon-bin
 https://github.com/ko-build/ko/releases/download/v0.19.1/ko_0.19.1_Linux_x86_64.tar.gz ko-bin
 https://github.com/hxpe-dev/kotofetch/releases/download/v0.2.23/kotofetch-v0.2.23-x86_64-unknown-linux-gnu.tar.gz kotofetch-bin

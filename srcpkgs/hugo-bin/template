@@ -1,0 +1,18 @@
+# Template file for 'hugo-bin'
+pkgname=hugo-bin
+version=0.168.0
+revision=1
+archs="x86_64*"
+short_desc="World’s fastest framework for building websites"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://gohugo.io"
+distfiles="https://github.com/gohugoio/hugo/releases/download/v${version}/hugo_${version}_dragonfly-amd64.tar.gz"
+checksum=951a9b9b973b89d0acc3afb8def1fe683c1c2b0de494c72bf02dd8c872f551d3
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'hugo'
+}

@@ -29,3 +29,8 @@ https://github.com/gopasspw/gopass/releases/download/v1.17.4/gopass-1.17.4-freeb
 https://github.com/charmbracelet/gum/releases/download/v2.0.2/gum_2.0.2_Freebsd_x86_64.tar.gz	gum-bin	generacion
 https://github.com/Ars-byte/GenovaLauncher/releases/download/v1.3.2/GenovaLauncher-1.3.2.tar.gz	genovalauncher-bin	xlint/build
 https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_linux_amd64.tar.gz	gh-bin	xlint/build
+https://github.com/derailed/k9s/releases/download/v0.51.0/k9s_Freebsd_amd64.tar.gz	k9s-bin	generacion
+https://github.com/helm/helm/releases/download/v4.3.1/helm-v4.3.1-linux-amd64.tar.gz.asc	helm-bin	xlint/build
+https://github.com/casey/intermodal/releases/download/v0.1.16/imdl-v0.1.16-x86_64-unknown-linux-musl.tar.gz	intermodal-bin	xlint/build
+https://download.jetbrains.com/toolbox/jetbrains-toolbox-3.8.1.88030.tar.gz	jetbrains-toolbox-bin	xlint/build
+https://github.com/kovidgoyal/kitty/releases/download/v0.49.2/kitty-0.49.2-x86_64.txz	kitty-bin	xlint/build
