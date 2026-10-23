@@ -165,6 +165,103 @@ pub fn version_in(url: &str) -> Option<String> {
     None
 }
 
+/// Repo del que cuelga un asset directo de release, si se puede reconstruir.
+pub fn target_from_asset(raw: &str) -> Option<Target> {
+    let s = raw.trim();
+    for (host, forge) in [
+        ("github.com/", Forge::GitHub),
+        ("gitlab.com/", Forge::GitLab),
+        ("codeberg.org/", Forge::Codeberg),
+    ] {
+        let Some(rest) = s.split_once(host).map(|(_, r)| r) else {
+            continue;
+        };
+        let repo = rest
+            .split_once("/releases/")
+            .or_else(|| rest.split_once("/-/releases/"))
+            .map(|(p, _)| p)?;
+        let mut parts = repo.split('/');
+        let (owner, name) = (parts.next()?, parts.next()?);
+        if owner.is_empty() || name.is_empty() {
+            return None;
+        }
+        return Some(Target {
+            forge,
+            repo: format!("{owner}/{name}"),
+            tag: None,
+        });
+    }
+    None
+}
+
+/// Texto de la licencia del repo. Solo GitHub: es el 99% del índice y su API
+/// devuelve el contenido en base64. GitLab/Codeberg se quedan con `--license`.
+pub fn license_text(t: &Target, token: Option<&str>) -> Option<(String, String)> {
+    if t.forge != Forge::GitHub {
+        return None;
+    }
+    let mut c = Command::new("curl");
+    c.args([
+        "-fsSL",
+        "--max-time",
+        "20",
+        "--retry",
+        "2",
+        "-H",
+        "Accept: application/vnd.github+json",
+    ]);
+    if let Some(tok) = token {
+        c.args(["-H", &format!("Authorization: {tok}")]);
+    }
+    c.arg(format!("https://api.github.com/repos/{}/license", t.repo));
+    let body = run(c, None).ok()?;
+
+    let mut j = Command::new("jq");
+    j.args([
+        "-r",
+        r#"[.license.spdx_id // "", ((.content // "") | gsub("[^A-Za-z0-9+/=]"; ""))] | @tsv"#,
+    ]);
+    let line = run(j, Some(&body)).ok()?;
+    let (spdx, encoded) = line.trim().split_once('\t')?;
+    let text = String::from_utf8(b64decode(encoded)?).ok()?;
+    (!text.trim().is_empty()).then(|| (spdx.to_string(), text))
+}
+
+fn b64decode(s: &str) -> Option<Vec<u8>> {
+    let mut out = Vec::with_capacity(s.len() * 3 / 4);
+    let (mut acc, mut n) = (0u32, 0u8);
+    for c in s.bytes() {
+        let v = match c {
+            b'A'..=b'Z' => c - b'A',
+            b'a'..=b'z' => c - b'a' + 26,
+            b'0'..=b'9' => c - b'0' + 52,
+            b'+' => 62,
+            b'/' => 63,
+            b'=' => break,
+            b'\n' | b'\r' | b' ' | b'\t' => continue,
+            _ => return None,
+        } as u32;
+        acc = (acc << 6) | v;
+        n += 1;
+        if n == 4 {
+            out.push((acc >> 16) as u8);
+            out.push((acc >> 8) as u8);
+            out.push(acc as u8);
+            (acc, n) = (0, 0);
+        }
+    }
+    match n {
+        0 => {}
+        2 => out.push((acc >> 4) as u8),
+        3 => {
+            out.push((acc >> 10) as u8);
+            out.push((acc >> 2) as u8);
+        }
+        _ => return None,
+    }
+    Some(out)
+}
+
 pub fn run(mut cmd: Command, input: Option<&str>) -> Result<String, String> {
     cmd.stdin(if input.is_some() {
         Stdio::piped()
@@ -393,6 +490,18 @@ mod tests {
         let r = group(parse_rows(text), Some("v1.0")).unwrap();
         assert_eq!(r.tag, "v1.0");
         assert!(r.prerelease);
+    }
+
+    #[test]
+    fn asset_target_and_b64() {
+        let t = target_from_asset("https://github.com/o/r/releases/download/v1/x.tar.gz").unwrap();
+        assert_eq!(t.repo, "o/r");
+        assert_eq!(t.forge, Forge::GitHub);
+        assert!(target_from_asset("https://example.org/a/b").is_none());
+        assert_eq!(b64decode("aGVsbG8=").unwrap(), b"hello");
+        assert_eq!(b64decode("YQ==").unwrap(), b"a");
+        assert_eq!(b64decode("YWI=").unwrap(), b"ab");
+        assert!(b64decode("@@@").is_none());
     }
 
     #[test]

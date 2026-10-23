@@ -67,19 +67,29 @@ Códigos de salida: `0` ok · `1` uso/validación · `2` red/API · `3` verifica
 
 `meta/requests.list` es la cola: una URL por línea, opcionalmente `[pkgname]`
 y `[license]`. `meta/maintainer` define el maintainer de todo lo generado.
+`meta/belka.tsv` es una copia del índice de Belka; `scripts/import-belka.sh`
+lo vuelca a la cola una sola vez por URL (registro en `meta/belka.imported`).
 
-Un push a la cola lanza `.github/workflows/templates.yml`:
+Un push a la cola, el cron cada 30 minutos o `gh workflow run Templates`
+procesan un lote de `LOTE` entradas (20 por defecto):
 
-1. **Generar**: compila zardoid y ejecuta `scripts/gen-queue.sh` → `staging/`.
+1. **Generar**: compila zardoid, importa el índice de Belka y genera el lote
+   en `staging/`.
 2. **xlint**: en un contenedor Void, `bash -n` + `xlint template` por paquete.
 3. **Compilar**: en otro contenedor Void con `--privileged`, clona
-   void-packages, copia los templates validados y corre `./xbps-src -Q pkg`.
-4. **Merge**: copia a `srcpkgs/` solo la intersección de validados y compilados,
-   borra sus URLs de la cola y commitea. Lo que falla se queda en la cola.
+   void-packages, copia los validados y corre `./xbps-src -Q pkg`.
+4. **Merge**: copia a `srcpkgs/` la intersección de validados y compilados y
+   commitea. Todo el lote sale de la cola; lo rechazado va a `meta/failed.list`
+   con el motivo, para que el siguiente lote no se quede atascado.
 
-Los templates mergeados quedan versionados en `srcpkgs/<pkg>/template`.
-Si el asset no incluye `LICENSE`/`COPYING`, `xlint` rechaza el template (exige
-`vlicense`): añade `srcpkgs/<pkg>/files/LICENSE` y la línea `vlicense` a mano.
+Si el asset no trae `LICENSE`, zardoid pide el texto a la API de GitHub
+(`/repos/{o}/{r}/license`) y escribe `srcpkgs/<pkg>/files/LICENSE` con
+`vlicense "${FILESDIR}/LICENSE"`. Sin ese texto (forge no GitHub, o sin
+licencia detectada) el template no pasa xlint y acaba en `failed.list`.
+
+Coste: cada lote descarga sus assets dos veces (generar y compilar). 663
+entradas a 20 por lote son ~34 runs; con AppImages de ~100 MB, cuenta con
+unos 10-15 minutos de runner por lote.
 
 ## Límites (v1)
 

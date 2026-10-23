@@ -339,12 +339,14 @@ fn run(a: Args) -> Res<()> {
     let mut warnings: Vec<String> = Vec::new();
 
     let input = forge::parse_input(&a.url).map_err(|e| Fail(1, e))?;
+    let asset_target: Option<forge::Target>;
     let (release, meta, repo_name): (Release, Meta, Option<String>) = match input {
         Input::Repo(t) => {
             let tok = token_for(&a, t.forge);
             let rel = forge::latest(&t, tok.as_deref())?;
             let meta = fetch_meta(&t, tok.as_deref());
             let name = t.repo.rsplit('/').next().unwrap_or("pkg").to_string();
+            asset_target = Some(t);
             (rel, meta, Some(name))
         }
         Input::Direct { url, hint_tag } => {
@@ -353,6 +355,18 @@ fn run(a: Args) -> Res<()> {
                 1,
                 "no se pudo deducir la versión del asset; usa un repo".into(),
             ))?;
+            // El índice de Belka son assets directos: sin esto no hay
+            // descripción ni licencia, y xlint rechaza el template.
+            let target = forge::target_from_asset(&url);
+            let meta = match &target {
+                Some(t) => fetch_meta(t, token_for(&a, t.forge).as_deref()),
+                None => Meta {
+                    desc: String::new(),
+                    license: String::new(),
+                    homepage: guess_homepage(&url),
+                },
+            };
+            asset_target = target;
             (
                 Release {
                     tag,
@@ -363,11 +377,7 @@ fn run(a: Args) -> Res<()> {
                         size: 0,
                     }],
                 },
-                Meta {
-                    desc: String::new(),
-                    license: String::new(),
-                    homepage: guess_homepage(&url),
-                },
+                meta,
                 None,
             )
         }
@@ -384,6 +394,12 @@ fn run(a: Args) -> Res<()> {
         3,
         "no hay ningún asset Linux x86_64 utilizable en el release".into(),
     ))?;
+
+    if repo_name.is_none() {
+        if let Some(p) = foreign_platform(&asset.name) {
+            return Err(Fail(3, format!("asset para {p}, no para Linux x86_64")));
+        }
+    }
 
     let version = version::from_tag(&release.tag)
         .or_else(|| forge::version_in(&asset.url))
@@ -421,10 +437,7 @@ fn run(a: Args) -> Res<()> {
         return Err(Fail(1, "maintainer demasiado largo (máx. 64)".into()));
     }
 
-    let license = a.license.clone().unwrap_or_else(|| meta.license.clone());
-    if license.is_empty() {
-        warnings.push("sin licencia detectada: pasa --license".into());
-    }
+    let mut license = a.license.clone().unwrap_or_else(|| meta.license.clone());
 
     let dir_label = if base.is_empty() { &src } else { &base };
     let cache = inspect::cache_dir().join(format!("{dir_label}-{version}"));
@@ -445,6 +458,7 @@ fn run(a: Args) -> Res<()> {
 
     let mut archs: Option<&'static str> = None;
     let mut functions: Vec<(String, String)> = Vec::new();
+    let mut license_file: Option<String> = None;
     let mut flags: Vec<(String, String)> = vec![
         ("nostrip".into(), "yes".into()),
         ("noshlibprovides".into(), "yes".into()),
@@ -455,8 +469,14 @@ fn run(a: Args) -> Res<()> {
     }
 
     if kind == Kind::AppImage {
+        if a.license.is_none() {
+            license_file = repo_license(&asset_target, &a, &mut license);
+        }
         functions.push(("post_extract".into(), image_copy()));
-        functions.push(("do_install".into(), appimage_body(&base)));
+        functions.push((
+            "do_install".into(),
+            appimage_body(&base, license_file.is_some()),
+        ));
         flags.push((
             "skip_extraction".into(),
             "\"${pkgname}-${version}.AppImage\"".into(),
@@ -492,7 +512,10 @@ fn run(a: Args) -> Res<()> {
             warnings.push("el archivo extraído está vacío".into());
         }
         if inv.licenses.is_empty() {
-            warnings.push("sin LICENSE/COPYING: añade vlicense a mano".into());
+            warnings.push("sin LICENSE/COPYING en el asset".into());
+            if a.license.is_none() {
+                license_file = repo_license(&asset_target, &a, &mut license);
+            }
         }
         if kind == Kind::Bin {
             // xbps-src no adivina la extensión de un binario suelto: se salta
@@ -500,7 +523,14 @@ fn run(a: Args) -> Res<()> {
             functions.push(("post_extract".into(), bin_copy(&asset.name, &version)));
             flags.push(("skip_extraction".into(), dq(&asset.name, "")));
         }
-        functions.push(("do_install".into(), generic_body(&base, &version, &inv)));
+        functions.push((
+            "do_install".into(),
+            generic_body(&base, &version, &inv, license_file.is_some()),
+        ));
+    }
+
+    if license.is_empty() {
+        warnings.push("sin licencia detectada: pasa --license".into());
     }
 
     let mut distfiles = versioned_url(&asset.url, &version);
@@ -585,6 +615,12 @@ fn run(a: Args) -> Res<()> {
                 std::fs::create_dir_all(p).map_err(|e| Fail(4, format!("mkdir: {e}")))?;
             }
             std::fs::write(&dst, &text).map_err(|e| Fail(4, format!("escribiendo: {e}")))?;
+            if let Some(body) = &license_file {
+                let fdir = dir.join("srcpkgs").join(&base).join("files");
+                std::fs::create_dir_all(&fdir).map_err(|e| Fail(4, format!("mkdir: {e}")))?;
+                std::fs::write(fdir.join("LICENSE"), body)
+                    .map_err(|e| Fail(4, format!("escribiendo LICENSE: {e}")))?;
+            }
             if a.json {
                 println!(
                     "{{\"pkgname\":\"{}\",\"version\":\"{}\",\"asset\":\"{}\",\"checksum\":\"{}\",\"template\":\"{}\",\"warnings\":[{}]}}",
@@ -603,6 +639,9 @@ fn run(a: Args) -> Res<()> {
             }
         }
         None => {
+            if license_file.is_some() {
+                warnings.push("licencia descargada: usa --out para escribir files/LICENSE".into());
+            }
             for w in &warnings {
                 eprintln!("advertencia: {w}");
             }
@@ -683,6 +722,38 @@ fn select_asset(
     best.map(|(_, _, a, k)| (a.clone(), k))
 }
 
+/// Pide al forge el texto de la licencia cuando el asset no lo trae y
+/// `--license` no lo fija. Devuelve el contenido para `files/LICENSE`.
+fn repo_license(target: &Option<forge::Target>, a: &Args, license: &mut String) -> Option<String> {
+    let t = target.as_ref()?;
+    let tok = token_for(a, t.forge);
+    let (spdx, body) = forge::license_text(t, tok.as_deref())?;
+    if license.is_empty() {
+        *license = map_license(&spdx);
+    }
+    Some(body)
+}
+
+/// Un asset directo de FreeBSD/macOS/Windows/ARM no sirve en Void x86_64.
+fn foreign_platform(name: &str) -> Option<&'static str> {
+    let n = name.to_ascii_lowercase();
+    for (needle, label) in [
+        ("freebsd", "FreeBSD"),
+        ("darwin", "macOS"),
+        ("macos", "macOS"),
+        ("windows", "Windows"),
+        ("win64", "Windows"),
+        ("win32", "Windows"),
+        ("aarch64", "ARM64"),
+        ("arm64", "ARM64"),
+    ] {
+        if n.contains(needle) {
+            return Some(label);
+        }
+    }
+    None
+}
+
 fn image_copy() -> String {
     "local f=\"${pkgname}-${version}.AppImage\"\n\
      cp \"${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}\" ."
@@ -696,8 +767,8 @@ fn bin_copy(asset: &str, version: &str) -> String {
     )
 }
 
-fn appimage_body(base: &str) -> String {
-    format!(
+fn appimage_body(base: &str, files_license: bool) -> String {
+    let mut out = format!(
         "local appimg=\"${{pkgname}}-${{version}}.AppImage\"\n\
          chmod +x \"${{appimg}}\"\n\
          \"${{appimg}}\" --appimage-extract >/dev/null\n\
@@ -718,9 +789,14 @@ fn appimage_body(base: &str) -> String {
         base = base,
         stem = base.trim_end_matches("-bin")
     )
+    .to_string();
+    if files_license {
+        out.push_str("\nvlicense \"${FILESDIR}/LICENSE\"");
+    }
+    out
 }
 
-fn generic_body(base: &str, version: &str, inv: &Inventory) -> String {
+fn generic_body(base: &str, version: &str, inv: &Inventory, files_license: bool) -> String {
     let stem = base.trim_end_matches("-bin");
     let bin_name = |p: &Path| -> String {
         p.file_name()
@@ -814,6 +890,9 @@ fn generic_body(base: &str, version: &str, inv: &Inventory) -> String {
     }
     for l in &inv.licenses {
         lines.push(format!("vlicense {}", shq_versioned(l, version)));
+    }
+    if files_license {
+        lines.push("vlicense \"${FILESDIR}/LICENSE\"".to_string());
     }
     lines.join("\n")
 }
@@ -925,13 +1004,27 @@ mod tests {
             ],
             functions: vec![
                 ("post_extract".into(), image_copy()),
-                ("do_install".into(), appimage_body("demo-bin")),
+                ("do_install".into(), appimage_body("demo-bin", false)),
             ],
         });
         for l in text.lines() {
             assert!(l.len() <= 80 || l.contains("://"), "{}", l);
         }
         assert!(template::selfcheck(&text).is_empty());
+        let with_lic = appimage_body("demo-bin", true);
+        assert!(with_lic.contains("vlicense \"${FILESDIR}/LICENSE\""));
+    }
+
+    #[test]
+    fn foreign_assets() {
+        assert_eq!(
+            foreign_platform("age-v1.3.2-freebsd-amd64.tar.gz"),
+            Some("FreeBSD")
+        );
+        assert_eq!(foreign_platform("tool-darwin-arm64.tar.gz"), Some("macOS"));
+        assert_eq!(foreign_platform("tool-windows-x64.zip"), Some("Windows"));
+        assert_eq!(foreign_platform("tool-aarch64-linux.tar.gz"), Some("ARM64"));
+        assert_eq!(foreign_platform("tool-x86_64-linux.tar.gz"), None);
     }
 }
 
@@ -1000,8 +1093,10 @@ mod sec_tests {
             completions: vec![],
             licenses: vec![],
         };
-        let body = generic_body("demo-bin", "1.0", &inv);
+        let body = generic_body("demo-bin", "1.0", &inv, false);
         assert!(body.contains("vbin 'bin/a one'"), "{body}");
+        let with_lic = generic_body("demo-bin", "1.0", &inv, true);
+        assert!(with_lic.contains("vlicense \"${FILESDIR}/LICENSE\""));
         assert!(body.contains("'\\''"), "comilla simple sin escapar: {body}");
         assert!(!body.contains("vbin bin/x';"), "inyección: {body}");
     }

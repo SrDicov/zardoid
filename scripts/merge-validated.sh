@@ -1,15 +1,24 @@
 #!/bin/sh
-# Copia a srcpkgs/ los templates validados y borra de la cola sus URLs.
+# Copia a srcpkgs/ los templates que pasaron xlint Y compilaron, saca de la
+# cola todo el lote procesado y anota los rechazos en meta/failed.list.
 #
-# Uso: sh scripts/merge-validated.sh <staging> <lista-de-paquetes>
+# Uso: sh scripts/merge-validated.sh <staging> <validated> <built>
 
 set -eu
 
 STAGING=${1:?falta el directorio de staging}
-VALIDATED=${2:?falta la lista de paquetes validados}
-[ -f "$VALIDATED" ] || exit 0
+VALIDATED=${2:?falta la lista de validados}
+BUILT=${3:?falta la lista de compilados}
+[ -f "$VALIDATED" ] || : >"$VALIDATED"
+[ -f "$BUILT" ] || : >"$BUILT"
+[ -f "$STAGING/lote.tsv" ] || : >"$STAGING/lote.tsv"
+[ -f "$STAGING/failed_gen.tsv" ] || : >"$STAGING/failed_gen.tsv"
 
-mkdir -p srcpkgs
+ok=$(mktemp)
+sort -u "$VALIDATED" >"$ok.v"
+sort -u "$BUILT" >"$ok.b"
+comm -12 "$ok.v" "$ok.b" >"$ok"
+
 merged=0
 while IFS= read -r pkg; do
 	case $pkg in ''|'#'*) continue ;; esac
@@ -18,28 +27,38 @@ while IFS= read -r pkg; do
 	[ -f "$src" ] || continue
 	mkdir -p "srcpkgs/$pkg"
 	cp "$src" "srcpkgs/$pkg/template"
+	if [ -d "$STAGING/srcpkgs/$pkg/files" ]; then
+		mkdir -p "srcpkgs/$pkg/files"
+		cp -R "$STAGING/srcpkgs/$pkg/files/." "srcpkgs/$pkg/files/"
+	fi
 	printf 'merge %s\n' "$pkg"
 	merged=$((merged + 1))
-done <"$VALIDATED"
-echo "templates copiados: $merged"
+done <"$ok"
 
-if [ "$merged" -eq 0 ] || [ ! -f meta/requests.list ] || [ ! -f "$STAGING/map.tsv" ]; then
-	exit 0
-fi
-
-# URLs ya mergeadas: las que mapean a un paquete de la lista validada.
-tmp=$(mktemp)
-while IFS="$(printf '\t')" read -r url pkg; do
-	if grep -qxF "$pkg" "$VALIDATED"; then printf '%s\n' "$url"; fi
-done <"$STAGING/map.tsv" >"$tmp.urls"
-
-if [ -s "$tmp.urls" ]; then
-	awk -v dropfile="$tmp.urls" '
-		BEGIN { while ((getline u < dropfile) > 0) d[u] = 1 }
+# La cola solo avanza: todo el lote sale, se haya mergeado o no.
+procesadas=$(mktemp)
+cut -f1 "$STAGING/lote.tsv" >>"$procesadas"
+cut -f1 "$STAGING/failed_gen.tsv" >>"$procesadas"
+if [ -s "$procesadas" ] && [ -f meta/requests.list ]; then
+	awk -v drop="$procesadas" '
+		BEGIN { while ((getline u < drop) > 0) d[u] = 1 }
 		{ if (!($1 in d)) print }
-	' meta/requests.list >"$tmp"
-	mv "$tmp" meta/requests.list
-else
-	rm -f "$tmp"
+	' meta/requests.list >"$procesadas.q"
+	mv "$procesadas.q" meta/requests.list
 fi
-rm -f "$tmp.urls"
+
+# Rechazos: generación y lote que no pasó xlint/build.
+fallos=$(mktemp)
+cat "$STAGING/failed_gen.tsv" >>"$fallos" 2>/dev/null || true
+while IFS="$(printf '\t')" read -r url pkg; do
+	[ -n "$url" ] || continue
+	[ -n "$pkg" ] || continue
+	grep -qxF -- "$pkg" "$ok" && continue
+	printf '%s\t%s\t%s\n' "$url" "$pkg" "xlint/build" >>"$fallos"
+done <"$STAGING/lote.tsv"
+if [ -s "$fallos" ]; then
+	cat "$fallos" >>meta/failed.list
+fi
+
+echo "templates copiados: $merged"
+rm -f "$ok" "$ok.v" "$ok.b" "$procesadas" "$fallos"

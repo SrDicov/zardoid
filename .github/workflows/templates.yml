@@ -1,8 +1,10 @@
 name: Templates
 
 # Cola -> generación -> xlint -> build real -> merge.
-# Un push a meta/requests.list lanza todo. Solo se copia a srcpkgs/ lo que
-# pasa xlint Y compila con xbps-src; el resto se queda en la cola.
+# Un push a la cola, el cron cada 30 min o un dispatch procesan un lote de
+# LOTE entradas. Solo se copia a srcpkgs/ lo que pasa xlint Y compila con
+# xbps-src; el resto se anota en meta/failed.list y sale de la cola para no
+# bloquear al siguiente lote.
 #
 # El push final lo hace GITHUB_TOKEN, y los pushes con ese token no disparan
 # workflows: no hay bucle.
@@ -12,9 +14,13 @@ on:
     branches: [main]
     paths:
       - 'meta/requests.list'
+      - 'meta/belka.tsv'
       - 'meta/maintainer'
       - 'scripts/gen-queue.sh'
       - 'scripts/merge-validated.sh'
+      - 'scripts/import-belka.sh'
+  schedule:
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -26,11 +32,13 @@ concurrency:
 
 env:
   VOID_IMAGE: ghcr.io/void-linux/void-glibc-full
+  LOTE: 20
 
 jobs:
   generate:
     name: Generar
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     outputs:
       count: ${{ steps.q.outputs.count }}
     steps:
@@ -38,13 +46,18 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo build --release --locked
       - id: q
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          sh scripts/import-belka.sh
           sh scripts/gen-queue.sh staging
           echo "count=$(wc -l <staging/map.tsv | tr -d ' ')" >>"$GITHUB_OUTPUT"
       - uses: actions/upload-artifact@v4
         with:
           name: staging
-          path: staging
+          path: |
+            staging
+            !staging/.cache
           retention-days: 7
       - name: Resumen
         run: cat staging/summary.md >>"$GITHUB_STEP_SUMMARY"
@@ -54,6 +67,7 @@ jobs:
     needs: generate
     if: needs.generate.outputs.count != '0'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
@@ -103,7 +117,7 @@ jobs:
     name: Compilar
     needs: validate
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
@@ -151,7 +165,10 @@ jobs:
 
   merge:
     name: Merge
-    needs: [validate, build]
+    needs: [generate, validate, build]
+    # Corre aunque validate/build fallen o se salten: así los fallos de
+    # generación también salen de la cola.
+    if: always() && needs.generate.result == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -160,25 +177,22 @@ jobs:
           name: staging
           path: staging
       - uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: validated
           path: .
       - uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: built
           path: .
       - name: Copiar validados
-        run: |
-          sort -u validated.txt >v.txt
-          sort -u built.txt >b.txt
-          comm -12 v.txt b.txt >ok.txt
-          echo "mergeables: $(wc -l <ok.txt | tr -d ' ')"
-          sh scripts/merge-validated.sh staging ok.txt
+        run: sh scripts/merge-validated.sh staging validated.txt built.txt
       - name: Commit
         run: |
           git config user.name "zardoid-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add srcpkgs meta/requests.list
+          git add srcpkgs meta/requests.list meta/failed.list meta/belka.imported
           if git diff --cached --quiet; then
             echo "nada que mergear"
             exit 0

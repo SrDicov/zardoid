@@ -1,0 +1,3 @@
+# Peticiones descartadas: url<TAB>paquete<TAB>motivo. Revisa el run de
+# Templates para el detalle; para reintentar, copia la línea a
+# meta/requests.list y bórrala de meta/belka.imported.
