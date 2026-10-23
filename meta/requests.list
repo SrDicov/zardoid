@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/Umio-Yasuno/amdgpu_top/releases/download/v0.11.5/amdgpu_top-x86_64.AppImage amdgpu_top-bin
-https://github.com/pkgforge-dev/Amiberry-AppImage/releases/download/8.3.0%402026-09-01_1788278384/Amiberry-8.3.0-anylinux-x86_64.AppImage amiberry-bin
-https://github.com/pkgforge-dev/android-tools-AppImage/releases/download/37.0.1%402026-10-01_1790871631/Android_Tools-37.0.1-anylinux-x86_64.AppImage android-tools-bin
-https://github.com/pkgforge-dev/android_translation_layer-AppImage/releases/download/3e686d14%402026-09-22_1790090775/Android_Translation_Layer-3e686d14-anylinux-x86_64.AppImage android-translation-layer-bin
-https://github.com/pkgforge-dev/anki-AppImage/releases/download/26.09.3-1%402026-10-01_1790876613/Anki-26.09.3-1-anylinux-x86_64.AppImage anki-bin
-https://github.com/pkgforge-dev/Antigravity-AppImage/releases/download/2.21.1%402026-10-08_1791469746/Antigravity-2.21.1-anylinux-x86_64.AppImage antigravity-bin
-https://github.com/pkgforge-dev/Antigravity-IDE-AppImage/releases/download/2.5.5%402026-10-01_1790876643/Antigravity_IDE-2.5.5-anylinux-x86_64.AppImage antigravity-ide-bin
-https://github.com/pkgforge-dev/ares-emu-appimage/releases/download/v148%402026-09-07_1788787887/ares-v148-anylinux-x86_64.AppImage ares-emu-bin
-https://github.com/pkgforge-dev/Arx-Libertatis-AppImage/releases/download/5b95e4c5c%402026-09-09_1788936606/Arx_Libertatis-5b95e4c5c-anylinux-x86_64.AppImage arx-libertatis-bin
-https://github.com/pkgforge-dev/Asphyxia-CORE-AppImage/releases/download/v1.70b%402026-10-01_1790876506/asphyxia-core-v1.70b-anylinux-x86_64.AppImage asphyxia-core-bin
-https://github.com/pkgforge-dev/Asunder-AppImage/releases/download/3.0.2%402026-10-11_1791707965/Asunder_CD_Ripper-3.0.2-anylinux-x86_64.AppImage asunder-bin
-https://github.com/pkgforge-dev/Audacious-AppImage/releases/download/4.6.1-2%402026-10-01_1790876692/Audacious-4.6.1-2-anylinux-x86_64.AppImage audacious-bin
-https://github.com/pkgforge-dev/Audacity-AppImage-Enhanced/releases/download/3.7.9-1%402026-10-01_1790875918/Audacity-3.7.9-1-anylinux-x86_64.AppImage audacity-bin
-https://github.com/pkgforge-dev/Audio-Sharing-AppImage/releases/download/0.2.4-4%402026-10-01_1790865988/Audio_Sharing-0.2.4-4-anylinux-x86_64.AppImage audio-sharing-bin
-https://github.com/pkgforge-dev/Augustus-AppImage-Enhanced/releases/download/4.0.0-2%402026-10-01_1790876223/Augustus-4.0.0-2-anylinux-x86_64.AppImage augustus-bin
-https://github.com/pkgforge-dev/Authenticator-AppImage/releases/download/4.6.2-2%402026-10-01_1790876333/Authenticator-4.6.2-2-anylinux-x86_64.AppImage authenticator-bin
-https://github.com/pkgforge-dev/Awakened-POE-Trade-AppImage-Enhanced/releases/download/3.29.108%402026-10-01_1790876525/Awakened_PoE_Trade-3.29.108-anylinux-x86_64.AppImage awakened-poe-trade-bin
-https://github.com/pkgforge-dev/Azahar-AppImage-Enhanced/releases/download/2126.1.2%402026-10-01_1790876552/Azahar-2126.1.2-anylinux-x86_64.AppImage azahar-bin
-https://github.com/pkgforge-dev/BanjoRecomp-AppImage/releases/download/1.0.1%402026-10-01_1790876454/BanjoRecompiled-1.0.1-anylinux-x86_64.AppImage banjorecomp-bin
-https://github.com/pkgforge-dev/BasiliskII-AppImage/releases/download/892eeb74a%402026-10-01_1790876688/BasiliskII-892eeb74a-anylinux-x86_64.AppImage basiliskii-bin
 https://github.com/pkgforge-dev/BetterMediaInfo-AppImage-Enhanced/releases/download/1.1.0%402026-10-01_1790876291/BetterMediaInfo-1.1.0-anylinux-x86_64.AppImage bettermediainfo-bin
 https://github.com/pkgforge-dev/BibleTime-AppImage/releases/download/3.2.0-3%402026-10-01_1790876460/BibleTime-3.2.0-3-anylinux-x86_64.AppImage bibletime-bin
 https://github.com/pkgforge-dev/BigPEmu-AppImage/releases/download/1.221%402026-09-01_1788278314/BigPEmu-1.221-anylinux-x86_64.AppImage bigpemu-bin

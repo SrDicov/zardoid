@@ -7,12 +7,34 @@ short_desc="Tool to display AMDGPU usage"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/Umio-Yasuno/amdgpu_top"
-distfiles="https://github.com/Umio-Yasuno/amdgpu_top/releases/download/v${version}/amdgpu_top-${version}-x86_64-unknown-linux-gnu.tar.gz"
-checksum=5efd0b981d045096530d71536c02373d579f438e8bc7fa525fd7f031be326b54
+distfiles="https://github.com/Umio-Yasuno/amdgpu_top/releases/download/v${version}/amdgpu_top-x86_64.AppImage>amdgpu-top-bin-${version}.AppImage"
+checksum=b291a194f530d49c7fc19d2b1897e278d9ae1ad0a23d828409ba779c86600f77
 noshlibprovides=yes
 nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
 
 do_install() {
-	vbin 'amdgpu_top'
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/amdgpu-top-bin
+	vcopy "squashfs-root/*" opt/amdgpu-top-bin
+	vmkdir usr/bin
+	ln -sf "/opt/amdgpu-top-bin/AppRun" "${DESTDIR}/usr/bin/amdgpu-top"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
 	vlicense "${FILESDIR}/LICENSE"
 }
