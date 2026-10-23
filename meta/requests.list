@@ -11,4 +11,8 @@
 # srcpkgs/ y su línea se borra de este archivo. Las que fallan se quedan aquí.
 #
 # El maintainer sale de meta/maintainer.
-https://github.com/jqlang/jq jq-bin MIT
+#
+# Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
+# vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
+# `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
+https://github.com/casey/just just-bin CC0-1.0

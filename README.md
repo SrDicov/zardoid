@@ -78,6 +78,8 @@ Un push a la cola lanza `.github/workflows/templates.yml`:
    borra sus URLs de la cola y commitea. Lo que falla se queda en la cola.
 
 Los templates mergeados quedan versionados en `srcpkgs/<pkg>/template`.
+Si el asset no incluye `LICENSE`/`COPYING`, `xlint` rechaza el template (exige
+`vlicense`): añade `srcpkgs/<pkg>/files/LICENSE` y la línea `vlicense` a mano.
 
 ## Límites (v1)
 
