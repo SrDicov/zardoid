@@ -1,0 +1,18 @@
+# Template file for 'gitui-bin'
+pkgname=gitui-bin
+version=0.28.1
+revision=1
+archs="x86_64*"
+short_desc="Blazing 💥 fast terminal-ui for git written in rust 🦀"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/gitui-org/gitui"
+distfiles="https://github.com/gitui-org/gitui/releases/download/v${version}/gitui-linux-x86_64.tar.gz"
+checksum=f6149b9ae203397158b0c89c13cfde718e7121d3d3cd2ebc597f93d6628d9b5b
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'gitui'
+	vlicense "${FILESDIR}/LICENSE"
+}

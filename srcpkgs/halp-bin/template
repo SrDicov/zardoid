@@ -1,0 +1,18 @@
+# Template file for 'halp-bin'
+pkgname=halp-bin
+version=0.2.0
+revision=1
+archs="x86_64"
+short_desc="CLI tool to get help with CLI tools 🐙"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://halp.cli.rs/"
+distfiles="https://github.com/orhun/halp/releases/download/v${version}/halp-${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=07f7f2141de3a626c5cc728be40bda96bd906297f32b6d237c1b33ddc999ed68
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'halp-completions' 'halp'
+	vman 'man/halp.1'
+}

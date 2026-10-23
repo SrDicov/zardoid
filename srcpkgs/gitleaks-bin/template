@@ -1,0 +1,19 @@
+# Template file for 'gitleaks-bin'
+pkgname=gitleaks-bin
+version=8.30.1
+revision=1
+archs="x86_64*"
+short_desc="Find secrets with Gitleaks 🔑"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://gitleaks.io"
+distfiles="https://github.com/gitleaks/gitleaks/releases/download/v${version}/gitleaks_${version}_linux_x64.tar.gz"
+checksum=551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'gitleaks'
+	vlicense 'LICENSE'
+}

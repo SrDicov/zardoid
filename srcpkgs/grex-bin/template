@@ -1,0 +1,18 @@
+# Template file for 'grex-bin'
+pkgname=grex-bin
+version=1.4.6
+revision=1
+archs="x86_64*"
+short_desc="Command-line tool and Rust library with Python bindings for
+ generating"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://pemistahl.github.io/grex-js/"
+distfiles="https://github.com/pemistahl/grex/releases/download/v${version}/grex-v${version}-x86_64-unknown-linux-musl.tar.gz"
+checksum=8f02f4ebe72d9e3098c646b77f7bc53ec8a8c1fb51ed042db06b739d08e56af8
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'grex'
+}

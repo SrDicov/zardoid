@@ -1,0 +1,20 @@
+# Template file for 'grpcurl-bin'
+pkgname=grpcurl-bin
+version=1.9.4
+revision=1
+archs="x86_64*"
+short_desc="Like cURL, but for gRPC: Command-line tool for interacting with
+ gRPC"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://www.fullstory.com/resources/content/fullstory-engineering-blog/"
+distfiles="https://github.com/fullstorydev/grpcurl/releases/download/v${version}/grpcurl_${version}_linux_x86_64.tar.gz"
+checksum=97e13d58d2733a0e62cd2571d1d5f0c02823f0d25282f08bddedf1ad9c5d1736
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'grpcurl'
+	vlicense 'LICENSE'
+}

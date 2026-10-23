@@ -1,0 +1,17 @@
+# Template file for 'helix-bin'
+pkgname=helix-bin
+version=25.07.1
+revision=1
+archs="x86_64"
+short_desc="Post-modern modal text editor"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MPL-2.0"
+homepage="https://helix-editor.com"
+distfiles="https://github.com/helix-editor/helix/releases/download/${version}/helix-${version}-x86_64-linux.tar.xz"
+checksum=3f08e63ecd388fff657ad39722f88bb03dcf326f1f2da2700d99e1dc40ab2e8b
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'hx'
+}

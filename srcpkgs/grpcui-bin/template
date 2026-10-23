@@ -1,0 +1,19 @@
+# Template file for 'grpcui-bin'
+pkgname=grpcui-bin
+version=1.5.4
+revision=1
+archs="x86_64*"
+short_desc="Interactive web UI for gRPC, along the lines of postman"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/fullstorydev/grpcui"
+distfiles="https://github.com/fullstorydev/grpcui/releases/download/v${version}/grpcui_${version}_linux_x86_64.tar.gz"
+checksum=c5393203248854b2f6eda054bfaf55b6b26f248a45c8a2c8df7f43bd007396ff
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'grpcui'
+	vlicense 'LICENSE'
+}

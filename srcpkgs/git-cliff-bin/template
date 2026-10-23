@@ -1,0 +1,18 @@
+# Template file for 'git-cliff-bin'
+pkgname=git-cliff-bin
+version=2.14.2
+revision=1
+archs="x86_64"
+short_desc="Highly customizable Changelog Generator that follows Conventional"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://git-cliff.org"
+distfiles="https://github.com/orhun/git-cliff/releases/download/v${version}/git-cliff-${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=24f397c733add5390fdceee3a2088588ab0d5f944ce00d34cb7029b888cf2db4
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'git-cliff'
+	vman 'man/git-cliff.1'
+}

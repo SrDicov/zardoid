@@ -1,0 +1,24 @@
+# Template file for 'hadolint-bin'
+pkgname=hadolint-bin
+version=2.15.1
+revision=1
+archs="x86_64*"
+short_desc="Dockerfile linter, validate inline bash, written in Haskell"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/hadolint/hadolint"
+distfiles="https://github.com/hadolint/hadolint/releases/download/v${version}/hadolint-linux-x86_64"
+checksum=c7187db94eeeeca956519a6af171adc31453941a1e777961f6e680f697c8c507
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="hadolint-linux-x86_64"
+
+post_extract() {
+	local f='hadolint-linux-x86_64'
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	vbin 'hadolint-linux-x86_64' 'hadolint'
+}

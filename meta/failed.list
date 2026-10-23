@@ -23,3 +23,9 @@ https://github.com/dundee/gdu/releases/download/v5.38.0/gdu_freebsd_amd64.tgz	gd
 https://github.com/fastfetch-cli/fastfetch/releases/download/2.70.0/fastfetch-dragonfly-amd64.tar.gz	fastfetch-bin	xlint/build
 https://github.com/epi052/feroxbuster/releases/download/v2.13.1/feroxbuster_amd64.deb.zip	feroxbuster-bin	xlint/build
 https://github.com/jhspetersson/fselect/releases/download/0.10.3/fselect-x86_64-win.zip	fselect-bin	xlint/build
+https://github.com/charmbracelet/glow/releases/download/v3.0.0/glow_3.0.0_Freebsd_x86_64.tar.gz	glow-bin	generacion
+https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-freebsd-amd64.tar.gz	golangci-lint-bin	generacion
+https://github.com/gopasspw/gopass/releases/download/v1.17.4/gopass-1.17.4-freebsd-amd64.tar.gz	gopass-bin	generacion
+https://github.com/charmbracelet/gum/releases/download/v2.0.2/gum_2.0.2_Freebsd_x86_64.tar.gz	gum-bin	generacion
+https://github.com/Ars-byte/GenovaLauncher/releases/download/v1.3.2/GenovaLauncher-1.3.2.tar.gz	genovalauncher-bin	xlint/build
+https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_linux_amd64.tar.gz	gh-bin	xlint/build

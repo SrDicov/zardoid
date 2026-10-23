@@ -1,0 +1,19 @@
+# Template file for 'gping-bin'
+pkgname=gping-bin
+version=1.21.0
+revision=1
+archs="x86_64"
+short_desc="Ping, but with a graph"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/orf/gping"
+distfiles="https://github.com/orf/gping/releases/download/gping-v${version}/gping-Linux-gnu-x86_64.tar.gz"
+checksum=965d4246cdc6907957199b3f2732e52e36e37a4162a6d15a86f3d26c223a01ef
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'gping'
+	vman 'gping.1'
+	vlicense "${FILESDIR}/LICENSE"
+}

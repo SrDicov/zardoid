@@ -1,0 +1,20 @@
+# Template file for 'helium-bin'
+pkgname=helium-bin
+version=0.19.4.1
+revision=1
+archs="x86_64"
+short_desc="Helium Browser for Linux"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/imputnet/helium-linux"
+distfiles="https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz"
+checksum=6ca6e4a00fef5916821fb1af8a9607cc6b386f678a7eb422e55f19116ba30469
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'helium_crashpad_handler' 'helium'
+	vinstall 'helium.desktop' 644 usr/share/applications
+	vinstall 'product_logo_256.png' 644 usr/share/icons/hicolor/128x128/apps
+	vman 'libvulkan.so.1'
+}
