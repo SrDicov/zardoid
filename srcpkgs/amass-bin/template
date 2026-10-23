@@ -1,0 +1,18 @@
+# Template file for 'amass-bin'
+pkgname=amass-bin
+version=5.1.1
+revision=1
+archs="x86_64*"
+short_desc="In-depth attack surface mapping and asset discovery"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://owasp.org/www-project-amass/"
+distfiles="https://github.com/owasp-amass/amass/releases/download/v${version}/amass_linux_amd64.tar.gz"
+checksum=5e22b5f0239e7eb79439d60d43d3cd20dca2478588bc2242e91ab0c4f8fa40dd
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'amass'
+}

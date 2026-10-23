@@ -1,0 +1,18 @@
+# Template file for 'aeris-bin'
+pkgname=aeris-bin
+version=0.2.1
+revision=1
+archs="x86_64"
+short_desc="Manages your package managers"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge/aeris"
+distfiles="https://github.com/pkgforge/aeris/releases/download/v${version}/aeris-x86_64-linux.tar.xz"
+checksum=a4427398eba4e6e88f296b6c801d7b87e248dbef94a0c0e98b92e1b570723d70
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'aeris'
+	vlicense 'LICENSE'
+}

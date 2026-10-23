@@ -1,0 +1,18 @@
+# Template file for 'arduino-cli-bin'
+pkgname=arduino-cli-bin
+version=1.5.1
+revision=1
+archs="x86_64*"
+short_desc="Arduino command line tool"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://arduino.github.io/arduino-cli/latest/"
+distfiles="https://github.com/arduino/arduino-cli/releases/download/v${version}/arduino-cli_${version}_Linux_64bit.tar.gz"
+checksum=28a8e119c498a25607821c36cb2dc49e8463941b261a0d99091baa7bc692dd2b
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'arduino-cli'
+}

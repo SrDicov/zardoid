@@ -15,30 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/Yamagi-Quake-II-AppImage/releases/download/8.70%402026-10-01_1790875846/Yamagi_Quake_II-8.70-anylinux-x86_64.AppImage yamagi-quake-ii-bin
-https://github.com/pkgforge-dev/Ymir-AppImage/releases/download/8292b1072%402026-10-01_1790876583/Ymir-8292b1072-anylinux-x86_64.AppImage ymir-bin
-https://github.com/pear-devs/pear-desktop/releases/download/v3.12.0/YouTube-Music-3.12.0.AppImage youtube-music-bin
-https://github.com/pkgforge-dev/ZapZap-AppImage-Enhanced/releases/download/7.1-1%402026-07-27_1785187279/ZapZap-7.1-1-anylinux-x86_64.AppImage zapzap-bin
-https://github.com/pkgforge-dev/Zed-AppImage/releases/download/v1.22.0%402026-10-01_1790869417/Zed-v1.22.0-anylinux-x86_64.AppImage zed-bin
-https://github.com/pkgforge-dev/Zelda64Recomp-AppImage/releases/download/1.2.2%402026-10-01_1790876005/Zelda64Recompiled-1.2.2-anylinux-x86_64.AppImage zelda64recomp-bin
-https://github.com/zen-browser/desktop/releases/download/1.23.3b/zen-x86_64.AppImage zen-browser-bin
-https://github.com/pkgforge-dev/Zenity-GTK3-AppImage/releases/download/3.44.5%402026-09-17_1789638135/zenity-3.44.5-anylinux-x86_64.AppImage zenity-gtk3-bin
-https://github.com/pkgforge-dev/Zod-Engine-AppImage/releases/download/2011-09-06%402026-09-01_1788265439/Zod_Engine-2011-09-06-anylinux-x86_64.AppImage zod-engine-bin
-https://github.com/pkgforge-dev/ZSNES-AppImage/releases/download/24f0eebea%402026-09-01_1788277455/ZSNES-24f0eebea-anylinux-x86_64.AppImage zsnes-bin
-https://github.com/pkgforge/aeris/releases/download/v0.2.1/aeris-x86_64-linux.tar.xz aeris-bin
-https://github.com/owasp-amass/amass/releases/download/v5.1.1/amass_linux_amd64.tar.gz amass-bin
-https://github.com/jmacdonald/amp/releases/download/0.7.1/amp-x86_64-unknown-linux-musl amp-bin
-https://github.com/pkgforge-dev/appimagetool/releases/download/0.5.3/appimagetool-corresponding-source-dwarfs-0.15.6.tar.xz appimagetool-bin
-https://github.com/arduino/arduino-cli/releases/download/v1.5.1/arduino-cli_1.5.1_Linux_64bit.tar.gz arduino-cli-bin
-https://github.com/BLAKE3-team/BLAKE3/releases/download/1.8.7/b3sum_linux_x64_bin b3sum-bin
-https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-gnu.tar.gz bat-bin
-https://github.com/pkgforge/aeris/releases/download/v0.2.1/aeris-x86_64-linux.tar.xz aeris-bin
-https://github.com/owasp-amass/amass/releases/download/v5.1.1/amass_linux_amd64.tar.gz amass-bin
-https://github.com/jmacdonald/amp/releases/download/0.7.1/amp-x86_64-unknown-linux-musl amp-bin
-https://github.com/pkgforge-dev/appimagetool/releases/download/0.5.3/appimagetool-corresponding-source-dwarfs-0.15.6.tar.xz appimagetool-bin
-https://github.com/arduino/arduino-cli/releases/download/v1.5.1/arduino-cli_1.5.1_Linux_64bit.tar.gz arduino-cli-bin
-https://github.com/BLAKE3-team/BLAKE3/releases/download/1.8.7/b3sum_linux_x64_bin b3sum-bin
-https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-gnu.tar.gz bat-bin
 https://github.com/ezequielgk/Belka/releases/download/v2.0.0/belka-linux-amd64.tar.gz belka-bin
 https://github.com/orhun/binsider/releases/download/v0.3.2/binsider-0.3.2-x86_64-unknown-linux-gnu.tar.gz binsider-bin
 https://github.com/bluetuith-org/bluetuith/releases/download/v0.2.7/bluetuith_0.2.7_Linux_x86_64.tar.gz bluetuith-bin

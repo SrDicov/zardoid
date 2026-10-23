@@ -1,0 +1,23 @@
+# Template file for 'amp-bin'
+pkgname=amp-bin
+version=0.7.1
+revision=1
+archs="x86_64*"
+short_desc="Complete text editor for your terminal"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://amp.rs"
+distfiles="https://github.com/jmacdonald/amp/releases/download/${version}/amp-x86_64-unknown-linux-musl"
+checksum=b9d3a1fcbdc683ce680a7c7f4f36570ba6772329fe02232a517659fecab56db3
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="amp-x86_64-unknown-linux-musl"
+
+post_extract() {
+	local f='amp-x86_64-unknown-linux-musl'
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	vbin 'amp-x86_64-unknown-linux-musl' 'amp'
+}

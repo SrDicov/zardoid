@@ -1,0 +1,24 @@
+# Template file for 'b3sum-bin'
+pkgname=b3sum-bin
+version=1.8.7
+revision=1
+archs="x86_64*"
+short_desc="Official Rust and C implementations of the BLAKE3 cryptographic
+ hash"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/BLAKE3-team/BLAKE3"
+distfiles="https://github.com/BLAKE3-team/BLAKE3/releases/download/${version}/b3sum_linux_x64_bin"
+checksum=5519d827b4ac438e2492e0b99e19484fa5191d34fc20b0174ebe41d3dbf9eca1
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="b3sum_linux_x64_bin"
+
+post_extract() {
+	local f='b3sum_linux_x64_bin'
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	vbin 'b3sum_linux_x64_bin' 'b3sum'
+}
