@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/TouchHLE-AppImage/releases/download/v0.3.0%402026-10-01_1790876273/touchHLE-v0.3.0-anylinux-x86_64.AppImage touchhle-bin
-https://github.com/pkgforge-dev/transmission-qt-AppImage/releases/download/4.1.3-2%402026-10-07_1791383144/Transmission_Qt-4.1.3-2-anylinux-x86_64.AppImage transmission-qt-bin
-https://github.com/pkgforge-dev/Trelby-AppImage/releases/download/2.4.16.2-1%402026-09-01_1788278082/Trelby-2.4.16.2-1-anylinux-x86_64.AppImage trelby-bin
-https://github.com/Trinity-LA/Trinity-Launcher/releases/download/latest/Trinity_Launcher-x86_64.AppImage trinity-launcher-bin
-https://github.com/pkgforge-dev/Tutanota-Desktop-AppImage-Enhanced/releases/download/361.261006.0%402026-10-17_1792236169/Tuta_Mail-361.261006.0-anylinux-x86_64.AppImage tutanota-desktop-bin
-https://github.com/pkgforge-dev/Tux-Football-AppImage/releases/download/0.3.1-1%402026-09-01_1788278343/Tux_Football-0.3.1-1-anylinux-x86_64.AppImage tux-football-bin
-https://github.com/pkgforge-dev/Tuxpuck-AppImage/releases/download/0.8.2-12%402026-07-01_1782914760/TuxPuck-0.8.2-12-anylinux-x86_64.AppImage tuxpuck-bin
-https://github.com/pkgforge-dev/uad-ng-AppImage/releases/download/v1.2.0%402026-10-01_1790870877/Universal_Android_Debloater_Next_Generation-v1.2.0-anylinux-x86_64.AppImage uad-ng-bin
-https://github.com/pkgforge-dev/UnityHub-AppImage/releases/download/3.21.0-1%402026-10-01_1790876177/Unity_Hub-3.21.0-1-anylinux-x86_64.AppImage unityhub-bin
-https://github.com/pkgforge-dev/UnleashedRecomp-AppImage/releases/download/v1.0.3%402026-09-01_1788264761/Unleashed_Recompiled-v1.0.3-anylinux-x86_64.AppImage unleashedrecomp-bin
-https://github.com/pkgforge-dev/Varia-AppImage/releases/download/2026.8.5-1%402026-10-01_1790876026/Varia-2026.8.5-1-anylinux-x86_64.AppImage varia-bin
-https://github.com/pkgforge-dev/vcmi-AppImage/releases/download/1.7.5-1.3%402026-10-01_1790875404/VCMI_Client-1.7.5-1.3-anylinux-x86_64.AppImage vcmi-bin
-https://github.com/pkgforge-dev/VeraCrypt-AppImage/releases/download/1.26.29-1%402026-10-12_1791798919/VeraCrypt-1.26.29-1-anylinux-x86_64.AppImage veracrypt-bin
-https://github.com/Vencord/Vesktop/releases/download/v1.6.7/Vesktop-1.6.7.AppImage vesktop-bin
-https://github.com/pkgforge-dev/Vibeprint-Studio-AppImage/releases/download/4b1d0b3df%402026-10-01_1790876517/Vibeprint_Studio-4b1d0b3df-anylinux-x86_64.AppImage vibeprint-studio-bin
-https://github.com/pkgforge-dev/Viber-AppImage-Enhanced/releases/download/27.3.0.2-1%402026-08-22_1787390986/Viber-27.3.0.2-1-anylinux-x86_64.AppImage viber-bin
-https://github.com/pkgforge-dev/VICE-AppImage/releases/download/3.10-3%402026-10-01_1790866415/VICE-3.10-3-anylinux-x86_64.AppImage vice-bin
-https://github.com/pkgforge-dev/Video-Trimmer-AppImage/releases/download/26.03.1-1%402026-10-01_1790876468/Video_Trimmer-26.03.1-1-anylinux-x86_64.AppImage video-trimmer-bin
-https://github.com/pkgforge-dev/virt-manager-AppImage/releases/download/5.1.0-4%402026-10-01_1790876015/virt-manager-5.1.0-4-anylinux-x86_64.AppImage virt-manager-bin
-https://github.com/pkgforge-dev/Visual-Studio-Code-AppImage/releases/download/1.140.0%402026-10-01_1790876237/Visual_Studio_Code-1.140.0-anylinux-x86_64.AppImage visual-studio-code-bin
 https://github.com/KloBraticc/Voidstrap/releases/download/v1.1.3.7/Voidstrap_1.1.3.7_x86_64.AppImage voidstrap-bin
 https://github.com/pkgforge-dev/vokoscreenNG-AppImage/releases/download/4.10.0-1%402026-10-01_1790876511/vokoscreenNG-4.10.0-1-anylinux-x86_64.AppImage vokoscreenng-bin
 https://github.com/VSCodium/vscodium/releases/download/1.140.06880/VSCodium-1.140.06880-anylinux-x86_64.AppImage vscodium-bin

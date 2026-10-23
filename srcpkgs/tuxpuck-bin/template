@@ -1,0 +1,40 @@
+# Template file for 'tuxpuck-bin'
+pkgname=tuxpuck-bin
+version=0.8.2
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of Tuxpuck, hockey-like table game"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/Tuxpuck-AppImage"
+distfiles="https://github.com/pkgforge-dev/Tuxpuck-AppImage/releases/download/${version}-12%402026-07-01_1782914760/TuxPuck-${version}-12-anylinux-x86_64.AppImage>tuxpuck-bin-${version}.AppImage"
+checksum=08527e5941cec34503dbb0598949dbe5243c12b7e400fb7532f0987d58bdd72a
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/tuxpuck-bin
+	vcopy "squashfs-root/*" opt/tuxpuck-bin
+	vmkdir usr/bin
+	ln -sf "/opt/tuxpuck-bin/AppRun" "${DESTDIR}/usr/bin/tuxpuck"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}
