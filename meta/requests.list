@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/Piglit-AppImage/releases/download/c25575c9b%402026-10-01_1790878490/Piglit-c25575c9b-anylinux-x86_64.AppImage piglit-bin
-https://github.com/pkgforge-dev/Play-AppImage-Enhanced/releases/download/83700b2c3%402026-10-01_1790876504/Play.-83700b2c3-anylinux-x86_64.AppImage play-bin
-https://github.com/pkgforge-dev/Polybar-AppImage/releases/download/3.7.2.r29.gf99e0b1c-1%402026-09-01_1788231711/polybar-3.7.2.r29.gf99e0b1c-1-anylinux-x86_64.AppImage polybar-bin
-https://github.com/pkgforge-dev/POSTAL-AppImage/releases/download/adb5a30c1%402026-10-01_1790876461/POSTAL-adb5a30c1-anylinux-x86_64.AppImage postal-bin
-https://github.com/pkgforge-dev/PDF-Arranger-AppImage/releases/download/1.14.0-1%402026-10-01_1790865154/PDF_Arranger-1.14.0-1-anylinux-x86_64.AppImage pdf-arranger-bin
-https://github.com/pkgforge-dev/PDF-Tricks-AppImage/releases/download/0.4.1-2%402026-10-01_1790876452/PDF_Tricks-0.4.1-2-anylinux-x86_64.AppImage pdf-tricks-bin
-https://github.com/ElyPrismLauncher/Launcher/releases/download/11.1.1/PineconeMC-Linux-x86_64.AppImage pinecone-launcher-bin
-https://github.com/pkgforge-dev/Powermanga-AppImage/releases/download/da3de3382%402026-10-07_1791382392/Powermanga-da3de3382-anylinux-x86_64.AppImage powermanga-bin
-https://github.com/pkgforge-dev/Prey2006-AppImage/releases/download/983b171cf%402026-10-01_1790864960/Prey_2006-983b171cf-anylinux-x86_64.AppImage prey2006-bin
-https://github.com/pkgforge-dev/QMPlay2-AppImage/releases/download/1c39ae796%402026-10-01_1790875764/QMPlay2-1c39ae796-anylinux-x86_64.AppImage qmplay2-bin
-https://github.com/pkgforge-dev/QOwnNotes-AppImage/releases/download/26.10.5-1/QOwnNotes-26.10.5-1-anylinux-x86_64.AppImage qownnotes-bin
-https://github.com/pkgforge-dev/Raptor-AppImage/releases/download/0019c5dd8%402026-09-22_1790090461/Raptor-0019c5dd8-anylinux-x86_64.AppImage raptor-bin
-https://github.com/pkgforge-dev/PrimeHack-AppImage/releases/download/1.0.9%402026-10-01_1790876662/PrimeHack-1.0.9-anylinux-x86_64.AppImage primehack-bin
-https://github.com/PrismLauncher/PrismLauncher/releases/download/11.1.1/PrismLauncher-Linux-x86_64.AppImage prism-launcher-bin
-https://github.com/pkgforge-dev/Protontricks-AppImage/releases/download/1.14.1-1%402026-10-01_1790876568/Protontricks-1.14.1-1-anylinux-x86_64.AppImage protontricks-bin
-https://github.com/pkgforge-dev/PyGlossary-AppImage/releases/download/5.2.1-1%402026-10-01_1790876500/PyGlossary-5.2.1-1-anylinux-x86_64.AppImage pyglossary-bin
-https://github.com/pkgforge-dev/Qmmp-AppImage/releases/download/2.4.1-1%402026-10-01_1790876531/Qmmp-2.4.1-1-anylinux-x86_64.AppImage qmmp-bin
-https://github.com/pkgforge-dev/QtCreator-AppImage/releases/download/20.0.2-1%402026-10-01_1790876593/Qt_Creator-20.0.2-2-anylinux-x86_64.AppImage qtcreator-bin
-https://github.com/pkgforge-dev/Rednukem-AppImage/releases/download/497385d64%402026-10-01_1790875563/Rednukem-497385d64-anylinux-x86_64.AppImage rednukem-bin
-https://github.com/pkgforge-dev/REDRIVER2-AppImage/releases/download/b2d885742%402026-09-01_1788277206/REDRIVER2-b2d885742-anylinux-x86_64.AppImage redriver2-bin
 https://github.com/pkgforge-dev/RigelEngine-AppImage/releases/download/0.9.1-30afeff8%402026-10-01_1790876614/RigelEngine-0.9.1-30afeff8-anylinux-x86_64.AppImage rigelengine-bin
 https://github.com/pkgforge-dev/rofi-AppImage/releases/download/1ad1df6%402026-10-01_1790876520/rofi-1ad1df6-anylinux-x86_64.AppImage rofi-bin
 https://github.com/pkgforge-dev/ROLLER-AppImage/releases/download/d5b122129%402026-10-01_1790876432/Roller-d5b122129-anylinux-x86_64.AppImage roller-bin

@@ -140,3 +140,14 @@ https://github.com/pkgforge-dev/OpenSnitch-AppImage/releases/download/1.8.0%4020
 https://github.com/pkgforge-dev/OptiImage-AppImage/releases/download/1.0.0-4%402026-10-01_1790871892/OptiImage-1.0.0-4-anylinux-x86_64.AppImage	optiimage-bin	xlint/build
 https://github.com/pkgforge-dev/Oversteer-AppImage/releases/download/v0.8.3%402026-09-01_1788231331/Oversteer-v0.8.3-anylinux-x86_64.AppImage	oversteer-bin	xlint/build
 https://github.com/pkgforge-dev/Parabolic-AppImage/releases/download/2026.5.0%402026-10-01_1790876128/Parabolic-2026.5.0-anylinux-x86_64.AppImage	parabolic-bin	xlint/build
+https://github.com/ElyPrismLauncher/Launcher/releases/download/11.1.1/PineconeMC-Linux-x86_64.AppImage	pinecone-launcher-bin	generacion
+https://github.com/PrismLauncher/PrismLauncher/releases/download/11.1.1/PrismLauncher-Linux-x86_64.AppImage	prism-launcher-bin	generacion
+https://github.com/pkgforge-dev/Piglit-AppImage/releases/download/c25575c9b%402026-10-01_1790878490/Piglit-c25575c9b-anylinux-x86_64.AppImage	piglit-bin	xlint/build
+https://github.com/pkgforge-dev/PDF-Arranger-AppImage/releases/download/1.14.0-1%402026-10-01_1790865154/PDF_Arranger-1.14.0-1-anylinux-x86_64.AppImage	pdf-arranger-bin	xlint/build
+https://github.com/pkgforge-dev/PDF-Tricks-AppImage/releases/download/0.4.1-2%402026-10-01_1790876452/PDF_Tricks-0.4.1-2-anylinux-x86_64.AppImage	pdf-tricks-bin	xlint/build
+https://github.com/pkgforge-dev/QMPlay2-AppImage/releases/download/1c39ae796%402026-10-01_1790875764/QMPlay2-1c39ae796-anylinux-x86_64.AppImage	qmplay2-bin	xlint/build
+https://github.com/pkgforge-dev/PrimeHack-AppImage/releases/download/1.0.9%402026-10-01_1790876662/PrimeHack-1.0.9-anylinux-x86_64.AppImage	primehack-bin	xlint/build
+https://github.com/pkgforge-dev/Protontricks-AppImage/releases/download/1.14.1-1%402026-10-01_1790876568/Protontricks-1.14.1-1-anylinux-x86_64.AppImage	protontricks-bin	xlint/build
+https://github.com/pkgforge-dev/PyGlossary-AppImage/releases/download/5.2.1-1%402026-10-01_1790876500/PyGlossary-5.2.1-1-anylinux-x86_64.AppImage	pyglossary-bin	xlint/build
+https://github.com/pkgforge-dev/Qmmp-AppImage/releases/download/2.4.1-1%402026-10-01_1790876531/Qmmp-2.4.1-1-anylinux-x86_64.AppImage	qmmp-bin	xlint/build
+https://github.com/pkgforge-dev/QtCreator-AppImage/releases/download/20.0.2-1%402026-10-01_1790876593/Qt_Creator-20.0.2-2-anylinux-x86_64.AppImage	qtcreator-bin	xlint/build
