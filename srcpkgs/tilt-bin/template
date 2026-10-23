@@ -1,0 +1,18 @@
+# Template file for 'tilt-bin'
+pkgname=tilt-bin
+version=0.37.8
+revision=1
+archs="x86_64*"
+short_desc="Define your dev environment as code. For microservice apps on"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://tilt.dev/"
+distfiles="https://github.com/tilt-dev/tilt/releases/download/v${version}/tilt.${version}.linux-alpine.x86_64.tar.gz"
+checksum=7ce69fca2d3b48746d575be8378e0ea0a46bea3e15775d9b4c6548324183dcf4
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'tilt'
+}

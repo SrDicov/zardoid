@@ -55,3 +55,10 @@ https://github.com/rclone/rclone/releases/download/v1.75.2/rclone-v1.75.2-freebs
 https://github.com/charmbracelet/sequin/releases/download/v0.3.1/sequin_0.3.1_Freebsd_x86_64.tar.gz	sequin-bin	generacion
 https://github.com/charmbracelet/soft-serve/releases/download/v0.12.3/soft-serve_0.12.3_Freebsd_x86_64.tar.gz	soft-serve-bin	generacion
 https://codeberg.org/jahway603/ramfetch/releases/download/1.1.0a/v1.1.0a.tar.gz	ramfetch-bin	xlint/build
+https://github.com/ivan-hc/Spotify-appimage/releases/download/continuous/Spotify-candidate-1.2.96.518.g366879e1-x86_64.AppImage.zsync	spotify-appimage-bin	generacion
+https://github.com/abhimanyu003/sttr/releases/download/v0.2.30/sttr_Freebsd_x86_64.tar.gz	sttr-bin	generacion
+https://github.com/syncthing/syncthing/releases/download/v2.1.6/syncthing-freebsd-amd64-v2.1.6.tar.gz	syncthing-bin	generacion
+https://github.com/go-task/task/releases/download/v3.54.0/task_freebsd_amd64.tar.gz	task-bin	generacion
+https://dist.torproject.org/torbrowser/15.0.24/tor-browser-linux-x86_64-15.0.24.tar.xz	tor-browser-bin	generacion
+https://github.com/splitux-gg/splitux/releases/download/v0.20.0/splitux-v0.20.0-linux-x86_64.tar.gz	splitux-bin	xlint/build
+https://github.com/supertuxkart/stk-code/releases/download/1.5/SuperTuxKart-1.5-linux-x86_64.tar.gz	supertuxkart-bin	xlint/build

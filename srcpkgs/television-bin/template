@@ -1,0 +1,19 @@
+# Template file for 'television-bin'
+pkgname=television-bin
+version=0.15.9
+revision=1
+archs="x86_64"
+short_desc="Very fast, portable and hackable fuzzy finder"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://alexpasmantier.github.io/television/"
+distfiles="https://github.com/alexpasmantier/television/releases/download/${version}/tv-${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=87d47d071f3c3bac939b1e9b2c63e45c299c9ad31cf8711f63dede614d0c6608
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'tv'
+	vman 'doc/tv.1'
+	vlicense 'LICENSE'
+}

@@ -1,0 +1,19 @@
+# Template file for 'syft-bin'
+pkgname=syft-bin
+version=1.54.1
+revision=1
+archs="x86_64*"
+short_desc="CLI tool and library for generating a Software Bill of Materials
+ from"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/anchore/syft"
+distfiles="https://github.com/anchore/syft/releases/download/v${version}/syft_${version}_linux_amd64.tar.gz"
+checksum=c069905b391cc4c20a5ba65ad5c10be2a7ba074f8ea6ad203e24d14e303dad47
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'syft'
+}

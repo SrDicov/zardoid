@@ -1,0 +1,18 @@
+# Template file for 'stern-bin'
+pkgname=stern-bin
+version=1.34.0
+revision=1
+archs="x86_64*"
+short_desc="Multi pod and container log tailing for Kubernetes"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/stern/stern"
+distfiles="https://github.com/stern/stern/releases/download/v${version}/stern_${version}_linux_amd64.tar.gz"
+checksum=7754adfa653939240f7d20fff4ada9b69cda40c9e70732301f67bb8045f1ef3e
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'stern'
+}

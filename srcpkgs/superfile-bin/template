@@ -1,0 +1,19 @@
+# Template file for 'superfile-bin'
+pkgname=superfile-bin
+version=1.6.0
+revision=1
+archs="x86_64*"
+short_desc="Pretty fancy and modern terminal file manager"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://superfile.dev"
+distfiles="https://github.com/yorukot/superfile/releases/download/v${version}/superfile-linux-v${version}-amd64.tar.gz"
+checksum=d45b0e95072629a6aa7983a84eedca9cd7a98861e67ef91be1415496e3dda309
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'superfile-linux-v'${version}'-amd64/spf'
+	vlicense "${FILESDIR}/LICENSE"
+}

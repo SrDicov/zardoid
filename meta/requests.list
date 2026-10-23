@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/splitux-gg/splitux/releases/download/v0.20.0/splitux-v0.20.0-linux-x86_64.tar.gz splitux-bin
-https://github.com/crmne/spotifast/releases/download/v0.13.3/spotifast-v0.13.3-x86_64-unknown-linux-gnu.tar.gz spotifast-bin
-https://github.com/ivan-hc/Spotify-appimage/releases/download/continuous/Spotify-candidate-1.2.96.518.g366879e1-x86_64.AppImage.zsync spotify-appimage-bin
-https://github.com/starship/starship/releases/download/v1.27.0/starship-x86_64-unknown-linux-gnu.tar.gz starship-bin
-https://github.com/stern/stern/releases/download/v1.34.0/stern_1.34.0_linux_amd64.tar.gz stern-bin
-https://github.com/abhimanyu003/sttr/releases/download/v0.2.30/sttr_Freebsd_x86_64.tar.gz sttr-bin
-https://github.com/yorukot/superfile/releases/download/v1.6.0/superfile-linux-v1.6.0-amd64.tar.gz superfile-bin
-https://github.com/supertuxkart/stk-code/releases/download/1.5/SuperTuxKart-1.5-linux-x86_64.tar.gz supertuxkart-bin
-https://github.com/anchore/syft/releases/download/v1.54.1/syft_1.54.1_linux_amd64.tar.gz syft-bin
-https://github.com/syncthing/syncthing/releases/download/v2.1.6/syncthing-freebsd-amd64-v2.1.6.tar.gz syncthing-bin
-https://github.com/bensadeh/tailspin/releases/download/7.0.0/tailspin-x86_64-unknown-linux-musl.tar.gz tailspin-bin
-https://github.com/go-task/task/releases/download/v3.54.0/task_freebsd_amd64.tar.gz task-bin
-https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.0/tealdeer-linux-x86_64-musl tealdeer-bin
-https://github.com/alexpasmantier/television/releases/download/0.15.9/tv-0.15.9-x86_64-unknown-linux-gnu.tar.gz television-bin
-https://github.com/gruntwork-io/terragrunt/releases/download/v1.1.6/terragrunt_linux_amd64.tar.gz terragrunt-bin
-https://github.com/clarkarch/tfm-tui/releases/download/v1.1.0/tfm-x86_64-linux.gz tfm-tui-bin
-https://github.com/tilt-dev/tilt/releases/download/v0.37.8/tilt.0.37.8.linux-alpine.x86_64.tar.gz tilt-bin
-https://github.com/tldr-pages/tlrc/releases/download/v1.13.1/tlrc-v1.13.1-x86_64-unknown-linux-gnu.tar.gz tlrc-bin
-https://github.com/vyrx-dev/toofan/releases/download/v2.4.2/toofan_2.4.2_linux_amd64.tar.gz toofan-bin
-https://dist.torproject.org/torbrowser/15.0.24/tor-browser-linux-x86_64-15.0.24.tar.xz tor-browser-bin
 https://github.com/fujiapple852/trippy/releases/download/0.13.0/trippy-0.13.0-x86_64-unknown-linux-gnu.tar.gz trippy-bin
 https://github.com/aquasecurity/trivy/releases/download/v0.76.0/trivy_0.76.0_Linux-64bit.tar.gz trivy-bin
 https://github.com/houseabsolute/ubi/releases/download/v0.12.0/ubi-FreeBSD-x86_64.tar.gz ubi-bin

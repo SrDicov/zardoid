@@ -1,0 +1,20 @@
+# Template file for 'terragrunt-bin'
+pkgname=terragrunt-bin
+version=1.1.6
+revision=1
+archs="x86_64*"
+short_desc="Terragrunt is a flexible orchestration tool that allows
+ Infrastructure"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://terragrunt.com"
+distfiles="https://github.com/gruntwork-io/terragrunt/releases/download/v${version}/terragrunt_linux_amd64.tar.gz"
+checksum=5dca0e3518445199ecfd8c356532e3f134bf3082b092cd2fd61f143ab9ea7a06
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'terragrunt_linux_amd64' 'terragrunt'
+	vlicense "${FILESDIR}/LICENSE"
+}

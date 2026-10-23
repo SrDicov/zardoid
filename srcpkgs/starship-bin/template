@@ -1,0 +1,18 @@
+# Template file for 'starship-bin'
+pkgname=starship-bin
+version=1.27.0
+revision=1
+archs="x86_64"
+short_desc="Minimal, blazing-fast, and infinitely customizable prompt"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="ISC"
+homepage="https://starship.rs"
+distfiles="https://github.com/starship/starship/releases/download/v${version}/starship-x86_64-unknown-linux-gnu.tar.gz"
+checksum=3b94758850901717eb36aa1b53f8492c1322506ec6d41273bc6151e79ed8e4a1
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'starship'
+	vlicense "${FILESDIR}/LICENSE"
+}

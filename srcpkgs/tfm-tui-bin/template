@@ -1,0 +1,19 @@
+# Template file for 'tfm-tui-bin'
+pkgname=tfm-tui-bin
+version=1.1.0
+revision=1
+archs="x86_64"
+short_desc="Modern mouse-first terminal file manager"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://clarkarch.github.io/tfm-tui/"
+distfiles="https://github.com/clarkarch/tfm-tui/releases/download/v${version}/tfm-x86_64-linux.gz"
+checksum=b3d9a7cf8855501d79cbef230eedc730ec8a84acaaa8cf5b33be5cd9282c6d0e
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'tfm-x86_64-linux'
+	vlicense "${FILESDIR}/LICENSE"
+}

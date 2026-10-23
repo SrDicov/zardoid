@@ -1,0 +1,18 @@
+# Template file for 'tailspin-bin'
+pkgname=tailspin-bin
+version=7.0.0
+revision=1
+archs="x86_64*"
+short_desc="Log file highlighter"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/bensadeh/tailspin"
+distfiles="https://github.com/bensadeh/tailspin/releases/download/${version}/tailspin-x86_64-unknown-linux-musl.tar.gz"
+checksum=f2de9268dc24811908e63a170507d860ac90c7f6a2f1937f59e5cca78cef21a2
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'tspin'
+	vlicense "${FILESDIR}/LICENSE"
+}
