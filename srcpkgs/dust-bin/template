@@ -1,0 +1,17 @@
+# Template file for 'dust-bin'
+pkgname=dust-bin
+version=1.2.6
+revision=1
+archs="x86_64"
+short_desc="More intuitive version of du in rust"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/bootandy/dust"
+distfiles="https://github.com/bootandy/dust/releases/download/v${version}/dust-v${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=14f788707aad217667f6812cf1a9639bf5c861a2ee815d486cffc36051f5e759
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'dust'
+}

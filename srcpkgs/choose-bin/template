@@ -1,0 +1,23 @@
+# Template file for 'choose-bin'
+pkgname=choose-bin
+version=1.3.7
+revision=1
+archs="x86_64"
+short_desc="Human-friendly and fast alternative to cut (and sometimes awk)"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/theryangeary/choose"
+distfiles="https://github.com/theryangeary/choose/releases/download/v${version}/choose-x86_64-unknown-linux-gnu"
+checksum=9f7e5f6f02e53dc3869cf216db5d481d48f365bdbbebe2f08969734c8443784e
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="choose-x86_64-unknown-linux-gnu"
+
+post_extract() {
+	local f='choose-x86_64-unknown-linux-gnu'
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	vbin 'choose-x86_64-unknown-linux-gnu' 'choose'
+}

@@ -1,0 +1,17 @@
+# Template file for 'dufs-bin'
+pkgname=dufs-bin
+version=0.47.0
+revision=1
+archs="x86_64*"
+short_desc="File server that supports static serving, uploading, searching,"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/sigoden/dufs"
+distfiles="https://github.com/sigoden/dufs/releases/download/v${version}/dufs-v${version}-x86_64-unknown-linux-musl.tar.gz"
+checksum=c715c44b195f6133ca0f47e6fdc8d6015ec64b7fd9ac8e1c578ca23a92206aa4
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'dufs'
+}

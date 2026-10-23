@@ -1,0 +1,18 @@
+# Template file for 'delta-bin'
+pkgname=delta-bin
+version=0.20.1
+revision=1
+archs="x86_64"
+short_desc="Syntax-highlighting pager for git, diff, grep, rg --json, and blame"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://dandavison.github.io/delta/"
+distfiles="https://github.com/dandavison/delta/releases/download/${version}/delta-${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=50f08c879f84c81ceb220e476491a7f492d2c9c671e79918cc44badf961a6240
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'delta'
+	vlicense 'LICENSE'
+}

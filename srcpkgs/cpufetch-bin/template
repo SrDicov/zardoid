@@ -1,0 +1,24 @@
+# Template file for 'cpufetch-bin'
+pkgname=cpufetch-bin
+version=1.07
+revision=1
+archs="x86_64*"
+short_desc="Simple yet fancy CPU architecture fetching tool"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/Dr-Noob/cpufetch"
+distfiles="https://github.com/Dr-Noob/cpufetch/releases/download/v${version}/cpufetch_x86-64_linux"
+checksum=8c0a74c1176447315d2e70cc83360b9a96789f40a4af5fc1ff325418a41e4f52
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="cpufetch_x86-64_linux"
+
+post_extract() {
+	local f='cpufetch_x86-64_linux'
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	vbin 'cpufetch_x86-64_linux' 'cpufetch'
+}

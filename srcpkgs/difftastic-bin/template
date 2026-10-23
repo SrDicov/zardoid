@@ -1,0 +1,18 @@
+# Template file for 'difftastic-bin'
+pkgname=difftastic-bin
+version=0.71.0
+revision=1
+archs="x86_64"
+short_desc="Structural diff that understands syntax 🟥🟩"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://difftastic.wilfred.me.uk/"
+distfiles="https://github.com/Wilfred/difftastic/releases/download/${version}/difft-${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=61aea5394a53c56f144637cf39b3a0c0dafa27769731745e5851ff276e6478da
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'difft'
+	vlicense "${FILESDIR}/LICENSE"
+}

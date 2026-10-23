@@ -8,3 +8,9 @@ https://github.com/tonistiigi/binfmt/releases/download/deploy/v10.2.3-68/binfmt_
 https://github.com/bufbuild/buf/releases/download/v1.74.0/buf-FreeBSD-x86_64.tar.gz	buf-bin	generacion
 https://github.com/caddyserver/caddy/releases/download/v2.11.7/caddy_2.11.7_freebsd_amd64.tar.gz	caddy-bin	generacion
 https://github.com/twpayne/chezmoi/releases/download/v2.73.2/chezmoi_2.73.2_freebsd_amd64.tar.gz	chezmoi-bin	generacion
+https://github.com/storytold/craft-launcher/releases/download/v0.5.1/artcraft-launcher-0.5.1-freebsd-x86_64.tar.gz	craft-launcher-bin	generacion
+https://github.com/shenwei356/csvtk/releases/download/v0.38.0/csvtk_freebsd_amd64.tar.gz	csvtk-bin	generacion
+https://github.com/rs/curlie/releases/download/v1.8.2/curlie_1.8.2_freebsd_amd64.tar.gz	curlie-bin	generacion
+https://github.com/direnv/direnv/releases/download/v2.38.2/direnv.freebsd-amd64	direnv-bin	generacion
+https://github.com/mr-karan/doggo/releases/download/v1.4.1/doggo-freebsd-x86_64.tar.gz	doggo-bin	generacion
+https://github.com/muesli/duf/releases/download/v0.9.1/duf_0.9.1_freebsd_x86_64.tar.gz	duf-bin	generacion

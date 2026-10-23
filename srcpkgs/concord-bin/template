@@ -1,0 +1,17 @@
+# Template file for 'concord-bin'
+pkgname=concord-bin
+version=2.6.2
+revision=1
+archs="x86_64"
+short_desc="Feature-rich TUI client for Discord"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/chojs23/concord"
+distfiles="https://github.com/chojs23/concord/releases/download/v${version}/concord-x86_64-unknown-linux-gnu.tar.xz"
+checksum=4ebbdc232160665801886055e076793cba942b88b32a2d6de1a07a926d205e5c
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'concord'
+}

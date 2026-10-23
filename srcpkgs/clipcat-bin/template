@@ -1,0 +1,32 @@
+# Template file for 'clipcat-bin'
+pkgname=clipcat-bin
+version=0.26.0
+revision=1
+archs="x86_64*"
+short_desc="Clipboard manager written in Rust Programming Language"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/xrelkd/clipcat"
+distfiles="https://github.com/xrelkd/clipcat/releases/download/v${version}/clipcat-${version}-x86_64-unknown-linux-musl.tar.gz"
+checksum=4b3a6568ccfb8f0155315e7e74d8186eb6f0628ebe21367482dc621924898589
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bin/clipcat-menu'
+	vbin 'bin/clipcat-notify'
+	vbin 'bin/clipcatctl'
+	vbin 'bin/clipcatd'
+	vinstall 'share/zsh/site-functions/_clipcatctl' 644 usr/share/zsh/site-functions
+	vinstall 'share/zsh/site-functions/_clipcat-menu' 644 usr/share/zsh/site-functions
+	vinstall 'share/zsh/site-functions/_clipcat-notify' 644 usr/share/zsh/site-functions
+	vinstall 'share/zsh/site-functions/_clipcatd' 644 usr/share/zsh/site-functions
+	vinstall 'share/bash-completion/completions/clipcatd.bash' 644 usr/share/bash-completion/completions 'clipcatd'
+	vinstall 'share/bash-completion/completions/clipcatctl.bash' 644 usr/share/bash-completion/completions 'clipcatctl'
+	vinstall 'share/bash-completion/completions/clipcat-menu.bash' 644 usr/share/bash-completion/completions 'clipcat-menu'
+	vinstall 'share/bash-completion/completions/clipcat-notify.bash' 644 usr/share/bash-completion/completions 'clipcat-notify'
+	vinstall 'share/fish/vendor_completions.d/clipcat-menu.fish' 644 usr/share/fish/vendor_completions.d
+	vinstall 'share/fish/vendor_completions.d/clipcatd.fish' 644 usr/share/fish/vendor_completions.d
+	vinstall 'share/fish/vendor_completions.d/clipcat-notify.fish' 644 usr/share/fish/vendor_completions.d
+	vinstall 'share/fish/vendor_completions.d/clipcatctl.fish' 644 usr/share/fish/vendor_completions.d
+}
