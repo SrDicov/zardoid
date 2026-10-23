@@ -565,6 +565,9 @@ fn run(a: Args) -> Res<()> {
     // Nombre local del fichero: el de la URL puede estar codificado (GitLab) o
     // faltar (AppImage, cuyo extractor necesita un nombre predecible).
     if kind == Kind::AppImage {
+        // Los AppImage de pkgforge llevan python embebido y el hook
+        // pre-pkg/03-rewrite-python-shebang aborta sin esta variable.
+        flags.push(("python_version".into(), "3".into()));
         // Sin `${pkgname}`: `dq` escapa los `$` de lo que viene del upstream y
         // el fichero acabaría llamado literalmente "${pkgname}-..."; entonces
         // `skip_extraction` no coincide y xbps-src intenta extraer el AppImage.
