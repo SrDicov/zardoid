@@ -1,0 +1,41 @@
+# Template file for 'pcexhumed-bin'
+pkgname=pcexhumed-bin
+version=20261001
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of PCExhumed [Maintainer=@Link4Electronics]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/PCExhumed-AppImage"
+distfiles="https://github.com/pkgforge-dev/PCExhumed-AppImage/releases/download/497385d64%402026-10-01_1790875458/PCExhumed-497385d64-anylinux-x86_64.AppImage>pcexhumed-bin-${version}.AppImage"
+checksum=66bab57f2ae34f8602550f406fdabc792e5c23d02562f3b1f66c2607434fd2d3
+noshlibprovides=yes
+nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/pcexhumed-bin
+	vcopy "squashfs-root/*" opt/pcexhumed-bin
+	vmkdir usr/bin
+	ln -sf "/opt/pcexhumed-bin/AppRun" "${DESTDIR}/usr/bin/pcexhumed"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}

@@ -132,3 +132,11 @@ https://github.com/pkgforge-dev/NeoChat-AppImage/releases/download/26.08.1-1%402
 https://github.com/pkgforge-dev/NewsFlash-AppImage/releases/download/5.2.5-1%402026-10-01_1790875135/Newsflash-5.2.5-1-anylinux-x86_64.AppImage	newsflash-bin	xlint/build
 https://github.com/pkgforge-dev/NSZ-AppImage/releases/download/5.0.0-2%402026-10-01_1790875800/NSZ-5.0.0-2-anylinux-x86_64.AppImage	nsz-bin	xlint/build
 https://github.com/pkgforge-dev/OBS-Studio-AppImage/releases/download/32.2.2-1%402026-10-01_1790876050/OBS_Studio-32.2.2-1-anylinux-x86_64.AppImage	obs-studio-bin	xlint/build
+https://github.com/ppy/osu/releases/download/2026.1005.0-lazer/osu.AppImage	osu-bin	generacion
+https://github.com/pkgforge-dev/OCRmyPDF-AppImage/releases/download/17.12.1-1%402026-10-01_1790876632/ocrmypdf-17.12.1-1-anylinux-x86_64.AppImage	ocrmypdf-bin	xlint/build
+https://github.com/pkgforge-dev/GNU-Octave-AppImage/releases/download/11.3.0-1%402026-10-01_1790875878/GNU_Octave-11.3.0-1-anylinux-x86_64.AppImage	octave-bin	xlint/build
+https://github.com/pkgforge-dev/opencode-AppImage-Enhanced/releases/download/v1.19.0%402026-10-15_1792067384/OpenCode-v1.19.0-anylinux-x86_64.AppImage	opencode-desktop-bin	xlint/build
+https://github.com/pkgforge-dev/OpenSnitch-AppImage/releases/download/1.8.0%402026-10-01_1790876122/OpenSnitch-1.8.0-anylinux-x86_64.AppImage	opensnitch-bin	xlint/build
+https://github.com/pkgforge-dev/OptiImage-AppImage/releases/download/1.0.0-4%402026-10-01_1790871892/OptiImage-1.0.0-4-anylinux-x86_64.AppImage	optiimage-bin	xlint/build
+https://github.com/pkgforge-dev/Oversteer-AppImage/releases/download/v0.8.3%402026-09-01_1788231331/Oversteer-v0.8.3-anylinux-x86_64.AppImage	oversteer-bin	xlint/build
+https://github.com/pkgforge-dev/Parabolic-AppImage/releases/download/2026.5.0%402026-10-01_1790876128/Parabolic-2026.5.0-anylinux-x86_64.AppImage	parabolic-bin	xlint/build
