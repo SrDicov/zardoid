@@ -1,0 +1,41 @@
+# Template file for 'openclaw-bin'
+pkgname=openclaw-bin
+version=20260901
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of OpenClaw [Maintainer=@Link4Electronics]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/OpenClaw-AppImage"
+distfiles="https://github.com/pkgforge-dev/OpenClaw-AppImage/releases/download/5ee5740ca%402026-09-01_1788268462/OpenClaw-5ee5740ca-anylinux-x86_64.AppImage>openclaw-bin-${version}.AppImage"
+checksum=dfdc8c6416b56fc33593b0af79fbe745311ed861f082afa51373e9d1b0eb8dd4
+noshlibprovides=yes
+nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/openclaw-bin
+	vcopy "squashfs-root/*" opt/openclaw-bin
+	vmkdir usr/bin
+	ln -sf "/opt/openclaw-bin/AppRun" "${DESTDIR}/usr/bin/openclaw"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}
