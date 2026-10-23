@@ -858,7 +858,7 @@ fn appimage_body(base: &str, files_license: bool) -> String {
     let mut out = format!(
         "local appimg=\"${{pkgname}}-${{version}}.AppImage\"\n\
          chmod +x \"${{appimg}}\"\n\
-         \"${{appimg}}\" --appimage-extract >/dev/null\n\
+         \"./${{appimg}}\" --appimage-extract >/dev/null\n\
          vmkdir opt/{base}\n\
          vcopy \"squashfs-root/*\" opt/{base}\n\
          vmkdir usr/bin\n\
@@ -1108,6 +1108,8 @@ mod tests {
         assert!(template::selfcheck(&text).is_empty());
         let with_lic = appimage_body("demo-bin", true);
         assert!(with_lic.contains("vlicense \"${FILESDIR}/LICENSE\""));
+        // Sin `./`, bash busca el AppImage en PATH y do_install muere con 127.
+        assert!(with_lic.contains("\"./${appimg}\" --appimage-extract"));
     }
 
     #[test]
