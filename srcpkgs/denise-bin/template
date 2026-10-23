@@ -1,0 +1,40 @@
+# Template file for 'denise-bin'
+pkgname=denise-bin
+version=2.9
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of Denise [Maintainer=@Link4Electronics]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/Denise-AppImage"
+distfiles="https://github.com/pkgforge-dev/Denise-AppImage/releases/download/${version}%402026-10-10_1791666953/Denise-${version}-anylinux-x86_64.AppImage>denise-bin-${version}.AppImage"
+checksum=c7d3f032468a945cb01a5b801fd44300f4f91927f53c306ba93b2c683fd307c3
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/denise-bin
+	vcopy "squashfs-root/*" opt/denise-bin
+	vmkdir usr/bin
+	ln -sf "/opt/denise-bin/AppRun" "${DESTDIR}/usr/bin/denise"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}
