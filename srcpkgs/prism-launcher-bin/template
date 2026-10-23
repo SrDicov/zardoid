@@ -1,0 +1,22 @@
+# Template file for 'prism-launcher-bin'
+pkgname=prism-launcher-bin
+version=11.1.1
+revision=1
+archs="x86_64*"
+short_desc="Custom launcher for Minecraft that allows you to easily manage"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://prismlauncher.org"
+distfiles="https://github.com/PrismLauncher/PrismLauncher/releases/download/${version}/PrismLauncher-Linux-Qt6-Portable-${version}.tar.gz"
+checksum=e21949a8101c1803dbc6f67a2cdad48ba80ede1c133f0d1f2a89da07af09e823
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bin/prismlauncher'
+	vbin 'bin/prismlauncher_updater'
+	vinstall 'share/applications/org.prismlauncher.PrismLauncher.desktop' 644 usr/share/applications
+	vinstall 'share/icons/hicolor/256x256/apps/org.prismlauncher.PrismLauncher.png' 644 usr/share/icons/hicolor/256x256/apps
+	vinstall 'share/icons/hicolor/scalable/apps/org.prismlauncher.PrismLauncher.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vcopy 'share/man/*' usr/share/man
+}

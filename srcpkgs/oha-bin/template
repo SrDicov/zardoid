@@ -1,0 +1,25 @@
+# Template file for 'oha-bin'
+pkgname=oha-bin
+version=1.16.0
+revision=1
+archs="x86_64*"
+short_desc="Ohayou(おはよう), HTTP load generator, inspired by rakyll/hey
+ with"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/hatoo/oha"
+distfiles="https://github.com/hatoo/oha/releases/download/v${version}/oha-linux-amd64"
+checksum=620bb9e16fb53eabc9a3fc45f88bdb41fefa3fee5c05e75892011ce320391716
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="oha-linux-amd64"
+
+post_extract() {
+	local f='oha-linux-amd64'
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	vbin 'oha-linux-amd64' 'oha'
+	vlicense "${FILESDIR}/LICENSE"
+}

@@ -1,0 +1,18 @@
+# Template file for 'presenterm-bin'
+pkgname=presenterm-bin
+version=0.16.1
+revision=1
+archs="x86_64"
+short_desc="Markdown terminal slideshow tool"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://mfontanini.github.io/presenterm/"
+distfiles="https://github.com/mfontanini/presenterm/releases/download/v${version}/presenterm-${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=01fbe92c16d76e84ad9baa10c32ae6ed020a514bf72bd3980a1218250a292b14
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'presenterm'
+	vlicense 'LICENSE'
+}

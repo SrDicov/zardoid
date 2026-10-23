@@ -1,0 +1,19 @@
+# Template file for 'nnn-bin'
+pkgname=nnn-bin
+version=5.3
+revision=1
+archs="x86_64*"
+short_desc="N³ The unorthodox terminal file manager"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://github.com/jarun/nnn"
+distfiles="https://github.com/jarun/nnn/releases/download/v${version}/nnn-emoji-static-${version}.x86_64.tar.gz"
+checksum=67b2cd1dcbd7246a230f8ef8bc6afcbb82075d67471b5d0fa4e3f9d61b103d14
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'nnn-emoji-static' 'nnn'
+	vlicense "${FILESDIR}/LICENSE"
+}

@@ -1,0 +1,20 @@
+# Template file for 'neovim-bin'
+pkgname=neovim-bin
+version=0.12.6
+revision=1
+archs="x86_64"
+short_desc="Vim-fork focused on extensibility and usability"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://neovim.io"
+distfiles="https://github.com/neovim/neovim/releases/download/v${version}/nvim-linux-x86_64.tar.gz"
+checksum=474430d53e6264f6d6dd18db42d6dc9df3a1b56ca9e88a325bbf860e1a811d87
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bin/nvim'
+	vinstall 'share/applications/nvim.desktop' 644 usr/share/applications
+	vinstall 'share/icons/hicolor/128x128/apps/nvim.png' 644 usr/share/icons/hicolor/128x128/apps
+	vman 'share/man/man1/nvim.1'
+}

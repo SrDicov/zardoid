@@ -1,0 +1,19 @@
+# Template file for 'procs-bin'
+pkgname=procs-bin
+version=0.14.12
+revision=1
+archs="x86_64*"
+hostmakedepends="unzip"
+short_desc="Modern replacement for ps written in Rust"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/dalance/procs"
+distfiles="https://github.com/dalance/procs/releases/download/v${version}/procs-v${version}-x86_64-linux.zip"
+checksum=81964faf9d5cd0e9f399d5d0954fb6fe4d4d9f7d3cbec4507633df5a45b11713
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'procs'
+	vlicense "${FILESDIR}/LICENSE"
+}

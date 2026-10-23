@@ -42,3 +42,10 @@ https://dl.librewolf.net/librewolf/158.0-1/librewolf-158.0-1-linux-x86_64-packag
 https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Linux-x86_64.tar.gz	lima-bin	xlint/build
 https://github.com/Limine-Bootloader/Limine/releases/download/v12.9.3/limine-binary.tar.gz	limine-bin	xlint/build
 https://github.com/localsend/localsend/releases/download/v1.18.2/LocalSend-1.18.2-linux-arm-64.tar.gz	localsend-bin	xlint/build
+https://github.com/micro-editor/micro/releases/download/v2.0.15/micro-2.0.15-freebsd32.tar.gz	micro-bin	generacion
+https://github.com/containerd/nerdctl/releases/download/v2.4.1/nerdctl-2.4.1-freebsd-amd64.tar.gz	nerdctl-bin	generacion
+https://github.com/opentofu/opentofu/releases/download/v1.13.1/tofu_1.13.1_freebsd_amd64.tar.gz	opentofu-bin	generacion
+https://github.com/oras-project/oras/releases/download/v1.3.4/oras_1.3.4_freebsd_amd64.tar.gz	oras-bin	generacion
+https://github.com/dylanaraps/pfetch/archive/refs/heads/master.tar.gz	pfetch-bin	generacion
+https://dev.yorhel.nl/download/ncdu-2.7-linux-x86_64.tar.gz	ncdu-bin	xlint/build
+https://github.com/OpenRCT2/OpenRCT2/releases/download/v0.5.6/OpenRCT2-v0.5.6-Linux-bookworm-x86_64.tar.gz	openrct2-bin	xlint/build

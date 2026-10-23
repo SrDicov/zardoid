@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/micro-editor/micro/releases/download/v2.0.15/micro-2.0.15-freebsd32.tar.gz micro-bin
-https://github.com/svenstaro/miniserve/releases/download/v0.35.0/miniserve-0.35.0-x86_64-unknown-linux-gnu miniserve-bin
-https://github.com/jdx/mise/releases/download/v2026.10.13/mise-v2026.10.13-linux-x64-musl.tar.gz mise-bin
-https://github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.4.4-linux-amd64 mkcert-bin
-https://github.com/denisidoro/navi/releases/download/v2.24.0/navi-v2.24.0-x86_64-unknown-linux-musl.tar.gz navi-bin
-https://dev.yorhel.nl/download/ncdu-2.7-linux-x86_64.tar.gz ncdu-bin
-https://github.com/neovim/neovim/releases/download/v0.12.6/nvim-linux-x86_64.tar.gz neovim-bin
-https://github.com/containerd/nerdctl/releases/download/v2.4.1/nerdctl-2.4.1-freebsd-amd64.tar.gz nerdctl-bin
-https://github.com/jarun/nnn/releases/download/v5.3/nnn-emoji-static-5.3.x86_64.tar.gz nnn-bin
-https://github.com/nushell/nushell/releases/download/0.116.1/nu-0.116.1-x86_64-unknown-linux-gnu.tar.gz nushell-bin
-https://github.com/hatoo/oha/releases/download/v1.16.0/oha-linux-amd64 oha-bin
-https://github.com/OpenMW/openmw/releases/download/openmw-0.51.0/openmw-0.51.0-Linux-64Bit-debug.tar.gz openmw-bin
-https://github.com/OpenRCT2/OpenRCT2/releases/download/v0.5.6/OpenRCT2-v0.5.6-Linux-bookworm-x86_64.tar.gz openrct2-bin
-https://github.com/opentofu/opentofu/releases/download/v1.13.1/tofu_1.13.1_freebsd_amd64.tar.gz opentofu-bin
-https://github.com/oras-project/oras/releases/download/v1.3.4/oras_1.3.4_freebsd_amd64.tar.gz oras-bin
-https://github.com/dylanaraps/pfetch/archive/refs/heads/master.tar.gz pfetch-bin
-https://github.com/ElyPrismLauncher/Launcher/releases/download/11.1.1/PineconeMC-Linux-Qt6-Portable-11.1.1.tar.gz pinecone-launcher-bin
-https://github.com/mfontanini/presenterm/releases/download/v0.16.1/presenterm-0.16.1-x86_64-unknown-linux-gnu.tar.gz presenterm-bin
-https://github.com/PrismLauncher/PrismLauncher/releases/download/11.1.1/PrismLauncher-Linux-Qt6-Portable-11.1.1.tar.gz prism-launcher-bin
-https://github.com/dalance/procs/releases/download/v0.14.12/procs-v0.14.12-x86_64-linux.zip procs-bin
 https://github.com/Nukesor/pueue/releases/download/v4.0.4/pueue-x86_64-unknown-freebsd pueue-bin
 https://github.com/pulumi/pulumi/releases/download/v3.270.0/pulumi-v3.270.0-linux-x64.tar.gz pulumi-bin
 https://codeberg.org/jahway603/ramfetch/releases/download/1.1.0a/v1.1.0a.tar.gz ramfetch-bin

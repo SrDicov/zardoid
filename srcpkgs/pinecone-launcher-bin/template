@@ -1,0 +1,23 @@
+# Template file for 'pinecone-launcher-bin'
+pkgname=pinecone-launcher-bin
+version=11.1.1
+revision=1
+archs="x86_64*"
+short_desc="This fork of Prism Launcher adds integrated support for Ely.by
+ accounts"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://pineconemc.ru"
+distfiles="https://github.com/ElyPrismLauncher/Launcher/releases/download/${version}/PineconeMC-Linux-Qt6-Portable-${version}.tar.gz"
+checksum=27aa8b8b35433676997c6712aa4f9fb004bd1dbf402e5be7d7da039675c85515
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bin/elyprismlauncher'
+	vbin 'bin/elyprismlauncher_updater'
+	vinstall 'share/applications/io.github.elyprismlauncher.ElyPrismLauncher.desktop' 644 usr/share/applications
+	vinstall 'share/icons/hicolor/256x256/apps/io.github.elyprismlauncher.ElyPrismLauncher.png' 644 usr/share/icons/hicolor/256x256/apps
+	vinstall 'share/icons/hicolor/scalable/apps/io.github.elyprismlauncher.ElyPrismLauncher.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vcopy 'share/man/*' usr/share/man
+}

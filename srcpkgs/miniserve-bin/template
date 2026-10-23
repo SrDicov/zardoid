@@ -1,0 +1,24 @@
+# Template file for 'miniserve-bin'
+pkgname=miniserve-bin
+version=0.35.0
+revision=1
+archs="x86_64*"
+short_desc="For when you really just want to serve some files over HTTP right"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/svenstaro/miniserve"
+distfiles="https://github.com/svenstaro/miniserve/releases/download/v${version}/miniserve-${version}-x86_64-unknown-linux-gnu"
+checksum=3b43ec6cb8ef5d5cc72a216b2309ef77c90952fd2c3e3c6eb9010dec39f3a086
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="miniserve-0.35.0-x86_64-unknown-linux-gnu"
+
+post_extract() {
+	local f='miniserve-'${version}'-x86_64-unknown-linux-gnu'
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	vbin 'miniserve-'${version}'-x86_64-unknown-linux-gnu' 'miniserve'
+	vlicense "${FILESDIR}/LICENSE"
+}

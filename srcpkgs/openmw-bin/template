@@ -1,0 +1,17 @@
+# Template file for 'openmw-bin'
+pkgname=openmw-bin
+version=0.51.0
+revision=1
+archs="x86_64*"
+short_desc="OpenMW is an open-source open-world RPG game engine that supports"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.com/OpenMW/openmw"
+distfiles="https://github.com/OpenMW/openmw/releases/download/openmw-${version}/openmw-${version}-Linux-64Bit-debug.tar.gz"
+checksum=7acc875d8af4f2509a64a6a6ad50ab6996849f52417f0c54518a77ec58d65ea8
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bsatool.debug'
+}

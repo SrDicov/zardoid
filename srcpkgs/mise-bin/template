@@ -1,0 +1,19 @@
+# Template file for 'mise-bin'
+pkgname=mise-bin
+version=2026.10.13
+revision=1
+archs="x86_64*"
+short_desc="Dev tools, env vars, task runner"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://mise.jdx.dev"
+distfiles="https://github.com/jdx/mise/releases/download/v${version}/mise-v${version}-linux-x64-musl.tar.gz"
+checksum=2ece198f8bebffa06e1027ea5dc5fc26d14b2bc03c9c285658317f13da8ce3dd
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bin/mise'
+	vman 'man/man1/mise.1'
+	vlicense 'LICENSE'
+}
