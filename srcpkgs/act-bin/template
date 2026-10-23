@@ -1,0 +1,19 @@
+# Template file for 'act-bin'
+pkgname=act-bin
+version=0.2.89
+revision=1
+archs="x86_64*"
+short_desc="Run your GitHub Actions locally 🚀"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://nektosact.com"
+distfiles="https://github.com/nektos/act/releases/download/v${version}/act_Linux_x86_64.tar.gz"
+checksum=0191d6f1f3b716b5c55820032605d05fc3c1cdbf581ebeff655019e5dd1524c0
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'act'
+	vlicense 'LICENSE'
+}

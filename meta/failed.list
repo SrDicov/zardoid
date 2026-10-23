@@ -1,3 +1,13 @@
 # Peticiones descartadas: url<TAB>paquete<TAB>motivo. Revisa el run de
 # Templates para el detalle; para reintentar, copia la línea a
 # meta/requests.list y bórrala de meta/belka.imported.
+https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_freebsd_amd64.tar.gz	actionlint-bin	generacion
+https://github.com/FiloSottile/age/releases/download/v1.3.2/age-v1.3.2-freebsd-amd64.tar.gz	age-bin	generacion
+https://github.com/xyproto/algernon/releases/download/v1.17.12/algernon-1.17.12-freebsd_x86_64_static.tar.gz	algernon-bin	generacion
+https://github.com/pkgforge/aeris/releases/download/v0.2.1/aeris-x86_64-linux.tar.xz	aeris-bin	xlint/build
+https://github.com/owasp-amass/amass/releases/download/v5.1.1/amass_linux_amd64.tar.gz	amass-bin	xlint/build
+https://github.com/jmacdonald/amp/releases/download/0.7.1/amp-x86_64-unknown-linux-musl	amp-bin	xlint/build
+https://github.com/pkgforge-dev/appimagetool/releases/download/0.5.3/appimagetool-corresponding-source-dwarfs-0.15.6.tar.xz	appimagetool-bin	xlint/build
+https://github.com/arduino/arduino-cli/releases/download/v1.5.1/arduino-cli_1.5.1_Linux_64bit.tar.gz	arduino-cli-bin	xlint/build
+https://github.com/BLAKE3-team/BLAKE3/releases/download/1.8.7/b3sum_linux_x64_bin	b3sum-bin	xlint/build
+https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-gnu.tar.gz	bat-bin	xlint/build

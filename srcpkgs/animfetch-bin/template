@@ -1,0 +1,19 @@
+# Template file for 'animfetch-bin'
+pkgname=animfetch-bin
+version=0.2.0
+revision=1
+archs="x86_64*"
+short_desc="Animated system fetch that stays pinned above your shell while you
+ work"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://andrew-velox.github.io/animfetch-cli/"
+distfiles="https://github.com/Andrew-Velox/animfetch/releases/download/v${version}/animfetch-v${version}-x86_64-unknown-linux-musl.tar.gz"
+checksum=484f5ab5de77dd1f25232e3bdd6a82d638b4389513172a5a3e3cd9ce38506466
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'animfetch'
+	vlicense 'LICENSE'
+}

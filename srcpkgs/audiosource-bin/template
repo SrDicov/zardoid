@@ -1,0 +1,23 @@
+# Template file for 'audiosource-bin'
+pkgname=audiosource-bin
+version=1.2.1
+revision=1
+archs="x86_64"
+short_desc="Microphone: Use an Android device as a USB microphone"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/ezequielgk/audiosource"
+distfiles="https://github.com/ezequielgk/audiosource/releases/download/v${version}/audiosource-linux.tar.gz"
+checksum=2b75f21363956c1f895fcf118b98ccf32d11f844a80c885ec264c36a6c283c22
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'audiosource'
+	vinstall 'assets/badge_fdroid.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/screenshot-tui.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/badge_github.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/icon.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'assets/screenshot.png' 644 usr/share/icons/hicolor/128x128/apps
+	vlicense "${FILESDIR}/LICENSE"
+}

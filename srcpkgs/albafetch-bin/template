@@ -1,0 +1,20 @@
+# Template file for 'albafetch-bin'
+pkgname=albafetch-bin
+version=4.3
+revision=1
+archs="x86_64*"
+hostmakedepends="unzip"
+short_desc="Faster neofetch alternative, written in C. Still improving :)"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/alba4k/albafetch"
+distfiles="https://github.com/alba4k/albafetch/releases/download/v${version}/albafetch-linux-x64-static.zip"
+checksum=b195ca5a1ad308f6c8f7fd624d1515ed8481b6a64cbb60658cc39e268153df22
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'albafetch'
+	vlicense "${FILESDIR}/LICENSE"
+}

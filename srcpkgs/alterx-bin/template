@@ -1,0 +1,20 @@
+# Template file for 'alterx-bin'
+pkgname=alterx-bin
+version=0.1.0
+revision=1
+archs="x86_64*"
+hostmakedepends="unzip"
+short_desc="Fast and customizable subdomain wordlist generator using DSL"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/projectdiscovery/alterx"
+distfiles="https://github.com/projectdiscovery/alterx/releases/download/v${version}/alterx_${version}_linux_amd64.zip"
+checksum=ffae5b25138cb27b58900b9b5849e02d0390385fce404252d32e469f2a0e97ac
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'alterx'
+	vlicense 'LICENSE'
+}

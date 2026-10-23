@@ -1,0 +1,19 @@
+# Template file for 'bandwhich-bin'
+pkgname=bandwhich-bin
+version=0.23.1
+revision=1
+archs="x86_64"
+short_desc="Terminal bandwidth utilization tool"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/imsnif/bandwhich"
+distfiles="https://github.com/imsnif/bandwhich/releases/download/v${version}/bandwhich-v${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=0de12665fcd1ecafbed84c372fb8edc568bb9eaffee95f53710b8c0b4c687637
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bandwhich'
+	vman 'assets/bandwhich.1'
+	vlicense "${FILESDIR}/LICENSE"
+}

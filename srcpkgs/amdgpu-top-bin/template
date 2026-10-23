@@ -1,0 +1,18 @@
+# Template file for 'amdgpu-top-bin'
+pkgname=amdgpu-top-bin
+version=0.11.5
+revision=1
+archs="x86_64"
+short_desc="Tool to display AMDGPU usage"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/Umio-Yasuno/amdgpu_top"
+distfiles="https://github.com/Umio-Yasuno/amdgpu_top/releases/download/v${version}/amdgpu_top-${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=5efd0b981d045096530d71536c02373d579f438e8bc7fa525fd7f031be326b54
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'amdgpu_top'
+	vlicense "${FILESDIR}/LICENSE"
+}

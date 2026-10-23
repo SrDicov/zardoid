@@ -1,0 +1,19 @@
+# Template file for 'aws-nuke-bin'
+pkgname=aws-nuke-bin
+version=3.68.3
+revision=1
+archs="x86_64*"
+short_desc="Remove all the resources from an AWS account"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://aws-nuke.ekristen.dev"
+distfiles="https://github.com/ekristen/aws-nuke/releases/download/v${version}/aws-nuke-v${version}-linux-amd64.tar.gz"
+checksum=ec43c22b2a433a3f6da87006b281451d8cd5bab5eb25047f7a671dfbeebc15a4
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'aws-nuke'
+	vlicense 'LICENSE'
+}
