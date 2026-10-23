@@ -1,0 +1,18 @@
+# Template file for 'so-bin'
+pkgname=so-bin
+version=0.4.10
+revision=1
+archs="x86_64"
+short_desc="Terminal interface for Stack Overflow"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/samtay/so"
+distfiles="https://github.com/samtay/so/releases/download/v${version}/so-x86_64-unknown-linux-gnu.tar.gz"
+checksum=b94ca89f01758dce4d763d78f5ec1b400c4e2aa64975b6d267bd635a519bcb37
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'so'
+	vlicense "${FILESDIR}/LICENSE"
+}

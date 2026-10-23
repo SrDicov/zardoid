@@ -1,0 +1,19 @@
+# Template file for 'restic-bin'
+pkgname=restic-bin
+version=0.19.1
+revision=1
+archs="x86_64*"
+short_desc="Fast, secure, efficient backup program"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://restic.net"
+distfiles="https://github.com/restic/restic/releases/download/v${version}/restic_${version}_dragonfly_amd64.bz2"
+checksum=db5a689c51a04b6e937ab4ca836791465606cf26770ae9106b3a95a98784b4b6
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'restic_'${version}'_dragonfly_amd64' 'restic'
+	vlicense "${FILESDIR}/LICENSE"
+}

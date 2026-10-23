@@ -1,0 +1,18 @@
+# Template file for 'ruff-bin'
+pkgname=ruff-bin
+version=0.17.1
+revision=1
+archs="x86_64"
+short_desc="Extremely fast Python linter and code formatter, written in Rust"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://docs.astral.sh/ruff"
+distfiles="https://github.com/astral-sh/ruff/releases/download/${version}/ruff-x86_64-unknown-linux-gnu.tar.gz"
+checksum=a293ac937715ae6fb6b64da86761598379e6149f40fbc00fde9ba8a2a562ac65
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'ruff'
+	vlicense "${FILESDIR}/LICENSE"
+}

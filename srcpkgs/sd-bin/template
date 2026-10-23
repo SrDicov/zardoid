@@ -1,0 +1,19 @@
+# Template file for 'sd-bin'
+pkgname=sd-bin
+version=1.1.0
+revision=1
+archs="x86_64"
+short_desc="Intuitive find & replace CLI (sed alternative)"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/chmln/sd"
+distfiles="https://github.com/chmln/sd/releases/download/v${version}/sd-v${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=3613eca74cd686739bb5a6d68319aa56c747e7315274d02323a2ca2b1c5d82d2
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'sd'
+	vman 'sd.1'
+	vlicense 'LICENSE'
+}

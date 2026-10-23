@@ -1,0 +1,19 @@
+# Template file for 'sad-bin'
+pkgname=sad-bin
+version=0.4.32
+revision=1
+archs="x86_64"
+hostmakedepends="unzip"
+short_desc="CLI search and replace | Space Age seD"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/ms-jpq/sad"
+distfiles="https://github.com/ms-jpq/sad/releases/download/v${version}/x86_64-unknown-linux-gnu.zip"
+checksum=9986dea2510b8b49ac110be62055ddac44fca918d59325918786d2d1bb289d60
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'sad'
+	vlicense "${FILESDIR}/LICENSE"
+}

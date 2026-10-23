@@ -1,0 +1,21 @@
+# Template file for 'skim-bin'
+pkgname=skim-bin
+version=5.7.4
+revision=1
+archs="x86_64"
+short_desc="Fuzzy Finder in rust!"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://crates.io/crates/skim"
+distfiles="https://github.com/skim-rs/skim/releases/download/v${version}/skim-x86_64-unknown-linux-gnu.tar.xz"
+checksum=ac4a42e13955357d8009a464486048b79bd8f6d3e3a71f59d89c893a996735dc
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'sk'
+	vman 'man/man1/sk.1'
+	vman 'man/man1/sk-tmux.1'
+	vlicense 'LICENSE'
+	vlicense 'shell/LICENSE'
+}

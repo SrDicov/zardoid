@@ -1,0 +1,18 @@
+# Template file for 'shellcheck-bin'
+pkgname=shellcheck-bin
+version=0.11.0
+revision=1
+archs="x86_64*"
+short_desc="ShellCheck, a static analysis tool for shell scripts"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://www.shellcheck.net"
+distfiles="https://github.com/koalaman/shellcheck/releases/download/v${version}/shellcheck-v${version}.linux.x86_64.tar.gz"
+checksum=b7af85e41cc99489dcc21d66c6d5f3685138f06d34651e6d34b42ec6d54fe6f6
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'shellcheck'
+}

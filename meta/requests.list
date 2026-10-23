@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/Nukesor/pueue/releases/download/v4.0.4/pueue-x86_64-unknown-freebsd pueue-bin
-https://github.com/pulumi/pulumi/releases/download/v3.270.0/pulumi-v3.270.0-linux-x64.tar.gz pulumi-bin
-https://codeberg.org/jahway603/ramfetch/releases/download/1.1.0a/v1.1.0a.tar.gz ramfetch-bin
-https://github.com/ranger/ranger/archive/refs/heads/master.tar.gz ranger-bin
-https://github.com/rclone/rclone/releases/download/v1.75.2/rclone-v1.75.2-freebsd-amd64.zip rclone-bin
-https://github.com/restic/restic/releases/download/v0.19.1/restic_0.19.1_dragonfly_amd64.bz2 restic-bin
-https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-unknown-linux-musl.tar.gz ripgrep-bin
-https://github.com/astral-sh/ruff/releases/download/0.17.1/ruff-x86_64-unknown-linux-gnu.tar.gz ruff-bin
-https://github.com/peak/s5cmd/releases/download/v2.3.0/s5cmd_2.3.0_Linux-64bit.tar.gz s5cmd-bin
-https://github.com/ms-jpq/sad/releases/download/v0.4.32/x86_64-unknown-linux-gnu.zip sad-bin
-https://github.com/Genymobile/scrcpy/releases/download/v5.0.1/scrcpy-linux-x86_64-v5.0.1.tar.gz scrcpy-bin
-https://github.com/chmln/sd/releases/download/v1.1.0/sd-v1.1.0-x86_64-unknown-linux-gnu.tar.gz sd-bin
-https://github.com/charmbracelet/sequin/releases/download/v0.3.1/sequin_0.3.1_Freebsd_x86_64.tar.gz sequin-bin
-https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.gz shellcheck-bin
-https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_linux_amd64 shfmt-bin
-https://github.com/skim-rs/skim/releases/download/v5.7.4/skim-x86_64-unknown-linux-gnu.tar.xz skim-bin
-https://github.com/samtay/so/releases/download/v0.4.10/so-x86_64-unknown-linux-gnu.tar.gz so-bin
-https://github.com/pkgforge/soar/releases/download/v0.13.4/soar-x86_64-linux.tar.gz soar-bin
-https://github.com/charmbracelet/soft-serve/releases/download/v0.12.3/soft-serve_0.12.3_Freebsd_x86_64.tar.gz soft-serve-bin
-https://github.com/getsops/sops/releases/download/v3.13.3/sops-v3.13.3.linux.amd64 sops-bin
 https://github.com/splitux-gg/splitux/releases/download/v0.20.0/splitux-v0.20.0-linux-x86_64.tar.gz splitux-bin
 https://github.com/crmne/spotifast/releases/download/v0.13.3/spotifast-v0.13.3-x86_64-unknown-linux-gnu.tar.gz spotifast-bin
 https://github.com/ivan-hc/Spotify-appimage/releases/download/continuous/Spotify-candidate-1.2.96.518.g366879e1-x86_64.AppImage.zsync spotify-appimage-bin

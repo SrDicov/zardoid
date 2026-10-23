@@ -1,0 +1,17 @@
+# Template file for 'pulumi-bin'
+pkgname=pulumi-bin
+version=3.270.0
+revision=1
+archs="x86_64"
+short_desc="Pulumi - Infrastructure as Code in any programming language 🚀"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://www.pulumi.com"
+distfiles="https://github.com/pulumi/pulumi/releases/download/v${version}/pulumi-v${version}-linux-x64.tar.gz"
+checksum=d05899c251cb0413a9a2304f23229218c46852a61256913f34f08ebc27266139
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'pulumi-watch' 'pulumi'
+}

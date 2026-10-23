@@ -1,0 +1,18 @@
+# Template file for 'soar-bin'
+pkgname=soar-bin
+version=0.13.4
+revision=1
+archs="x86_64*"
+short_desc="Fast, modern, distro-independent package manager that just works"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://soar.qaidvoid.dev"
+distfiles="https://github.com/pkgforge/soar/releases/download/v${version}/soar-x86_64-linux.tar.gz"
+checksum=5e92f085b39b676d1bee736325b53402a78af02ec7322d86a21df591a80a3b74
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'soar'
+	vlicense 'LICENSE'
+}

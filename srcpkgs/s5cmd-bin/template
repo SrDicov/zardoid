@@ -1,0 +1,19 @@
+# Template file for 's5cmd-bin'
+pkgname=s5cmd-bin
+version=2.3.0
+revision=1
+archs="x86_64*"
+short_desc="Parallel S3 and local filesystem execution tool"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/peak/s5cmd"
+distfiles="https://github.com/peak/s5cmd/releases/download/v${version}/s5cmd_${version}_Linux-64bit.tar.gz"
+checksum=de0fdbfa3aceae55e069ba81a0fc17b2026567637603734a387b2fca06c299b4
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 's5cmd'
+	vlicense 'LICENSE'
+}

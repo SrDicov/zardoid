@@ -1,0 +1,24 @@
+# Template file for 'sops-bin'
+pkgname=sops-bin
+version=3.13.3
+revision=1
+archs="x86_64*"
+short_desc="Simple and flexible tool for managing secrets"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MPL-2.0"
+homepage="https://getsops.io"
+distfiles="https://github.com/getsops/sops/releases/download/v${version}/sops-v${version}.linux.amd64"
+checksum=e5bec3346a873ae91d871550f3e698c1aad962aff462a080e40f25fde17fef6b
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="sops-v3.13.3.linux.amd64"
+
+post_extract() {
+	local f='sops-v'${version}'.linux.amd64'
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	vbin 'sops-v'${version}'.linux.amd64' 'sops'
+}

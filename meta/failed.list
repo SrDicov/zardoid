@@ -49,3 +49,9 @@ https://github.com/oras-project/oras/releases/download/v1.3.4/oras_1.3.4_freebsd
 https://github.com/dylanaraps/pfetch/archive/refs/heads/master.tar.gz	pfetch-bin	generacion
 https://dev.yorhel.nl/download/ncdu-2.7-linux-x86_64.tar.gz	ncdu-bin	xlint/build
 https://github.com/OpenRCT2/OpenRCT2/releases/download/v0.5.6/OpenRCT2-v0.5.6-Linux-bookworm-x86_64.tar.gz	openrct2-bin	xlint/build
+https://github.com/Nukesor/pueue/releases/download/v4.0.4/pueue-x86_64-unknown-freebsd	pueue-bin	generacion
+https://github.com/ranger/ranger/archive/refs/heads/master.tar.gz	ranger-bin	generacion
+https://github.com/rclone/rclone/releases/download/v1.75.2/rclone-v1.75.2-freebsd-amd64.zip	rclone-bin	generacion
+https://github.com/charmbracelet/sequin/releases/download/v0.3.1/sequin_0.3.1_Freebsd_x86_64.tar.gz	sequin-bin	generacion
+https://github.com/charmbracelet/soft-serve/releases/download/v0.12.3/soft-serve_0.12.3_Freebsd_x86_64.tar.gz	soft-serve-bin	generacion
+https://codeberg.org/jahway603/ramfetch/releases/download/1.1.0a/v1.1.0a.tar.gz	ramfetch-bin	xlint/build

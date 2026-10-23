@@ -1,0 +1,21 @@
+# Template file for 'ripgrep-bin'
+pkgname=ripgrep-bin
+version=15.2.0
+revision=1
+archs="x86_64*"
+short_desc="Ripgrep recursively searches directories for a regex pattern while"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Unlicense"
+homepage="https://github.com/BurntSushi/ripgrep"
+distfiles="https://github.com/BurntSushi/ripgrep/releases/download/${version}/ripgrep-${version}-x86_64-unknown-linux-musl.tar.gz"
+checksum=33e15bcf1624b25cdd2a55813a47a2f95dbe126268203e76aa6a585d1e7b149c
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'rg'
+	vman 'doc/rg.1'
+	vinstall 'complete/rg.bash' 644 usr/share/bash-completion/completions 'rg'
+	vinstall 'complete/_rg' 644 usr/share/zsh/site-functions
+	vinstall 'complete/rg.fish' 644 usr/share/fish/vendor_completions.d
+}
