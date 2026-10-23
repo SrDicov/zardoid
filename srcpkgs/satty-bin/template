@@ -1,0 +1,40 @@
+# Template file for 'satty-bin'
+pkgname=satty-bin
+version=0.22.0
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of Satty screenshot annotation tool"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/Satty-AppImage"
+distfiles="https://github.com/pkgforge-dev/Satty-AppImage/releases/download/${version}-1%402026-10-01_1790876496/Satty-${version}-1-anylinux-x86_64.AppImage>satty-bin-${version}.AppImage"
+checksum=a8fe9ddf07554c7366295f3dfc3f7d9a9018590d7c0cd89b4f82e9f97e99f2a4
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/satty-bin
+	vcopy "squashfs-root/*" opt/satty-bin
+	vmkdir usr/bin
+	ln -sf "/opt/satty-bin/AppRun" "${DESTDIR}/usr/bin/satty"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}

@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/SACDExtractGUI-AppImage/releases/download/0.1%402026-09-10_1789017294/SACDExtractGUI-0.1-anylinux-x86_64.AppImage sacdextractgui-bin
-https://github.com/pkgforge-dev/SameBoy-AppImage/releases/download/1.0.3-2%402026-10-01_1790876552/SameBoy-1.0.3-2-anylinux-x86_64.AppImage sameboy-bin
-https://github.com/pkgforge-dev/Sanicball-AppImage/releases/download/0.8.2%402026-09-01_1788278183/Sanicball-0.8.2-anylinux-x86_64.AppImage sanicball-bin
-https://github.com/pkgforge-dev/Satty-AppImage/releases/download/0.22.0-1%402026-10-01_1790876496/Satty-0.22.0-1-anylinux-x86_64.AppImage satty-bin
-https://github.com/pkgforge-dev/Sayonara-Player-AppImage-Enhanced/releases/download/1.12.0-stable1%402026-10-01_1790876682/Sayonara-1.12.0-stable1-anylinux-x86_64.AppImage sayonara-player-bin
-https://github.com/pkgforge-dev/ScummVM-AppImage/releases/download/2026.3.0-1%402026-10-01_1790875406/ScummVM-2026.3.0-1-anylinux-x86_64.AppImage scummvm-bin
-https://github.com/pkgforge-dev/SDLPoP-AppImage/releases/download/3c5add5fb%402026-10-01_1790876450/SDLPoP-3c5add5fb-anylinux-x86_64.AppImage sdlpop-bin
-https://github.com/pkgforge-dev/Secrets-AppImage/releases/download/13.0.1-1%402026-10-01_1790876410/Secrets-13.0.1-1-anylinux-x86_64.AppImage secrets-bin
-https://github.com/pkgforge-dev/servo-AppImage/releases/download/v0.6.0%402026-10-01_1790876557/Servo-v0.6.0-anylinux-x86_64.AppImage servo-bin
-https://github.com/pkgforge-dev/SheepShaver-AppImage/releases/download/892eeb74a%402026-10-01_1790876438/SheepShaver-892eeb74a-anylinux-x86_64.AppImage sheepshaver-bin
-https://github.com/pkgforge-dev/Shiru-AppImage/releases/download/v6.8.0%402026-09-22_1790085680/Shiru-v6.8.0-anylinux-x86_64.AppImage shiru-bin
-https://github.com/pkgforge-dev/Shockolate-AppImage/releases/download/6c1fe472e%402026-10-01_1790876647/Shockolate-6c1fe472e-anylinux-x86_64.AppImage shockolate-bin
-https://github.com/pkgforge-dev/Shotwell-AppImage/releases/download/0.32.17-1%402026-10-01_1790876224/Shotwell-0.32.17-1-anylinux-x86_64.AppImage shotwell-bin
-https://github.com/pkgforge-dev/Signal-AppImage-Enhanced/releases/download/8.28.0-1%402026-10-01_1790876559/Signal-8.28.0-1-anylinux-x86_64.AppImage signal-desktop-bin
-https://github.com/pkgforge-dev/Simitone-AppImage/releases/download/0.8.22-forked%402026-10-01_1790866711/Simitone-0.8.22-forked-anylinux-x86_64.AppImage simitone-bin
-https://github.com/pkgforge-dev/SimpleX-Chat-AppImage-Enhanced/releases/download/v7.0.3%402026-10-01_1790876600/simplex-v7.0.3-anylinux-x86_64.AppImage simplex-chat-bin
-https://github.com/pkgforge-dev/Simutrans-AppImage/releases/download/124.5-2%402026-10-01_1790875311/Simutrans-124.5-2-anylinux-x86_64.AppImage simutrans-bin
-https://github.com/pkgforge-dev/SiriKali-AppImage/releases/download/1.8.6-1%402026-10-01_1790876599/SiriKali-1.8.6-1-anylinux-x86_64.AppImage sirikali-bin
-https://github.com/pkgforge-dev/SkyEmu-AppImage/releases/download/5%402026-09-01_1788278151/SkyEmu-5-anylinux-x86_64.AppImage skyemu-bin
-https://github.com/pkgforge-dev/Slack-AppImage/releases/download/4.52.162-1%402026-10-01_1790876246/Slack-4.52.162-1-anylinux-x86_64.AppImage slack-bin
 https://github.com/pkgforge-dev/Snes9x-AppImage-Enhanced/releases/download/1.63-1%402026-10-01_1790876690/Snes9x-1.63-1-anylinux-x86_64.AppImage snes9x-bin
 https://github.com/pkgforge-dev/soh-AppImage-Enhanced/releases/download/9.2.3%402026-09-01_1788278441/SOH-9.2.3-anylinux-x86_64.AppImage soh-bin
 https://github.com/pkgforge-dev/Solaar-AppImage/releases/download/1.1.20-2%402026-10-01_1790876123/Solaar-1.1.20-2-anylinux-x86_64.AppImage solaar-bin
