@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/Nestopia-AppImage/releases/download/1.53.2-1%402026-09-01_1788278120/Nestopia-1.53.2-1-anylinux-x86_64.AppImage nestopia-bin
-https://github.com/pkgforge-dev/Neverball-AppImage/releases/download/1.6.0%402026-09-22_1790090877/Neverball-1.6.0-anylinux-x86_64.AppImage neverball-bin
-https://github.com/pkgforge-dev/NewsFlash-AppImage/releases/download/5.2.5-1%402026-10-01_1790875135/Newsflash-5.2.5-1-anylinux-x86_64.AppImage newsflash-bin
-https://github.com/pkgforge-dev/NFSIISE-AppImage/releases/download/fde04b571%402026-09-11_1789102637/Need_For_Speed_II_SE-fde04b571-anylinux-x86_64.AppImage nfsiise-bin
-https://github.com/pkgforge-dev/Nitrogen-AppImage/releases/download/1.6.1-6%402026-09-01_1788278110/nitrogen-1.6.1-6-anylinux-x86_64.AppImage nitrogen-bin
-https://github.com/pkgforge-dev/NSZ-AppImage/releases/download/5.0.0-2%402026-10-01_1790875800/NSZ-5.0.0-2-anylinux-x86_64.AppImage nsz-bin
-https://github.com/pkgforge-dev/Nugget-Doom-AppImage-Enhanced/releases/download/6.0.1%402026-10-01_1790876537/Nugget_Doom-6.0.1-anylinux-x86_64.AppImage nugget-doom-bin
-https://github.com/pkgforge-dev/NXEngine-evo-AppImage-Enhanced/releases/download/1f093d142%402026-10-01_1790875292/Cave_Story_NX-evo-1f093d142-anylinux-x86_64.AppImage nxengine-evo-bin
-https://github.com/pkgforge-dev/OBS-Studio-AppImage/releases/download/32.2.2-1%402026-10-01_1790876050/OBS_Studio-32.2.2-1-anylinux-x86_64.AppImage obs-studio-bin
-https://github.com/pkgforge-dev/Obsidian-AppImage-Enhanced/releases/download/v1.13.7%402026-10-01_1790875620/Obsidian-v1.13.7-anylinux-x86_64.AppImage obsidian-bin
-https://github.com/pkgforge-dev/OCRmyPDF-AppImage/releases/download/17.12.1-1%402026-10-01_1790876632/ocrmypdf-17.12.1-1-anylinux-x86_64.AppImage ocrmypdf-bin
-https://github.com/pkgforge-dev/GNU-Octave-AppImage/releases/download/11.3.0-1%402026-10-01_1790875878/GNU_Octave-11.3.0-1-anylinux-x86_64.AppImage octave-bin
-https://github.com/pkgforge-dev/Odamex-AppImage/releases/download/12.3.0%402026-10-13_1791903678/Odamex-12.3.0-anylinux-x86_64.AppImage odamex-bin
-https://github.com/pkgforge-dev/Okteta-AppImage/releases/download/0.26.28-1%402026-10-01_1790876648/Okteta-0.26.28-1-anylinux-x86_64.AppImage okteta-bin
-https://github.com/omikuji-launcher/omikuji/releases/download/v0.20.6/Omikuji-v0.20.6-anylinux-x86_64.AppImage omikuji-bin
-https://github.com/pkgforge-dev/OpenBoardView-AppImage/releases/download/cc76e69%402026-10-01_1790875653/OpenBoardView-cc76e69-anylinux-x86_64.AppImage openboardview-bin
-https://github.com/pkgforge-dev/OpenClaw-AppImage/releases/download/5ee5740ca%402026-09-01_1788268462/OpenClaw-5ee5740ca-anylinux-x86_64.AppImage openclaw-bin
-https://github.com/pkgforge-dev/opencode-cli-AppImage/releases/download/v1.19.0%402026-10-15_1792067388/opencode-v1.19.0-anylinux-x86_64.AppImage opencode-bin
-https://github.com/pkgforge-dev/opencode-AppImage-Enhanced/releases/download/v1.19.0%402026-10-15_1792067384/OpenCode-v1.19.0-anylinux-x86_64.AppImage opencode-desktop-bin
-https://github.com/pkgforge-dev/OpenGothic-AppImage/releases/download/26b7159%402026-10-01_1790876582/OpenGothic-26b7159-anylinux-x86_64.AppImage opengothic-bin
 https://github.com/pkgforge-dev/OpenJazz-AppImage/releases/download/a1626f4ed%402026-10-01_1790863901/OpenJazz-a1626f4ed-anylinux-x86_64.AppImage openjazz-bin
 https://github.com/pkgforge-dev/OpenLara-AppImage/releases/download/3b268ca4b%402026-10-01_1790876333/OpenLara-3b268ca4b-anylinux-x86_64.AppImage openlara-bin
 https://github.com/pkgforge-dev/OpenLoco-AppImage/releases/download/26.09%402026-10-01_1790876342/OpenLoco-26.09-anylinux-x86_64.AppImage openloco-bin
