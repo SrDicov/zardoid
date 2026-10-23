@@ -1,0 +1,18 @@
+# Template file for 'fclones-bin'
+pkgname=fclones-bin
+version=0.35.0
+revision=1
+archs="x86_64"
+short_desc="Efficient Duplicate File Finder"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkolaczk/fclones"
+distfiles="https://github.com/pkolaczk/fclones/releases/download/v${version}/fclones-${version}-linux-glibc-x86_64.tar.gz"
+checksum=24631bca99e4c20707d12f24676e83a5f1169bd350924dd9852157b243246dff
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bin/fclones'
+	vlicense 'share/doc/fclones/copyright'
+}

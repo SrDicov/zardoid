@@ -1,0 +1,20 @@
+# Template file for 'f2-bin'
+pkgname=f2-bin
+version=2.2.2
+revision=1
+archs="x86_64*"
+short_desc="F2 is a cross-platform command-line tool for batch renaming files
+ and"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://f2.freshman.tech"
+distfiles="https://github.com/ayoisaiah/f2/releases/download/v${version}/f2_${version}_linux_amd64.tar.gz"
+checksum=d44bca9d9a08721655e0fd4a3459f4c2b844abb896de3e6a74551e8bf5f51432
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'f2'
+	vlicense 'LICENCE'
+}

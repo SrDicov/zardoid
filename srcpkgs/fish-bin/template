@@ -1,0 +1,17 @@
+# Template file for 'fish-bin'
+pkgname=fish-bin
+version=4.9.3
+revision=1
+archs="x86_64*"
+short_desc="User-friendly command line shell"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://fishshell.com"
+distfiles="https://github.com/fish-shell/fish-shell/releases/download/${version}/fish-${version}-linux-x86_64.tar.xz"
+checksum=8f643d10ad1abb0ef7072764c01ceb5cf61b2d373fda400cf60f0bad69b7e095
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'fish'
+}

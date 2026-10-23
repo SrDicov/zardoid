@@ -1,0 +1,19 @@
+# Template file for 'dyff-bin'
+pkgname=dyff-bin
+version=1.12.0
+revision=1
+archs="x86_64*"
+short_desc="ˈdʏf/ - diff tool for YAML files, and sometimes JSON"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/homeport/dyff"
+distfiles="https://github.com/homeport/dyff/releases/download/v${version}/dyff_${version}_linux_amd64.tar.gz"
+checksum=50b43017a7474c2216694d0b5387439488a1d3c2b5eefe1674cd0e5c18bc0316
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'dyff'
+	vlicense 'LICENSE'
+}

@@ -1,0 +1,18 @@
+# Template file for 'fd-bin'
+pkgname=fd-bin
+version=10.5.0
+revision=1
+archs="x86_64"
+short_desc="Simple, fast and user-friendly alternative to 'find'"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/sharkdp/fd"
+distfiles="https://github.com/sharkdp/fd/releases/download/v${version}/fd-v${version}-x86_64-unknown-linux-gnu.tar.gz"
+checksum=a1259cd129636efbc3fef123525c1b49e88fe5088c012630983c310e52fdfa95
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'fd'
+	vman 'fd.1'
+}

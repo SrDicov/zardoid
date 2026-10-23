@@ -1,0 +1,24 @@
+# Template file for 'genact-bin'
+pkgname=genact-bin
+version=1.6.0
+revision=1
+archs="x86_64*"
+short_desc="Nonsense activity generator"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://svenstaro.github.io/genact/"
+distfiles="https://github.com/svenstaro/genact/releases/download/v${version}/genact-${version}-x86_64-unknown-linux-gnu"
+checksum=df45257b5c21256877abb2ad61c452beb9a3908bd6fbb34e10d49315fa357f79
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="genact-1.6.0-x86_64-unknown-linux-gnu"
+
+post_extract() {
+	local f='genact-'${version}'-x86_64-unknown-linux-gnu'
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	vbin 'genact-'${version}'-x86_64-unknown-linux-gnu' 'genact'
+	vlicense "${FILESDIR}/LICENSE"
+}

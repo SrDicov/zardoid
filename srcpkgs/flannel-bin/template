@@ -1,0 +1,18 @@
+# Template file for 'flannel-bin'
+pkgname=flannel-bin
+version=0.28.10
+revision=1
+archs="x86_64*"
+short_desc="Flannel is a network fabric for containers, designed for Kubernetes"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/flannel-io/flannel"
+distfiles="https://github.com/flannel-io/flannel/releases/download/v${version}/flannel-v${version}-linux-amd64.tar.gz"
+checksum=7382a05edf2de4df31950eae3d654ea3e140c3aaac1b7e1dd2048ff33b63211f
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'flanneld' 'flannel'
+}

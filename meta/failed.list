@@ -14,3 +14,12 @@ https://github.com/rs/curlie/releases/download/v1.8.2/curlie_1.8.2_freebsd_amd64
 https://github.com/direnv/direnv/releases/download/v2.38.2/direnv.freebsd-amd64	direnv-bin	generacion
 https://github.com/mr-karan/doggo/releases/download/v1.4.1/doggo-freebsd-x86_64.tar.gz	doggo-bin	generacion
 https://github.com/muesli/duf/releases/download/v0.9.1/duf_0.9.1_freebsd_x86_64.tar.gz	duf-bin	generacion
+https://github.com/xinghao-wu/epubworm/releases/download/rolling/epubworm-linux-x86_64.tar.gz	epubworm-bin	generacion
+https://github.com/ffuf/ffuf/releases/download/v2.3.0/ffuf_2.3.0_freebsd_amd64.tar.gz	ffuf-bin	generacion
+https://github.com/charmbracelet/freeze/releases/download/v0.2.2/freeze_0.2.2_Freebsd_x86_64.tar.gz	freeze-bin	generacion
+https://github.com/fatedier/frp/releases/download/v0.71.1/frp_0.71.1_freebsd_amd64.tar.gz	frp-bin	generacion
+https://github.com/junegunn/fzf/releases/download/v0.74.5/fzf-0.74.5-freebsd_amd64.tar.gz	fzf-bin	generacion
+https://github.com/dundee/gdu/releases/download/v5.38.0/gdu_freebsd_amd64.tgz	gdu-bin	generacion
+https://github.com/fastfetch-cli/fastfetch/releases/download/2.70.0/fastfetch-dragonfly-amd64.tar.gz	fastfetch-bin	xlint/build
+https://github.com/epi052/feroxbuster/releases/download/v2.13.1/feroxbuster_amd64.deb.zip	feroxbuster-bin	xlint/build
+https://github.com/jhspetersson/fselect/releases/download/0.10.3/fselect-x86_64-win.zip	fselect-bin	xlint/build

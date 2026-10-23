@@ -1,0 +1,19 @@
+# Template file for 'flux2-bin'
+pkgname=flux2-bin
+version=2.9.6
+revision=1
+archs="x86_64*"
+short_desc="Open and extensible continuous delivery solution for Kubernetes.
+ Powered"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://fluxcd.io"
+distfiles="https://github.com/fluxcd/flux2/releases/download/v${version}/flux_${version}_linux_amd64.tar.gz"
+checksum=b4d22673e9246cbd628881f1a9ef3b090085dced291e42d804555cee8e8d42c5
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'flux'
+}

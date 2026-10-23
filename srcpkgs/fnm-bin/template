@@ -1,0 +1,18 @@
+# Template file for 'fnm-bin'
+pkgname=fnm-bin
+version=1.39.0
+revision=1
+archs="x86_64*"
+hostmakedepends="unzip"
+short_desc="Fast and simple Node.js version manager, built in Rust"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://fnm.vercel.app"
+distfiles="https://github.com/Schniz/fnm/releases/download/v${version}/fnm-linux.zip"
+checksum=7807664f39d39fc518da1c35ba0181e4b3267603c4b1dedeb4b5fc6ae440a224
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'fnm'
+}

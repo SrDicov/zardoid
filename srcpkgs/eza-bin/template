@@ -1,0 +1,17 @@
+# Template file for 'eza-bin'
+pkgname=eza-bin
+version=0.23.5
+revision=1
+archs="x86_64"
+short_desc="Modern alternative to ls"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="EUPL-1.2"
+homepage="https://eza.rocks"
+distfiles="https://github.com/eza-community/eza/releases/download/v${version}/eza_x86_64-unknown-linux-gnu.tar.gz"
+checksum=35c70c5c43c29108075e58b893234c67ef585f0b53a7eaf8e9e7d4eec9f339b4
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'eza'
+}
