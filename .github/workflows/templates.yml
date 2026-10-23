@@ -139,7 +139,8 @@ jobs:
           # user namespaces, que el docker de Actions no deja usar.
           docker run --rm --privileged -v "$PWD:/w" -v /dev:/dev -w /w "$VOID_IMAGE" sh -c '
             set -e
-            xbps-install -Sy bash git curl base-devel >/dev/null
+            xbps-install -Sy bash git curl base-devel file binutils >/dev/null
+            command -v file objdump
             git clone --depth 1 https://github.com/void-linux/void-packages /w/vp
             cp -r staging/srcpkgs/* /w/vp/srcpkgs/
             cd /w/vp
