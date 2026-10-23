@@ -76,11 +76,3 @@ https://github.com/zed-industries/zed/releases/download/v1.24.2/zed-linux-x86_64
 https://github.com/zen-browser/desktop/releases/download/1.23.3b/zen.linux-x86_64.tar.xz	zen-browser-bin	xlint/build
 https://github.com/rafalb8/ZeroTierOne-Static/releases/download/1.16.2/zerotier-one-x86_64.tar.gz	zerotierone-static-bin	xlint/build
 https://github.com/ajeetdsouza/zoxide/releases/download/v0.10.0/zoxide-0.10.0-x86_64-unknown-linux-musl.tar.gz	zoxide-bin	xlint/build
-https://github.com/pkgforge-dev/12to11-AppImage/releases/download/0.1-1%402026-09-01_1788277686/12to11-0.1-1-anylinux-x86_64.AppImage	12to11-bin	xlint/build
-https://github.com/pkgforge-dev/2ship2harkinian-AppImage-Enhanced/releases/download/5.0.1%402026-09-07_1788788271/2SHIP-5.0.1-anylinux-x86_64.AppImage	2ship2harkinian-bin	xlint/build
-https://github.com/pkgforge-dev/86box-AppImage-Enhanced/releases/download/6.0%402026-10-12_1791805425/86Box-6.0-anylinux-x86_64.AppImage	86box-bin	xlint/build
-https://github.com/pkgforge-dev/AAAAXY-AppImage-Enhanced/releases/download/1.7.218-1%402026-10-01_1790876259/AAAAXY-1.7.218-1-anylinux-x86_64.AppImage	aaaaxy-bin	xlint/build
-https://github.com/pkgforge-dev/Abaddon-AppImage/releases/download/0.2.4%402026-10-01_1790876679/abaddon-0.2.4-anylinux-x86_64.AppImage	abaddon-bin	xlint/build
-https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage/releases/download/32.0.0.465-1%402026-10-01_1790865140/Adobe_Flash_Player_Standalone-32.0.0.465-1-anylinux-x86_64.AppImage	adobe-flash-player-bin	xlint/build
-https://github.com/pkgforge-dev/alacritty-AppImage/releases/download/v0.17.0%402026-10-01_1790876663/Alacritty-v0.17.0-anylinux-x86_64.AppImage	alacritty-bin	xlint/build
-https://github.com/pkgforge-dev/Amarok-AppImage/releases/download/3.3.3-1%402026-10-01_1790876576/Amarok-3.3.3-1-anylinux-x86_64.AppImage	amarok-bin	xlint/build

@@ -557,7 +557,10 @@ fn run(a: Args) -> Res<()> {
     // Nombre local del fichero: el de la URL puede estar codificado (GitLab) o
     // faltar (AppImage, cuyo extractor necesita un nombre predecible).
     if kind == Kind::AppImage {
-        distfiles = format!("{distfiles}>${{pkgname}}-${{version}}.AppImage");
+        // Sin `${pkgname}`: `dq` escapa los `$` de lo que viene del upstream y
+        // el fichero acabaría llamado literalmente "${pkgname}-..."; entonces
+        // `skip_extraction` no coincide y xbps-src intenta extraer el AppImage.
+        distfiles = format!("{distfiles}>{base}-${{version}}.AppImage");
     } else {
         let url_base = asset.url.rsplit('/').next().unwrap_or("");
         if url_base != asset.name {

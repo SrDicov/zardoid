@@ -19,6 +19,9 @@ on:
       - 'scripts/gen-queue.sh'
       - 'scripts/merge-validated.sh'
       - 'scripts/import-belka.sh'
+      - 'src/**'
+      - 'Cargo.toml'
+      - 'Cargo.lock'
   schedule:
     - cron: '*/30 * * * *'
   workflow_dispatch:
