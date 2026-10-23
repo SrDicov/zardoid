@@ -1,0 +1,14 @@
+[package]
+name = "zardoid"
+version = "0.1.0"
+edition = "2021"
+description = "Genera templates de Void Linux desde releases upstream"
+license = "MIT"
+
+[dependencies]
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

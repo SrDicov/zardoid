@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Tests
+        run: cargo test --locked
+      - name: Compilar
+        run: cargo build --release --locked
+      - name: Empaquetar
+        run: |
+          mkdir -p dist
+          cp target/release/zardoid dist/
+          cp README.md LICENSE dist/
+          tar -czf zardoid-x86_64-linux.tar.gz -C dist .
+          sha256sum zardoid-x86_64-linux.tar.gz > zardoid-x86_64-linux.tar.gz.sha256
+          cat zardoid-x86_64-linux.tar.gz.sha256
+      - name: Publicar
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            zardoid-x86_64-linux.tar.gz
+            zardoid-x86_64-linux.tar.gz.sha256
+          generate_release_notes: true
