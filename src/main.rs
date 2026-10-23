@@ -351,10 +351,15 @@ fn run(a: Args) -> Res<()> {
         }
         Input::Direct { url, hint_tag } => {
             let name = url.rsplit('/').next().unwrap_or("asset").to_string();
-            let tag = hint_tag.or_else(|| forge::version_in(&url)).ok_or(Fail(
-                1,
-                "no se pudo deducir la versión del asset; usa un repo".into(),
-            ))?;
+            let tag = hint_tag
+                .clone()
+                .and_then(|t| forge::version_in(&t).or_else(|| forge::date_version(&t)))
+                .or_else(|| forge::version_in(&url))
+                .or_else(|| forge::date_version(&url))
+                .ok_or(Fail(
+                    1,
+                    "no se pudo deducir la versión del asset; usa un repo".into(),
+                ))?;
             // El índice de Belka son assets directos: sin esto no hay
             // descripción ni licencia, y xlint rechaza el template.
             let target = forge::target_from_asset(&url);
@@ -675,6 +680,13 @@ fn versioned_url(url: &str, version: &str) -> String {
         },
     };
     let mut out = path.replace(version, "${version}");
+    // Versión fecha (20261001) contra tag con guiones (2026-10-01).
+    if version.len() == 8 && version.bytes().all(|b| b.is_ascii_digit()) {
+        out = out.replace(
+            &format!("{}-{}-{}", &version[..4], &version[4..6], &version[6..]),
+            "${version}",
+        );
+    }
     out = out.replace(&version.replace('.', "%2E"), "${version}");
     format!("{prefix}{out}")
 }

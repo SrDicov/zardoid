@@ -162,6 +162,28 @@ pub fn version_in(url: &str) -> Option<String> {
             return Some(tok.to_string());
         }
     }
+    date_version(base)
+}
+
+/// Versión a partir de una fecha: los tags de pkgforge son `hash@2026-10-01_1790`.
+/// xbps exige una versión con pinta de número, así que se compacta a `20261001`.
+pub fn date_version(s: &str) -> Option<String> {
+    let b = s.as_bytes();
+    for i in 0..b.len().saturating_sub(9) {
+        let d = &b[i..i + 10];
+        if d[0..4].iter().all(u8::is_ascii_digit)
+            && d[4] == b'-'
+            && d[5..7].iter().all(u8::is_ascii_digit)
+            && d[7] == b'-'
+            && d[8..10].iter().all(u8::is_ascii_digit)
+        {
+            let m = &s[i + 5..i + 7];
+            let day = &s[i + 8..i + 10];
+            if ("01"..="12").contains(&m) && ("01"..="31").contains(&day) {
+                return Some(format!("{}{m}{day}", &s[i..i + 4]));
+            }
+        }
+    }
     None
 }
 
@@ -502,6 +524,20 @@ mod tests {
         assert_eq!(b64decode("YQ==").unwrap(), b"a");
         assert_eq!(b64decode("YWI=").unwrap(), b"ab");
         assert!(b64decode("@@@").is_none());
+    }
+
+    #[test]
+    fn fecha_como_version() {
+        assert_eq!(
+            date_version("ba2a3628d@2026-10-01_1790876505").as_deref(),
+            Some("20261001")
+        );
+        assert_eq!(date_version("continuous"), None);
+        assert_eq!(date_version("2026-13-45"), None);
+        assert_eq!(
+            version_in("https://x/y/Aerofoil-ba2a3628d-anylinux-x86_64.AppImage").as_deref(),
+            None
+        );
     }
 
     #[test]
