@@ -7,12 +7,33 @@ short_desc="Shield: Take control of your Discord experience with GoofCord – a"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="OSL-3.0"
 homepage="https://github.com/Milkshiift/GoofCord"
-distfiles="https://github.com/Milkshiift/GoofCord/releases/download/v${version}/GoofCord-${version}-linux-x64.tar.xz"
-checksum=30a80ba7f1ef03258fc2168586f89febae45be8ac02de2bf42aef9963e876fed
+distfiles="https://github.com/Milkshiift/GoofCord/releases/download/v${version}/GoofCord-${version}-linux-x86_64.AppImage>goofcord-bin-${version}.AppImage"
+checksum=f46b307d01988c770e575daebaef8f4a2a29016c836822288b825b6b3b9f623a
 noshlibprovides=yes
 nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
 
 do_install() {
-	vbin 'chrome-sandbox'
-	vman 'libvulkan.so.1'
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/goofcord-bin
+	vcopy "squashfs-root/*" opt/goofcord-bin
+	vmkdir usr/bin
+	ln -sf "/opt/goofcord-bin/AppRun" "${DESTDIR}/usr/bin/goofcord"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
 }

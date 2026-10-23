@@ -7,14 +7,33 @@ short_desc="Helium Browser for Linux"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/imputnet/helium-linux"
-distfiles="https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz"
-checksum=6ca6e4a00fef5916821fb1af8a9607cc6b386f678a7eb422e55f19116ba30469
+distfiles="https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64.AppImage>helium-bin-${version}.AppImage"
+checksum=5b2db392b3ed87f24aa844936059d68aca98bc20548eaaa0decfa3c280a2a0a7
 noshlibprovides=yes
 nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
 
 do_install() {
-	vbin 'helium_crashpad_handler' 'helium'
-	vinstall 'helium.desktop' 644 usr/share/applications
-	vinstall 'product_logo_256.png' 644 usr/share/icons/hicolor/128x128/apps
-	vman 'libvulkan.so.1'
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/helium-bin
+	vcopy "squashfs-root/*" opt/helium-bin
+	vmkdir usr/bin
+	ln -sf "/opt/helium-bin/AppRun" "${DESTDIR}/usr/bin/helium"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
 }

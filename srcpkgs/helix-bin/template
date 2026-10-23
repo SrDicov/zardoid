@@ -7,11 +7,33 @@ short_desc="Post-modern modal text editor"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MPL-2.0"
 homepage="https://helix-editor.com"
-distfiles="https://github.com/helix-editor/helix/releases/download/${version}/helix-${version}-x86_64-linux.tar.xz"
-checksum=3f08e63ecd388fff657ad39722f88bb03dcf326f1f2da2700d99e1dc40ab2e8b
+distfiles="https://github.com/helix-editor/helix/releases/download/${version}/helix-${version}-x86_64.AppImage>helix-bin-${version}.AppImage"
+checksum=0d00848ca858e415a4b4a90612702a35aa491421c658c45a06774a265bc4c4f6
 noshlibprovides=yes
 nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
 
 do_install() {
-	vbin 'hx'
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/helix-bin
+	vcopy "squashfs-root/*" opt/helix-bin
+	vmkdir usr/bin
+	ln -sf "/opt/helix-bin/AppRun" "${DESTDIR}/usr/bin/helix"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
 }

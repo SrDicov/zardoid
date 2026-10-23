@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/GoldenDict-ng-AppImage/releases/download/26.8.0-1%402026-10-01_1790876360/GoldenDict-ng-26.8.0-1-anylinux-x86_64.AppImage goldendict-ng-bin
-https://github.com/Milkshiift/GoofCord/releases/download/v2.3.1/GoofCord-2.3.1-linux-x86_64.AppImage goofcord-bin
-https://github.com/pkgforge-dev/Gopher64-AppImage/releases/download/v1.1.38%402026-10-07_1791381988/Gopher64-v1.1.38-anylinux-x86_64.AppImage gopher64-bin
-https://github.com/pkgforge-dev/gPodder-AppImage/releases/download/3.11.5-6%402026-10-01_1790876438/gPodder-3.11.5-6-anylinux-x86_64.AppImage gpodder-bin
-https://github.com/pkgforge-dev/gpu-screen-recorder-AppImage/releases/download/6.1.4%402026-10-17_1792236768/gpu-screen-recorder-6.1.4-anylinux-x86_64.AppImage gpu-screen-recorder-bin
-https://github.com/pkgforge-dev/Gradia-AppImage/releases/download/1.13.0%402026-10-15_1792096718/Gradia-1.13.0-anylinux-x86_64.AppImage gradia-bin
-https://github.com/pkgforge-dev/Gram-AppImage-Enhanced/releases/download/3.3.0%402026-10-01_1790876590/Gram-3.3.0-anylinux-x86_64.AppImage gram-bin
-https://github.com/pkgforge-dev/Graphs-AppImage/releases/download/2.0.7-1%402026-10-01_1790876615/Graphs-2.0.7-1-anylinux-x86_64.AppImage graphs-bin
-https://github.com/pkgforge-dev/gThumb-AppImage/releases/download/3.12.12-1%402026-10-01_1790876599/gThumb-3.12.12-1-anylinux-x86_64.AppImage gthumb-bin
-https://github.com/pkgforge-dev/Gwenview-AppImage/releases/download/26.08.0-1%402026-09-07_1788786716/Gwenview-26.08.0-1-anylinux-x86_64.AppImage gwenview-bin
-https://github.com/pkgforge-dev/Haruna-AppImage/releases/download/1.8.1-2%402026-10-01_1790876675/Haruna-1.8.1-2-anylinux-x86_64.AppImage haruna-bin
-https://github.com/pkgforge-dev/Hatari-AppImage/releases/download/2.6.1-1%402026-10-01_1790864630/Hatari-2.6.1-1-anylinux-x86_64.AppImage hatari-bin
-https://github.com/imputnet/helium-linux/releases/download/0.19.4.1/helium-0.19.4.1-x86_64.AppImage helium-bin
-https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.07.1-x86_64.AppImage helix-bin
-https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.22.4/Heroic-2.22.4-linux-x86_64.AppImage heroic-games-launcher-bin
-https://github.com/pkgforge-dev/HP-15C-Simulator-AppImage/releases/download/5.1.00%402026-10-01_1790876019/HP-15C-5.1.00-anylinux-x86_64.AppImage hp-15c-simulator-bin
-https://github.com/pkgforge-dev/htop-AppImage/releases/download/3.5.3%402026-10-02_1790947336/Htop-3.5.3-anylinux-x86_64.AppImage htop-bin
-https://github.com/pkgforge-dev/Identity-AppImage/releases/download/26.03-2%402026-10-01_1790876178/Identity-26.03-2-anylinux-x86_64.AppImage identity-bin
-https://github.com/pkgforge-dev/iloader-AppImage-Enhanced/releases/download/v2.3.4%402026-10-01_1790867368/iloader-v2.3.4-anylinux-x86_64.AppImage iloader-bin
-https://github.com/pkgforge-dev/img2pdf-AppImage/releases/download/0.6.3-1%402026-10-01_1790876610/img2pdf-0.6.3-1-anylinux-x86_64.AppImage img2pdf-bin
 https://github.com/pkgforge-dev/Impression-AppImage/releases/download/3.8.0-1%402026-10-01_1790876552/Impression-3.8.0-1-anylinux-x86_64.AppImage impression-bin
 https://github.com/pkgforge-dev/innoextract-AppImage/releases/download/1.9-17%402026-10-01_1790876661/innoextract-1.9-17-anylinux-x86_64.AppImage innoextract-bin
 https://github.com/pkgforge-dev/ioquake3-AppImage/releases/download/83a776283%402026-10-01_1790875295/Quake_III_Arena-83a776283-anylinux-x86_64.AppImage ioquake3-bin

@@ -1,0 +1,40 @@
+# Template file for 'gopher64-bin'
+pkgname=gopher64-bin
+version=1.1.38
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of gopher64 [Maintainer=@Samueru-sama]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/Gopher64-AppImage"
+distfiles="https://github.com/pkgforge-dev/Gopher64-AppImage/releases/download/v${version}%402026-10-07_1791381988/Gopher64-v${version}-anylinux-x86_64.AppImage>gopher64-bin-${version}.AppImage"
+checksum=a1a005d8769cc3155ad2f1a88d03eafb7143d4cacb99da524e9a1252b22507a6
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/gopher64-bin
+	vcopy "squashfs-root/*" opt/gopher64-bin
+	vmkdir usr/bin
+	ln -sf "/opt/gopher64-bin/AppRun" "${DESTDIR}/usr/bin/gopher64"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}
