@@ -11,3 +11,4 @@
 # srcpkgs/ y su línea se borra de este archivo. Las que fallan se quedan aquí.
 #
 # El maintainer sale de meta/maintainer.
+https://github.com/jqlang/jq
