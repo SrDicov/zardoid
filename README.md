@@ -63,6 +63,22 @@ Variables de entorno:
 Códigos de salida: `0` ok · `1` uso/validación · `2` red/API · `3` verificación
 (`bash -n`, formatter, versión no derivable) · `4` escritura.
 
+## Pipeline de templates
+
+`meta/requests.list` es la cola: una URL por línea, opcionalmente `[pkgname]`
+y `[license]`. `meta/maintainer` define el maintainer de todo lo generado.
+
+Un push a la cola lanza `.github/workflows/templates.yml`:
+
+1. **Generar**: compila zardoid y ejecuta `scripts/gen-queue.sh` → `staging/`.
+2. **xlint**: en un contenedor Void, `bash -n` + `xlint template` por paquete.
+3. **Compilar**: en otro contenedor Void con `--privileged`, clona
+   void-packages, copia los templates validados y corre `./xbps-src -Q pkg`.
+4. **Merge**: copia a `srcpkgs/` solo la intersección de validados y compilados,
+   borra sus URLs de la cola y commitea. Lo que falla se queda en la cola.
+
+Los templates mergeados quedan versionados en `srcpkgs/<pkg>/template`.
+
 ## Límites (v1)
 
 - Solo paquetes precompilados (`-bin`). No genera paquetes desde fuente.

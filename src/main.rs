@@ -494,6 +494,12 @@ fn run(a: Args) -> Res<()> {
         if inv.licenses.is_empty() {
             warnings.push("sin LICENSE/COPYING: añade vlicense a mano".into());
         }
+        if kind == Kind::Bin {
+            // xbps-src no adivina la extensión de un binario suelto: se salta
+            // la extracción y se copia desde el directorio de distfiles.
+            functions.push(("post_extract".into(), bin_copy(&asset.name, &version)));
+            flags.push(("skip_extraction".into(), dq(&asset.name, "")));
+        }
         functions.push(("do_install".into(), generic_body(&base, &version, &inv)));
     }
 
@@ -681,6 +687,13 @@ fn image_copy() -> String {
     "local f=\"${pkgname}-${version}.AppImage\"\n\
      cp \"${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}\" ."
         .to_string()
+}
+
+fn bin_copy(asset: &str, version: &str) -> String {
+    format!(
+        "local f={}\ncp \"${{XBPS_SRCDISTDIR}}/${{pkgname}}-${{version}}/${{f}}\" .",
+        shq_versioned(Path::new(asset), version)
+    )
 }
 
 fn appimage_body(base: &str) -> String {

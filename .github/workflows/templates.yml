@@ -1,0 +1,176 @@
+name: Templates
+
+# Cola -> generación -> xlint -> build real -> merge.
+# Un push a meta/requests.list lanza todo. Solo se copia a srcpkgs/ lo que
+# pasa xlint Y compila con xbps-src; el resto se queda en la cola.
+#
+# El push final lo hace GITHUB_TOKEN, y los pushes con ese token no disparan
+# workflows: no hay bucle.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'meta/requests.list'
+      - 'meta/maintainer'
+      - 'scripts/gen-queue.sh'
+      - 'scripts/merge-validated.sh'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: templates
+  cancel-in-progress: false
+
+env:
+  VOID_IMAGE: ghcr.io/void-linux/void-glibc-full
+
+jobs:
+  generate:
+    name: Generar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release --locked
+      - run: sh scripts/gen-queue.sh staging
+      - uses: actions/upload-artifact@v4
+        with:
+          name: staging
+          path: staging
+          retention-days: 7
+      - name: Resumen
+        run: cat staging/summary.md >>"$GITHUB_STEP_SUMMARY"
+
+  validate:
+    name: xlint
+    needs: generate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: staging
+          path: staging
+      - name: xlint + bash -n
+        run: |
+          : >validated.txt
+          docker run --rm -v "$PWD:/w" -w /w "$VOID_IMAGE" sh -c '
+            set -e
+            xbps-install -Sy bash >/dev/null
+            mkdir -p /etc/xbps.d
+            cp /usr/share/xbps.d/*-repository-*.conf /etc/xbps.d/ 2>/dev/null || true
+            sed -i "s|repo-default|repo-ci|g" /etc/xbps.d/*-repository-*.conf 2>/dev/null || true
+            xbps-install -Syu xbps >/dev/null
+            xbps-install -yu >/dev/null
+            xbps-install -y xtools jq >/dev/null
+            for d in staging/srcpkgs/*/; do
+              [ -f "$d/template" ] || continue
+              pkg=$(basename "$d")
+              if ! bash -n "$d/template"; then
+                echo "bash -n FALLO: $pkg"
+                continue
+              fi
+              if (cd "$d" && xlint template); then
+                echo "$pkg" >>validated.txt
+              else
+                echo "xlint FALLO: $pkg"
+              fi
+            done
+          '
+      - uses: actions/upload-artifact@v4
+        with:
+          name: validated
+          path: validated.txt
+          retention-days: 7
+      - name: Exigir al menos uno
+        run: |
+          if [ ! -s validated.txt ]; then
+            echo "ningún template pasó la validación"
+            exit 1
+          fi
+          echo "validados: $(wc -l <validated.txt | tr -d ' ')"
+
+  build:
+    name: Compilar
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: staging
+          path: staging
+      - uses: actions/download-artifact@v4
+        with:
+          name: validated
+          path: .
+      - name: xbps-src pkg
+        run: |
+          : >built.txt
+          docker run --rm --privileged -v "$PWD:/w" -v /dev:/dev -w /w "$VOID_IMAGE" sh -c '
+            set -e
+            xbps-install -Sy bash sudo git curl >/dev/null
+            git clone --depth 1 https://github.com/void-linux/void-packages /w/vp
+            cp -r staging/srcpkgs/* /w/vp/srcpkgs/
+            cd /w/vp
+            useradd -G xbuilder -M builder 2>/dev/null || true
+            chown -R builder:builder /w/vp
+            sudo -Eu builder ./xbps-src binary-bootstrap
+            while read -r pkg; do
+              [ -n "$pkg" ] || continue
+              if sudo -Eu builder ./xbps-src -Q pkg "$pkg"; then
+                echo "$pkg" >>/w/built.txt
+              else
+                echo "build FALLO: $pkg"
+              fi
+            done </w/validated.txt
+          '
+      - name: Exigir al menos uno
+        run: |
+          if [ ! -s built.txt ]; then
+            echo "ningún template compiló"
+            exit 1
+          fi
+          echo "compilados: $(wc -l <built.txt | tr -d ' ')"
+
+  merge:
+    name: Merge
+    needs: [validate, build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: staging
+          path: staging
+      - uses: actions/download-artifact@v4
+        with:
+          name: validated
+          path: .
+      - uses: actions/download-artifact@v4
+        with:
+          name: built
+          path: .
+      - name: Copiar validados
+        run: |
+          sort -u validated.txt >v.txt
+          sort -u built.txt >b.txt
+          comm -12 v.txt b.txt >ok.txt
+          echo "mergeables: $(wc -l <ok.txt | tr -d ' ')"
+          sh scripts/merge-validated.sh staging ok.txt
+      - name: Commit
+        run: |
+          git config user.name "zardoid-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add srcpkgs meta/requests.list
+          if git diff --cached --quiet; then
+            echo "nada que mergear"
+            exit 0
+          fi
+          pkgs=$(git diff --cached --name-only -- 'srcpkgs/*/template' | awk -F/ '{print $2}' | tr '\n' ' ')
+          git commit -m "templates: ${pkgs}"
+          git push

@@ -1,0 +1,13 @@
+# Cola de templates pendientes. Una entrada por línea:
+#
+#   <url> [pkgname] [license]
+#
+# - url: repo (GitHub/GitLab/Codeberg) o asset directo de un release.
+# - pkgname: opcional; por defecto <repo>-bin.
+# - license: opcional; por defecto la que detecte el forge.
+#
+# El workflow templates.yml genera cada entrada en staging, la valida con
+# xlint y la compila con xbps-src. Solo lo que pasa ambas puertas se copia a
+# srcpkgs/ y su línea se borra de este archivo. Las que fallan se quedan aquí.
+#
+# El maintainer sale de meta/maintainer.
