@@ -15,20 +15,3 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/ezequielgk/Belka/releases/download/v2.0.0/belka-linux-amd64.tar.gz belka-bin
-https://github.com/orhun/binsider/releases/download/v0.3.2/binsider-0.3.2-x86_64-unknown-linux-gnu.tar.gz binsider-bin
-https://github.com/bluetuith-org/bluetuith/releases/download/v0.2.7/bluetuith_0.2.7_Linux_x86_64.tar.gz bluetuith-bin
-https://github.com/ekzhang/bore/releases/download/v0.6.0/bore-v0.6.0-x86_64-unknown-linux-musl.tar.gz bore-bin
-https://github.com/ClementTsang/bottom/releases/download/0.14.9/bottom_x86_64-unknown-linux-gnu-2-17.tar.gz bottom-bin
-https://github.com/brave/brave-browser/releases/download/v1.97.59/brave-browser-1.97.59-linux-amd64.zip brave-browser-bin
-https://github.com/Canop/broot/releases/download/v1.61.0/broot_1.61.0.zip broot-bin
-https://github.com/aristocratos/btop/releases/download/v1.4.7/btop-x86_64-unknown-linux-musl.tar.gz btop-bin
-https://github.com/cargo-bins/cargo-binstall/releases/download/v1.26.0/cargo-binstall-x86_64-unknown-linux-gnu.full.tgz cargo-binstall-bin
-https://github.com/pkgforge-dev/12to11-AppImage/releases/download/0.1-1%402026-09-01_1788277686/12to11-0.1-1-anylinux-x86_64.AppImage 12to11-bin
-https://github.com/pkgforge-dev/2ship2harkinian-AppImage-Enhanced/releases/download/5.0.1%402026-09-07_1788788271/2SHIP-5.0.1-anylinux-x86_64.AppImage 2ship2harkinian-bin
-https://github.com/pkgforge-dev/86box-AppImage-Enhanced/releases/download/6.0%402026-10-12_1791805425/86Box-6.0-anylinux-x86_64.AppImage 86box-bin
-https://github.com/pkgforge-dev/AAAAXY-AppImage-Enhanced/releases/download/1.7.218-1%402026-10-01_1790876259/AAAAXY-1.7.218-1-anylinux-x86_64.AppImage aaaaxy-bin
-https://github.com/pkgforge-dev/Abaddon-AppImage/releases/download/0.2.4%402026-10-01_1790876679/abaddon-0.2.4-anylinux-x86_64.AppImage abaddon-bin
-https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage/releases/download/32.0.0.465-1%402026-10-01_1790865140/Adobe_Flash_Player_Standalone-32.0.0.465-1-anylinux-x86_64.AppImage adobe-flash-player-bin
-https://github.com/pkgforge-dev/alacritty-AppImage/releases/download/v0.17.0%402026-10-01_1790876663/Alacritty-v0.17.0-anylinux-x86_64.AppImage alacritty-bin
-https://github.com/pkgforge-dev/Amarok-AppImage/releases/download/3.3.3-1%402026-10-01_1790876576/Amarok-3.3.3-1-anylinux-x86_64.AppImage amarok-bin

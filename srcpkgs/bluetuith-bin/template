@@ -1,0 +1,19 @@
+# Template file for 'bluetuith-bin'
+pkgname=bluetuith-bin
+version=0.2.7
+revision=1
+archs="x86_64*"
+short_desc="Cross-platform TUI bluetooth manager"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/bluetuith-org/bluetuith"
+distfiles="https://github.com/bluetuith-org/bluetuith/releases/download/v${version}/bluetuith_${version}_Linux_x86_64.tar.gz"
+checksum=145888f0e3959d29832c7395403c2327e0f03b9591e4cdd3f712741cf0f934e9
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bluetuith'
+	vlicense 'LICENSE'
+}

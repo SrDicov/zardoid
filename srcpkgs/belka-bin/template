@@ -1,0 +1,17 @@
+# Template file for 'belka-bin'
+pkgname=belka-bin
+version=2.0.0
+revision=1
+short_desc="Belka — a POSIX-compliant portable apps manager. Installs and
+ updates"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/ezequielgk/Belka"
+distfiles="https://github.com/ezequielgk/Belka/releases/download/v${version}/belka-linux-amd64.tar.gz"
+checksum=2fba4a5f0bc769c60e6358765024b1c31ed7f1fda2fa8d4f8c658c251bec7747
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin belka
+}

@@ -269,3 +269,5 @@ https://github.com/pkgforge-dev/ZSNES-AppImage/releases/download/24f0eebea%40202
 https://github.com/pear-devs/pear-desktop/releases/download/v3.12.0/YouTube-Music-3.12.0.AppImage	youtube-music-bin	xlint/build
 https://github.com/pkgforge-dev/ZapZap-AppImage-Enhanced/releases/download/7.1-1%402026-07-27_1785187279/ZapZap-7.1-1-anylinux-x86_64.AppImage	zapzap-bin	xlint/build
 https://github.com/pkgforge-dev/appimagetool/releases/download/0.5.3/appimagetool-corresponding-source-dwarfs-0.15.6.tar.xz	appimagetool-bin	xlint/build
+https://github.com/Canop/broot/releases/download/v1.61.0/broot_1.61.0.zip	broot-bin	xlint/build
+https://github.com/pkgforge-dev/Amarok-AppImage/releases/download/3.3.3-1%402026-10-01_1790876576/Amarok-3.3.3-1-anylinux-x86_64.AppImage	amarok-bin	xlint/build

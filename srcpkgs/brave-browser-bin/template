@@ -1,0 +1,26 @@
+# Template file for 'brave-browser-bin'
+pkgname=brave-browser-bin
+version=1.97.59
+revision=1
+archs="x86_64"
+hostmakedepends="unzip"
+short_desc="Brave browser for Android, iOS, Linux, macOS, Windows"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MPL-2.0"
+homepage="https://brave.com"
+distfiles="https://github.com/brave/brave-browser/releases/download/v${version}/brave-browser-${version}-linux-amd64.zip"
+checksum=32979198ff09c4c656b0b060d929a44cdd6af167b2a141a77c2b7f36fd59e661
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'chrome-management-service'
+	vinstall 'product_logo_64.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'product_logo_48.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'product_logo_16.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'product_logo_24.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'product_logo_32.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'product_logo_128.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'product_logo_256.png' 644 usr/share/icons/hicolor/128x128/apps
+	vman 'libvulkan.so.1'
+}

@@ -1,0 +1,21 @@
+# Template file for 'btop-bin'
+pkgname=btop-bin
+version=1.4.7
+revision=1
+archs="x86_64*"
+short_desc="Monitor of resources"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/aristocratos/btop"
+distfiles="https://github.com/aristocratos/btop/releases/download/v${version}/btop-x86_64-unknown-linux-musl.tar.gz"
+checksum=5099054dd6a101bd12eb6ff3702a9a6a3f57aaa27923a0da478ae5b517faf335
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bin/btop'
+	vinstall 'btop.desktop' 644 usr/share/applications
+	vinstall 'Img/icon.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'Img/icon.png' 644 usr/share/icons/hicolor/128x128/apps
+}

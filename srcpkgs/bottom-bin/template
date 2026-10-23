@@ -1,0 +1,18 @@
+# Template file for 'bottom-bin'
+pkgname=bottom-bin
+version=0.14.9
+revision=1
+archs="x86_64"
+short_desc="Yet another cross-platform graphical process/system monitor"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://bottom.pages.dev"
+distfiles="https://github.com/ClementTsang/bottom/releases/download/${version}/bottom_x86_64-unknown-linux-gnu-2-17.tar.gz"
+checksum=15774bae02e251e652f438a07a309ffbcb1b4e5fb60a21031608155009b3bba7
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'btm'
+	vlicense "${FILESDIR}/LICENSE"
+}
