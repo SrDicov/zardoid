@@ -1,0 +1,19 @@
+# Template file for 'ytmgo-bin'
+pkgname=ytmgo-bin
+version=1.4.0
+revision=1
+archs="x86_64*"
+short_desc="YT Music in Go for Linux and Windows"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://anas1412.github.io/ytmgo/"
+distfiles="https://github.com/anas1412/ytmgo/releases/download/v${version}/ytmgo_Linux_x86_64.tar.gz"
+checksum=4dc6e54ab9a17576491bdcdab94373d777d0bb452b0139c155ee316b8524cfcc
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'ytmgo'
+	vlicense "${FILESDIR}/LICENSE"
+}

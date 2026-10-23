@@ -1,0 +1,25 @@
+# Template file for 'yj-bin'
+pkgname=yj-bin
+version=5.1.0
+revision=1
+archs="x86_64*"
+short_desc="CLI - Convert between YAML, TOML, JSON, and HCL. Preserves map
+ order"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/sclevine/yj"
+distfiles="https://github.com/sclevine/yj/releases/download/v${version}/yj-linux-amd64"
+checksum=8ce43e40fda9a28221dabc0d7228e2325d1e959cd770487240deb47e02660986
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="yj-linux-amd64"
+
+post_extract() {
+	local f='yj-linux-amd64'
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	vbin 'yj-linux-amd64' 'yj'
+}
