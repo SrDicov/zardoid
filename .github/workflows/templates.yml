@@ -31,11 +31,16 @@ jobs:
   generate:
     name: Generar
     runs-on: ubuntu-latest
+    outputs:
+      count: ${{ steps.q.outputs.count }}
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo build --release --locked
-      - run: sh scripts/gen-queue.sh staging
+      - id: q
+        run: |
+          sh scripts/gen-queue.sh staging
+          echo "count=$(wc -l <staging/map.tsv | tr -d ' ')" >>"$GITHUB_OUTPUT"
       - uses: actions/upload-artifact@v4
         with:
           name: staging
@@ -47,6 +52,7 @@ jobs:
   validate:
     name: xlint
     needs: generate
+    if: needs.generate.outputs.count != '0'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
