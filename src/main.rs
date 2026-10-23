@@ -600,24 +600,22 @@ fn run(a: Args) -> Res<()> {
     Ok(())
 }
 
-/// Sustituye la versión por `${version}` sin tocar el host ni el resto del path.
+/// Sustituye la versión por `${version}` en todo el path (tag y fichero),
+/// nunca en el host: `download/v1.2.3/foo-1.2.3.tar.gz` -> ambas.
 fn versioned_url(url: &str, version: &str) -> String {
-    let (head, last) = match url.rsplit_once('/') {
-        Some(x) => x,
-        None => return url.to_string(),
+    let (prefix, path) = match url.split_once("://") {
+        Some((scheme, rest)) => match rest.find('/') {
+            Some(i) => (&url[..scheme.len() + 3 + i], &rest[i..]),
+            None => return url.to_string(),
+        },
+        None => match url.find('/') {
+            Some(i) => (&url[..i], &url[i..]),
+            None => return url.to_string(),
+        },
     };
-    if last.contains(version) {
-        return format!("{head}/{}", last.replace(version, "${version}"));
-    }
-    let enc = version.replace('.', "%2E");
-    if last.contains(&enc) {
-        return format!("{head}/{}", last.replace(&enc, "${version}"));
-    }
-    // Sin versión en el nombre: única ocurrencia en el path, la última.
-    match url.rfind(version) {
-        Some(i) => format!("{}${{version}}{}", &url[..i], &url[i + version.len()..]),
-        None => url.to_string(),
-    }
+    let mut out = path.replace(version, "${version}");
+    out = out.replace(&version.replace('.', "%2E"), "${version}");
+    format!("{prefix}{out}")
 }
 
 fn select_asset(
@@ -634,7 +632,11 @@ fn select_asset(
         if let Some(reason) = asset::reject_reason(&a.name) {
             warnings.push(format!("el asset contiene '{reason}'"));
         }
-        return Some((a.clone(), Kind::from_name(&a.name)));
+        let mut k = Kind::from_name(&a.name);
+        if k == Kind::Unknown && asset::platform_hint(&a.name) {
+            k = Kind::Bin;
+        }
+        return Some((a.clone(), k));
     }
     let mut best: Option<(i32, u64, &forge::Asset, Kind)> = None;
     for a in &r.assets {
@@ -645,7 +647,11 @@ fn select_asset(
             warnings.push(format!("asset con nombre inseguro: {:?}", a.name));
             continue;
         }
-        let k = Kind::from_name(&a.name);
+        let mut k = Kind::from_name(&a.name);
+        if k == Kind::Unknown && asset::platform_hint(&a.name) {
+            // Ej.: `jq-linux-amd64`, `yt-dlp_linux`: ejecutable suelto.
+            k = Kind::Bin;
+        }
         if matches!(k, Kind::Deb | Kind::Rpm | Kind::Unknown) {
             continue;
         }
@@ -752,8 +758,13 @@ fn generic_body(base: &str, version: &str, inv: &Inventory) -> String {
             dir
         ));
     }
-    for m in &inv.man {
-        lines.push(format!("vman {}", shq_versioned(m, version)));
+    if inv.man.len() > 5 {
+        // `gh` trae ~300 páginas: una copia del árbol es una línea, no 300.
+        lines.push("vcopy 'share/man/*' usr/share/man".to_string());
+    } else {
+        for m in &inv.man {
+            lines.push(format!("vman {}", shq_versioned(m, version)));
+        }
     }
     for c in &inv.completions {
         let s = c.to_string_lossy();
@@ -921,7 +932,14 @@ mod sec_tests {
     fn version_solo_en_el_fichero() {
         assert_eq!(
             versioned_url("https://1.2.3.example.org/o/r/1.2.3/app-1.2.3.tgz", "1.2.3"),
-            "https://1.2.3.example.org/o/r/1.2.3/app-${version}.tgz"
+            "https://1.2.3.example.org/o/r/${version}/app-${version}.tgz"
+        );
+        assert_eq!(
+            versioned_url(
+                "https://github.com/cli/cli/releases/download/v2.103.0/gh_2.103.0_linux_amd64.tar.gz",
+                "2.103.0"
+            ),
+            "https://github.com/cli/cli/releases/download/v${version}/gh_${version}_linux_amd64.tar.gz"
         );
         assert_eq!(
             versioned_url("https://x/r/download/v2.0/App.AppImage", "2.0"),
@@ -929,7 +947,7 @@ mod sec_tests {
         );
         assert_eq!(
             versioned_url("https://x/p/1%2E4%2E0/f.tar.gz", "1.4.0"),
-            "https://x/p/1%2E4%2E0/f.tar.gz"
+            "https://x/p/${version}/f.tar.gz"
         );
     }
 

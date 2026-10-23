@@ -164,6 +164,9 @@ pub fn unpack(archive: &Path, kind: Kind, dir: &Path) -> Result<(), String> {
             };
             decompress(bin, args, archive, &out)?;
         }
+        Kind::Bin => {
+            fs::copy(archive, dir.join(&name)).map_err(|e| format!("copiando binario: {e}"))?;
+        }
         Kind::AppImage => {}
         Kind::Deb | Kind::Rpm | Kind::Unknown => {
             return Err(format!("formato no soportado en v1: {name}"));

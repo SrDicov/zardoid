@@ -49,7 +49,9 @@ Variables de entorno:
 
 1. Parsea la URL: GitHub, GitLab (subgrupos), Codeberg, asset directo o `owner/repo`.
 2. Consulta los releases, descarta drafts/prereleases y elige el asset Linux
-   x86_64 (tarball, zip, AppImage o binario comprimido) por puntuación.
+   x86_64 (tarball, zip, AppImage, binario comprimido o ejecutable suelto)
+   por puntuación. Acepta `x86_64`, `amd64`, `x64` y `x86-64`, y descarta
+   tarballs de fuentes cuando hay un binario disponible.
 3. Normaliza el tag a `version=` (`v1.2.3` → `1.2.3`, `1.2.3-rc1` → `1.2.3rc1`).
 4. Descarga, calcula `sha256` y extrae en un directorio temporal.
 5. Inspecciona: ELF real (máquina, glibc/musl/estático → `archs`), binarios,

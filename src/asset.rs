@@ -10,6 +10,7 @@ pub enum Kind {
     Deb,
     Rpm,
     AppImage,
+    Bin,
     Gz,
     Xz,
     Zst,
@@ -113,6 +114,17 @@ const REJECT: &[&str] = &[
     ".provenance",
 ];
 
+/// El nombre indica plataforma/arquitectura: separa un binario de un tarball
+/// de fuentes (`jq-1.8.2.tar.gz` no lleva ninguna pista y es la fuente).
+pub fn platform_hint(name: &str) -> bool {
+    let n = name.to_ascii_lowercase();
+    [
+        "linux", "linux64", "gnu", "musl", "amd64", "x86_64", "x86-64", "x64", "static", "appimage",
+    ]
+    .iter()
+    .any(|t| n.contains(t))
+}
+
 /// Un nombre de asset termina dentro de un template bash: solo se aceptan
 /// caracteres que no puedan salirse de las comillas ni del directorio.
 pub fn safe_name(name: &str) -> bool {
@@ -133,6 +145,7 @@ pub fn reject_reason(name: &str) -> Option<&'static str> {
 pub fn score(kind: Kind, name: &str) -> Option<i32> {
     let base = match kind {
         Kind::AppImage => 95,
+        Kind::Bin => 40,
         Kind::TarGz => 90,
         Kind::TarXz => 88,
         Kind::TarZst => 86,
@@ -176,6 +189,10 @@ pub fn score(kind: Kind, name: &str) -> Option<i32> {
         if n.contains(bad) {
             s -= 40;
         }
+    }
+    if !platform_hint(&n) {
+        // Tarball de fuentes del proyecto: solo vale si no hay nada mejor.
+        s -= 60;
     }
     Some(s)
 }
@@ -221,5 +238,14 @@ mod tests {
         let c = score(Kind::TarGz, "app-linux-arm64.tar.gz").unwrap();
         assert!(b > a && a > c, "{a} {b} {c}");
         assert!(score(Kind::Unknown, "x").is_none());
+        assert!(
+            score(Kind::Bin, "jq-linux-amd64").unwrap()
+                > score(Kind::TarGz, "jq-1.8.2.tar.gz").unwrap()
+        );
+        assert!(
+            score(Kind::Xz, "forgejo-linux-amd64.xz").unwrap()
+                > score(Kind::Bin, "forgejo-linux-amd64").unwrap()
+        );
+        assert!(!platform_hint("jq-1.8.2.tar.gz"));
     }
 }
