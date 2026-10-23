@@ -1,0 +1,40 @@
+# Template file for 'kronos-bin'
+pkgname=kronos-bin
+version=2.7.0
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of Kronos, Sega Saturn emulator"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/Kronos-AppImage"
+distfiles="https://github.com/pkgforge-dev/Kronos-AppImage/releases/download/${version}-2%402026-10-07_1791382863/Kronos-${version}-2-anylinux-x86_64.AppImage>kronos-bin-${version}.AppImage"
+checksum=75a4f768a5f30b2a0fcbafcd5d853a931715960db412a2d444d8ee92b1d27a24
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/kronos-bin
+	vcopy "squashfs-root/*" opt/kronos-bin
+	vmkdir usr/bin
+	ln -sf "/opt/kronos-bin/AppRun" "${DESTDIR}/usr/bin/kronos"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}
