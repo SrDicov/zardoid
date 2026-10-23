@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/OpenJazz-AppImage/releases/download/a1626f4ed%402026-10-01_1790863901/OpenJazz-a1626f4ed-anylinux-x86_64.AppImage openjazz-bin
-https://github.com/pkgforge-dev/OpenLara-AppImage/releases/download/3b268ca4b%402026-10-01_1790876333/OpenLara-3b268ca4b-anylinux-x86_64.AppImage openlara-bin
-https://github.com/pkgforge-dev/OpenLoco-AppImage/releases/download/26.09%402026-10-01_1790876342/OpenLoco-26.09-anylinux-x86_64.AppImage openloco-bin
-https://github.com/pkgforge-dev/OpenMoHAA-AppImage/releases/download/a2f340195%402026-10-01_1790876495/OpenMoHAA-a2f340195-anylinux-x86_64.AppImage openmohaa-bin
-https://github.com/pkgforge-dev/openMSX-AppImage/releases/download/21.0%402026-09-01_1788277621/openMSX-21.0-anylinux-x86_64.AppImage openmsx-bin
-https://github.com/pkgforge-dev/OpenRA-AppImage-Enhanced/releases/download/20250330-5%402026-10-01_1790876392/OpenRA-20250330-5-anylinux-x86_64.AppImage openra-bin
-https://github.com/OpenRCT2/OpenRCT2/releases/download/v0.5.6/OpenRCT2-v0.5.6-linux-x86_64.AppImage openrct2-bin
-https://github.com/pkgforge-dev/OpenSnitch-AppImage/releases/download/1.8.0%402026-10-01_1790876122/OpenSnitch-1.8.0-anylinux-x86_64.AppImage opensnitch-bin
-https://github.com/pkgforge-dev/OpenSWE1R-AppImage/releases/download/1fcb4a8e8%402026-09-01_1788277669/OpenSWE1R-1fcb4a8e8-anylinux-x86_64.AppImage openswe1r-bin
-https://github.com/pkgforge-dev/OpenTESArena-AppImage/releases/download/0.18.0%402026-10-01_1790876491/OpenTESArena-0.18.0-anylinux-x86_64.AppImage opentesarena-bin
-https://github.com/pkgforge-dev/OpenTTD-AppImage/releases/download/15.3-1%402026-10-01_1790876107/OpenTTD-15.3-1-anylinux-x86_64.AppImage openttd-bin
-https://github.com/pkgforge-dev/OpenTyrian2000-AppImage/releases/download/aad5aca01%402026-10-01_1790875902/OpenTyrian2000-aad5aca01-anylinux-x86_64.AppImage opentyrian2000-bin
-https://github.com/pkgforge-dev/OpenXRay-AppImage/releases/download/d4979c2bc%402026-10-01_1790876469/OpenXRay-d4979c2bc-anylinux-x86_64.AppImage openxray-bin
-https://github.com/pkgforge-dev/OptiImage-AppImage/releases/download/1.0.0-4%402026-10-01_1790871892/OptiImage-1.0.0-4-anylinux-x86_64.AppImage optiimage-bin
-https://github.com/pkgforge-dev/OrcaSlicer-AppImage-Enhanced/releases/download/2.4.2-2%402026-10-01_1790878855/OrcaSlicer-2.4.2-2-anylinux-x86_64.AppImage orcaslicer-bin
-https://github.com/ppy/osu/releases/download/2026.1005.0-lazer/osu.AppImage osu-bin
-https://github.com/pkgforge-dev/Oversteer-AppImage/releases/download/v0.8.3%402026-09-01_1788231331/Oversteer-v0.8.3-anylinux-x86_64.AppImage oversteer-bin
-https://github.com/pkgforge-dev/Oxicord-AppImage/releases/download/0.1.9%402026-10-01_1790876687/oxicord-0.1.9-anylinux-x86_64.AppImage oxicord-bin
-https://github.com/pkgforge-dev/Parabolic-AppImage/releases/download/2026.5.0%402026-10-01_1790876128/Parabolic-2026.5.0-anylinux-x86_64.AppImage parabolic-bin
-https://github.com/pkgforge-dev/Pattypan-AppImage/releases/download/v26.02%402026-05-15_1778856962/Pattypan-v26.02-anylinux-x86_64.AppImage pattypan-bin
 https://github.com/pkgforge-dev/pavucontrol-qt-AppImage/releases/download/2.4.0-1%402026-10-01_1790876475/pavucontrol-qt-2.4.0-1-anylinux-x86_64.AppImage pavucontrol-qt-bin
 https://github.com/pkgforge-dev/PCExhumed-AppImage/releases/download/497385d64%402026-10-01_1790875458/PCExhumed-497385d64-anylinux-x86_64.AppImage pcexhumed-bin
 https://github.com/pkgforge-dev/PCSX-Redux-AppImage-Enhanced/releases/download/0c3572c3d%402026-10-01_1790876682/PCSX-Redux-0c3572c3d-anylinux-x86_64.AppImage pcsx-redux-bin
