@@ -1,0 +1,40 @@
+# Template file for 'reco-bin'
+pkgname=reco-bin
+version=5.2.1
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of Reco audio recorder [Maintainer=@fiftydinar]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/Reco-AppImage"
+distfiles="https://github.com/pkgforge-dev/Reco-AppImage/releases/download/${version}-1%402026-10-01_1790876596/Reco-${version}-1-anylinux-x86_64.AppImage>reco-bin-${version}.AppImage"
+checksum=2d21916e54f664bc0ac770de525334ace1b72f903c0862b3e8e08dafe03ca9a8
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/reco-bin
+	vcopy "squashfs-root/*" opt/reco-bin
+	vmkdir usr/bin
+	ln -sf "/opt/reco-bin/AppRun" "${DESTDIR}/usr/bin/reco"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}
