@@ -1,0 +1,40 @@
+# Template file for 'supertux-bin'
+pkgname=supertux-bin
+version=0.7.0
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of SuperTux, SuperMario like game, but with Tux"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/SuperTux-AppImage-Enhanced"
+distfiles="https://github.com/pkgforge-dev/SuperTux-AppImage-Enhanced/releases/download/${version}-1%402026-09-01_1788278217/SuperTux_2-${version}-1-anylinux-x86_64.AppImage>supertux-bin-${version}.AppImage"
+checksum=7c718aae6d7eea09c3de4158f2078b390ed8efab4b43f5b197c73d9c5f664779
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/supertux-bin
+	vcopy "squashfs-root/*" opt/supertux-bin
+	vmkdir usr/bin
+	ln -sf "/opt/supertux-bin/AppRun" "${DESTDIR}/usr/bin/supertux"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}
