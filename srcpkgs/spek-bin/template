@@ -1,0 +1,40 @@
+# Template file for 'spek-bin'
+pkgname=spek-bin
+version=0.8.5
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of Spek [Maintainer=@Link4Electronics]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/Spek-AppImage"
+distfiles="https://github.com/pkgforge-dev/Spek-AppImage/releases/download/${version}-4%402026-10-11_1791705137/Spek-${version}-4-anylinux-x86_64.AppImage>spek-bin-${version}.AppImage"
+checksum=d12ea6693eed6da3ed3af39b831d8b47861efb87623efa14015886862cb919f2
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/spek-bin
+	vcopy "squashfs-root/*" opt/spek-bin
+	vmkdir usr/bin
+	ln -sf "/opt/spek-bin/AppRun" "${DESTDIR}/usr/bin/spek"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}

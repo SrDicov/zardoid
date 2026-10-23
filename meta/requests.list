@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/Snes9x-AppImage-Enhanced/releases/download/1.63-1%402026-10-01_1790876690/Snes9x-1.63-1-anylinux-x86_64.AppImage snes9x-bin
-https://github.com/pkgforge-dev/soh-AppImage-Enhanced/releases/download/9.2.3%402026-09-01_1788278441/SOH-9.2.3-anylinux-x86_64.AppImage soh-bin
-https://github.com/pkgforge-dev/Solaar-AppImage/releases/download/1.1.20-2%402026-10-01_1790876123/Solaar-1.1.20-2-anylinux-x86_64.AppImage solaar-bin
-https://github.com/pkgforge-dev/SongRec-AppImage/releases/download/0.7.5-1%402026-09-22_1790090225/SongRec-0.7.5-1-anylinux-x86_64.AppImage songrec-bin
-https://github.com/pkgforge-dev/Sonic-3-AIR-AppImage/releases/download/v26.03.28.0%402026-10-01_1790876197/Sonic_3_A.I.R.-v26.03.28.0-anylinux-x86_64.AppImage sonic-3-air-bin
-https://github.com/pkgforge-dev/sound-space-plus-AppImage/releases/download/jun21-2026%402026-09-01_1788278371/Sound_Space_Plus-jun21-2026-anylinux-x86_64.AppImage sound-space-plus-bin
-https://github.com/pkgforge-dev/spacecadetpinball-AppImage/releases/download/2.1.0%402026-08-11_1786482748/SpaceCadetPinball-2.1.0-anylinux-x86_64.AppImage spacecadetpinball-bin
-https://github.com/pkgforge-dev/SpaghettiKart-AppImage-Enhanced/releases/download/1.0.0%402026-10-01_1790876072/SpaghettiKart-1.0.0-anylinux-x86_64.AppImage spaghettikart-bin
-https://github.com/pkgforge-dev/SpeedCrunch-AppImage/releases/download/0.12%402026-09-01_1788265748/SpeedCrunch-0.12-anylinux-x86_64.AppImage speedcrunch-bin
-https://github.com/pkgforge-dev/Spek-AppImage/releases/download/0.8.5-4%402026-10-11_1791705137/Spek-0.8.5-4-anylinux-x86_64.AppImage spek-bin
-https://github.com/splitux-gg/splitux/releases/download/v0.20.0/Splitux-v0.20.0-x86_64.AppImage splitux-bin
-https://github.com/crmne/spotifast/releases/download/v0.13.3/spotifast-0.13.3-x86_64.AppImage spotifast-bin
-https://github.com/spotbye/SpotiFLAC/releases/download/v7.2.2/SpotiFLAC.AppImage spotiflac-bin
-https://github.com/ivan-hc/Spotify-appimage/releases/download/continuous/Spotify-candidate-1.2.96.518.g366879e1-x86_64.AppImage spotify-bin
-https://github.com/pkgforge-dev/SRB2-AppImage/releases/download/2.2.15%402026-10-01_1790876573/Sonic_Robo_Blast_2-2.2.15-anylinux-x86_64.AppImage srb2-bin
-https://github.com/pkgforge-dev/SRB2Kart-AppImage/releases/download/1.6%402026-10-01_1790876196/SRB2Kart-1.6-anylinux-x86_64.AppImage srb2kart-bin
-https://github.com/pkgforge-dev/st-AppImage/releases/download/0.9.3-1%402026-09-01_1788278288/st-0.9.3-1-anylinux-x86_64.AppImage st-bin
-https://github.com/pkgforge-dev/Starfox64Recomp-AppImage/releases/download/1.0.3%402026-10-01_1790876529/Starfox_64_Recompiled-1.0.3-anylinux-x86_64.AppImage starfox64recomp-bin
-https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.87-3%402026-10-01_1790856625/Steam-1.0.0.87-3-anylinux-x86_64.AppImage steam-bin
-https://github.com/pkgforge-dev/Stella-AppImage/releases/download/7.0-1%402026-10-01_1790876690/Stella-7.0-1-anylinux-x86_64.AppImage stella-bin
 https://github.com/pkgforge-dev/Stirling-PDF-AppImage/releases/download/v3.0.1%402026-10-01_1790876524/Stirling-PDF-v3.0.1-anylinux-x86_64.AppImage stirling-pdf-bin
 https://github.com/pkgforge-dev/Stoat-AppImage/releases/download/v1.5.1%402026-08-18_1787013175/Stoat-v1.5.1-anylinux-x86_64.AppImage stoat-bin
 https://github.com/pkgforge-dev/strawberry-AppImage/releases/download/1.2.30-1%402026-10-01_1790876544/strawberry-1.2.30-1-anylinux-x86_64.AppImage strawberry-bin
