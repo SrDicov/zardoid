@@ -1,0 +1,19 @@
+# Template file for 'xq-bin'
+pkgname=xq-bin
+version=1.5.1
+revision=1
+archs="x86_64*"
+short_desc="Command-line XML and HTML beautifier and content extractor"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/sibprogrammer/xq"
+distfiles="https://github.com/sibprogrammer/xq/releases/download/v${version}/xq_${version}_linux_amd64.tar.gz"
+checksum=40ec8915ca3809bc6cdd75eeacdeb8e31276f82bdaca1bfa0b4a5260d8416414
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'xq'
+	vlicense 'LICENSE'
+}

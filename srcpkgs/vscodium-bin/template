@@ -1,0 +1,18 @@
+# Template file for 'vscodium-bin'
+pkgname=vscodium-bin
+version=1.140.06880
+revision=1
+archs="x86_64"
+short_desc="Binary releases of VS Code without MS branding/telemetry/licensing"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://vscodium.com"
+distfiles="https://github.com/VSCodium/vscodium/releases/download/${version}/vscodium-cli-linux-x64-${version}.tar.gz"
+checksum=e07d8c091e58e1591b606d053824255d0a1d09a047ba8d4363699021ceeff2ee
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'codium'
+	vlicense "${FILESDIR}/LICENSE"
+}

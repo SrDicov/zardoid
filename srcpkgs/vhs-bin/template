@@ -1,0 +1,20 @@
+# Template file for 'vhs-bin'
+pkgname=vhs-bin
+version=0.12.1
+revision=1
+archs="x86_64*"
+short_desc="Your CLI home video recorder 📼"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/charmbracelet/vhs"
+distfiles="https://github.com/charmbracelet/vhs/releases/download/v${version}/vhs_${version}_Linux_x86_64.tar.gz"
+checksum=eb33787a5b1cebf91fe0b18bd231e2d71d36c1ff4babd99ddac1a6ab411efd10
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'vhs'
+	vman 'manpages/vhs.1.gz'
+	vlicense 'LICENSE'
+}

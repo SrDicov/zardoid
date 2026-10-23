@@ -1,0 +1,25 @@
+# Template file for 'walk-bin'
+pkgname=walk-bin
+version=1.13.0
+revision=1
+archs="x86_64*"
+short_desc="Terminal file manager"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/antonmedv/walk"
+distfiles="https://github.com/antonmedv/walk/releases/download/v${version}/walk_linux_amd64"
+checksum=7c3b6e28fd0eee20170a07be5ceae001e466d8948b32feb005c447f4cf7c3c21
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+skip_extraction="walk_linux_amd64"
+
+post_extract() {
+	local f='walk_linux_amd64'
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	vbin 'walk_linux_amd64' 'walk'
+	vlicense "${FILESDIR}/LICENSE"
+}

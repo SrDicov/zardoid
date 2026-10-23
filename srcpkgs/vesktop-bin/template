@@ -1,0 +1,19 @@
+# Template file for 'vesktop-bin'
+pkgname=vesktop-bin
+version=1.6.7
+revision=1
+archs="x86_64"
+short_desc="Vesktop is a custom Discord App aiming to give you better
+ performance"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://vesktop.dev"
+distfiles="https://github.com/Vencord/Vesktop/releases/download/v${version}/vesktop-${version}.tar.gz"
+checksum=152786c72cf97f510b3a527829568083dd5c79b723cf459c13d430b6ca385b66
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'chrome-sandbox'
+	vman 'libvulkan.so.1'
+}

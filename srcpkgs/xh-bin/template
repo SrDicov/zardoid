@@ -1,0 +1,19 @@
+# Template file for 'xh-bin'
+pkgname=xh-bin
+version=0.26.2
+revision=1
+archs="x86_64*"
+short_desc="Friendly and fast tool for sending HTTP requests"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/ducaale/xh"
+distfiles="https://github.com/ducaale/xh/releases/download/v${version}/xh-v${version}-x86_64-unknown-linux-musl.tar.gz"
+checksum=8c53b6a23435754f9e2ea8ab8c0d0296a1921404b88132cf9b364ff6e8c22a6e
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'xh'
+	vman 'doc/xh.1'
+	vlicense 'LICENSE'
+}

@@ -1,0 +1,17 @@
+# Template file for 'uv-bin'
+pkgname=uv-bin
+version=0.13.1
+revision=1
+archs="x86_64"
+short_desc="Extremely fast Python package and project manager, written in Rust"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://docs.astral.sh/uv"
+distfiles="https://github.com/astral-sh/uv/releases/download/${version}/uv-x86_64-unknown-linux-gnu.tar.gz"
+checksum=eadd9d27c134ab5ac1ffd4473b97a741407f3ea238288f03121fc4deddf90220
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'uv'
+}

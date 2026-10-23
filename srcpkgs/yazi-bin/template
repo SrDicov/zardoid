@@ -1,0 +1,19 @@
+# Template file for 'yazi-bin'
+pkgname=yazi-bin
+version=26.9.1
+revision=1
+archs="x86_64"
+hostmakedepends="unzip"
+short_desc="Blazing fast terminal file manager written in Rust, based on async"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://yazi-rs.github.io"
+distfiles="https://github.com/sxyazi/yazi/releases/download/v${version}/yazi-x86_64-unknown-linux-gnu.zip"
+checksum=a02fe91d3304294048c681f010f1100856872a4e98ecf6927328e888d40a6ad2
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'yazi'
+	vlicense 'LICENSE'
+}

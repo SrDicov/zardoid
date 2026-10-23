@@ -1,0 +1,19 @@
+# Template file for 'upx-bin'
+pkgname=upx-bin
+version=5.2.1
+revision=1
+archs="x86_64*"
+short_desc="UPX - the Ultimate Packer for eXecutables"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://upx.github.io"
+distfiles="https://github.com/upx/upx/releases/download/v${version}/upx-${version}-amd64_linux.tar.xz"
+checksum=402162aad30af47e60dbd767fb2e64ca394ace9727ba1f40283641f1d1b91657
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'upx'
+	vman 'upx.1'
+}

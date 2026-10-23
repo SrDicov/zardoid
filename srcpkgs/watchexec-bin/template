@@ -1,0 +1,19 @@
+# Template file for 'watchexec-bin'
+pkgname=watchexec-bin
+version=2.8.0
+revision=1
+archs="x86_64"
+short_desc="Executes commands in response to file modifications"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://watchexec.github.io"
+distfiles="https://github.com/watchexec/watchexec/releases/download/v${version}/watchexec-${version}-x86_64-unknown-linux-gnu.tar.xz"
+checksum=21839e9840ef592b4d571885ccbd692f54ae5bd4231f3caf29fcf31fa7723afe
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'watchexec'
+	vinstall 'logo.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vman 'watchexec.1'
+}
