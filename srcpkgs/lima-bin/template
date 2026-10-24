@@ -1,0 +1,20 @@
+# Template file for 'lima-bin'
+pkgname=lima-bin
+version=2.2.1
+revision=1
+archs="x86_64"
+short_desc="Linux virtual machines, with a focus on running containers"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://lima-vm.io/"
+distfiles="https://github.com/lima-vm/lima/releases/download/v${version}/lima-${version}-Linux-x86_64.tar.gz"
+checksum=b391ac7fcac2b2a5a1628107756463188ded4d18d3104a40a66a8bb6fec01bcb
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bin/limactl' 'lima'
+	vmkdir usr/share/man
+	vcopy 'share/man/*' usr/share/man
+}

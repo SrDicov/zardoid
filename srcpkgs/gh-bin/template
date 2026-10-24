@@ -1,0 +1,21 @@
+# Template file for 'gh-bin'
+pkgname=gh-bin
+version=2.102.0
+revision=1
+archs="x86_64*"
+short_desc="GitHub’s official command line tool"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://cli.github.com"
+distfiles="https://github.com/cli/cli/releases/download/v${version}/gh_${version}_linux_amd64.tar.gz"
+checksum=bb766f710eef8ede859c18578c72c327597cd4c8a85b06001b1f3843c6019386
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bin/gh'
+	vmkdir usr/share/man
+	vcopy 'share/man/*' usr/share/man
+	vlicense 'LICENSE'
+}
