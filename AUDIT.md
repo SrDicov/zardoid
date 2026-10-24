@@ -14,10 +14,10 @@ Base: `dfdd8d4` (0.3.7). Rama: `agent/overnight-20261024-0045`.
 
 ## Defectos encontrados
 
-- [ ] **A1** `scripts/merge-validated.sh` acumula `meta/failed.list` con
+- [x] **A1** `scripts/merge-validated.sh` acumula `meta/failed.list` con
   `cat >>`: un paquete reencolado que vuelve a fallar deja dos líneas. No hay
   dedupe. Impacto: la lista crece sin control y el triage miente.
-- [ ] **A2** `versioned_url()` tiene una rama nueva (versión fecha de 8 dígitos
+- [x] **A2** `versioned_url()` tiene una rama nueva (versión fecha de 8 dígitos
   permite `distfiles` sin `${version}`) sin test. Ruta tocada en 0.3.5, sin
   cobertura: un cambio futuro la rompe en silencio y el fallo aparece como
   404 en CI, 6 minutos después.
