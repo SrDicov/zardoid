@@ -962,6 +962,8 @@ fn generic_body(
     }
     if inv.man.len() > 5 {
         // `gh` trae ~300 páginas: una copia del árbol es una línea, no 300.
+        // vcopy no crea el destino; sin vmkdir, cp muere con ENOENT.
+        lines.push("vmkdir usr/share/man".to_string());
         lines.push("vcopy 'share/man/*' usr/share/man".to_string());
     } else {
         for m in &inv.man {
@@ -1243,5 +1245,26 @@ mod sec_tests {
         assert!(with_lic.contains("vlicense \"${FILESDIR}/LICENSE\""));
         assert!(body.contains("'\\''"), "comilla simple sin escapar: {body}");
         assert!(!body.contains("vbin bin/x';"), "inyección: {body}");
+    }
+
+    #[test]
+    fn man_masivo_necesita_vmkdir() {
+        let inv = inspect::Inventory {
+            files: vec![],
+            bins: vec![],
+            desktop: None,
+            icons: vec![],
+            man: (1..=6)
+                .map(|i| format!("share/man/man1/p{i}.1").into())
+                .collect(),
+            completions: vec![],
+            licenses: vec![],
+        };
+        let body = generic_body("demo-bin", "1.0", &inv, false, false);
+        let mk = body.find("vmkdir usr/share/man").expect("falta vmkdir");
+        let cp = body
+            .find("vcopy 'share/man/*' usr/share/man")
+            .expect("falta vcopy");
+        assert!(mk < cp, "vmkdir debe ir antes de vcopy:\n{body}");
     }
 }
