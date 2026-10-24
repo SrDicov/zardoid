@@ -1,0 +1,42 @@
+# Template file for 'opensnitch-bin'
+pkgname=opensnitch-bin
+version=20261001
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of OpenSnitch [Maintainer=@Samueru-sama]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/OpenSnitch-AppImage"
+distfiles="https://github.com/pkgforge-dev/OpenSnitch-AppImage/releases/download/1.8.0%402026-10-01_1790876122/OpenSnitch-1.8.0-anylinux-x86_64.AppImage>opensnitch-bin-${version}.AppImage"
+checksum=0c3d4506eb1cef270ac26fae9b64d5eaf74689c20f6c4e6f1857f1138034a2ec
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/opensnitch-bin
+	vcopy "squashfs-root/*" opt/opensnitch-bin
+	vmkdir usr/bin
+	ln -sf "/opt/opensnitch-bin/AppRun" "${DESTDIR}/usr/bin/opensnitch"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}

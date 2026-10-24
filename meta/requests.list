@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/NeoChat-AppImage/releases/download/26.08.1-1%402026-10-01_1790876621/NeoChat-26.08.1-1-anylinux-x86_64.AppImage neochat-bin
-https://github.com/pkgforge-dev/NewsFlash-AppImage/releases/download/5.2.5-1%402026-10-01_1790875135/Newsflash-5.2.5-1-anylinux-x86_64.AppImage newsflash-bin
-https://github.com/pkgforge-dev/NSZ-AppImage/releases/download/5.0.0-2%402026-10-01_1790875800/NSZ-5.0.0-2-anylinux-x86_64.AppImage nsz-bin
-https://github.com/pkgforge-dev/OBS-Studio-AppImage/releases/download/32.2.2-1%402026-10-01_1790876050/OBS_Studio-32.2.2-1-anylinux-x86_64.AppImage obs-studio-bin
-https://github.com/pkgforge-dev/OCRmyPDF-AppImage/releases/download/17.12.1-1%402026-10-01_1790876632/ocrmypdf-17.12.1-1-anylinux-x86_64.AppImage ocrmypdf-bin
-https://github.com/pkgforge-dev/GNU-Octave-AppImage/releases/download/11.3.0-1%402026-10-01_1790875878/GNU_Octave-11.3.0-1-anylinux-x86_64.AppImage octave-bin
-https://github.com/pkgforge-dev/opencode-AppImage-Enhanced/releases/download/v1.19.0%402026-10-15_1792067384/OpenCode-v1.19.0-anylinux-x86_64.AppImage opencode-desktop-bin
-https://github.com/pkgforge-dev/OpenSnitch-AppImage/releases/download/1.8.0%402026-10-01_1790876122/OpenSnitch-1.8.0-anylinux-x86_64.AppImage opensnitch-bin
-https://github.com/pkgforge-dev/OptiImage-AppImage/releases/download/1.0.0-4%402026-10-01_1790871892/OptiImage-1.0.0-4-anylinux-x86_64.AppImage optiimage-bin
-https://github.com/pkgforge-dev/Oversteer-AppImage/releases/download/v0.8.3%402026-09-01_1788231331/Oversteer-v0.8.3-anylinux-x86_64.AppImage oversteer-bin
-https://github.com/pkgforge-dev/Parabolic-AppImage/releases/download/2026.5.0%402026-10-01_1790876128/Parabolic-2026.5.0-anylinux-x86_64.AppImage parabolic-bin
-https://github.com/pkgforge-dev/Piglit-AppImage/releases/download/c25575c9b%402026-10-01_1790878490/Piglit-c25575c9b-anylinux-x86_64.AppImage piglit-bin
-https://github.com/pkgforge-dev/PDF-Arranger-AppImage/releases/download/1.14.0-1%402026-10-01_1790865154/PDF_Arranger-1.14.0-1-anylinux-x86_64.AppImage pdf-arranger-bin
-https://github.com/pkgforge-dev/PDF-Tricks-AppImage/releases/download/0.4.1-2%402026-10-01_1790876452/PDF_Tricks-0.4.1-2-anylinux-x86_64.AppImage pdf-tricks-bin
-https://github.com/pkgforge-dev/QMPlay2-AppImage/releases/download/1c39ae796%402026-10-01_1790875764/QMPlay2-1c39ae796-anylinux-x86_64.AppImage qmplay2-bin
-https://github.com/pkgforge-dev/PrimeHack-AppImage/releases/download/1.0.9%402026-10-01_1790876662/PrimeHack-1.0.9-anylinux-x86_64.AppImage primehack-bin
-https://github.com/pkgforge-dev/Protontricks-AppImage/releases/download/1.14.1-1%402026-10-01_1790876568/Protontricks-1.14.1-1-anylinux-x86_64.AppImage protontricks-bin
-https://github.com/pkgforge-dev/PyGlossary-AppImage/releases/download/5.2.1-1%402026-10-01_1790876500/PyGlossary-5.2.1-1-anylinux-x86_64.AppImage pyglossary-bin
-https://github.com/pkgforge-dev/Qmmp-AppImage/releases/download/2.4.1-1%402026-10-01_1790876531/Qmmp-2.4.1-1-anylinux-x86_64.AppImage qmmp-bin
-https://github.com/pkgforge-dev/QtCreator-AppImage/releases/download/20.0.2-1%402026-10-01_1790876593/Qt_Creator-20.0.2-2-anylinux-x86_64.AppImage qtcreator-bin
 https://github.com/pkgforge-dev/RVGL-AppImage/releases/download/0.1.23.1030a3%402026-10-01_1790876501/RVGL_Launcher-0.1.23.1030a3-anylinux-x86_64.AppImage rvgl-bin
 https://github.com/pkgforge-dev/Readest-AppImage-Enhanced/releases/download/0.12.10-1%402026-10-01_1790875313/Readest-0.12.10-1-anylinux-x86_64.AppImage readest-bin
 https://github.com/pkgforge-dev/Rewaita-AppImage/releases/download/1.1.7-1%402026-10-01_1790876585/Rewaita-1.1.7-1-anylinux-x86_64.AppImage rewaita-bin
