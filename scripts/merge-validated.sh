@@ -58,6 +58,10 @@ while IFS="$(printf '\t')" read -r url pkg; do
 done <"$STAGING/lote.tsv"
 if [ -s "$fallos" ]; then
 	cat "$fallos" >>meta/failed.list
+	# Un paquete reencolado que vuelve a fallar no debe dejar dos líneas.
+	awk -F"$(printf '\t')" '!/^#/ && seen[$1]++ { next } { print }' \
+		meta/failed.list >"$fallos"
+	mv "$fallos" meta/failed.list
 fi
 
 echo "templates copiados: $merged"
