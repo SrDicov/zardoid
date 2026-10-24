@@ -1196,6 +1196,15 @@ mod sec_tests {
             versioned_url("https://x/p/1%2E4%2E0/f.tar.gz", "1.4.0"),
             "https://x/p/${version}/f.tar.gz"
         );
+        // Versión fecha (tag `hash@2026-10-01_1790`): la URL va literal, con
+        // guiones incluidos, o el fetch da 404.
+        assert_eq!(
+            versioned_url(
+                "https://x/r/download/ab12%402026-10-01_1790/App-ab12-x86_64.AppImage",
+                "20261001"
+            ),
+            "https://x/r/download/ab12%402026-10-01_1790/App-ab12-x86_64.AppImage"
+        );
     }
 
     #[test]
