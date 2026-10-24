@@ -1,0 +1,41 @@
+# Template file for 'youtube-music-bin'
+pkgname=youtube-music-bin
+version=3.12.0
+revision=1
+short_desc="Pear 🍐 is extension for music player"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pear-devs/pear-desktop"
+distfiles="https://github.com/pear-devs/pear-desktop/releases/download/v${version}/YouTube-Music-${version}.AppImage>youtube-music-bin-${version}.AppImage"
+checksum=c0975fc8aab1853b29a63bc3b33f79acf0f7fe3a49fb7d8541749de02044054d
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/youtube-music-bin
+	vcopy "squashfs-root/*" opt/youtube-music-bin
+	vmkdir usr/bin
+	ln -sf "/opt/youtube-music-bin/AppRun" "${DESTDIR}/usr/bin/youtube-music"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}

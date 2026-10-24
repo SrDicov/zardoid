@@ -1,0 +1,42 @@
+# Template file for 'whatsie-bin'
+pkgname=whatsie-bin
+version=20261001
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of WhatSie [Maintainer=@Link4Electronics]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/WhatSie-AppImage"
+distfiles="https://github.com/pkgforge-dev/WhatSie-AppImage/releases/download/6.1.1%402026-10-01_1790876564/Whatsie-6.1.1-anylinux-x86_64.AppImage>whatsie-bin-${version}.AppImage"
+checksum=fc750432865653b611b7022e054acdb8db8df351e4b89924d3efe61115d08091
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/whatsie-bin
+	vcopy "squashfs-root/*" opt/whatsie-bin
+	vmkdir usr/bin
+	ln -sf "/opt/whatsie-bin/AppRun" "${DESTDIR}/usr/bin/whatsie"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}

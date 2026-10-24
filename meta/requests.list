@@ -15,10 +15,3 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/WhatSie-AppImage/releases/download/6.1.1%402026-10-01_1790876564/Whatsie-6.1.1-anylinux-x86_64.AppImage whatsie-bin
-https://github.com/pkgforge-dev/WinBoat-AppImage/releases/download/0.9.2-1%402026-10-01_1790876583/winboat-0.9.2-1-anylinux-x86_64.AppImage winboat-bin
-https://github.com/pkgforge-dev/Xiphos-AppImage/releases/download/4.5.0-1%402026-10-01_1790876564/Xiphos_Bible_Guide-4.5.0-1-anylinux-x86_64.AppImage xiphos-bin
-https://github.com/pear-devs/pear-desktop/releases/download/v3.12.0/YouTube-Music-3.12.0.AppImage youtube-music-bin
-https://github.com/pkgforge-dev/ZapZap-AppImage-Enhanced/releases/download/7.1-1%402026-07-27_1785187279/ZapZap-7.1-1-anylinux-x86_64.AppImage zapzap-bin
-https://github.com/pkgforge-dev/appimagetool/releases/download/0.5.3/appimagetool-corresponding-source-dwarfs-0.15.6.tar.xz appimagetool-bin
-https://github.com/pkgforge-dev/Amarok-AppImage/releases/download/3.3.3-1%402026-10-01_1790876576/Amarok-3.3.3-1-anylinux-x86_64.AppImage amarok-bin
