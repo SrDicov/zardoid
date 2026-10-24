@@ -1,0 +1,42 @@
+# Template file for 'haruna-bin'
+pkgname=haruna-bin
+version=20261001
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of Haruna [Maintainer=@Link4Electronics]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/Haruna-AppImage"
+distfiles="https://github.com/pkgforge-dev/Haruna-AppImage/releases/download/1.8.1-2%402026-10-01_1790876675/Haruna-1.8.1-2-anylinux-x86_64.AppImage>haruna-bin-${version}.AppImage"
+checksum=9cdfa8c024d83440c123af68761ea79d36894cc2f28a65458c60b965759d950d
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/haruna-bin
+	vcopy "squashfs-root/*" opt/haruna-bin
+	vmkdir usr/bin
+	ln -sf "/opt/haruna-bin/AppRun" "${DESTDIR}/usr/bin/haruna"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}

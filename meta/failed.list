@@ -83,3 +83,8 @@ https://github.com/Canop/broot/releases/download/v1.61.0/broot_1.61.0.zip	broot-
 https://github.com/pkgforge-dev/BigPEmu-AppImage/releases/download/1.221%402026-09-01_1788278314/BigPEmu-1.221-anylinux-x86_64.AppImage	bigpemu-bin	xlint/build
 https://github.com/pkgforge-dev/CloneHero-AppImage/releases/download/v1.1.0.6142-final%402026-09-07_1788786700/Clone_Hero-v1.1.0.6142-final-anylinux-x86_64.AppImage	clonehero-bin	xlint/build
 https://github.com/pkgforge-dev/Cursor-AppImage-Enhanced/releases/download/3.22.12%402026-10-01_1790875580/Cursor-3.22.12-anylinux-x86_64.AppImage	cursor-bin	xlint/build
+https://github.com/pkgforge-dev/Dolphin-emu-AppImage/releases/download/2609%402026-10-01_1790876487/Dolphin_Emulator-2609-anylinux-x86_64.AppImage	dolphin-emu-bin	xlint/build
+https://github.com/pkgforge-dev/Galculator-AppImage/releases/download/v2.1.4%402026-09-11_1789134385/Galculator-v2.1.4-anylinux-loongarch64.AppImage	galculator-bin	xlint/build
+https://github.com/pkgforge-dev/GCAP2025-AppImage/releases/download/1.6%402026-06-06_1780706767/GCAP_2025-1.6-anylinux-x86_64.AppImage	gcap2025-bin	xlint/build
+https://github.com/pkgforge-dev/GCAP2026-AppImage/releases/download/1.2%402026-07-27_1785182338/GCAP_2026-1.2-anylinux-x86_64.AppImage	gcap2026-bin	xlint/build
+https://github.com/pkgforge-dev/IRPF2025-AppImage/releases/download/1.8%402026-06-05_1780694138/IRPF_2025-1.8-anylinux-x86_64.AppImage	irpf2025-bin	xlint/build

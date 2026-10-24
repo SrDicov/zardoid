@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/Dolphin-emu-AppImage/releases/download/2609%402026-10-01_1790876487/Dolphin_Emulator-2609-anylinux-x86_64.AppImage dolphin-emu-bin
-https://github.com/pkgforge-dev/DOSBox-X-AppImage/releases/download/2026.10.01%402026-10-02_1790940047/DOSBox-X-2026.10.01-anylinux-x86_64.AppImage dosbox-x-bin
-https://github.com/pkgforge-dev/Filelight-AppImage/releases/download/26.08.1-1%402026-10-01_1790871913/Filelight-26.08.1-1-anylinux-x86_64.AppImage filelight-bin
-https://github.com/pkgforge-dev/fooyin-AppImage/releases/download/0.13.0-1%402026-09-24_1790239832/fooyin-0.13.0-1-anylinux-x86_64.AppImage fooyin-bin
-https://github.com/pkgforge-dev/Galculator-AppImage/releases/download/v2.1.4%402026-09-11_1789134385/Galculator-v2.1.4-anylinux-loongarch64.AppImage galculator-bin
-https://github.com/pkgforge-dev/Gapless-AppImage/releases/download/4.6.2-1%402026-10-01_1790876658/Gapless-4.6.2-1-anylinux-x86_64.AppImage gapless-bin
-https://github.com/pkgforge-dev/GCAP2025-AppImage/releases/download/1.6%402026-06-06_1780706767/GCAP_2025-1.6-anylinux-x86_64.AppImage gcap2025-bin
-https://github.com/pkgforge-dev/GCAP2026-AppImage/releases/download/1.2%402026-07-27_1785182338/GCAP_2026-1.2-anylinux-x86_64.AppImage gcap2026-bin
-https://github.com/pkgforge-dev/Gear-Lever-AppImage/releases/download/4.6.2-1%402026-10-01_1790876517/Gear_Lever-4.6.2-1-anylinux-x86_64.AppImage gearlever-bin
-https://github.com/pkgforge-dev/GIMP-and-PhotoGIMP-AppImage/releases/download/3.2.6-2%402026-10-01_1790873442/GIMP-3.2.6-2-anylinux-x86_64.AppImage gimp-bin
-https://github.com/pkgforge-dev/GitHub-Desktop-Plus-AppImage-Enhanced/releases/download/3.6.6.1%402026-10-01_1790876050/Desktop_Plus-3.6.6.1-anylinux-x86_64.AppImage github-desktop-bin
-https://github.com/pkgforge-dev/gPodder-AppImage/releases/download/3.11.5-6%402026-10-01_1790876438/gPodder-3.11.5-6-anylinux-x86_64.AppImage gpodder-bin
-https://github.com/pkgforge-dev/Gradia-AppImage/releases/download/1.13.0%402026-10-15_1792096718/Gradia-1.13.0-anylinux-x86_64.AppImage gradia-bin
-https://github.com/pkgforge-dev/Graphs-AppImage/releases/download/2.0.7-1%402026-10-01_1790876615/Graphs-2.0.7-1-anylinux-x86_64.AppImage graphs-bin
-https://github.com/pkgforge-dev/gThumb-AppImage/releases/download/3.12.12-1%402026-10-01_1790876599/gThumb-3.12.12-1-anylinux-x86_64.AppImage gthumb-bin
-https://github.com/pkgforge-dev/Gwenview-AppImage/releases/download/26.08.0-1%402026-09-07_1788786716/Gwenview-26.08.0-1-anylinux-x86_64.AppImage gwenview-bin
-https://github.com/pkgforge-dev/Haruna-AppImage/releases/download/1.8.1-2%402026-10-01_1790876675/Haruna-1.8.1-2-anylinux-x86_64.AppImage haruna-bin
-https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.22.4/Heroic-2.22.4-linux-x86_64.AppImage heroic-games-launcher-bin
-https://github.com/pkgforge-dev/img2pdf-AppImage/releases/download/0.6.3-1%402026-10-01_1790876610/img2pdf-0.6.3-1-anylinux-x86_64.AppImage img2pdf-bin
-https://github.com/pkgforge-dev/IRPF2025-AppImage/releases/download/1.8%402026-06-05_1780694138/IRPF_2025-1.8-anylinux-x86_64.AppImage irpf2025-bin
 https://github.com/pkgforge-dev/IRPF2026-AppImage/releases/download/1.5%402026-07-27_1785183360/IRPF_2026-1.5-anylinux-x86_64.AppImage irpf2026-bin
 https://github.com/pkgforge-dev/ITR2025-AppImage/releases/download/1.8%402026-09-11_1789094327/ITR_2025-1.8-anylinux-x86_64.AppImage itr2025-bin
 https://github.com/pkgforge-dev/Kate-AppImage-Enhanced/releases/download/26.08.1-1%402026-10-01_1790876314/Kate-26.08.1-1-anylinux-x86_64.AppImage kate-bin
