@@ -568,6 +568,9 @@ fn run(a: Args) -> Res<()> {
         // Los AppImage de pkgforge llevan python embebido y el hook
         // pre-pkg/03-rewrite-python-shebang aborta sin esta variable.
         flags.push(("python_version".into(), "3".into()));
+        // El AppImage trae sus propias .so (libxml2.so.16 y compania) que no
+        // existen en Void: sin esto el hook de runtime-deps aborta.
+        flags.push(("allow_unknown_shlibs".into(), "yes".into()));
         // Sin `${pkgname}`: `dq` escapa los `$` de lo que viene del upstream y
         // el fichero acabaría llamado literalmente "${pkgname}-..."; entonces
         // `skip_extraction` no coincide y xbps-src intenta extraer el AppImage.
