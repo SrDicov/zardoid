@@ -1,0 +1,42 @@
+# Template file for 'kate-bin'
+pkgname=kate-bin
+version=20261001
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of Kate (+ kwrite) which is able to work on any"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/Kate-AppImage-Enhanced"
+distfiles="https://github.com/pkgforge-dev/Kate-AppImage-Enhanced/releases/download/26.08.1-1%402026-10-01_1790876314/Kate-26.08.1-1-anylinux-x86_64.AppImage>kate-bin-${version}.AppImage"
+checksum=49df7348c368555bcd4dd18cc613c552f1a00608bcc44c45bdc277ff2ce575b9
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/kate-bin
+	vcopy "squashfs-root/*" opt/kate-bin
+	vmkdir usr/bin
+	ln -sf "/opt/kate-bin/AppRun" "${DESTDIR}/usr/bin/kate"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
+}

@@ -88,3 +88,7 @@ https://github.com/pkgforge-dev/Galculator-AppImage/releases/download/v2.1.4%402
 https://github.com/pkgforge-dev/GCAP2025-AppImage/releases/download/1.6%402026-06-06_1780706767/GCAP_2025-1.6-anylinux-x86_64.AppImage	gcap2025-bin	xlint/build
 https://github.com/pkgforge-dev/GCAP2026-AppImage/releases/download/1.2%402026-07-27_1785182338/GCAP_2026-1.2-anylinux-x86_64.AppImage	gcap2026-bin	xlint/build
 https://github.com/pkgforge-dev/IRPF2025-AppImage/releases/download/1.8%402026-06-05_1780694138/IRPF_2025-1.8-anylinux-x86_64.AppImage	irpf2025-bin	xlint/build
+https://github.com/pkgforge-dev/IRPF2026-AppImage/releases/download/1.5%402026-07-27_1785183360/IRPF_2026-1.5-anylinux-x86_64.AppImage	irpf2026-bin	xlint/build
+https://github.com/pkgforge-dev/ITR2025-AppImage/releases/download/1.8%402026-09-11_1789094327/ITR_2025-1.8-anylinux-x86_64.AppImage	itr2025-bin	xlint/build
+https://github.com/pkgforge-dev/ladybird-appimage/releases/download/r79202.0be802797ac-1%402026-06-22_1782145637/Ladybird-r79202.0be802797ac-1-anylinux-x86_64.AppImage	ladybird-bin	xlint/build
+https://dl.librewolf.net/librewolf/158.0-1/librewolf-158.0-1-linux-x86_64-appimage.AppImage	librewolf-bin	xlint/build
