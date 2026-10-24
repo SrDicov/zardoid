@@ -21,8 +21,28 @@ Base: `dfdd8d4` (0.3.7). Rama: `agent/overnight-20261024-0045`.
   permite `distfiles` sin `${version}`) sin test. Ruta tocada en 0.3.5, sin
   cobertura: un cambio futuro la rompe en silencio y el fallo aparece como
   404 en CI, 6 minutos después.
-- [ ] **A3** Pipeline: 127 entradas reencoladas tras 0.3.7 sin verificar en CI.
-  Terminar hasta cola 0 y triar los rechazos restantes.
+- [x] **A3** Pipeline: 127 entradas reencoladas tras 0.3.7. Cerrado con cola 0,
+  558 templates y 98 rechazos triados (64 generación, 31 xlint/build).
+  Bug nuevo encontrado y corregido: `vcopy share/man/*` sin `vmkdir` previo
+  mataba el build con ENOENT (gh-bin, genovalauncher-bin, intermodal-bin,
+  jetbrains-toolbox-bin).
+
+## Triage de los 31 rechazos de build (no reencolados)
+
+- 8 × `file ... has write permission for other users` (bigpemu, clonehero,
+  gcap2025/2026, irpf2025/2026, itr2025, srb2): el zip upstream trae modos
+  0666. Fix pendiente: `chmod -R o-w` tras el `vcopy` del árbol.
+- 1 × `zoxide-bin`: ya arreglado por el `vmkdir` de 0.3.8, pendiente reencolar.
+- 1 × `broot-bin`: el zip multi-arch contiene `aarch64-.../broot` y el
+  generador lo elige; falta preferir x86_64 en `main_bin`.
+- 1 × `appimagetool-bin`: el índice apunta a un tarball `corresponding-source`,
+  no a un binario. El generador debería rechazarlo en vez de empaquetar un
+  ELF aarch64 de test.
+- 1 × `galculator-bin`: el asset del índice es `anylinux-loongarch64` y
+  `foreign_platform` no reconoce `loongarch64`.
+- 1 × `xournalpp-bin`: tar con `.so` propias, `cannot guess required shlibs`.
+  Falta `allow_unknown_shlibs=yes` en los genéricos.
+- 11 sin log disponible (runs caducados): reencolar y ver.
 
 ## Deuda aceptada (no se toca esta noche)
 
