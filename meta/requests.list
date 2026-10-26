@@ -15,6 +15,3 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/ezequielgk/Belka/releases/download/v2.0.1/belka-linux-amd64.tar.gz belka-bin
-https://codeberg.org/jahway603/ramfetch/releases/download/1.1.0a/v1.1.0a.tar.gz ramfetch-bin
-https://github.com/NovaStepStudio/StepLauncher/releases/download/v2.6.0/steplauncher-v2.6.0-linux-amd64.pkg.tar.zst steplauncher-bin

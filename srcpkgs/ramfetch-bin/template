@@ -1,0 +1,19 @@
+# Template file for 'ramfetch-bin'
+pkgname=ramfetch-bin
+version=1.1.0a
+revision=1
+short_desc="Fetch which displays memory info using /proc/meminfo"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://codeberg.org/jahway603/ramfetch"
+distfiles="https://codeberg.org/jahway603/ramfetch/releases/download/${version}/v${version}.tar.gz"
+checksum=008bc8c91c4537256bb5c2af51ce34ce9949a327215d314c818dbff68fcd03d4
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'ramfetch'
+	vinstall 'assets/ss.png' 644 usr/share/icons/hicolor/128x128/apps
+	vlicense 'LICENSE'
+}
