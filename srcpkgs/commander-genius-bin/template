@@ -1,6 +1,6 @@
 # Template file for 'commander-genius-bin'
 pkgname=commander-genius-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Commander-Genius
@@ -8,8 +8,9 @@ short_desc="Unofficial AppImage of Commander-Genius
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Commander-Genius-AppImage"
-distfiles="https://github.com/pkgforge-dev/Commander-Genius-AppImage/releases/download/58a3c4fd0%402026-10-01_1790876531/Commander_Genius-58a3c4fd0-anylinux-x86_64.AppImage>commander-genius-bin-${version}.AppImage"
-checksum=0261f672002212419e62a60ff05de1ddd845ced12f97a3a065553530e45dd900
+distfiles="https://github.com/pkgforge-dev/Commander-Genius-AppImage/releases/download/58a3c4fd0%402026-10-22_1792688937/Commander_Genius-58a3c4fd0-anylinux-x86_64.AppImage>commander-genius-bin-${version}.AppImage"
+checksum=8f1919b3491c5504053cdea9dd9e26c12928a51a65738042e938b74b38b6eee6
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -26,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/commander-genius-bin
 	vcopy "squashfs-root/*" opt/commander-genius-bin
+	chmod -R o-w "${DESTDIR}/opt/commander-genius-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/commander-genius-bin/AppRun" "${DESTDIR}/usr/bin/commander-genius"
 	local desk

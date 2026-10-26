@@ -1,6 +1,6 @@
 # Template file for 'collision-bin'
 pkgname=collision-bin
-version=3.14.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of the Collision file hash comparator
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage of the Collision file hash comparator
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/pkgforge-dev/Collision-AppImage"
-distfiles="https://github.com/pkgforge-dev/Collision-AppImage/releases/download/${version}-1%402026-10-01_1790876644/Collision-${version}-1-anylinux-x86_64.AppImage>collision-bin-${version}.AppImage"
-checksum=a6aec36e426ce6c1faa923aca47740547d605814e8612a11b7e755b83b87dec5
+distfiles="https://github.com/pkgforge-dev/Collision-AppImage/releases/download/3.14.1-1%402026-10-22_1792689210/Collision-3.14.1-1-anylinux-x86_64.AppImage>collision-bin-${version}.AppImage"
+checksum=f45df587b4023f32be61e4d3c564bd2f9936b4dde1d572cb7772291838c45b16
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/collision-bin
 	vcopy "squashfs-root/*" opt/collision-bin
+	chmod -R o-w "${DESTDIR}/opt/collision-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/collision-bin/AppRun" "${DESTDIR}/usr/bin/collision"
 	local desk

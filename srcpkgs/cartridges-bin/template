@@ -1,14 +1,14 @@
 # Template file for 'cartridges-bin'
 pkgname=cartridges-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of the Cartridges game manager and launcher"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Cartridges-AppImage"
-distfiles="https://github.com/pkgforge-dev/Cartridges-AppImage/releases/download/2.13.1-2%402026-10-01_1790876685/Cartridges-2.13.1-2-anylinux-x86_64.AppImage>cartridges-bin-${version}.AppImage"
-checksum=1f7c222bdf2fa8a2c20f5b361530996775153530d435e15bd45856ec1fa818f6
+distfiles="https://github.com/pkgforge-dev/Cartridges-AppImage/releases/download/2.13.1-2%402026-10-22_1792689366/Cartridges-2.13.1-2-anylinux-x86_64.AppImage>cartridges-bin-${version}.AppImage"
+checksum=2d0bc8b0c98f1c10c3b641a20a8d0d27dd6c59a15a3b8209370f7f9ffb7fe6ab
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/cartridges-bin
 	vcopy "squashfs-root/*" opt/cartridges-bin
+	chmod -R o-w "${DESTDIR}/opt/cartridges-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/cartridges-bin/AppRun" "${DESTDIR}/usr/bin/cartridges"
 	local desk

@@ -1,14 +1,14 @@
 # Template file for 'cine-bin'
 pkgname=cine-bin
-version=20261001
+version=20261025
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Cine [Maintainer=@TheRealYasri]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Cine-AppImage"
-distfiles="https://github.com/pkgforge-dev/Cine-AppImage/releases/download/v1.8.6%402026-10-01_1790876179/Cine-v1.8.6-anylinux-x86_64.AppImage>cine-bin-${version}.AppImage"
-checksum=ac9d1921e3d1d0ffe91c249b7eb95562504c8d40e3589fa37d71b77ffb4fe89c
+distfiles="https://github.com/pkgforge-dev/Cine-AppImage/releases/download/v1.8.7%402026-10-25_1792890520/Cine-v1.8.7-anylinux-x86_64.AppImage>cine-bin-${version}.AppImage"
+checksum=9683f4698af9fd4f3489678461ac60bd5fb93b83fe8050374018e37f0fb277c3
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/cine-bin
 	vcopy "squashfs-root/*" opt/cine-bin
+	chmod -R o-w "${DESTDIR}/opt/cine-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/cine-bin/AppRun" "${DESTDIR}/usr/bin/cine"
 	local desk

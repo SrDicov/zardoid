@@ -1,16 +1,18 @@
 # Template file for 'claude-desktop-bin'
 pkgname=claude-desktop-bin
-version=2.37337.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Claude Desktop [Maintainer=@mnalmahmud]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Claude-Desktop-AppImage"
-distfiles="https://github.com/pkgforge-dev/Claude-Desktop-AppImage/releases/download/${version}%402026-10-15_1792067545/Claude-${version}-anylinux-x86_64.AppImage>claude-desktop-bin-${version}.AppImage"
-checksum=ed6da5f4cd18794d6b316e548f32e9c78957ab697a7fefc5346dd3addcaf7781
+distfiles="https://github.com/pkgforge-dev/Claude-Desktop-AppImage/releases/download/3.1623.4%402026-10-22_1792689049/Claude-3.1623.4-anylinux-x86_64.AppImage>claude-desktop-bin-${version}.AppImage"
+checksum=b7dcd778f20079836179aa41703f8ac482a6dc7530fa78c6aef70553d75bb417
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/claude-desktop-bin
 	vcopy "squashfs-root/*" opt/claude-desktop-bin
+	chmod -R o-w "${DESTDIR}/opt/claude-desktop-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/claude-desktop-bin/AppRun" "${DESTDIR}/usr/bin/claude-desktop"
 	local desk

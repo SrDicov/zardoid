@@ -1,16 +1,18 @@
 # Template file for 'crispy-doom-bin'
 pkgname=crispy-doom-bin
-version=7.2
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Crispy Doom [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Crispy-Doom-AppImage"
-distfiles="https://github.com/pkgforge-dev/Crispy-Doom-AppImage/releases/download/${version}%402026-10-18_1792290581/Crispy_Doom-${version}-anylinux-x86_64.AppImage>crispy-doom-bin-${version}.AppImage"
-checksum=51814bea675f26311af2f6263a7cde38d34d68015273a18133b57bbbb120944d
+distfiles="https://github.com/pkgforge-dev/Crispy-Doom-AppImage/releases/download/7.2%402026-10-22_1792689111/Crispy_Doom-7.2-anylinux-x86_64.AppImage>crispy-doom-bin-${version}.AppImage"
+checksum=0a04d618ec530a3eb3f4b72904ce9771885140fc35667a52b1da6414ee178316
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/crispy-doom-bin
 	vcopy "squashfs-root/*" opt/crispy-doom-bin
+	chmod -R o-w "${DESTDIR}/opt/crispy-doom-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/crispy-doom-bin/AppRun" "${DESTDIR}/usr/bin/crispy-doom"
 	local desk

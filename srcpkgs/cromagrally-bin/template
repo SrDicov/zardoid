@@ -1,16 +1,18 @@
 # Template file for 'cromagrally-bin'
 pkgname=cromagrally-bin
-version=3.0.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of CroMagRally [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/CroMagRally-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/CroMagRally-AppImage-Enhanced/releases/download/${version}%402026-10-11_1791698910/Cro-Mag_Rally-${version}-anylinux-x86_64.AppImage>cromagrally-bin-${version}.AppImage"
-checksum=05277fc238ea166d065184d63e925cab522799d31ad14da28b5dbb2225e80f0e
+distfiles="https://github.com/pkgforge-dev/CroMagRally-AppImage-Enhanced/releases/download/3.0.1%402026-10-22_1792688524/Cro-Mag_Rally-3.0.1-anylinux-x86_64.AppImage>cromagrally-bin-${version}.AppImage"
+checksum=55a4d7d23b35758795b884b489d2a8c0dc7d55b8ec43f109a8accce0b3276366
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/cromagrally-bin
 	vcopy "squashfs-root/*" opt/cromagrally-bin
+	chmod -R o-w "${DESTDIR}/opt/cromagrally-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/cromagrally-bin/AppRun" "${DESTDIR}/usr/bin/cromagrally"
 	local desk

@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/Cannonball-AppImage/releases/download/27493ebf6%402026-10-22_1792628962/CannonBall-27493ebf6-anylinux-x86_64.AppImage cannonball-bin
-https://github.com/pkgforge-dev/Cartridges-AppImage/releases/download/2.13.1-2%402026-10-22_1792689366/Cartridges-2.13.1-2-anylinux-x86_64.AppImage cartridges-bin
-https://github.com/pkgforge-dev/CatacombGL-AppImage/releases/download/0.5.7-beta%402026-10-22_1792689898/CatacombGL-0.5.7-beta-anylinux-x86_64.AppImage catacombgl-bin
-https://github.com/pkgforge-dev/Catfish-AppImage/releases/download/4.20.1-2%402026-10-22_1792688138/Catfish_File_Search-4.20.1-2-anylinux-x86_64.AppImage catfish-bin
-https://github.com/pkgforge-dev/C-Dogs_SDL-AppImage/releases/download/2.5.0%402026-10-22_1792689142/C-Dogs_SDL-2.5.0-anylinux-x86_64.AppImage cdogs-sdl-bin
-https://github.com/pkgforge-dev/ChiPass-AppImage/releases/download/2026.09.0%402026-10-22_1792688638/ChiPass-2026.09.0-anylinux-x86_64.AppImage chipass-bin
-https://github.com/pkgforge-dev/Cine-AppImage/releases/download/v1.8.7%402026-10-25_1792890520/Cine-v1.8.7-anylinux-x86_64.AppImage cine-bin
-https://github.com/pkgforge-dev/Clapper-AppImage/releases/download/0.10.0%402026-10-22_1792687926/Clapper-0.10.0-anylinux-x86_64.AppImage clapper-bin
-https://github.com/pkgforge-dev/claude-code-AppImage/releases/download/2.1.309%402026-10-23_1792757849/claude-2.1.309-anylinux-x86_64.AppImage claude-code-bin
-https://github.com/pkgforge-dev/Claude-Desktop-AppImage/releases/download/3.1623.4%402026-10-22_1792689049/Claude-3.1623.4-anylinux-x86_64.AppImage claude-desktop-bin
-https://github.com/pkgforge-dev/ClownMDEmu-AppImage-Enhanced/releases/download/1.6.12%402026-10-22_1792688666/ClownMDEmu-1.6.12-anylinux-x86_64.AppImage clownmdemu-bin
-https://github.com/pkgforge-dev/Collision-AppImage/releases/download/3.14.1-1%402026-10-22_1792689210/Collision-3.14.1-1-anylinux-x86_64.AppImage collision-bin
-https://github.com/pkgforge-dev/Commander-Genius-AppImage/releases/download/58a3c4fd0%402026-10-22_1792688937/Commander_Genius-58a3c4fd0-anylinux-x86_64.AppImage commander-genius-bin
-https://github.com/pkgforge-dev/Constrict-AppImage/releases/download/26.10%402026-10-22_1792688961/Constrict-26.10-anylinux-x86_64.AppImage constrict-bin
-https://github.com/pkgforge-dev/contour-AppImage/releases/download/0.7.0.8982-1%402026-10-22_1792688944/Contour-0.7.0.8982-1-anylinux-x86_64.AppImage contour-bin
-https://github.com/pkgforge-dev/CopyQ-AppImage/releases/download/16.0.0-1%402026-10-22_1792688230/CopyQ-16.0.0-1-anylinux-x86_64.AppImage copyq-bin
-https://github.com/pkgforge-dev/CorsixTH-AppImage-Enhanced/releases/download/v0.70.1%402026-10-22_1792679819/CorsixTH-v0.70.1-anylinux-x86_64.AppImage corsixth-bin
-https://github.com/storytold/craft-launcher/releases/download/v0.7.0/artcraft-launcher-0.7.0-linux-x86_64.AppImage craft-launcher-bin
-https://github.com/pkgforge-dev/Crispy-Doom-AppImage/releases/download/7.2%402026-10-22_1792689111/Crispy_Doom-7.2-anylinux-x86_64.AppImage crispy-doom-bin
-https://github.com/pkgforge-dev/CroMagRally-AppImage-Enhanced/releases/download/3.0.1%402026-10-22_1792688524/Cro-Mag_Rally-3.0.1-anylinux-x86_64.AppImage cromagrally-bin
 https://github.com/pkgforge-dev/Cromite-AppImage/releases/download/v153.0.8010.37%402026-10-23_1792766869/Cromite-v153.0.8010.37-anylinux-x86_64.AppImage cromite-bin
 https://github.com/pkgforge-dev/Cuberite-AppImage/releases/download/r445%402026-10-22_1792686355/Cuberite-r445-anylinux-x86_64.AppImage cuberite-bin
 https://github.com/pkgforge-dev/Cubyz-AppImage/releases/download/0.4.1-1%402026-10-22_1792688614/Cubyz-0.4.1-1-anylinux-x86_64.AppImage cubyz-bin

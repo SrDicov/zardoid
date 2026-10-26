@@ -1,16 +1,18 @@
 # Template file for 'chipass-bin'
 pkgname=chipass-bin
-version=2026.09.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of ChiPass that can work on any linux system"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/ChiPass-AppImage"
-distfiles="https://github.com/pkgforge-dev/ChiPass-AppImage/releases/download/${version}%402026-10-01_1790876362/ChiPass-${version}-anylinux-x86_64.AppImage>chipass-bin-${version}.AppImage"
-checksum=171d6219ba3832dc7326769edb9adadf307d1d69f5f9e2fd76e7a329988dc52a
+distfiles="https://github.com/pkgforge-dev/ChiPass-AppImage/releases/download/2026.09.0%402026-10-22_1792688638/ChiPass-2026.09.0-anylinux-x86_64.AppImage>chipass-bin-${version}.AppImage"
+checksum=7fe43e806ce98e13d71c3093cc27d9b77f99d03eb02fc061291fd4f4ce82ced0
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/chipass-bin
 	vcopy "squashfs-root/*" opt/chipass-bin
+	chmod -R o-w "${DESTDIR}/opt/chipass-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/chipass-bin/AppRun" "${DESTDIR}/usr/bin/chipass"
 	local desk

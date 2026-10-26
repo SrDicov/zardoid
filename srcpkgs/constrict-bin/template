@@ -1,14 +1,14 @@
 # Template file for 'constrict-bin'
 pkgname=constrict-bin
-version=20260516
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Constrict [Maintainer=@TheRealYasri]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Constrict-AppImage"
-distfiles="https://github.com/pkgforge-dev/Constrict-AppImage/releases/download/26.4%402026-05-16_1778947296/Constrict-26.4-anylinux-x86_64.AppImage>constrict-bin-${version}.AppImage"
-checksum=b56eda8d8afdffbd8e868ad6f1e303e25d0b103562c66bd2e3d0fe6d19c1d83a
+distfiles="https://github.com/pkgforge-dev/Constrict-AppImage/releases/download/26.10%402026-10-22_1792688961/Constrict-26.10-anylinux-x86_64.AppImage>constrict-bin-${version}.AppImage"
+checksum=7e7e889253c5adb8007b43a5fa7f27e73f575e0d7805070b20a360e5b8ff717d
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/constrict-bin
 	vcopy "squashfs-root/*" opt/constrict-bin
+	chmod -R o-w "${DESTDIR}/opt/constrict-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/constrict-bin/AppRun" "${DESTDIR}/usr/bin/constrict"
 	local desk

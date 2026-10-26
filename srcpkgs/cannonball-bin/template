@@ -1,16 +1,18 @@
 # Template file for 'cannonball-bin'
 pkgname=cannonball-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Cannonball [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Cannonball-AppImage"
-distfiles="https://github.com/pkgforge-dev/Cannonball-AppImage/releases/download/27493ebf6%402026-10-01_1790876479/CannonBall-27493ebf6-anylinux-x86_64.AppImage>cannonball-bin-${version}.AppImage"
-checksum=1b6a9e9457145ed4d223d9d67babdc1467d7145cbb4b392bbbf3dc3e67bc8d65
+distfiles="https://github.com/pkgforge-dev/Cannonball-AppImage/releases/download/27493ebf6%402026-10-22_1792628962/CannonBall-27493ebf6-anylinux-x86_64.AppImage>cannonball-bin-${version}.AppImage"
+checksum=832fa3a41def78e056c19bca9febc66ad16cbb67240cad611cc8929a28c0e5e9
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/cannonball-bin
 	vcopy "squashfs-root/*" opt/cannonball-bin
+	chmod -R o-w "${DESTDIR}/opt/cannonball-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/cannonball-bin/AppRun" "${DESTDIR}/usr/bin/cannonball"
 	local desk
