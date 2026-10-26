@@ -1,0 +1,20 @@
+# Template file for 'lf-bin'
+pkgname=lf-bin
+version=42
+revision=1
+archs="x86_64*"
+short_desc="Terminal file manager"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/gokcehan/lf"
+distfiles="https://github.com/gokcehan/lf/releases/download/r${version}/lf-linux-amd64.tar.gz"
+checksum=c6abe6c0c11a0a4ae89754884aad67de18decc113935cbc5eaa57dc0d1850fb4
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'lf'
+	vlicense "${FILESDIR}/LICENSE"
+}

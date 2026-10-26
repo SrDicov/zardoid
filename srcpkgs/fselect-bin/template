@@ -1,0 +1,18 @@
+# Template file for 'fselect-bin'
+pkgname=fselect-bin
+version=0.10.4
+revision=1
+archs="x86_64"
+short_desc="Find files with SQL-like queries"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://fselect.rocks"
+distfiles="https://github.com/jhspetersson/fselect/releases/download/${version}/fselect-x86_64-linux.gz"
+checksum=1eb4da3f5792d39cb8f3ae5aa858608170e8125000cb182403028c741ec8e3d5
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'fselect-x86_64-linux' 'fselect'
+}

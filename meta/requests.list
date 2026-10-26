@@ -15,5 +15,3 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/gokcehan/lf/releases/download/r42/lf-dragonfly-amd64.tar.gz lf-bin
-https://github.com/jhspetersson/fselect/releases/download/0.10.4/fselect-x86_64-win.zip fselect-bin
