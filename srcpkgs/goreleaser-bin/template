@@ -1,6 +1,6 @@
 # Template file for 'goreleaser-bin'
 pkgname=goreleaser-bin
-version=2.18.3
+version=2.19.0
 revision=1
 archs="x86_64*"
 short_desc="Release engineering, simplified"
@@ -8,7 +8,8 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://goreleaser.com"
 distfiles="https://github.com/goreleaser/goreleaser/releases/download/v${version}/goreleaser_Linux_x86_64.tar.gz"
-checksum=b8dee4728bca1aba0d71a832a17cd0a3799f75372878e7ffa36aef2343bce0bc
+checksum=ebc3194ad1d1b1787614405285a0039665cd4c5bd3305215a1b201600f90630b
+allow_unknown_shlibs=yes
 nopie=yes
 noshlibprovides=yes
 nostrip=yes

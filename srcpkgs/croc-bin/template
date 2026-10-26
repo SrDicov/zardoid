@@ -1,6 +1,6 @@
 # Template file for 'croc-bin'
 pkgname=croc-bin
-version=11.5.4
+version=11.5.5
 revision=1
 archs="x86_64*"
 short_desc="Easily and securely send things from one computer to another
@@ -9,7 +9,8 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://getcroc.com"
 distfiles="https://github.com/schollz/croc/releases/download/v${version}/croc-web_v${version}_Linux-amd64.tar.gz"
-checksum=b9513f062a59910ac780338d9e600194aa8165a68a2a8b2e73fd2c892b8389df
+checksum=7c3e87cff05275a66fb5555d60c0a90b9c9a4e92f76928e2a6a89fa544aa1916
+allow_unknown_shlibs=yes
 nopie=yes
 noshlibprovides=yes
 nostrip=yes

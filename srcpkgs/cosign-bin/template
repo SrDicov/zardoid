@@ -1,6 +1,6 @@
 # Template file for 'cosign-bin'
 pkgname=cosign-bin
-version=3.1.3
+version=3.1.4
 revision=1
 archs="x86_64*"
 short_desc="Code signing and transparency for containers and binaries"
@@ -8,7 +8,8 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="Apache-2.0"
 homepage="https://github.com/sigstore/cosign"
 distfiles="https://github.com/sigstore/cosign/releases/download/v${version}/cosign-linux-amd64"
-checksum=4629c757b7618056f8ddd7e2625ae9fdd94c0372a65049520bc7d9df9efc7f71
+checksum=424e2c97d0b45fd7a6b608a87f090f35633f4c23ece5f092d48bba11aaf4bbfa
+allow_unknown_shlibs=yes
 nopie=yes
 noshlibprovides=yes
 nostrip=yes

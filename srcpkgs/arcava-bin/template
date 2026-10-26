@@ -1,0 +1,20 @@
+# Template file for 'arcava-bin'
+pkgname=arcava-bin
+version=1.0.0
+revision=1
+archs="x86_64"
+short_desc="Console audio visualizer in C++17"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/Ars-byte/Arcava"
+distfiles="https://github.com/Ars-byte/Arcava/releases/download/v${version}/Arcava-v${version}.tar.gz"
+checksum=8f3c9ba19f7c5f288af42ef2bf0e02d7858855be76078d0b3f1225b667b77848
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'Arcava'
+	vinstall 'previews/preview.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vlicense 'LICENSE'
+}

@@ -1,6 +1,6 @@
 # Template file for 'fx-bin'
 pkgname=fx-bin
-version=40.0.0
+version=40.0.1
 revision=1
 archs="x86_64*"
 short_desc="Terminal JSON viewer & processor"
@@ -8,7 +8,8 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://fx.wtf"
 distfiles="https://github.com/antonmedv/fx/releases/download/${version}/fx_linux_amd64"
-checksum=c5cf146137d3d1819384356366913f1f98bcf5b334e5f100e4705c081f65ed8e
+checksum=9f0cc5a29d2940dd28fdc7df7b5e19bf16856d388e60d1c9f1116890967c604a
+allow_unknown_shlibs=yes
 nopie=yes
 noshlibprovides=yes
 nostrip=yes

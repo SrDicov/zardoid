@@ -59,3 +59,9 @@ https://github.com/Trinity-LA/Trinity-Launcher/releases/download/latest/Trinity_
 https://github.com/localsend/localsend/releases/download/v1.18.2/LocalSend-1.18.2-linux-arm-64.tar.gz	localsend-bin	generacion
 https://codeberg.org/jahway603/ramfetch/releases/download/1.1.0a/v1.1.0a.tar.gz	ramfetch-bin	generacion
 https://github.com/Limine-Bootloader/Limine/releases/download/v12.9.3/limine-binary.tar.gz	limine-bin	generacion
+https://github.com/ezequielgk/Belka/releases/download/v2.0.1/belka-linux-amd64.tar.gz	belka-bin	generacion
+https://github.com/bufbuild/buf/releases/download/v1.75.0/buf-FreeBSD-x86_64.tar.gz	buf-bin	generacion
+https://github.com/twpayne/chezmoi/releases/download/v2.73.3/chezmoi_2.73.3_freebsd_amd64.tar.gz	chezmoi-bin	generacion
+https://github.com/storytold/craft-launcher/releases/download/v0.7.0/artcraft-launcher-0.7.0-freebsd-x86_64.tar.gz	craft-launcher-bin	generacion
+https://github.com/mr-karan/doggo/releases/download/v1.4.2/doggo-freebsd-x86_64.tar.gz	doggo-bin	generacion
+https://github.com/jhspetersson/fselect/releases/download/0.10.4/fselect-x86_64-win.zip	fselect-bin	generacion

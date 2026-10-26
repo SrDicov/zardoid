@@ -1,6 +1,6 @@
 # Template file for 'atuin-bin'
 pkgname=atuin-bin
-version=18.24.1
+version=18.24.2
 revision=1
 archs="x86_64"
 short_desc="Making your shell magical"
@@ -8,7 +8,8 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://atuin.sh"
 distfiles="https://github.com/atuinsh/atuin/releases/download/v${version}/atuin-server-x86_64-unknown-linux-gnu.tar.gz"
-checksum=bbe1a7aa0335e36af299c611af99ac95e752f6180b8ac4dfe9b6848d5953556c
+checksum=36b9cb5581396d0dbed316be406cbd4028f0e4834d7a15b29293c8c0f999ad1d
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 

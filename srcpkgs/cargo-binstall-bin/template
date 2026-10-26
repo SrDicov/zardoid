@@ -1,6 +1,6 @@
 # Template file for 'cargo-binstall-bin'
 pkgname=cargo-binstall-bin
-version=1.26.0
+version=1.26.1
 revision=1
 archs="x86_64"
 short_desc="Binary installation for rust projects"
@@ -8,7 +8,8 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/cargo-bins/cargo-binstall"
 distfiles="https://github.com/cargo-bins/cargo-binstall/releases/download/v${version}/cargo-binstall-x86_64-unknown-linux-gnu.full.tgz"
-checksum=ff3ecc15f5bce7f8cfa3e786ada7af8d3b422e14c1c83e4ec4d431f1d3fe1421
+checksum=c0c2bf31dfb4c3ac4d77f43bb6a15db2cfef264a72b1b8fc2f1dbf4070b6c7e3
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 
