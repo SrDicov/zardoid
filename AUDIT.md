@@ -59,3 +59,42 @@ Base: `dfdd8d4` (0.3.7). Rama: `agent/overnight-20261024-0045`.
 
 - Los 40 rechazos de generación por plataforma ajena (FreeBSD/macOS/Windows):
   el índice de Belka apunta a assets que no existen para Void x86_64.
+
+## Cierre 0.3.12 (indice vivo, cola 0)
+
+Se refresco `meta/belka.tsv` desde el indice publicado de Belka (643 lineas,
+333 URLs nuevas) y se proceso la cola completa. Estado final:
+
+- 595 templates en `srcpkgs/` para 618 paquetes distintos del indice.
+- 0 entradas en `meta/requests.list`.
+- 54 rechazos, todos de URLs que siguen en el indice vivo (los 16 obsoletos
+  se podaron): 45 por plataforma ajena (FreeBSD/DragonFly/macOS/LoongArch/ARM)
+  y 9 irrecuperables para este pipeline:
+  - 3 archivos de fuentes de GitHub (`/archive/`): mfetch, pfetch, ranger.
+  - 3 tags moviles sin version (`rolling`/`latest`): epubworm, trinity, tui-timer.
+  - 1 release con solo firmas `.asc` (helm; los binarios viven en get.helm.sh).
+  - 1 URL muerta (tor-browser 404).
+  - 1 bootloader sin ELF Linux (limine: solo blobs EFI/BIOS).
+
+### Arreglos nuevos (0.3.10 - 0.3.12)
+
+- `vman` por pagina: se elimino el `vcopy share/man/*`, que fallaba con
+  `cp: cannot stat` cuando el tarball no tenia `share/man/`.
+- Licencias: SPDX del `LICENSE` extraido (respetando `inner_root`), tabla de
+  overrides verificados (MPL/GPL), repo upstream para AppImage de pkgforge y
+  aviso `custom:*` para propietario/desconocido.
+- `inventory`: no confunde `libXss.so.1` con un manual ni `license.jar` con
+  una licencia.
+- Fallback al release del repo cuando el asset indexado es fuente, firma,
+  `.deb` o no tiene version (feroxbuster, appimagetool).
+- Tags con `/` (`deploy/v10.2.3-68`) y URLs literales cuando la version sale
+  del tag (osu, binfmt).
+- Scripts con shebang: Belka y ramfetch se empaquetan con `vbin` y sin
+  `archs`; `belka-bin` declara `depends="curl jq"`.
+- Contenedor de build con `zstd` para `.pkg.tar.zst` (steplauncher).
+
+### Deuda remanente
+
+- 54 assets del indice no son empaquetables para Void x86_64 (plataforma
+  ajena, fuentes, tags moviles o URLs muertas). Reintentarlos quema runner.
+- `short_desc` de los AppImage de pkgforge conserva `[Maintainer=@user]`.
