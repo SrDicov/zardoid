@@ -1,16 +1,18 @@
 # Template file for 'extension-manager-bin'
 pkgname=extension-manager-bin
-version=0.6.5
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Extension-Manager-AppImage [Maintainer=@Shikakiben]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/mjakeman/extension-manager"
-distfiles="https://github.com/pkgforge-dev/Extension-Manager-AppImage/releases/download/${version}-1%402026-10-01_1790876636/Extension_Manager-${version}-1-anylinux-x86_64.AppImage>extension-manager-bin-${version}.AppImage"
-checksum=3f0f4f78531fa9dfbbf5456df5caf451e6def3af820d9ef5d967a06961bd694e
+distfiles="https://github.com/pkgforge-dev/Extension-Manager-AppImage/releases/download/0.6.5-1%402026-10-22_1792689413/Extension_Manager-0.6.5-1-anylinux-x86_64.AppImage>extension-manager-bin-${version}.AppImage"
+checksum=672e7d038aedadf446f80beb322c1137ad852996e3ff3339231ad4bf614b0162
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/extension-manager-bin
 	vcopy "squashfs-root/*" opt/extension-manager-bin
+	chmod -R o-w "${DESTDIR}/opt/extension-manager-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/extension-manager-bin/AppRun" "${DESTDIR}/usr/bin/extension-manager"
 	local desk

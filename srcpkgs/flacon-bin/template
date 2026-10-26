@@ -1,16 +1,18 @@
 # Template file for 'flacon-bin'
 pkgname=flacon-bin
-version=13.0.2
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Flacon [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced/releases/download/${version}%402026-10-10_1791662146/Flacon-${version}-anylinux-x86_64.AppImage>flacon-bin-${version}.AppImage"
-checksum=1d8030f9b66cf0bbccf593b8ac9e9f1ba593395e3014252e2ffdd778aa89a8af
+distfiles="https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced/releases/download/13.0.2%402026-10-22_1792688953/Flacon-13.0.2-anylinux-x86_64.AppImage>flacon-bin-${version}.AppImage"
+checksum=34c23a5a7648b13df03f39e6425d32058b6803608e24f2e2dbe4e87d4532f480
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/flacon-bin
 	vcopy "squashfs-root/*" opt/flacon-bin
+	chmod -R o-w "${DESTDIR}/opt/flacon-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/flacon-bin/AppRun" "${DESTDIR}/usr/bin/flacon"
 	local desk

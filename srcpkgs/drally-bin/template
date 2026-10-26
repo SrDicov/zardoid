@@ -1,14 +1,15 @@
 # Template file for 'drally-bin'
 pkgname=drally-bin
-version=20260901
+version=20261024
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of dRally [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/dRally-AppImage"
-distfiles="https://github.com/pkgforge-dev/dRally-AppImage/releases/download/920d85a7f%402026-09-01_1788264642/dRally-920d85a7f-anylinux-x86_64.AppImage>drally-bin-${version}.AppImage"
-checksum=529be8b6b874a34016b29c2b7cd37824d4049af598dea8a6b0be0c7893be292a
+distfiles="https://github.com/pkgforge-dev/dRally-AppImage/releases/download/920d85a7f%402026-10-24_1792823741/dRally-920d85a7f-anylinux-x86_64.AppImage>drally-bin-${version}.AppImage"
+checksum=fbf9b6450a172384605302bae281ef0eeb318365d67b510758acf8ba2066a7b2
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/drally-bin
 	vcopy "squashfs-root/*" opt/drally-bin
+	chmod -R o-w "${DESTDIR}/opt/drally-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/drally-bin/AppRun" "${DESTDIR}/usr/bin/drally"
 	local desk

@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/DOSBox-X-AppImage/releases/download/2026.10.01%402026-10-22_1792689099/DOSBox-X-2026.10.01-anylinux-x86_64.AppImage dosbox-x-bin
-https://github.com/pkgforge-dev/Dr-Robotniks-Ring-Racers-AppImage/releases/download/2.4%402026-10-24_1792826191/Dr._Robotnik.s_Ring_Racers-2.4-anylinux-x86_64.AppImage dr-robotniks-ring-racers-bin
-https://github.com/pkgforge-dev/dRally-AppImage/releases/download/920d85a7f%402026-10-24_1792823741/dRally-920d85a7f-anylinux-x86_64.AppImage drally-bin
-https://github.com/pkgforge-dev/dunst-AppImage/releases/download/1.13.2-3%402026-10-22_1792688962/dunst-1.13.2-3-anylinux-x86_64.AppImage dunst-bin
-https://github.com/pkgforge-dev/Dwarf-Fortress-AppImage/releases/download/53.16-1%402026-10-24_1792824642/Dwarf_Fortress-53.16-1-anylinux-x86_64.AppImage dwarf-fortress-bin
-https://github.com/pkgforge-dev/ECWolf-AppImage/releases/download/1.4.2%402026-10-24_1792826086/ECWolf-1.4.2-anylinux-x86_64.AppImage ecwolf-bin
-https://github.com/pkgforge-dev/EDuke32-AppImage/releases/download/20260807-10669-ec5824db8%402026-10-22_1792689211/EDuke32-20260807-10669-ec5824db8-anylinux-x86_64.AppImage eduke32-bin
-https://github.com/pkgforge-dev/Elastic-AppImage/releases/download/1.0.4-1%402026-10-22_1792674564/Elastic-1.0.4-1-anylinux-x86_64.AppImage elastic-bin
-https://github.com/pkgforge-dev/Element-Desktop-AppImage/releases/download/1.12.32%402026-10-22_1792689082/Element-1.12.32-anylinux-x86_64.AppImage element-desktop-bin
-https://github.com/citron-neo/emulator/releases/download/2026-04-27/citron_nightly-0237a9b88-linux-x86_64.AppImage emulator-bin
-https://github.com/pkgforge-dev/Extension-Manager-AppImage/releases/download/0.6.5-1%402026-10-22_1792689413/Extension_Manager-0.6.5-1-anylinux-x86_64.AppImage extension-manager-bin
-https://github.com/pkgforge-dev/Exult-AppImage/releases/download/14f4b8bb9%402026-10-24_1792829532/Exult-14f4b8bb9-anylinux-x86_64.AppImage exult-bin
-https://github.com/pkgforge-dev/Eyedropper-AppImage/releases/download/2.2.1-1%402026-10-22_1792689101/Eyedropper-2.2.1-1-anylinux-x86_64.AppImage eyedropper-bin
-https://github.com/pkgforge-dev/Fabother-World-AppImage/releases/download/170b7d466%402026-10-22_1792682187/Fabother_World-170b7d466-anylinux-x86_64.AppImage fabother-world-bin
-https://github.com/pkgforge-dev/ffmpeg-AppImage/releases/download/9.0.2-2%402026-10-22_1792689487/ffmpeg-9.0.2-2-anylinux-x86_64.AppImage ffmpeg-bin
-https://github.com/pkgforge-dev/Firefox-AppImage/releases/download/158.0.1%402026-10-23_1792758956/Firefox-158.0.1-anylinux-x86_64.AppImage firefox-bin
-https://github.com/pkgforge-dev/Flacon-AppImage-Enhanced/releases/download/13.0.2%402026-10-22_1792688953/Flacon-13.0.2-anylinux-x86_64.AppImage flacon-bin
-https://github.com/pkgforge-dev/Flashrom-AppImage/releases/download/1.8.0-1%402026-10-22_1792689165/flashrom-1.8.0-1-anylinux-x86_64.AppImage flashrom-bin
-https://github.com/pkgforge-dev/Flycast-AppImage-Enhanced/releases/download/2.7%402026-10-22_1792688568/Flycast-2.7-anylinux-x86_64.AppImage flycast-bin
-https://github.com/pkgforge-dev/foot-AppImage/releases/download/1.28.0-2%402026-10-22_1792688517/Foot-1.28.0-2-anylinux-x86_64.AppImage foot-bin
 https://github.com/pkgforge-dev/GNU-FreeDink-AppImage/releases/download/109.6-2%402026-10-22_1792689303/FreeDink-109.6-2-anylinux-x86_64.AppImage freedink-bin
 https://github.com/pkgforge-dev/FreeTube-Appimage-Enhanced/releases/download/0.25.3-beta%402026-10-22_1792688932/FreeTube-0.25.3-beta-anylinux-x86_64.AppImage freetube-bin
 https://github.com/pkgforge-dev/Fretboard-AppImage/releases/download/9.1-3%402026-10-22_1792689416/Fretboard-9.1-3-anylinux-x86_64.AppImage fretboard-bin

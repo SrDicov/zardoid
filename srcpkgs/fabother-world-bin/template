@@ -1,6 +1,6 @@
 # Template file for 'fabother-world-bin'
 pkgname=fabother-world-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Fabother-World
@@ -8,8 +8,9 @@ short_desc="Unofficial AppImage of Fabother-World
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Fabother-World-AppImage"
-distfiles="https://github.com/pkgforge-dev/Fabother-World-AppImage/releases/download/170b7d466%402026-10-01_1790874883/Fabother_World-170b7d466-anylinux-x86_64.AppImage>fabother-world-bin-${version}.AppImage"
-checksum=6a58e272b8513bedbe315f823caa5e562340eb04e4b13eb12c911953d938af5d
+distfiles="https://github.com/pkgforge-dev/Fabother-World-AppImage/releases/download/170b7d466%402026-10-22_1792682187/Fabother_World-170b7d466-anylinux-x86_64.AppImage>fabother-world-bin-${version}.AppImage"
+checksum=8c1cb00cd67f8b2dcbd2bc154cf20a7fe274aa7894ded7afa329acbd5e9e46b3
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -26,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/fabother-world-bin
 	vcopy "squashfs-root/*" opt/fabother-world-bin
+	chmod -R o-w "${DESTDIR}/opt/fabother-world-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/fabother-world-bin/AppRun" "${DESTDIR}/usr/bin/fabother-world"
 	local desk

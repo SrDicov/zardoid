@@ -1,16 +1,18 @@
 # Template file for 'flashrom-bin'
 pkgname=flashrom-bin
-version=1.8.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of flashrom [Maintainer=@lucasmz1]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Flashrom-AppImage"
-distfiles="https://github.com/pkgforge-dev/Flashrom-AppImage/releases/download/${version}-1%402026-10-01_1790876393/flashrom-${version}-1-anylinux-x86_64.AppImage>flashrom-bin-${version}.AppImage"
-checksum=d9fb578e74204239d5774746c4a088c854e62c95ae06585ea8b3a01bc14902fa
+distfiles="https://github.com/pkgforge-dev/Flashrom-AppImage/releases/download/1.8.0-1%402026-10-22_1792689165/flashrom-1.8.0-1-anylinux-x86_64.AppImage>flashrom-bin-${version}.AppImage"
+checksum=a4ad7762423867808f2ce6062160acb315f14cbfb56802fa48c9b6b96ff09d3d
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/flashrom-bin
 	vcopy "squashfs-root/*" opt/flashrom-bin
+	chmod -R o-w "${DESTDIR}/opt/flashrom-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/flashrom-bin/AppRun" "${DESTDIR}/usr/bin/flashrom"
 	local desk

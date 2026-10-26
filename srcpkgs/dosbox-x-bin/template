@@ -1,14 +1,14 @@
 # Template file for 'dosbox-x-bin'
 pkgname=dosbox-x-bin
-version=20261002
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of DOSBox-X [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/DOSBox-X-AppImage"
-distfiles="https://github.com/pkgforge-dev/DOSBox-X-AppImage/releases/download/2026.10.01%402026-10-02_1790940047/DOSBox-X-2026.10.01-anylinux-x86_64.AppImage>dosbox-x-bin-${version}.AppImage"
-checksum=111b81c61fc35951d44ac5daaa074e7f84331bd909032647735834fba828d950
+distfiles="https://github.com/pkgforge-dev/DOSBox-X-AppImage/releases/download/2026.10.01%402026-10-22_1792689099/DOSBox-X-2026.10.01-anylinux-x86_64.AppImage>dosbox-x-bin-${version}.AppImage"
+checksum=cd24bb4ca2ac4f73ca22a3d34d9c0c8ab601e5b4ecefea4dad92fb82907b6044
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/dosbox-x-bin
 	vcopy "squashfs-root/*" opt/dosbox-x-bin
+	chmod -R o-w "${DESTDIR}/opt/dosbox-x-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/dosbox-x-bin/AppRun" "${DESTDIR}/usr/bin/dosbox-x"
 	local desk

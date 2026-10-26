@@ -1,16 +1,18 @@
 # Template file for 'foot-bin'
 pkgname=foot-bin
-version=1.28.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of foot that can also work in x11"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/foot-AppImage"
-distfiles="https://github.com/pkgforge-dev/foot-AppImage/releases/download/${version}-2%402026-10-01_1790876300/Foot-${version}-2-anylinux-x86_64.AppImage>foot-bin-${version}.AppImage"
-checksum=4b8556cb5916ce5fcf9f88c41b6bef0307ad417bf350249c04fb47f420b01c19
+distfiles="https://github.com/pkgforge-dev/foot-AppImage/releases/download/1.28.0-2%402026-10-22_1792688517/Foot-1.28.0-2-anylinux-x86_64.AppImage>foot-bin-${version}.AppImage"
+checksum=28a88d5166c5f7c862505c09d6193cc8ad088ecb5d772b21e10b43e354151784
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/foot-bin
 	vcopy "squashfs-root/*" opt/foot-bin
+	chmod -R o-w "${DESTDIR}/opt/foot-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/foot-bin/AppRun" "${DESTDIR}/usr/bin/foot"
 	local desk

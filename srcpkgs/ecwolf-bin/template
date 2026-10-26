@@ -1,16 +1,18 @@
 # Template file for 'ecwolf-bin'
 pkgname=ecwolf-bin
-version=1.4.2
+version=20261024
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of ECWolf [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/ECWolf-AppImage"
-distfiles="https://github.com/pkgforge-dev/ECWolf-AppImage/releases/download/${version}%402026-10-01_1790876213/ECWolf-${version}-anylinux-x86_64.AppImage>ecwolf-bin-${version}.AppImage"
-checksum=263249c67cef3bd72411329a68880c56006cf30d3f653d398f54678003363171
+distfiles="https://github.com/pkgforge-dev/ECWolf-AppImage/releases/download/1.4.2%402026-10-24_1792826086/ECWolf-1.4.2-anylinux-x86_64.AppImage>ecwolf-bin-${version}.AppImage"
+checksum=ef286b063f294dadf1b5c9160bc804417130685eac6cc33e16e23bb7c8ab7a77
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/ecwolf-bin
 	vcopy "squashfs-root/*" opt/ecwolf-bin
+	chmod -R o-w "${DESTDIR}/opt/ecwolf-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/ecwolf-bin/AppRun" "${DESTDIR}/usr/bin/ecwolf"
 	local desk

@@ -1,6 +1,6 @@
 # Template file for 'emulator-bin'
 pkgname=emulator-bin
-version=2026.04.27
+version=20260427
 revision=1
 archs="x86_64"
 short_desc="Switch fell off https://citron-neo.org/"
