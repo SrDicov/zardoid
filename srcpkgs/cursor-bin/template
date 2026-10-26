@@ -1,6 +1,6 @@
 # Template file for 'cursor-bin'
 pkgname=cursor-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Cursor which is able to work on any linux
@@ -8,8 +8,8 @@ short_desc="Unofficial AppImage of Cursor which is able to work on any linux
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="custom:Proprietary"
 homepage="https://github.com/pkgforge-dev/Cursor-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/Cursor-AppImage-Enhanced/releases/download/3.22.12%402026-10-01_1790875580/Cursor-3.22.12-anylinux-x86_64.AppImage>cursor-bin-${version}.AppImage"
-checksum=c2f189272ea5ce071c49cf98d3949bd9930499d0bdc9920bb879f06ea782ec93
+distfiles="https://github.com/pkgforge-dev/Cursor-AppImage-Enhanced/releases/download/3.24.18%402026-10-22_1792687850/Cursor-3.24.18-anylinux-x86_64.AppImage>cursor-bin-${version}.AppImage"
+checksum=187841199163bb313551a18ec13df6c68319379e3d13e7ee16e7d3812b93bc31
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes

@@ -1,16 +1,18 @@
 # Template file for 'denise-bin'
 pkgname=denise-bin
-version=2.9
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Denise [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Denise-AppImage"
-distfiles="https://github.com/pkgforge-dev/Denise-AppImage/releases/download/${version}%402026-10-10_1791666953/Denise-${version}-anylinux-x86_64.AppImage>denise-bin-${version}.AppImage"
-checksum=c7d3f032468a945cb01a5b801fd44300f4f91927f53c306ba93b2c683fd307c3
+distfiles="https://github.com/pkgforge-dev/Denise-AppImage/releases/download/2.9%402026-10-22_1792689023/Denise-2.9-anylinux-x86_64.AppImage>denise-bin-${version}.AppImage"
+checksum=a939aa21c7318c8a536cf4f7f1e348e16682424f9de994aae6e73598691c2c85
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/denise-bin
 	vcopy "squashfs-root/*" opt/denise-bin
+	chmod -R o-w "${DESTDIR}/opt/denise-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/denise-bin/AppRun" "${DESTDIR}/usr/bin/denise"
 	local desk

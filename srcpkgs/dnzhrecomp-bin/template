@@ -1,16 +1,18 @@
 # Template file for 'dnzhrecomp-bin'
 pkgname=dnzhrecomp-bin
-version=0.0.3
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Duke Nukem Zero Hour Recompiled"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/DNZHRecomp-AppImage"
-distfiles="https://github.com/pkgforge-dev/DNZHRecomp-AppImage/releases/download/${version}%402026-10-01_1790876472/DNZHRecompiled-${version}-anylinux-x86_64.AppImage>dnzhrecomp-bin-${version}.AppImage"
-checksum=d97cd3fe93a8e30202e05093d01e076b9bd9b580f3d8953bdff36d865c67e388
+distfiles="https://github.com/pkgforge-dev/DNZHRecomp-AppImage/releases/download/0.0.3%402026-10-22_1792689040/DNZHRecompiled-0.0.3-anylinux-x86_64.AppImage>dnzhrecomp-bin-${version}.AppImage"
+checksum=5b9287dc8fd7fe57b7114ac64f58de41115c8fe4a5c3fa1bbb197a8ed437c8fb
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/dnzhrecomp-bin
 	vcopy "squashfs-root/*" opt/dnzhrecomp-bin
+	chmod -R o-w "${DESTDIR}/opt/dnzhrecomp-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/dnzhrecomp-bin/AppRun" "${DESTDIR}/usr/bin/dnzhrecomp"
 	local desk

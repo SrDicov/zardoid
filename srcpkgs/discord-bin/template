@@ -1,16 +1,18 @@
 # Template file for 'discord-bin'
 pkgname=discord-bin
-version=1.0.160
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Discord. [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Discord-AppImage"
-distfiles="https://github.com/pkgforge-dev/Discord-AppImage/releases/download/${version}-1%402026-10-01_1790876581/Discord-${version}-1-anylinux-x86_64.AppImage>discord-bin-${version}.AppImage"
-checksum=475591ccfba6618a8f837e042e097527fe01407bddba48c17d453a614583a7df
+distfiles="https://github.com/pkgforge-dev/Discord-AppImage/releases/download/1.0.165-1%402026-10-22_1792689446/Discord-1.0.165-1-anylinux-x86_64.AppImage>discord-bin-${version}.AppImage"
+checksum=1f880f5b8c84e8012f979c8a4fb6075cbf6f134b71046b23d04d202d47ef4206
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/discord-bin
 	vcopy "squashfs-root/*" opt/discord-bin
+	chmod -R o-w "${DESTDIR}/opt/discord-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/discord-bin/AppRun" "${DESTDIR}/usr/bin/discord"
 	local desk

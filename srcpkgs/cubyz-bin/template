@@ -1,16 +1,18 @@
 # Template file for 'cubyz-bin'
 pkgname=cubyz-bin
-version=0.4.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Cubyz [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Cubyz-AppImage"
-distfiles="https://github.com/pkgforge-dev/Cubyz-AppImage/releases/download/${version}-1%402026-10-01_1790869699/Cubyz-${version}-1-anylinux-x86_64.AppImage>cubyz-bin-${version}.AppImage"
-checksum=f6937e56ad06d010578119d6e92125acf84716a62e73f772702ece370aaf7be0
+distfiles="https://github.com/pkgforge-dev/Cubyz-AppImage/releases/download/0.4.1-1%402026-10-22_1792688614/Cubyz-0.4.1-1-anylinux-x86_64.AppImage>cubyz-bin-${version}.AppImage"
+checksum=08c7cc47f39315c23a99cf4bbd69926dc707d0768b1705ba5ed39d27c5791abe
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/cubyz-bin
 	vcopy "squashfs-root/*" opt/cubyz-bin
+	chmod -R o-w "${DESTDIR}/opt/cubyz-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/cubyz-bin/AppRun" "${DESTDIR}/usr/bin/cubyz"
 	local desk

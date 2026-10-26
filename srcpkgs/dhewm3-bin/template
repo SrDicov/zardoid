@@ -1,14 +1,15 @@
 # Template file for 'dhewm3-bin'
 pkgname=dhewm3-bin
-version=20261001
+version=20261024
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of dhewm3 [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/dhewm3-AppImage"
-distfiles="https://github.com/pkgforge-dev/dhewm3-AppImage/releases/download/455b88e8d%402026-10-01_1790876950/Dhewm3-455b88e8d-anylinux-x86_64.AppImage>dhewm3-bin-${version}.AppImage"
-checksum=28a4c4fed23121a94d97da6ff1be307c349d5e351303657df336c3f005903513
+distfiles="https://github.com/pkgforge-dev/dhewm3-AppImage/releases/download/455b88e8d%402026-10-24_1792811656/Dhewm3-455b88e8d-anylinux-x86_64.AppImage>dhewm3-bin-${version}.AppImage"
+checksum=d0f49dd7a7c94ce87df1e90de45577b6b6f16dbb4d6d8ccdeb3003e1f099c23b
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/dhewm3-bin
 	vcopy "squashfs-root/*" opt/dhewm3-bin
+	chmod -R o-w "${DESTDIR}/opt/dhewm3-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/dhewm3-bin/AppRun" "${DESTDIR}/usr/bin/dhewm3"
 	local desk

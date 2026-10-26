@@ -1,6 +1,6 @@
 # Template file for 'desmume-bin'
 pkgname=desmume-bin
-version=0.9.13
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of the DeSmuME emulator.
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage of the DeSmuME emulator.
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/pkgforge-dev/DeSmuME-AppImage"
-distfiles="https://github.com/pkgforge-dev/DeSmuME-AppImage/releases/download/${version}-2%402026-10-01_1790876326/DeSmuME-${version}-2-anylinux-x86_64.AppImage>desmume-bin-${version}.AppImage"
-checksum=cd8b50891064f47eb74eef122ea905cb8cc4394dca5e4e28540279f28c192bed
+distfiles="https://github.com/pkgforge-dev/DeSmuME-AppImage/releases/download/0.9.13-2%402026-10-22_1792689015/DeSmuME-0.9.13-2-anylinux-x86_64.AppImage>desmume-bin-${version}.AppImage"
+checksum=68063da5d9d23b0e23decded9f77a4e5e4d121e7b941402a9870cba481444827
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/desmume-bin
 	vcopy "squashfs-root/*" opt/desmume-bin
+	chmod -R o-w "${DESTDIR}/opt/desmume-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/desmume-bin/AppRun" "${DESTDIR}/usr/bin/desmume"
 	local desk

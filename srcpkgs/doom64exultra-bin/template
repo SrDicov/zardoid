@@ -1,14 +1,15 @@
 # Template file for 'doom64exultra-bin'
 pkgname=doom64exultra-bin
-version=20260901
+version=20261024
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of DOOM64EXUltra [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/DOOM64EXUltra-AppImage"
-distfiles="https://github.com/pkgforge-dev/DOOM64EXUltra-AppImage/releases/download/ac890ce59%402026-09-01_1788278266/DOOM64EXUltra-ac890ce59-anylinux-x86_64.AppImage>doom64exultra-bin-${version}.AppImage"
-checksum=e4509b1b248f3b08d15e32a01a8c96580f4088cde2f486f8bc299dda9158f657
+distfiles="https://github.com/pkgforge-dev/DOOM64EXUltra-AppImage/releases/download/ac890ce59%402026-10-24_1792815722/DOOM64EXUltra-ac890ce59-anylinux-x86_64.AppImage>doom64exultra-bin-${version}.AppImage"
+checksum=de6f62736349019bc02db93b5ae8652e3e4ba996b9a178df354648c1ac1b31e4
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/doom64exultra-bin
 	vcopy "squashfs-root/*" opt/doom64exultra-bin
+	chmod -R o-w "${DESTDIR}/opt/doom64exultra-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/doom64exultra-bin/AppRun" "${DESTDIR}/usr/bin/doom64exultra"
 	local desk

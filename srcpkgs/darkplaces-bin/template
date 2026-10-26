@@ -1,14 +1,15 @@
 # Template file for 'darkplaces-bin'
 pkgname=darkplaces-bin
-version=20261001
+version=20261024
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of DarkPlaces [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/DarkPlaces-AppImage"
-distfiles="https://github.com/pkgforge-dev/DarkPlaces-AppImage/releases/download/d93f9c429%402026-10-01_1790875747/Darkplaces-d93f9c429-anylinux-x86_64.AppImage>darkplaces-bin-${version}.AppImage"
-checksum=0fb5f886bd683918ac8942161b4e046659e6075b663c558907e67f512d94b4bf
+distfiles="https://github.com/pkgforge-dev/DarkPlaces-AppImage/releases/download/d93f9c429%402026-10-24_1792809947/Darkplaces-d93f9c429-anylinux-x86_64.AppImage>darkplaces-bin-${version}.AppImage"
+checksum=8ccce0b8c09f284a625cc0f1115305b635aa37a3c417e391dd2d3b944204e036
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/darkplaces-bin
 	vcopy "squashfs-root/*" opt/darkplaces-bin
+	chmod -R o-w "${DESTDIR}/opt/darkplaces-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/darkplaces-bin/AppRun" "${DESTDIR}/usr/bin/darkplaces"
 	local desk

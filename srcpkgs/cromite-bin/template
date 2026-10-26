@@ -1,16 +1,18 @@
 # Template file for 'cromite-bin'
 pkgname=cromite-bin
-version=153.0.8010.37
+version=20261023
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of the Cromite web browser"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/pkgforge-dev/Cromite-AppImage"
-distfiles="https://github.com/pkgforge-dev/Cromite-AppImage/releases/download/v${version}%402026-10-12_1791834479/Cromite-v${version}-anylinux-x86_64.AppImage>cromite-bin-${version}.AppImage"
-checksum=b63d00345130facaa697926cf6c94593a88d435b116c25e0d09c8b34997de4f7
+distfiles="https://github.com/pkgforge-dev/Cromite-AppImage/releases/download/v153.0.8010.37%402026-10-23_1792766869/Cromite-v153.0.8010.37-anylinux-x86_64.AppImage>cromite-bin-${version}.AppImage"
+checksum=a21047ea94f693ab23269d826dd15d21e3aad3d9f8129c3b65cefc2943d09ec0
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/cromite-bin
 	vcopy "squashfs-root/*" opt/cromite-bin
+	chmod -R o-w "${DESTDIR}/opt/cromite-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/cromite-bin/AppRun" "${DESTDIR}/usr/bin/cromite"
 	local desk
