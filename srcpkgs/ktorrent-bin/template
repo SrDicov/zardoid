@@ -1,14 +1,14 @@
 # Template file for 'ktorrent-bin'
 pkgname=ktorrent-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of KTorrent [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/KTorrent-AppImage"
-distfiles="https://github.com/pkgforge-dev/KTorrent-AppImage/releases/download/26.08.1-1%402026-10-01_1790876159/KTorrent-26.08.1-1-anylinux-x86_64.AppImage>ktorrent-bin-${version}.AppImage"
-checksum=ff328ba4e11af99d4890309a74a1839b62dca493f7c0fbf623de45abf282001c
+distfiles="https://github.com/pkgforge-dev/KTorrent-AppImage/releases/download/26.08.2-1%402026-10-22_1792689027/KTorrent-26.08.2-1-anylinux-x86_64.AppImage>ktorrent-bin-${version}.AppImage"
+checksum=13090ba1be6a648dcdf518a89b344e5e245fc8abbe380ab9acd1a2946c1a7028
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/ktorrent-bin
 	vcopy "squashfs-root/*" opt/ktorrent-bin
+	chmod -R o-w "${DESTDIR}/opt/ktorrent-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/ktorrent-bin/AppRun" "${DESTDIR}/usr/bin/ktorrent"
 	local desk

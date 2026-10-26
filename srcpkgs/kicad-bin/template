@@ -1,14 +1,14 @@
 # Template file for 'kicad-bin'
 pkgname=kicad-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of KiCad [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/KiCad-AppImage"
-distfiles="https://github.com/pkgforge-dev/KiCad-AppImage/releases/download/10.0.6-2%402026-10-01_1790876568/KiCad-10.0.6-2-anylinux-x86_64.AppImage>kicad-bin-${version}.AppImage"
-checksum=df0c97ef88d9c0578140fce7d5007bc95f55d60171ad9bafc683478cdf5b9bb1
+distfiles="https://github.com/pkgforge-dev/KiCad-AppImage/releases/download/10.0.7-2%402026-10-22_1792689211/KiCad-10.0.7-2-anylinux-x86_64.AppImage>kicad-bin-${version}.AppImage"
+checksum=0be1b8bd9a0acfb8fd54b8438fd2742284db4e3d9ec4f936d64f3bfea087c4af
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/kicad-bin
 	vcopy "squashfs-root/*" opt/kicad-bin
+	chmod -R o-w "${DESTDIR}/opt/kicad-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/kicad-bin/AppRun" "${DESTDIR}/usr/bin/kicad"
 	local desk

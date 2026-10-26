@@ -1,14 +1,15 @@
 # Template file for 'masterkey-bin'
 pkgname=masterkey-bin
-version=20260720
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Master Key [Maintainer=@TheRealYasri]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/masterkey-AppImage"
-distfiles="https://github.com/pkgforge-dev/masterkey-AppImage/releases/download/v1.9.1%402026-07-20_1784570600/Master_Key-v1.9.1-anylinux-x86_64.AppImage>masterkey-bin-${version}.AppImage"
-checksum=4cf2a5e9865f3e68a767adab03df109fe2c047fdcbc517cf49712fd47f52b52d
+distfiles="https://github.com/pkgforge-dev/masterkey-AppImage/releases/download/v1.9.1%402026-10-22_1792689447/Master_Key-v1.9.1-anylinux-x86_64.AppImage>masterkey-bin-${version}.AppImage"
+checksum=52995a9fae5a2af4f61873175c254a7ab72a404349e508315bd29d089416acc4
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/masterkey-bin
 	vcopy "squashfs-root/*" opt/masterkey-bin
+	chmod -R o-w "${DESTDIR}/opt/masterkey-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/masterkey-bin/AppRun" "${DESTDIR}/usr/bin/masterkey"
 	local desk

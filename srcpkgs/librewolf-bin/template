@@ -6,18 +6,37 @@ archs="x86_64"
 short_desc="Precompiled binaries for librewolf"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MPL-2.0"
-homepage="https://dl.librewolf.net/librewolf/158.0.1-2/librewolf-158.0.1-2-linux-x86_64-package.tar.xz"
-distfiles="https://dl.librewolf.net/librewolf/${version}-2/librewolf-${version}-2-linux-x86_64-package.tar.xz"
-checksum=de1522759855e849ba09839749e3871aa06820a2ce1418be4099ce388a93ef02
+homepage="https://dl.librewolf.net/librewolf/158.0.1-2/librewolf-158.0.1-2-linux-x86_64-appimage.AppImage"
+distfiles="https://dl.librewolf.net/librewolf/${version}-2/librewolf-${version}-2-linux-x86_64-appimage.AppImage>librewolf-bin-${version}.AppImage"
+checksum=9225fd93235ea366f6f55b1d5f5596dde7b3f6b3bae7248d967d6abffba3e07b
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
 
 do_install() {
-	vbin 'librewolf-bin'
-	vinstall 'browser/chrome/icons/default/default48.png' 644 usr/share/icons/hicolor/128x128/apps
-	vinstall 'browser/chrome/icons/default/default32.png' 644 usr/share/icons/hicolor/128x128/apps
-	vinstall 'browser/chrome/icons/default/default16.png' 644 usr/share/icons/hicolor/128x128/apps
-	vinstall 'browser/chrome/icons/default/default64.png' 644 usr/share/icons/hicolor/128x128/apps
-	vinstall 'browser/chrome/icons/default/default128.png' 644 usr/share/icons/hicolor/128x128/apps
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/librewolf-bin
+	vcopy "squashfs-root/*" opt/librewolf-bin
+	chmod -R o-w "${DESTDIR}/opt/librewolf-bin"
+	vmkdir usr/bin
+	ln -sf "/opt/librewolf-bin/AppRun" "${DESTDIR}/usr/bin/librewolf"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
 }

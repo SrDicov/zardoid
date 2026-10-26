@@ -1,14 +1,14 @@
 # Template file for 'media-downloader-bin'
 pkgname=media-downloader-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Media Downloader [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Media-Downloader-AppImage"
-distfiles="https://github.com/pkgforge-dev/Media-Downloader-AppImage/releases/download/5.6.6%402026-10-01_1790875050/Media_Downloader-5.6.6-anylinux-x86_64.AppImage>media-downloader-bin-${version}.AppImage"
-checksum=547b81d5a532fd8c5efbc34444fd1f793be36931cfc01b8d908e06d68c95ca47
+distfiles="https://github.com/pkgforge-dev/Media-Downloader-AppImage/releases/download/5.6.6%402026-10-22_1792687030/Media_Downloader-5.6.6-anylinux-x86_64.AppImage>media-downloader-bin-${version}.AppImage"
+checksum=372c64ecbaed4b5ee2df074e5e258bcbcd9036928e6e11e3a6f8c91cf729e480
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/media-downloader-bin
 	vcopy "squashfs-root/*" opt/media-downloader-bin
+	chmod -R o-w "${DESTDIR}/opt/media-downloader-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/media-downloader-bin/AppRun" "${DESTDIR}/usr/bin/media-downloader"
 	local desk

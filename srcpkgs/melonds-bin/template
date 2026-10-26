@@ -1,16 +1,18 @@
 # Template file for 'melonds-bin'
 pkgname=melonds-bin
-version=1.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of melonDS that can work on any linux system"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/melonDS-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/melonDS-AppImage-Enhanced/releases/download/${version}-2%402026-10-01_1790875607/melonDS-${version}-2-anylinux-x86_64.AppImage>melonds-bin-${version}.AppImage"
-checksum=41915deccde84e0dc65fdee3f45980e17249145a410497b68ecfa7b20d057eed
+distfiles="https://github.com/pkgforge-dev/melonDS-AppImage-Enhanced/releases/download/1.1-2%402026-10-22_1792688865/melonDS-1.1-2-anylinux-x86_64.AppImage>melonds-bin-${version}.AppImage"
+checksum=5af6c51bf81f6357a5b2f1a6a572682d2ec4c1f54664f57ee8dcbd6d4a1bd320
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/melonds-bin
 	vcopy "squashfs-root/*" opt/melonds-bin
+	chmod -R o-w "${DESTDIR}/opt/melonds-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/melonds-bin/AppRun" "${DESTDIR}/usr/bin/melonds"
 	local desk

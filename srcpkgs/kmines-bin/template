@@ -1,14 +1,14 @@
 # Template file for 'kmines-bin'
 pkgname=kmines-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of KMines [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/KMines-AppImage"
-distfiles="https://github.com/pkgforge-dev/KMines-AppImage/releases/download/26.08.1-1%402026-10-01_1790876602/KMines-26.08.1-1-anylinux-x86_64.AppImage>kmines-bin-${version}.AppImage"
-checksum=f5e6181ddd249d6944d81c87d825805c0308eec6a5bea61c2ade4c884c5f22a4
+distfiles="https://github.com/pkgforge-dev/KMines-AppImage/releases/download/26.08.2-1%402026-10-22_1792689359/KMines-26.08.2-1-anylinux-x86_64.AppImage>kmines-bin-${version}.AppImage"
+checksum=b71c62e01818f4f26372e6c49cff42f18f3e34fc41f6ce062e98d0a32543dea0
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/kmines-bin
 	vcopy "squashfs-root/*" opt/kmines-bin
+	chmod -R o-w "${DESTDIR}/opt/kmines-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/kmines-bin/AppRun" "${DESTDIR}/usr/bin/kmines"
 	local desk

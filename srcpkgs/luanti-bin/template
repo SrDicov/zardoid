@@ -1,16 +1,18 @@
 # Template file for 'luanti-bin'
 pkgname=luanti-bin
-version=5.17.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Luanti (Minetest) [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Luanti-AppImage"
-distfiles="https://github.com/pkgforge-dev/Luanti-AppImage/releases/download/${version}-1%402026-10-01_1790876503/Luanti-${version}-1-anylinux-x86_64.AppImage>luanti-bin-${version}.AppImage"
-checksum=12115807845e8410b1c81ba274586558f76b9471eb2234bb87b05980bb7df042
+distfiles="https://github.com/pkgforge-dev/Luanti-AppImage/releases/download/5.17.0-2%402026-10-22_1792688980/Luanti-5.17.0-2-anylinux-x86_64.AppImage>luanti-bin-${version}.AppImage"
+checksum=a87face5608ef3ddf178ddfc7fe582a3df4a47714dce5d9ccf76b48402840de7
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/luanti-bin
 	vcopy "squashfs-root/*" opt/luanti-bin
+	chmod -R o-w "${DESTDIR}/opt/luanti-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/luanti-bin/AppRun" "${DESTDIR}/usr/bin/luanti"
 	local desk

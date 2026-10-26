@@ -1,16 +1,18 @@
 # Template file for 'kid3-bin'
 pkgname=kid3-bin
-version=3.10.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Kid3. [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Kid3-AppImage"
-distfiles="https://github.com/pkgforge-dev/Kid3-AppImage/releases/download/${version}-2%402026-10-01_1790875637/Kid3-${version}-2-anylinux-x86_64.AppImage>kid3-bin-${version}.AppImage"
-checksum=508747e1f9641114094531d06ccdfeabb996a713a31b76e6445a71ecc401d7b6
+distfiles="https://github.com/pkgforge-dev/Kid3-AppImage/releases/download/3.10.2-1%402026-10-22_1792688434/Kid3-3.10.2-1-anylinux-x86_64.AppImage>kid3-bin-${version}.AppImage"
+checksum=de2e170e94effdd4aab83a8953d6d2e24cca5ffc2da18244cc07ea9d4a9a8d02
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/kid3-bin
 	vcopy "squashfs-root/*" opt/kid3-bin
+	chmod -R o-w "${DESTDIR}/opt/kid3-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/kid3-bin/AppRun" "${DESTDIR}/usr/bin/kid3"
 	local desk

@@ -1,6 +1,6 @@
 # Template file for 'keypunch-bin'
 pkgname=keypunch-bin
-version=7.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Keypunch keyboard writing speed test
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage of Keypunch keyboard writing speed test
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Keypunch-AppImage"
-distfiles="https://github.com/pkgforge-dev/Keypunch-AppImage/releases/download/v${version}%402026-10-01_1790876172/Keypunch-v${version}-anylinux-x86_64.AppImage>keypunch-bin-${version}.AppImage"
-checksum=181ddff05f75e8096df76a2ee5726973048012e9f2ac0b84aad6b8ce03d3dd4a
+distfiles="https://github.com/pkgforge-dev/Keypunch-AppImage/releases/download/v7.0%402026-10-22_1792689031/Keypunch-v7.0-anylinux-x86_64.AppImage>keypunch-bin-${version}.AppImage"
+checksum=972c137cbde5c73b89f07ef7be64f3b5e696e4a7b378a16adbc3edf0a53d862a
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/keypunch-bin
 	vcopy "squashfs-root/*" opt/keypunch-bin
+	chmod -R o-w "${DESTDIR}/opt/keypunch-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/keypunch-bin/AppRun" "${DESTDIR}/usr/bin/keypunch"
 	local desk

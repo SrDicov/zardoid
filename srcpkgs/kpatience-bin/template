@@ -1,16 +1,18 @@
 # Template file for 'kpatience-bin'
 pkgname=kpatience-bin
-version=26.08.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of KPatience [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/KPatience-AppImage"
-distfiles="https://github.com/pkgforge-dev/KPatience-AppImage/releases/download/${version}-1%402026-10-01_1790876318/KPatience-${version}-1-anylinux-x86_64.AppImage>kpatience-bin-${version}.AppImage"
-checksum=58871182eb1e45276a3f8f74fd7c9834e55deb038da27942f37f525b58772ba0
+distfiles="https://github.com/pkgforge-dev/KPatience-AppImage/releases/download/26.08.2-1%402026-10-22_1792688818/KPatience-26.08.2-1-anylinux-x86_64.AppImage>kpatience-bin-${version}.AppImage"
+checksum=8f9bcd9d312cd30a10c6e4908cfa59e64186428af534a7083423557ec0c4585e
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/kpatience-bin
 	vcopy "squashfs-root/*" opt/kpatience-bin
+	chmod -R o-w "${DESTDIR}/opt/kpatience-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/kpatience-bin/AppRun" "${DESTDIR}/usr/bin/kpatience"
 	local desk
