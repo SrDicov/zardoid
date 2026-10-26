@@ -1,14 +1,15 @@
 # Template file for 'qownnotes-bin'
 pkgname=qownnotes-bin
-version=26.10.5
+version=26.10.7.1
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of QOwnNotes [Maintainer=@QaidVoid]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/QOwnNotes-AppImage"
-distfiles="https://github.com/pkgforge-dev/QOwnNotes-AppImage/releases/download/${version}-1/QOwnNotes-${version}-1-anylinux-x86_64.AppImage>qownnotes-bin-${version}.AppImage"
-checksum=927b8054b24a0c50b31ce9998412a1640d8911430c64b7aed6f776a4ed1cc257
+distfiles="https://github.com/pkgforge-dev/QOwnNotes-AppImage/releases/download/26.10.7-1/QOwnNotes-26.10.7-1-anylinux-x86_64.AppImage>qownnotes-bin-${version}.AppImage"
+checksum=4fe2ad27eb2a462d88f5d9dd5036b49701ad70a8b7b40614a5f6b75003388e89
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/qownnotes-bin
 	vcopy "squashfs-root/*" opt/qownnotes-bin
+	chmod -R o-w "${DESTDIR}/opt/qownnotes-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/qownnotes-bin/AppRun" "${DESTDIR}/usr/bin/qownnotes"
 	local desk

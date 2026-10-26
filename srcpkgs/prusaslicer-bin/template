@@ -1,16 +1,18 @@
 # Template file for 'prusaslicer-bin'
 pkgname=prusaslicer-bin
-version=2.9.6
+version=20261021
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage for PrusaSlicer. [Maintainer=@sarrchri]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/PrusaSlicer-AppImage"
-distfiles="https://github.com/pkgforge-dev/PrusaSlicer-AppImage/releases/download/${version}-5%402026-09-21_1789997558/PrusaSlicer-${version}-5-anylinux-x86_64.AppImage>prusaslicer-bin-${version}.AppImage"
-checksum=7faf0b45277cdc066834619603c87f740c172da96e84b2315d418f471678a164
+distfiles="https://github.com/pkgforge-dev/PrusaSlicer-AppImage/releases/download/2.9.6-5%402026-10-21_1792586224/PrusaSlicer-2.9.6-5-anylinux-x86_64.AppImage>prusaslicer-bin-${version}.AppImage"
+checksum=b3f04d5520336292d68b278c625830189487e55d3f37cec6ab817b5d4a80bfd7
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/prusaslicer-bin
 	vcopy "squashfs-root/*" opt/prusaslicer-bin
+	chmod -R o-w "${DESTDIR}/opt/prusaslicer-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/prusaslicer-bin/AppRun" "${DESTDIR}/usr/bin/prusaslicer"
 	local desk

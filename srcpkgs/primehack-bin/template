@@ -1,14 +1,14 @@
 # Template file for 'primehack-bin'
 pkgname=primehack-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of the PrimeHack emulator [Maintainer=@SNBeast]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/pkgforge-dev/PrimeHack-AppImage"
-distfiles="https://github.com/pkgforge-dev/PrimeHack-AppImage/releases/download/1.0.9%402026-10-01_1790876662/PrimeHack-1.0.9-anylinux-x86_64.AppImage>primehack-bin-${version}.AppImage"
-checksum=bd2c4cafcb1ae1f30b9e6f52496a498dbd30578bfcb5f97d19d45d397b2149bb
+distfiles="https://github.com/pkgforge-dev/PrimeHack-AppImage/releases/download/1.0.9%402026-10-22_1792688676/PrimeHack-1.0.9-anylinux-x86_64.AppImage>primehack-bin-${version}.AppImage"
+checksum=bd922be7e45031047a55741cb2492872337dc1b5c64cff47dd417096c7f0cc83
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes

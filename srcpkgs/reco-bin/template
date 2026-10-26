@@ -1,16 +1,18 @@
 # Template file for 'reco-bin'
 pkgname=reco-bin
-version=5.2.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Reco audio recorder [Maintainer=@fiftydinar]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Reco-AppImage"
-distfiles="https://github.com/pkgforge-dev/Reco-AppImage/releases/download/${version}-1%402026-10-01_1790876596/Reco-${version}-1-anylinux-x86_64.AppImage>reco-bin-${version}.AppImage"
-checksum=2d21916e54f664bc0ac770de525334ace1b72f903c0862b3e8e08dafe03ca9a8
+distfiles="https://github.com/pkgforge-dev/Reco-AppImage/releases/download/5.2.1-1%402026-10-22_1792689225/Reco-5.2.1-1-anylinux-x86_64.AppImage>reco-bin-${version}.AppImage"
+checksum=b4a633b04477f3bf276e8ce19afd1a3011d69aa850dbff4686b7516faff590d1
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/reco-bin
 	vcopy "squashfs-root/*" opt/reco-bin
+	chmod -R o-w "${DESTDIR}/opt/reco-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/reco-bin/AppRun" "${DESTDIR}/usr/bin/reco"
 	local desk

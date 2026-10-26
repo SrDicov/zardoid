@@ -1,6 +1,6 @@
 # Template file for 'quantumlauncher-bin'
 pkgname=quantumlauncher-bin
-version=0.5.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of QuantumLauncher that is able to work on any
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage of QuantumLauncher that is able to work on any
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/QuantumLauncher-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/QuantumLauncher-AppImage-Enhanced/releases/download/${version}-2%402026-10-01_1790866740/QuantumLauncher-${version}-2-anylinux-x86_64.AppImage>quantumlauncher-bin-${version}.AppImage"
-checksum=3a2609ee9dd079be460109ec27fbf2433694e894b05b2e356f4ffe916975c2c7
+distfiles="https://github.com/pkgforge-dev/QuantumLauncher-AppImage-Enhanced/releases/download/0.5.1-2%402026-10-22_1792689264/QuantumLauncher-0.5.1-2-anylinux-x86_64.AppImage>quantumlauncher-bin-${version}.AppImage"
+checksum=6f0070f128e3cbaefd71c9be1cac82d8d60f4d2b60be716257342633d054a97a
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/quantumlauncher-bin
 	vcopy "squashfs-root/*" opt/quantumlauncher-bin
+	chmod -R o-w "${DESTDIR}/opt/quantumlauncher-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/quantumlauncher-bin/AppRun" "${DESTDIR}/usr/bin/quantumlauncher"
 	local desk

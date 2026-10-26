@@ -1,14 +1,15 @@
 # Template file for 'prey2006-bin'
 pkgname=prey2006-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Prey 2006 [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Prey2006-AppImage"
-distfiles="https://github.com/pkgforge-dev/Prey2006-AppImage/releases/download/983b171cf%402026-10-01_1790864960/Prey_2006-983b171cf-anylinux-x86_64.AppImage>prey2006-bin-${version}.AppImage"
-checksum=0093e1a3c26e59433650f59f5b7e858c9e0dce38acfb6807ffd6f84e3a1de118
+distfiles="https://github.com/pkgforge-dev/Prey2006-AppImage/releases/download/983b171cf%402026-10-22_1792676297/Prey_2006-983b171cf-anylinux-x86_64.AppImage>prey2006-bin-${version}.AppImage"
+checksum=d1637e8df459e173bd8f3995e7fc82ec334bf907a7a679429e7fa239fec233df
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/prey2006-bin
 	vcopy "squashfs-root/*" opt/prey2006-bin
+	chmod -R o-w "${DESTDIR}/opt/prey2006-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/prey2006-bin/AppRun" "${DESTDIR}/usr/bin/prey2006"
 	local desk

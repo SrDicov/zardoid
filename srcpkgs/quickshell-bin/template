@@ -1,16 +1,18 @@
 # Template file for 'quickshell-bin'
 pkgname=quickshell-bin
-version=0.3.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Quickshell [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Quickshell-AppImage"
-distfiles="https://github.com/pkgforge-dev/Quickshell-AppImage/releases/download/${version}-1%402026-10-01_1790876646/quickshell-${version}-1-anylinux-x86_64.AppImage>quickshell-bin-${version}.AppImage"
-checksum=e8b3d625608d464ad66e8ddb5f6e7aa80724298c9849652add11c9e7dddc41d8
+distfiles="https://github.com/pkgforge-dev/Quickshell-AppImage/releases/download/0.3.2-1%402026-10-22_1792689125/quickshell-0.3.2-1-anylinux-x86_64.AppImage>quickshell-bin-${version}.AppImage"
+checksum=65e542f9f2ef5c65cd9da5ebaed42d1ab5b3e9e6a1fc0a48b33e3f9d4e23c5b2
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/quickshell-bin
 	vcopy "squashfs-root/*" opt/quickshell-bin
+	chmod -R o-w "${DESTDIR}/opt/quickshell-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/quickshell-bin/AppRun" "${DESTDIR}/usr/bin/quickshell"
 	local desk

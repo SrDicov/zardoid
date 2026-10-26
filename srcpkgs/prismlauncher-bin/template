@@ -1,6 +1,6 @@
 # Template file for 'prismlauncher-bin'
 pkgname=prismlauncher-bin
-version=11.1.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Prism Launcher
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage of Prism Launcher
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced/releases/download/${version}-1%402026-10-14_1792002970/Prism_Launcher-${version}-1-anylinux-x86_64.AppImage>prismlauncher-bin-${version}.AppImage"
-checksum=5488a4c11bd5fd9f6ebf692cab5676c7373f19cd32330141c3d93fb64813187c
+distfiles="https://github.com/pkgforge-dev/PrismLauncher-AppImage-Enhanced/releases/download/11.1.1-1%402026-10-22_1792688998/Prism_Launcher-11.1.1-1-anylinux-x86_64.AppImage>prismlauncher-bin-${version}.AppImage"
+checksum=f0ede4ec915af41d0c02160542cfb6e1484f4bc1a9c372b96d85f3b94cc49708
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/prismlauncher-bin
 	vcopy "squashfs-root/*" opt/prismlauncher-bin
+	chmod -R o-w "${DESTDIR}/opt/prismlauncher-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/prismlauncher-bin/AppRun" "${DESTDIR}/usr/bin/prismlauncher"
 	local desk
