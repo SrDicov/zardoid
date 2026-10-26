@@ -98,3 +98,22 @@ Se refresco `meta/belka.tsv` desde el indice publicado de Belka (643 lineas,
 - 54 assets del indice no son empaquetables para Void x86_64 (plataforma
   ajena, fuentes, tags moviles o URLs muertas). Reintentarlos quema runner.
 - `short_desc` de los AppImage de pkgforge conserva `[Maintainer=@user]`.
+
+## Cierre definitivo 0.3.14
+
+Los 45 rechazos por plataforma ajena se recuperaron resolviendo el release
+del repo y eligiendo el Linux x86_64 (0.3.13). Estado final:
+
+- 637 templates en `srcpkgs/`.
+- 609 de 618 paquetes del indice vivo tienen template (98,5 %).
+- 0 entradas en la cola; ultimo run en `success`.
+- 9 rechazos, todos irrecuperables con este pipeline `-bin`:
+  - fuentes de GitHub (`/archive/`): mfetch, pfetch, ranger.
+  - tags moviles sin version (`rolling`/`latest`): epubworm, trinity, tui-timer.
+  - helm: el release solo publica firmas `.asc`; los binarios estan en get.helm.sh.
+  - tor-browser: la URL del indice da 404.
+  - limine: solo blobs EFI/BIOS, ningun ejecutable Linux.
+
+Los 9 restantes no se pueden fijar con checksum (tags moviles), no son
+binarios ELF (limine, fuentes) o el indice apunta a un asset inexistente
+(helm, tor-browser). No se reintentan: quemarian runner en cada lote.
