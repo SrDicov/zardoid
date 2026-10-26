@@ -1,0 +1,21 @@
+# Template file for 'soft-serve-bin'
+pkgname=soft-serve-bin
+version=0.12.4
+revision=1
+archs="x86_64*"
+short_desc="Mighty, self-hostable Git server for the command line🍦"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/charmbracelet/soft-serve"
+distfiles="https://github.com/charmbracelet/soft-serve/releases/download/v${version}/soft-serve_${version}_Linux_x86_64.tar.gz"
+checksum=bcf2e49bd95c34946708a7efe8ed5040125f84ed213bbc1a4a59982811af636b
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'soft'
+	vman 'manpages/soft-serve.1.gz'
+	vlicense 'LICENSE'
+}

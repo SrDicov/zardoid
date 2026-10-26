@@ -1,0 +1,20 @@
+# Template file for 'syncthing-bin'
+pkgname=syncthing-bin
+version=2.1.7
+revision=1
+archs="x86_64*"
+short_desc="Open Source Continuous File Synchronization"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MPL-2.0"
+homepage="https://syncthing.net/"
+distfiles="https://github.com/syncthing/syncthing/releases/download/v${version}/syncthing-linux-amd64-v${version}.tar.gz"
+checksum=2edc416e7ed136b7c858ed5f3f02a3b8316589605e54c380228ceea7acbf0142
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'syncthing'
+	vinstall 'etc/linux-desktop/syncthing-start.desktop' 644 usr/share/applications
+}

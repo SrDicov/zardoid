@@ -15,8 +15,3 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_freebsd_amd64.tar.gz oras-bin
-https://github.com/charmbracelet/soft-serve/releases/download/v0.12.4/soft-serve_0.12.4_Freebsd_x86_64.tar.gz soft-serve-bin
-https://github.com/syncthing/syncthing/releases/download/v2.1.7/syncthing-freebsd-amd64-v2.1.7.tar.gz syncthing-bin
-https://github.com/houseabsolute/ubi/releases/download/v0.13.0/ubi-FreeBSD-x86_64.tar.gz ubi-bin
-https://github.com/pkgforge-dev/Galculator-AppImage/releases/download/v2.1.4%402026-10-18_1792320657/Galculator-v2.1.4-anylinux-loongarch64.AppImage galculator-bin
