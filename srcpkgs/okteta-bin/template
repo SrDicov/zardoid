@@ -1,16 +1,18 @@
 # Template file for 'okteta-bin'
 pkgname=okteta-bin
-version=0.26.28
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Okteta [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Okteta-AppImage"
-distfiles="https://github.com/pkgforge-dev/Okteta-AppImage/releases/download/${version}-1%402026-10-01_1790876648/Okteta-${version}-1-anylinux-x86_64.AppImage>okteta-bin-${version}.AppImage"
-checksum=1e03e6ff7526cbded5d3081f92ebca3ae8003aa3c7addb57d67f3e3adcb62a26
+distfiles="https://github.com/pkgforge-dev/Okteta-AppImage/releases/download/0.26.28-1%402026-10-22_1792689567/Okteta-0.26.28-1-anylinux-x86_64.AppImage>okteta-bin-${version}.AppImage"
+checksum=7e92e5ca145a906ec483db99c64893416252e5f16e11f0bd7927a3f76df7bfc9
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/okteta-bin
 	vcopy "squashfs-root/*" opt/okteta-bin
+	chmod -R o-w "${DESTDIR}/opt/okteta-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/okteta-bin/AppRun" "${DESTDIR}/usr/bin/okteta"
 	local desk

@@ -1,14 +1,14 @@
 # Template file for 'nsz-bin'
 pkgname=nsz-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of the NSZ utility, GUI included"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/NSZ-AppImage"
-distfiles="https://github.com/pkgforge-dev/NSZ-AppImage/releases/download/5.0.0-2%402026-10-01_1790875800/NSZ-5.0.0-2-anylinux-x86_64.AppImage>nsz-bin-${version}.AppImage"
-checksum=f8088f024d9c4ae0cd207c6ce3a778f9032dc4f77c0269a8737cc4c2d6da15db
+distfiles="https://github.com/pkgforge-dev/NSZ-AppImage/releases/download/5.0.0-2%402026-10-22_1792688687/NSZ-5.0.0-2-anylinux-x86_64.AppImage>nsz-bin-${version}.AppImage"
+checksum=40e444b1572f09ac583ffab806ef6050d6de4b24a2bb66d76519637d59c81e1e
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/nsz-bin
 	vcopy "squashfs-root/*" opt/nsz-bin
+	chmod -R o-w "${DESTDIR}/opt/nsz-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/nsz-bin/AppRun" "${DESTDIR}/usr/bin/nsz"
 	local desk

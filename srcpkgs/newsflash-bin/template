@@ -1,14 +1,14 @@
 # Template file for 'newsflash-bin'
 pkgname=newsflash-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of the NewsFlash RSS reader"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/pkgforge-dev/NewsFlash-AppImage"
-distfiles="https://github.com/pkgforge-dev/NewsFlash-AppImage/releases/download/5.2.5-1%402026-10-01_1790875135/Newsflash-5.2.5-1-anylinux-x86_64.AppImage>newsflash-bin-${version}.AppImage"
-checksum=bc6f8bed5409549407b3a886b76d56a4c1ec9be2d94f053f69af3b13dd104e63
+distfiles="https://github.com/pkgforge-dev/NewsFlash-AppImage/releases/download/5.2.3-1%402026-10-22_1792688923/Newsflash-5.2.5-1-anylinux-x86_64.AppImage>newsflash-bin-${version}.AppImage"
+checksum=cc2df8ca3b0be8e3f2252b57e529560633b577b393161420abc19e5e0189c41a
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/newsflash-bin
 	vcopy "squashfs-root/*" opt/newsflash-bin
+	chmod -R o-w "${DESTDIR}/opt/newsflash-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/newsflash-bin/AppRun" "${DESTDIR}/usr/bin/newsflash"
 	local desk

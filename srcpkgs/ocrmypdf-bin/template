@@ -1,14 +1,14 @@
 # Template file for 'ocrmypdf-bin'
 pkgname=ocrmypdf-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of OCRmyPDF [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/OCRmyPDF-AppImage"
-distfiles="https://github.com/pkgforge-dev/OCRmyPDF-AppImage/releases/download/17.12.1-1%402026-10-01_1790876632/ocrmypdf-17.12.1-1-anylinux-x86_64.AppImage>ocrmypdf-bin-${version}.AppImage"
-checksum=f592ccf2640d6c60a3c26d416ec00bc2bea65fad681bdd6a55fd2efc1c3fef11
+distfiles="https://github.com/pkgforge-dev/OCRmyPDF-AppImage/releases/download/17.13.0-1%402026-10-22_1792689355/ocrmypdf-17.13.0-1-anylinux-x86_64.AppImage>ocrmypdf-bin-${version}.AppImage"
+checksum=a59a9423348d72cf980fefff8a0a04e4e8126de19dfbc5ee9c2487fe3875fbd3
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/ocrmypdf-bin
 	vcopy "squashfs-root/*" opt/ocrmypdf-bin
+	chmod -R o-w "${DESTDIR}/opt/ocrmypdf-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/ocrmypdf-bin/AppRun" "${DESTDIR}/usr/bin/ocrmypdf"
 	local desk

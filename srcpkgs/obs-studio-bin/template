@@ -1,14 +1,14 @@
 # Template file for 'obs-studio-bin'
 pkgname=obs-studio-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of OBS-Studio [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/pkgforge-dev/OBS-Studio-AppImage"
-distfiles="https://github.com/pkgforge-dev/OBS-Studio-AppImage/releases/download/32.2.2-1%402026-10-01_1790876050/OBS_Studio-32.2.2-1-anylinux-x86_64.AppImage>obs-studio-bin-${version}.AppImage"
-checksum=307534aa9627c480411bb92993b9d5f801d7256ef0c033a8e00175826d64df0e
+distfiles="https://github.com/pkgforge-dev/OBS-Studio-AppImage/releases/download/32.2.2-1%402026-10-22_1792687635/OBS_Studio-32.2.2-1-anylinux-x86_64.AppImage>obs-studio-bin-${version}.AppImage"
+checksum=a2e42dc2434df9a662cb875b85d15e47be5738c74ced5a446b40d4543fa2b642
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/obs-studio-bin
 	vcopy "squashfs-root/*" opt/obs-studio-bin
+	chmod -R o-w "${DESTDIR}/opt/obs-studio-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/obs-studio-bin/AppRun" "${DESTDIR}/usr/bin/obs-studio"
 	local desk

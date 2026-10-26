@@ -1,16 +1,18 @@
 # Template file for 'mousai-bin'
 pkgname=mousai-bin
-version=0.7.10
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of the Mousai song identifier application"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/pkgforge-dev/Mousai-AppImage"
-distfiles="https://github.com/pkgforge-dev/Mousai-AppImage/releases/download/${version}-1%402026-10-01_1790876703/Mousai-${version}-1-anylinux-x86_64.AppImage>mousai-bin-${version}.AppImage"
-checksum=c35b72521023e2fcf39ff5f32aa9a6aff0740e3ff071d88f61d4456bc719a477
+distfiles="https://github.com/pkgforge-dev/Mousai-AppImage/releases/download/0.7.10-1%402026-10-22_1792689263/Mousai-0.7.10-1-anylinux-x86_64.AppImage>mousai-bin-${version}.AppImage"
+checksum=f06ed8015595ed410b27c8282a87e5ff3e20767643f9fbf772e108144c43fe6a
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/mousai-bin
 	vcopy "squashfs-root/*" opt/mousai-bin
+	chmod -R o-w "${DESTDIR}/opt/mousai-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/mousai-bin/AppRun" "${DESTDIR}/usr/bin/mousai"
 	local desk

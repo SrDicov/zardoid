@@ -1,6 +1,6 @@
 # Template file for 'opencode-desktop-bin'
 pkgname=opencode-desktop-bin
-version=20261015
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Improved AppImage of opencode which is able to work on any linux
@@ -8,8 +8,8 @@ short_desc="Improved AppImage of opencode which is able to work on any linux
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/opencode-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/opencode-AppImage-Enhanced/releases/download/v1.19.0%402026-10-15_1792067384/OpenCode-v1.19.0-anylinux-x86_64.AppImage>opencode-desktop-bin-${version}.AppImage"
-checksum=f2816190996d01b541d016dfe40ebd6e3589ec72dff5f72a9c33339235584273
+distfiles="https://github.com/pkgforge-dev/opencode-AppImage-Enhanced/releases/download/v1.19.4%402026-10-22_1792688994/OpenCode-v1.19.4-anylinux-x86_64.AppImage>opencode-desktop-bin-${version}.AppImage"
+checksum=1481867bc74bbb55a70fbf4416da7e818db0e39bda1eeee33070bdd96ae2f7ed
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -27,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/opencode-desktop-bin
 	vcopy "squashfs-root/*" opt/opencode-desktop-bin
+	chmod -R o-w "${DESTDIR}/opt/opencode-desktop-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/opencode-desktop-bin/AppRun" "${DESTDIR}/usr/bin/opencode-desktop"
 	local desk
