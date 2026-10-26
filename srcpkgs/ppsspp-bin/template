@@ -1,0 +1,199 @@
+# Template file for 'ppsspp-bin'
+pkgname=ppsspp-bin
+version=1.20.4
+revision=1
+archs="x86_64"
+short_desc="PSP emulator for Android, Windows, Mac, Linux and iOS, written in
+ C++"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://www.ppsspp.org"
+distfiles="https://github.com/hrydgard/ppsspp/releases/download/v${version}/ppsspp-${version}.tar.xz"
+checksum=4de21db3105d9d81a465a8a7e78c68ee3c0e0bf6597d1c1d530f7555f3ad8b31
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'libretro/libretro-common/samples/net/net_ifinfo'
+	vinstall 'SDL/PPSSPPSDL.desktop' 644 usr/share/applications
+	vinstall 'android/legacy/res/mipmap-mdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/legacy/res/mipmap-mdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/legacy/res/mipmap-xhdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/legacy/res/mipmap-xhdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/legacy/res/drawable-xhdpi/ic_banner.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/legacy/res/mipmap-hdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/legacy/res/mipmap-hdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/legacy/res/mipmap-xxhdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/legacy/res/mipmap-xxhdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/src/normal/ic_launcher-playstore.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/src/gold/ic_launcher-playstore.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-mdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-mdpi/ic_launcher_round.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-mdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-xhdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-xhdpi/ic_launcher_round.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-xhdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-xxxhdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-xxxhdpi/ic_launcher_round.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-xxxhdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/drawable-xhdpi/ic_banner.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-hdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-hdpi/ic_launcher_round.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-hdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-xxhdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-xxhdpi/ic_launcher_round.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/normal/res/mipmap-xxhdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-mdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-mdpi/ic_launcher_round.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-mdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-xhdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-xhdpi/ic_launcher_round.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-xhdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-xxxhdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-xxxhdpi/ic_launcher_round.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-xxxhdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/drawable-xhdpi/ic_banner.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-hdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-hdpi/ic_launcher_round.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-hdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-xxhdpi/ic_launcher.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-xxhdpi/ic_launcher_round.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'android/gold/res/mipmap-xxhdpi/ic_launcher_foreground.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/freetype/subprojects/dlg/docs/examples/example.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/libchdr/deps/zstd-1.5.6/doc/images/zstd_logo86.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/libchdr/deps/zstd-1.5.6/doc/images/cdict_v136.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/libchdr/deps/zstd-1.5.6/doc/images/dict-ds.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/libchdr/deps/zstd-1.5.6/doc/images/DSpeed3.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/libchdr/deps/zstd-1.5.6/doc/images/DCspeed5.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/libchdr/deps/zstd-1.5.6/doc/images/zstd_cdict_v1_3_5.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/libchdr/deps/zstd-1.5.6/doc/images/dict-cs.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/libchdr/deps/zstd-1.5.6/doc/images/dict-cr.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/libchdr/deps/zstd-1.5.6/doc/images/CSpeed2.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/libchdr/deps/zstd-1.5.6/build/single_file_libs/examples/testcard.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/libchdr/deps/zstd-1.5.6/contrib/pzstd/images/Cspeed.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/libchdr/deps/zstd-1.5.6/contrib/pzstd/images/Dspeed.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/rapidjson/doc/logo/rapidjson.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'ext/rapidjson/doc/logo/rapidjson.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/rapidjson/doc/diagram/move1.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/rapidjson/doc/diagram/architecture.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/rapidjson/doc/diagram/iterative-parser-states-diagram.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/rapidjson/doc/diagram/tutorial.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/rapidjson/doc/diagram/move2.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/rapidjson/doc/diagram/insituparsing.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/rapidjson/doc/diagram/simpledom.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/rapidjson/doc/diagram/normalparsing.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/rapidjson/doc/diagram/move3.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/rapidjson/doc/diagram/utilityclass.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/cpu_features/cmake/ci/doc/docker.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'ext/naett/testrig/android/app/src/main/res/drawable/icon.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/nanosvg/example/23.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'ext/nanosvg/example/nano.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'ext/nanosvg/example/screenshot-1.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/nanosvg/example/drawing.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'ext/nanosvg/example/screenshot-2.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/zstd/doc/images/zstd_logo86.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/zstd/doc/images/cdict_v136.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/zstd/doc/images/dict-ds.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/zstd/doc/images/DSpeed3.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/zstd/doc/images/DCspeed5.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/zstd/doc/images/zstd_cdict_v1_3_5.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/zstd/doc/images/dict-cs.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/zstd/doc/images/dict-cr.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/zstd/doc/images/CSpeed2.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/zstd/build/single_file_libs/examples/testcard.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/zstd/contrib/pzstd/images/Cspeed.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/zstd/contrib/pzstd/images/Dspeed.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/aemu_postoffice/server_njs/htop_1.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/aemu_postoffice/server_njs/htop_2.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/discord-rpc/examples/unrealstatus/Plugins/discordrpc/Resources/Icon128.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/discord-rpc/examples/unrealstatus/Plugins/discordrpc/Resources/discord.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/discord-rpc/documentation/images/rp-dev-dashboard.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/discord-rpc/documentation/images/rp-secret-example.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ext/discord-rpc/documentation/images/rp-profile-view.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'source_assets/image/icon_gold.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'source_assets/image/logo.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'source_assets/image/icon_regular.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'source_assets/image/buttons.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'ios/assets.xcassets/PPSSPPGold.appiconset/icon_1024x1024@1x_dark.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ios/assets.xcassets/PPSSPPGold.appiconset/icon_1024x1024@1x_tinted.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ios/assets.xcassets/PPSSPPGold.appiconset/icon_1024x1024@1x_light.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ios/assets.xcassets/AppIcon.appiconset/dark.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ios/assets.xcassets/AppIcon.appiconset/tinted.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ios/assets.xcassets/AppIcon.appiconset/icon_backfill_1024.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ios/assets/Default-568h@3x.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'ios/assets/Default-568h@2x.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/common/ext/zstd/doc/images/zstd_logo86.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/common/ext/zstd/doc/images/cdict_v136.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/common/ext/zstd/doc/images/dict-ds.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/common/ext/zstd/doc/images/DSpeed3.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/common/ext/zstd/doc/images/DCspeed5.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/common/ext/zstd/doc/images/zstd_cdict_v1_3_5.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/common/ext/zstd/doc/images/dict-cs.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/common/ext/zstd/doc/images/dict-cr.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/common/ext/zstd/doc/images/CSpeed2.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/common/ext/zstd/build/single_file_libs/examples/testcard.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/common/ext/zstd/contrib/pzstd/images/Cspeed.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/common/ext/zstd/contrib/pzstd/images/Dspeed.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/tests/gpu/triangle/triangle.reference.0.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'pspautotests/tests/gpu/reflection/reflection.reference.0.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'icons/icon-114.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'icons/icon-16.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'icons/icon-512.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'icons/hicolor/96x96/apps/ppsspp.png' 644 usr/share/icons/hicolor/96x96/apps
+	vinstall 'icons/hicolor/32x32/apps/ppsspp.png' 644 usr/share/icons/hicolor/32x32/apps
+	vinstall 'icons/hicolor/48x48/apps/ppsspp.png' 644 usr/share/icons/hicolor/48x48/apps
+	vinstall 'icons/hicolor/64x64/apps/ppsspp.png' 644 usr/share/icons/hicolor/64x64/apps
+	vinstall 'icons/hicolor/128x128/apps/ppsspp.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'icons/hicolor/512x512/apps/ppsspp.png' 644 usr/share/icons/hicolor/512x512/apps
+	vinstall 'icons/hicolor/256x256/apps/ppsspp.png' 644 usr/share/icons/hicolor/256x256/apps
+	vinstall 'icons/hicolor/16x16/apps/ppsspp.png' 644 usr/share/icons/hicolor/16x16/apps
+	vinstall 'icons/hicolor/24x24/apps/ppsspp.png' 644 usr/share/icons/hicolor/24x24/apps
+	vinstall 'UWP/AssetsGold/Square44x44Logo.scale-200.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsGold/StoreLogo.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsGold/Wide310x150Logo.scale-200.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsGold/Square150x150Logo.scale-200.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsGold/Square44x44Logo.targetsize-24_altform-unplated.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsGold/LockScreenLogo.scale-200.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsGold/SplashScreen.scale-200.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsNormal/Square44x44Logo.scale-200.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsNormal/StoreLogo.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsNormal/Wide310x150Logo.scale-200.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsNormal/Square150x150Logo.scale-200.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsNormal/Square44x44Logo.targetsize-24_altform-unplated.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsNormal/LockScreenLogo.scale-200.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'UWP/AssetsNormal/SplashScreen.scale-200.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/ui_images/icon.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/ui_images/icon_gold.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/ui_images/retroachievements_logo.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/ui_images/bg.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/ui_images/psp_display.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/ui_images/stick.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/ui_images/drop_shadow.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/ui_images/images.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'assets/ui_images/buttons.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'assets/ui_images/stick_line.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/debugger/static/media/logo.94f885ce93dfb6d29a122402a15cccca.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vman 'ext/freetype/docs/freetype-config.1'
+	vman 'ext/libchdr/deps/zlib-1.3.1/zlib.3'
+	vman 'ext/libchdr/deps/zlib-1.3.1/contrib/minizip/miniunzip.1'
+	vman 'ext/libchdr/deps/zlib-1.3.1/contrib/minizip/minizip.1'
+	vman 'ext/libchdr/deps/zstd-1.5.6/programs/zstd.1'
+	vman 'ext/libchdr/deps/zstd-1.5.6/programs/zstdless.1'
+	vman 'ext/libchdr/deps/zstd-1.5.6/programs/zstdgrep.1'
+	vman 'ext/miniupnp/miniupnpd/miniupnpd.8'
+	vman 'ext/miniupnp/minissdpd/minissdpd.1'
+	vman 'ext/miniupnp/miniupnpc/man3/miniupnpc.3'
+	vman 'ext/zstd/programs/zstd.1'
+	vman 'ext/zstd/programs/zstdless.1'
+	vman 'ext/zstd/programs/zstdgrep.1'
+	vman 'pspautotests/common/ext/zstd/programs/zstd.1'
+	vman 'pspautotests/common/ext/zstd/programs/zstdless.1'
+	vman 'pspautotests/common/ext/zstd/programs/zstdgrep.1'
+	vman 'ffmpeg/tests/ref/fate/wavpack-channels-6.1'
+	vman 'ffmpeg/tests/ref/fate/lossless-truehd-5.1'
+	vman 'ffmpeg/tests/ref/fate/wavpack-channels-7.1'
+	vman 'ffmpeg/tests/ref/fate/wavpack-channels-5.1'
+	vman 'ffmpeg/COPYING.LGPLv2.1'
+}

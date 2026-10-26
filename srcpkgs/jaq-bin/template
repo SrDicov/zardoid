@@ -1,6 +1,6 @@
 # Template file for 'jaq-bin'
 pkgname=jaq-bin
-version=3.1.1
+version=3.1.2
 revision=1
 archs="x86_64"
 short_desc="Jq clone focussed on correctness, speed, and simplicity"
@@ -8,7 +8,8 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/01mf02/jaq"
 distfiles="https://github.com/01mf02/jaq/releases/download/v${version}/jaq-x86_64-unknown-linux-gnu"
-checksum=5922c7b67d9bd6841d6676d1f954410c6bf04b47203dcb661c4f052dfef7f454
+checksum=df94e0ce3658897a5677958417347e1109f91f72b9f75b8fe8f028a70c90b766
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 skip_extraction="jaq-x86_64-unknown-linux-gnu"

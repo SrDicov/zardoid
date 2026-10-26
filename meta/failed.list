@@ -65,3 +65,8 @@ https://github.com/twpayne/chezmoi/releases/download/v2.73.3/chezmoi_2.73.3_free
 https://github.com/storytold/craft-launcher/releases/download/v0.7.0/artcraft-launcher-0.7.0-freebsd-x86_64.tar.gz	craft-launcher-bin	generacion
 https://github.com/mr-karan/doggo/releases/download/v1.4.2/doggo-freebsd-x86_64.tar.gz	doggo-bin	generacion
 https://github.com/jhspetersson/fselect/releases/download/0.10.4/fselect-x86_64-win.zip	fselect-bin	generacion
+https://github.com/Limine-Bootloader/Limine/releases/download/v12.9.4/limine-binary.tar.gz	limine-bin	generacion
+https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_freebsd_amd64.tar.gz	opentofu-bin	generacion
+https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_freebsd_amd64.tar.gz	oras-bin	generacion
+https://github.com/charmbracelet/soft-serve/releases/download/v0.12.4/soft-serve_0.12.4_Freebsd_x86_64.tar.gz	soft-serve-bin	generacion
+https://github.com/NovaStepStudio/StepLauncher/releases/download/v2.6.0/steplauncher-v2.6.0-linux-amd64.pkg.tar.zst	steplauncher-bin	xlint/build

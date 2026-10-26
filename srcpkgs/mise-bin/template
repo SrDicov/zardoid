@@ -1,6 +1,6 @@
 # Template file for 'mise-bin'
 pkgname=mise-bin
-version=2026.10.13
+version=2026.10.19
 revision=1
 archs="x86_64*"
 short_desc="Dev tools, env vars, task runner"
@@ -8,7 +8,8 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://mise.jdx.dev"
 distfiles="https://github.com/jdx/mise/releases/download/v${version}/mise-v${version}-linux-x64-musl.tar.gz"
-checksum=2ece198f8bebffa06e1027ea5dc5fc26d14b2bc03c9c285658317f13da8ce3dd
+checksum=8284df180319249d4801b46a34afc5ba9ade5e9c5380ecd14d016f19e90b9ce1
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 

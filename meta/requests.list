@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/cjbassi/gotop/releases/download/3.0.0/gotop_3.0.0_linux_amd64.tgz gotop-bin
-https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_linux_amd64.tar.gz grype-bin
-https://github.com/imputnet/helium-linux/releases/download/0.20.1.1/helium-0.20.1.1-x86_64_linux.tar.xz helium-bin
-https://github.com/istio/istio/releases/download/1.31.3/istio-1.31.3-linux-amd64.tar.gz istio-bin
-https://github.com/01mf02/jaq/releases/download/v3.1.2/jaq-x86_64-unknown-linux-gnu jaq-bin
-https://dl.librewolf.net/librewolf/158.0.1-2/librewolf-158.0.1-2-linux-x86_64-package.tar.xz librewolf-bin
-https://github.com/Limine-Bootloader/Limine/releases/download/v12.9.4/limine-binary.tar.gz limine-bin
-https://github.com/jdx/mise/releases/download/v2026.10.19/mise-v2026.10.19-linux-x64-musl.tar.gz mise-bin
-https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_freebsd_amd64.tar.gz opentofu-bin
-https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_freebsd_amd64.tar.gz oras-bin
-https://github.com/hrydgard/ppsspp/releases/download/v1.20.4/ppsspp-1.20.4.tar.xz ppsspp-bin
-https://github.com/pulumi/pulumi/releases/download/v3.272.0/pulumi-v3.272.0-linux-x64.tar.gz pulumi-bin
-https://github.com/mierak/rmpc/releases/download/v0.11.0/rmpc-v0.11.0-x86_64-unknown-linux-gnu.tar.gz rmpc-bin
-https://github.com/astral-sh/ruff/releases/download/0.17.2/ruff-x86_64-unknown-linux-gnu.tar.gz ruff-bin
-https://github.com/skim-rs/skim/releases/download/v5.8.0/skim-x86_64-unknown-linux-gnu.tar.xz skim-bin
-https://github.com/charmbracelet/soft-serve/releases/download/v0.12.4/soft-serve_0.12.4_Freebsd_x86_64.tar.gz soft-serve-bin
-https://github.com/crmne/spotifast/releases/download/v0.14.1/spotifast-v0.14.1-x86_64-unknown-linux-gnu.tar.gz spotifast-bin
-https://github.com/NovaStepStudio/StepLauncher/releases/download/v2.6.0/steplauncher-v2.6.0-linux-amd64.pkg.tar.zst steplauncher-bin
-https://github.com/stern/stern/releases/download/v1.35.0/stern_1.35.0_linux_amd64.tar.gz stern-bin
-https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_linux_amd64.tar.gz syft-bin
 https://github.com/syncthing/syncthing/releases/download/v2.1.7/syncthing-freebsd-amd64-v2.1.7.tar.gz syncthing-bin
 https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.1/tealdeer-linux-x86_64-musl tealdeer-bin
 https://github.com/gruntwork-io/terragrunt/releases/download/v1.2.1/terragrunt_linux_amd64.tar.gz terragrunt-bin

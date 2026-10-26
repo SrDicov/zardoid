@@ -1,0 +1,20 @@
+# Template file for 'gotop-bin'
+pkgname=gotop-bin
+version=3.0.0
+revision=1
+archs="x86_64"
+short_desc="Terminal based graphical activity monitor inspired by gtop and vtop"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="AGPL-3.0-or-later"
+homepage="https://github.com/cjbassi/gotop"
+distfiles="https://github.com/cjbassi/gotop/releases/download/${version}/gotop_${version}_linux_amd64.tgz"
+checksum=7fd4c34398a63dcf3189db91ba2dbe9c1d8b96a0a04814ef56b8e764b145e608
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'gotop'
+	vlicense "${FILESDIR}/LICENSE"
+}

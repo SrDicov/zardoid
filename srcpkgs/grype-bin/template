@@ -1,6 +1,6 @@
 # Template file for 'grype-bin'
 pkgname=grype-bin
-version=0.120.1
+version=0.121.0
 revision=1
 archs="x86_64*"
 short_desc="Vulnerability scanner for container images and filesystems"
@@ -8,7 +8,8 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="Apache-2.0"
 homepage="https://github.com/anchore/grype"
 distfiles="https://github.com/anchore/grype/releases/download/v${version}/grype_${version}_linux_amd64.tar.gz"
-checksum=0a9ee97ef5ae2ee953b0a80098105052e846cdbe319a57d808b519c33cd1343d
+checksum=64e07133d3486115de647a66581461dccf5c732748a0a3119077395565f15519
+allow_unknown_shlibs=yes
 nopie=yes
 noshlibprovides=yes
 nostrip=yes

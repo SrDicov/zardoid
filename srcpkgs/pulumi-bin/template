@@ -1,6 +1,6 @@
 # Template file for 'pulumi-bin'
 pkgname=pulumi-bin
-version=3.270.0
+version=3.272.0
 revision=1
 archs="x86_64"
 short_desc="Pulumi - Infrastructure as Code in any programming language 🚀"
@@ -8,7 +8,8 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="Apache-2.0"
 homepage="https://www.pulumi.com"
 distfiles="https://github.com/pulumi/pulumi/releases/download/v${version}/pulumi-v${version}-linux-x64.tar.gz"
-checksum=d05899c251cb0413a9a2304f23229218c46852a61256913f34f08ebc27266139
+checksum=58d545f2b98761051922008ebd381ecef95484d7f7a5ff7faa15d7a780ea84f6
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 
