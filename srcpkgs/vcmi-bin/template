@@ -1,0 +1,42 @@
+# Template file for 'vcmi-bin'
+pkgname=vcmi-bin
+version=20261001
+revision=1
+archs="x86_64"
+short_desc="Unofficial AppImage of vcmi [Maintainer=@Samueru-sama]"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/pkgforge-dev/vcmi-AppImage"
+distfiles="https://github.com/pkgforge-dev/vcmi-AppImage/releases/download/1.7.5-1.3%402026-10-01_1790875404/VCMI_Client-1.7.5-1.3-anylinux-x86_64.AppImage>vcmi-bin-${version}.AppImage"
+checksum=cbd9b9cb39cf3f5794848cff22ef0f23115fcde25fd849283ffbbb8facf0f014
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
+
+do_install() {
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/vcmi-bin
+	vcopy "squashfs-root/*" opt/vcmi-bin
+	chmod -R o-w "${DESTDIR}/opt/vcmi-bin"
+	vmkdir usr/bin
+	ln -sf "/opt/vcmi-bin/AppRun" "${DESTDIR}/usr/bin/vcmi"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+}

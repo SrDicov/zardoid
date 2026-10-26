@@ -1,0 +1,25 @@
+# Template file for 'zoxide-bin'
+pkgname=zoxide-bin
+version=0.10.0
+revision=1
+archs="x86_64*"
+short_desc="Smarter cd command. Supports all major shells"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://crates.io/crates/zoxide"
+distfiles="https://github.com/ajeetdsouza/zoxide/releases/download/v${version}/zoxide-${version}-x86_64-unknown-linux-musl.tar.gz"
+checksum=2d93385b99f3e82cf2701609a1bffcad863fbeb75aa3fe7eb6be4d29be68b1ae
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'zoxide'
+	vman 'man/man1/zoxide-query.1'
+	vman 'man/man1/zoxide-import.1'
+	vman 'man/man1/zoxide-remove.1'
+	vman 'man/man1/zoxide.1'
+	vman 'man/man1/zoxide-add.1'
+	vman 'man/man1/zoxide-init.1'
+	vlicense 'LICENSE'
+}

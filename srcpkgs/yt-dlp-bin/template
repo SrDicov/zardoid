@@ -1,0 +1,20 @@
+# Template file for 'yt-dlp-bin'
+pkgname=yt-dlp-bin
+version=2026.08.19
+revision=1
+archs="x86_64"
+hostmakedepends="unzip"
+short_desc="Feature-rich command-line audio/video downloader"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Unlicense"
+homepage="https://discord.gg/H5MNcFW63r"
+distfiles="https://github.com/yt-dlp/yt-dlp/releases/download/${version}/yt-dlp_linux.zip"
+checksum=32e72032766bef9199d99d15beb69fd52e46df8f8b06f0d8745db59e04d339e9
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'yt-dlp_linux' 'yt-dlp'
+}

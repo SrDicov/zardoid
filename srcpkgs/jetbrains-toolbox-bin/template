@@ -1,0 +1,65 @@
+# Template file for 'jetbrains-toolbox-bin'
+pkgname=jetbrains-toolbox-bin
+version=3.8.1.88030
+revision=1
+archs="x86_64"
+short_desc="Precompiled binaries for jetbrains-toolbox"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="custom:Proprietary"
+homepage="https://download.jetbrains.com/toolbox/jetbrains-toolbox-3.8.1.88030.tar.gz"
+distfiles="https://download.jetbrains.com/toolbox/jetbrains-toolbox-${version}.tar.gz"
+checksum=25cbe2ad027f5a5749bf8d8ae7c2215a8665403cfe94ff5d05cd48b25daac345
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bin/askpass'
+	vbin 'bin/jetbrains-toolbox'
+	vbin 'bin/jre/bin/java'
+	vbin 'bin/jre/bin/jcmd'
+	vbin 'bin/jre/bin/jstack'
+	vbin 'bin/jre/lib/jexec'
+	vbin 'bin/jre/lib/jspawnhelper'
+	vbin 'bin/jre/lib/libattach.so'
+	vbin 'bin/jre/lib/libawt.so'
+	vbin 'bin/jre/lib/libawt_headless.so'
+	vbin 'bin/jre/lib/libawt_wlawt.so'
+	vbin 'bin/jre/lib/libawt_xawt.so'
+	vbin 'bin/jre/lib/libfontmanager.so'
+	vbin 'bin/jre/lib/libfontmanager_xawt.so'
+	vbin 'bin/jre/lib/libj2gss.so'
+	vbin 'bin/jre/lib/libjaas.so'
+	vbin 'bin/jre/lib/libjava.so'
+	vbin 'bin/jre/lib/libjavajpeg.so'
+	vbin 'bin/jre/lib/libjawt.so'
+	vbin 'bin/jre/lib/libjimage.so'
+	vbin 'bin/jre/lib/libjli.so'
+	vbin 'bin/jre/lib/libjsig.so'
+	vbin 'bin/jre/lib/libjsound.so'
+	vbin 'bin/jre/lib/liblcms.so'
+	vbin 'bin/jre/lib/libmanagement.so'
+	vbin 'bin/jre/lib/libmanagement_ext.so'
+	vbin 'bin/jre/lib/libmlib_image.so'
+	vbin 'bin/jre/lib/libnet.so'
+	vbin 'bin/jre/lib/libnio.so'
+	vbin 'bin/jre/lib/libprefs.so'
+	vbin 'bin/jre/lib/librmi.so'
+	vbin 'bin/jre/lib/libsimdsort.so'
+	vbin 'bin/jre/lib/libsplashscreen.so'
+	vbin 'bin/jre/lib/libsyslookup.so'
+	vbin 'bin/jre/lib/libverify.so'
+	vbin 'bin/jre/lib/libwlsplashscreen.so'
+	vbin 'bin/jre/lib/libzip.so'
+	vbin 'bin/jre/lib/server/libjsig.so'
+	vbin 'bin/jre/lib/server/libjvm.so'
+	vbin 'bin/libXss.so.1'
+	vbin 'bin/libjetbrains-toolbox-interop.so'
+	vbin 'bin/libjnidispatch.so'
+	vbin 'bin/libskiko-linux-x64.so'
+	vbin 'bin/libxcb-keysyms.so.1'
+	vinstall 'bin/jetbrains-toolbox.desktop' 644 usr/share/applications
+	vinstall 'bin/toolbox.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'bin/toolbox-tray-color.png' 644 usr/share/icons/hicolor/128x128/apps
+	vlicense "${FILESDIR}/LICENSE"
+}

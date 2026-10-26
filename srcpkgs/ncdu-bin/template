@@ -1,0 +1,20 @@
+# Template file for 'ncdu-bin'
+pkgname=ncdu-bin
+version=2.7
+revision=1
+archs="x86_64*"
+short_desc="Precompiled binaries for ncdu"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="custom:Unknown"
+homepage="https://dev.yorhel.nl/download/ncdu-2.7-linux-x86_64.tar.gz"
+distfiles="https://dev.yorhel.nl/download/ncdu-${version}-linux-x86_64.tar.gz"
+checksum=9710e0b3b4c700541e3ff6ebf6ea4bb03b494a140a21bf2f4e2ed87eb2a28bc6
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'ncdu'
+	vlicense "${FILESDIR}/LICENSE"
+}
