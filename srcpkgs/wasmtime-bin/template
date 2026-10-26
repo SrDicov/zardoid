@@ -1,6 +1,6 @@
 # Template file for 'wasmtime-bin'
 pkgname=wasmtime-bin
-version=49.0.3
+version=50.0.0
 revision=1
 archs="x86_64*"
 short_desc="Lightweight WebAssembly runtime that is fast, secure, and"
@@ -8,7 +8,7 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="Apache-2.0"
 homepage="https://wasmtime.dev/"
 distfiles="https://github.com/bytecodealliance/wasmtime/releases/download/v${version}/wasmtime-v${version}-x86_64-android-c-api.tar.xz"
-checksum=b68fec369b1c0836af0be4f1bc4c6208c8f0592f243cf49834ddc689f6d20e0d
+checksum=2b1e47170f2623744e2004280270dd0c6c5030f125f684ff2e70231a17503735
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes

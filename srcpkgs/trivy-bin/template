@@ -1,6 +1,6 @@
 # Template file for 'trivy-bin'
 pkgname=trivy-bin
-version=0.76.0
+version=0.76.1
 revision=1
 archs="x86_64*"
 short_desc="Find vulnerabilities, misconfigurations, secrets, SBOM in
@@ -9,7 +9,8 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="Apache-2.0"
 homepage="https://trivy.dev"
 distfiles="https://github.com/aquasecurity/trivy/releases/download/v${version}/trivy_${version}_Linux-64bit.tar.gz"
-checksum=e24b1c51293c1b15e4ba8d45bbc7891ba053f90278ec2698f3562c993e145fe7
+checksum=c7cbe3137fb8a48a17574bede3dd6beb16742d1e9772929940fc90082c39d9c0
+allow_unknown_shlibs=yes
 nopie=yes
 noshlibprovides=yes
 nostrip=yes

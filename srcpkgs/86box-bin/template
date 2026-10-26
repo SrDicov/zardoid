@@ -1,16 +1,18 @@
 # Template file for '86box-bin'
 pkgname=86box-bin
-version=6.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of 86box [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/86box-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/86box-AppImage-Enhanced/releases/download/${version}%402026-10-12_1791805425/86Box-${version}-anylinux-x86_64.AppImage>86box-bin-${version}.AppImage"
-checksum=0bd6c89f96cb979b04266bc69242f55c691f94cec30ee51b52c653f86a539734
+distfiles="https://github.com/pkgforge-dev/86box-AppImage-Enhanced/releases/download/6.0%402026-10-22_1792677385/86Box-6.0-anylinux-x86_64.AppImage>86box-bin-${version}.AppImage"
+checksum=83ae0e607f370a7ac572ba7c543c138d9295f9512598b1b6c2501addedf20fd7
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/86box-bin
 	vcopy "squashfs-root/*" opt/86box-bin
+	chmod -R o-w "${DESTDIR}/opt/86box-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/86box-bin/AppRun" "${DESTDIR}/usr/bin/86box"
 	local desk

@@ -1,6 +1,6 @@
 # Template file for 'tealdeer-bin'
 pkgname=tealdeer-bin
-version=1.9.0
+version=1.9.1
 revision=1
 archs="x86_64*"
 short_desc="Very fast implementation of tldr in Rust"
@@ -8,7 +8,8 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="Apache-2.0"
 homepage="https://docs.tealdeer.org"
 distfiles="https://github.com/tealdeer-rs/tealdeer/releases/download/v${version}/tealdeer-linux-x86_64-musl"
-checksum=dc7263b550e90c0689ea2cb434e3144469805d5dddecbb1f7fc534e1185b7408
+checksum=5a9c3f0691b9cf375ee5c99de802885f3d50498cf686a539e2ddda028eb6b4f6
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 skip_extraction="tealdeer-linux-x86_64-musl"

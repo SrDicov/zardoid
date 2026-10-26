@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/syncthing/syncthing/releases/download/v2.1.7/syncthing-freebsd-amd64-v2.1.7.tar.gz syncthing-bin
-https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.1/tealdeer-linux-x86_64-musl tealdeer-bin
-https://github.com/gruntwork-io/terragrunt/releases/download/v1.2.1/terragrunt_linux_amd64.tar.gz terragrunt-bin
-https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_Linux-64bit.tar.gz trivy-bin
-https://github.com/Ars-byte/Tui-timer/releases/download/latest/tui-timer.tar.gz tui-timer-bin
-https://github.com/houseabsolute/ubi/releases/download/v0.13.0/ubi-FreeBSD-x86_64.tar.gz ubi-bin
-https://github.com/astral-sh/uv/releases/download/0.13.5/uv-x86_64-unknown-linux-gnu.tar.gz uv-bin
-https://github.com/Vencord/Vesktop/releases/download/v1.6.8/vesktop-1.6.8.tar.gz vesktop-bin
-https://github.com/bytecodealliance/wasmtime/releases/download/v50.0.0/wasmtime-v50.0.0-x86_64-android-c-api.tar.xz wasmtime-bin
-https://github.com/ducaale/xh/releases/download/v0.26.3/xh-v0.26.3-x86_64-unknown-linux-musl.tar.gz xh-bin
-https://github.com/yt-dlp/yt-dlp/releases/download/2026.10.21/yt-dlp_linux.zip yt-dlp-bin
-https://github.com/anas1412/ytmgo/releases/download/v1.6.4/ytmgo_Linux_x86_64.tar.gz ytmgo-bin
-https://github.com/zed-industries/zed/releases/download/v1.25.3/zed-linux-x86_64.tar.gz zed-bin
-https://github.com/zen-browser/desktop/releases/download/1.23.4b/zen.linux-x86_64.tar.xz zen-browser-bin
-https://github.com/pkgforge-dev/86box-AppImage-Enhanced/releases/download/6.0%402026-10-22_1792677385/86Box-6.0-anylinux-x86_64.AppImage 86box-bin
-https://github.com/pkgforge-dev/AAAAXY-AppImage-Enhanced/releases/download/1.8.34-1%402026-10-22_1792688879/AAAAXY-1.8.34-1-anylinux-x86_64.AppImage aaaaxy-bin
-https://github.com/pkgforge-dev/Abaddon-AppImage/releases/download/0.2.4%402026-10-22_1792693530/abaddon-0.2.4-anylinux-x86_64.AppImage abaddon-bin
-https://github.com/pkgforge-dev/Adobe-Flash-Player-AppImage/releases/download/32.0.0.465-1%402026-10-22_1792685844/Adobe_Flash_Player_Standalone-32.0.0.465-1-anylinux-x86_64.AppImage adobe-flash-player-bin
-https://github.com/pkgforge-dev/Aerofoil-AppImage/releases/download/ba2a3628d%402026-10-21_1792559739/Aerofoil-ba2a3628d-anylinux-x86_64.AppImage aerofoil-bin
-https://github.com/pkgforge-dev/Akhenaten-AppImage/releases/download/ra2606%402026-10-22_1792689070/Akhenaten-ra2606-anylinux-x86_64.AppImage akhenaten-bin
 https://github.com/pkgforge-dev/alacritty-AppImage/releases/download/v0.17.0%402026-10-22_1792688955/Alacritty-v0.17.0-anylinux-x86_64.AppImage alacritty-bin
 https://github.com/pkgforge-dev/Amarok-AppImage/releases/download/3.3.3-1%402026-10-22_1792689217/Amarok-3.3.3-1-anylinux-x86_64.AppImage amarok-bin
 https://github.com/pkgforge-dev/android-tools-AppImage/releases/download/37.0.1%402026-10-22_1792682064/Android_Tools-37.0.1-anylinux-x86_64.AppImage android-tools-bin

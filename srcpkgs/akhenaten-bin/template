@@ -1,16 +1,18 @@
 # Template file for 'akhenaten-bin'
 pkgname=akhenaten-bin
-version=20260901
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Akhenaten [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Akhenaten-AppImage"
-distfiles="https://github.com/pkgforge-dev/Akhenaten-AppImage/releases/download/ra2606%402026-09-01_1788277952/Akhenaten-ra2606-anylinux-x86_64.AppImage>akhenaten-bin-${version}.AppImage"
-checksum=65e231d77eb6ff0c8cdad04be3521939880ca5bd085e5419ff72dc491acd1c2d
+distfiles="https://github.com/pkgforge-dev/Akhenaten-AppImage/releases/download/ra2606%402026-10-22_1792689070/Akhenaten-ra2606-anylinux-x86_64.AppImage>akhenaten-bin-${version}.AppImage"
+checksum=62e577347b06fcd697ed382d18abee6637fb6295e09fae6783b7da02870ed245
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/akhenaten-bin
 	vcopy "squashfs-root/*" opt/akhenaten-bin
+	chmod -R o-w "${DESTDIR}/opt/akhenaten-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/akhenaten-bin/AppRun" "${DESTDIR}/usr/bin/akhenaten"
 	local desk

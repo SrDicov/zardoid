@@ -1,6 +1,6 @@
 # Template file for 'zen-browser-bin'
 pkgname=zen-browser-bin
-version=1.23.3b
+version=1.23.4b
 revision=1
 archs="x86_64"
 short_desc="Welcome to a calmer internet"
@@ -8,7 +8,7 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="MPL-2.0"
 homepage="https://zen-browser.app"
 distfiles="https://github.com/zen-browser/desktop/releases/download/${version}/zen.linux-x86_64.tar.xz"
-checksum=bb2045d3e21654d40fe841250092eeadfd2c1fc831eefb509222773c8bdca149
+checksum=ba81dd70af70d645f2f0a692f7fa4510f819290abfd8d8e60273d3d5a60d0536
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -17,8 +17,8 @@ do_install() {
 	vbin 'updater'
 	vinstall 'icons/updater.png' 644 usr/share/icons/hicolor/128x128/apps
 	vinstall 'browser/chrome/icons/default/default16.png' 644 usr/share/icons/hicolor/128x128/apps
-	vinstall 'browser/chrome/icons/default/default32.png' 644 usr/share/icons/hicolor/128x128/apps
-	vinstall 'browser/chrome/icons/default/default64.png' 644 usr/share/icons/hicolor/128x128/apps
 	vinstall 'browser/chrome/icons/default/default48.png' 644 usr/share/icons/hicolor/128x128/apps
 	vinstall 'browser/chrome/icons/default/default128.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'browser/chrome/icons/default/default32.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'browser/chrome/icons/default/default64.png' 644 usr/share/icons/hicolor/128x128/apps
 }

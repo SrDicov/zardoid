@@ -70,3 +70,6 @@ https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_freeb
 https://github.com/oras-project/oras/releases/download/v1.3.6/oras_1.3.6_freebsd_amd64.tar.gz	oras-bin	generacion
 https://github.com/charmbracelet/soft-serve/releases/download/v0.12.4/soft-serve_0.12.4_Freebsd_x86_64.tar.gz	soft-serve-bin	generacion
 https://github.com/NovaStepStudio/StepLauncher/releases/download/v2.6.0/steplauncher-v2.6.0-linux-amd64.pkg.tar.zst	steplauncher-bin	xlint/build
+https://github.com/syncthing/syncthing/releases/download/v2.1.7/syncthing-freebsd-amd64-v2.1.7.tar.gz	syncthing-bin	generacion
+https://github.com/Ars-byte/Tui-timer/releases/download/latest/tui-timer.tar.gz	tui-timer-bin	generacion
+https://github.com/houseabsolute/ubi/releases/download/v0.13.0/ubi-FreeBSD-x86_64.tar.gz	ubi-bin	generacion
