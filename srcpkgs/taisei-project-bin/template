@@ -1,6 +1,6 @@
 # Template file for 'taisei-project-bin'
 pkgname=taisei-project-bin
-version=1.4.6
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Taisei-Project
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage of Taisei-Project
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Taisei-Project-AppImage"
-distfiles="https://github.com/pkgforge-dev/Taisei-Project-AppImage/releases/download/${version}%402026-10-01_1790866325/Taisei-${version}-anylinux-x86_64.AppImage>taisei-project-bin-${version}.AppImage"
-checksum=f79e3deb537a269f4ffef0c2ac2d6104b497273dd5e9e17dd3e49444d8902f53
+distfiles="https://github.com/pkgforge-dev/Taisei-Project-AppImage/releases/download/1.4.6%402026-10-22_1792673550/Taisei-1.4.6-anylinux-x86_64.AppImage>taisei-project-bin-${version}.AppImage"
+checksum=57d23988ef2d91fda2545a1b271496ae3a08989deda88f8665ee75d0cb68af14
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/taisei-project-bin
 	vcopy "squashfs-root/*" opt/taisei-project-bin
+	chmod -R o-w "${DESTDIR}/opt/taisei-project-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/taisei-project-bin/AppRun" "${DESTDIR}/usr/bin/taisei-project"
 	local desk

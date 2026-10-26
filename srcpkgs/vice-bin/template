@@ -1,16 +1,18 @@
 # Template file for 'vice-bin'
 pkgname=vice-bin
-version=3.10
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of VICE [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/VICE-AppImage"
-distfiles="https://github.com/pkgforge-dev/VICE-AppImage/releases/download/${version}-3%402026-10-01_1790866415/VICE-${version}-3-anylinux-x86_64.AppImage>vice-bin-${version}.AppImage"
-checksum=b6907bb9d7b4da46fad6cd30005d84dcca05e8cdbef6dbac35ba783aa0bd87a0
+distfiles="https://github.com/pkgforge-dev/VICE-AppImage/releases/download/3.10-3%402026-10-22_1792673445/VICE-3.10-3-anylinux-x86_64.AppImage>vice-bin-${version}.AppImage"
+checksum=cb6043a568cebfd073c4e8e09036f0ed07186057a41f872d78156773192630ff
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/vice-bin
 	vcopy "squashfs-root/*" opt/vice-bin
+	chmod -R o-w "${DESTDIR}/opt/vice-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/vice-bin/AppRun" "${DESTDIR}/usr/bin/vice"
 	local desk

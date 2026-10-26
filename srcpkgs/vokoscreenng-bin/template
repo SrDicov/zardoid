@@ -1,16 +1,18 @@
 # Template file for 'vokoscreenng-bin'
 pkgname=vokoscreenng-bin
-version=4.10.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of vokoscreenNG [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/vokoscreenNG-AppImage"
-distfiles="https://github.com/pkgforge-dev/vokoscreenNG-AppImage/releases/download/${version}-1%402026-10-01_1790876511/vokoscreenNG-${version}-1-anylinux-x86_64.AppImage>vokoscreenng-bin-${version}.AppImage"
-checksum=ba353efd37ddf340a4546b7005292aa7e48ab37acea2c3066a5e3f07ff88e41e
+distfiles="https://github.com/pkgforge-dev/vokoscreenNG-AppImage/releases/download/4.11.0-1%402026-10-22_1792689390/vokoscreenNG-4.11.0-1-anylinux-x86_64.AppImage>vokoscreenng-bin-${version}.AppImage"
+checksum=90643c8dd779ae6e5d0681be6a83e35048eb67fb740f298228fca60726106cc4
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/vokoscreenng-bin
 	vcopy "squashfs-root/*" opt/vokoscreenng-bin
+	chmod -R o-w "${DESTDIR}/opt/vokoscreenng-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/vokoscreenng-bin/AppRun" "${DESTDIR}/usr/bin/vokoscreenng"
 	local desk
