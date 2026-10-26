@@ -1,16 +1,18 @@
 # Template file for 'augustus-bin'
 pkgname=augustus-bin
-version=4.0.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Augustus [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Augustus-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/Augustus-AppImage-Enhanced/releases/download/${version}-2%402026-10-01_1790876223/Augustus-${version}-2-anylinux-x86_64.AppImage>augustus-bin-${version}.AppImage"
-checksum=c408af0ee249cc0bc6b820b039364c1fc159fa66f3e9a7eb57bff4ed606deb48
+distfiles="https://github.com/pkgforge-dev/Augustus-AppImage-Enhanced/releases/download/4.0.0-2%402026-10-22_1792689162/Augustus-4.0.0-2-anylinux-x86_64.AppImage>augustus-bin-${version}.AppImage"
+checksum=6425a388fd977d62333a3f34e46838620bff9c23b510daf15524f65c427ce630
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/augustus-bin
 	vcopy "squashfs-root/*" opt/augustus-bin
+	chmod -R o-w "${DESTDIR}/opt/augustus-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/augustus-bin/AppRun" "${DESTDIR}/usr/bin/augustus"
 	local desk

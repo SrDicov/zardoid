@@ -1,6 +1,6 @@
 # Template file for 'android-tools-bin'
 pkgname=android-tools-bin
-version=37.0.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Android Platform Tools (adb, fastboot, etc).
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage of Android Platform Tools (adb, fastboot, etc).
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/pkgforge-dev/android-tools-AppImage"
-distfiles="https://github.com/pkgforge-dev/android-tools-AppImage/releases/download/${version}%402026-10-01_1790871631/Android_Tools-${version}-anylinux-x86_64.AppImage>android-tools-bin-${version}.AppImage"
-checksum=f0f84cf812100f1763274c43776963e9994a83b1476df75b6f596f7bea7d4cdd
+distfiles="https://github.com/pkgforge-dev/android-tools-AppImage/releases/download/37.0.1%402026-10-22_1792682064/Android_Tools-37.0.1-anylinux-x86_64.AppImage>android-tools-bin-${version}.AppImage"
+checksum=44cc40cc32f7750a365adb0ed7baef92e68f51bf8706eef03077f3bcd01f094f
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/android-tools-bin
 	vcopy "squashfs-root/*" opt/android-tools-bin
+	chmod -R o-w "${DESTDIR}/opt/android-tools-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/android-tools-bin/AppRun" "${DESTDIR}/usr/bin/android-tools"
 	local desk

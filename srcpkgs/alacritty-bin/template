@@ -1,16 +1,18 @@
 # Template file for 'alacritty-bin'
 pkgname=alacritty-bin
-version=0.17.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of alacritty [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/pkgforge-dev/alacritty-AppImage"
-distfiles="https://github.com/pkgforge-dev/alacritty-AppImage/releases/download/v${version}%402026-10-01_1790876663/Alacritty-v${version}-anylinux-x86_64.AppImage>alacritty-bin-${version}.AppImage"
-checksum=dd0263e678aa5e8dbe3606c7beb46b4dd815a1dd05c6b70ecf1567ec1c84ee5e
+distfiles="https://github.com/pkgforge-dev/alacritty-AppImage/releases/download/v0.17.0%402026-10-22_1792688955/Alacritty-v0.17.0-anylinux-x86_64.AppImage>alacritty-bin-${version}.AppImage"
+checksum=b2e188249a76bedb7cae452e3984f852a95bbd4965c38f4092e46aa36cb03e1f
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/alacritty-bin
 	vcopy "squashfs-root/*" opt/alacritty-bin
+	chmod -R o-w "${DESTDIR}/opt/alacritty-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/alacritty-bin/AppRun" "${DESTDIR}/usr/bin/alacritty"
 	local desk

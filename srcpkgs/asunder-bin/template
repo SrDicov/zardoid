@@ -1,16 +1,18 @@
 # Template file for 'asunder-bin'
 pkgname=asunder-bin
-version=3.0.2
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Asunder [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Asunder-AppImage"
-distfiles="https://github.com/pkgforge-dev/Asunder-AppImage/releases/download/${version}%402026-10-11_1791707965/Asunder_CD_Ripper-${version}-anylinux-x86_64.AppImage>asunder-bin-${version}.AppImage"
-checksum=ce27f7716cff0b7dc092cbdf5186f89cd16da8c813b3598f8a36802f501d3e1c
+distfiles="https://github.com/pkgforge-dev/Asunder-AppImage/releases/download/3.0.2%402026-10-22_1792689052/Asunder_CD_Ripper-3.0.2-anylinux-x86_64.AppImage>asunder-bin-${version}.AppImage"
+checksum=76fb56d35655a57b46db569a19c5f93ad1b35dd83bda2e35319879de9fce2592
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/asunder-bin
 	vcopy "squashfs-root/*" opt/asunder-bin
+	chmod -R o-w "${DESTDIR}/opt/asunder-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/asunder-bin/AppRun" "${DESTDIR}/usr/bin/asunder"
 	local desk

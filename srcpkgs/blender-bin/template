@@ -1,14 +1,14 @@
 # Template file for 'blender-bin'
 pkgname=blender-bin
-version=20261017
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Blender [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Blender-AppImage"
-distfiles="https://github.com/pkgforge-dev/Blender-AppImage/releases/download/5.2.2-3%402026-10-17_1792253150/Blender-5.2.2-3-anylinux-x86_64.AppImage>blender-bin-${version}.AppImage"
-checksum=fb98899df4b292bbc2e5153b645a1075d6279d28dfe03655c2574fb8fe3cb671
+distfiles="https://github.com/pkgforge-dev/Blender-AppImage/releases/download/5.2.2-3%402026-10-22_1792689207/Blender-5.2.2-3-anylinux-x86_64.AppImage>blender-bin-${version}.AppImage"
+checksum=7192d0f4beb3d2261134e750fab9d6bcbeee1421a63a87baabb0541256f47cc1
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/blender-bin
 	vcopy "squashfs-root/*" opt/blender-bin
+	chmod -R o-w "${DESTDIR}/opt/blender-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/blender-bin/AppRun" "${DESTDIR}/usr/bin/blender"
 	local desk

@@ -1,14 +1,14 @@
 # Template file for 'anki-bin'
 pkgname=anki-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of anki. [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/anki-AppImage"
-distfiles="https://github.com/pkgforge-dev/anki-AppImage/releases/download/26.09.3-1%402026-10-01_1790876613/Anki-26.09.3-1-anylinux-x86_64.AppImage>anki-bin-${version}.AppImage"
-checksum=dad685787e4141557d1ab316fdd6e3495e07c73d67c877d90893b3b40f9133e0
+distfiles="https://github.com/pkgforge-dev/anki-AppImage/releases/download/26.09.3-1%402026-10-22_1792689126/Anki-26.09.3-1-anylinux-x86_64.AppImage>anki-bin-${version}.AppImage"
+checksum=fd6b9114c2562ede1b67a9984bb30e51b643d5f0e56f86d861af19e422646c21
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/anki-bin
 	vcopy "squashfs-root/*" opt/anki-bin
+	chmod -R o-w "${DESTDIR}/opt/anki-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/anki-bin/AppRun" "${DESTDIR}/usr/bin/anki"
 	local desk

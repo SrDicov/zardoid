@@ -1,6 +1,6 @@
 # Template file for 'arx-libertatis-bin'
 pkgname=arx-libertatis-bin
-version=20260909
+version=20261021
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Arx Libertatis
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage of Arx Libertatis
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Arx-Libertatis-AppImage"
-distfiles="https://github.com/pkgforge-dev/Arx-Libertatis-AppImage/releases/download/5b95e4c5c%402026-09-09_1788936606/Arx_Libertatis-5b95e4c5c-anylinux-x86_64.AppImage>arx-libertatis-bin-${version}.AppImage"
-checksum=183daf649a7a15b2e746b2e4d428efd9fa8da421f599668bd058e601110812c4
+distfiles="https://github.com/pkgforge-dev/Arx-Libertatis-AppImage/releases/download/5b95e4c5c%402026-10-21_1792563343/Arx_Libertatis-5b95e4c5c-anylinux-x86_64.AppImage>arx-libertatis-bin-${version}.AppImage"
+checksum=78bf85ed0bff6e033b324bfad0c91486ce62b7902f3c76c1c005be6b8520db40
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/arx-libertatis-bin
 	vcopy "squashfs-root/*" opt/arx-libertatis-bin
+	chmod -R o-w "${DESTDIR}/opt/arx-libertatis-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/arx-libertatis-bin/AppRun" "${DESTDIR}/usr/bin/arx-libertatis"
 	local desk

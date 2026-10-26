@@ -1,16 +1,18 @@
 # Template file for 'bm64recomp-bin'
 pkgname=bm64recomp-bin
-version=1.0.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Bomberman 64 Recompiled"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/BM64Recomp-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/BM64Recomp-AppImage-Enhanced/releases/download/${version}%402026-10-01_1790876063/BM64Recompiled-${version}-anylinux-x86_64.AppImage>bm64recomp-bin-${version}.AppImage"
-checksum=ad7f99d0d91869b0cb734ca18f9a3523e0661595a3d738d913fbe384ba02b147
+distfiles="https://github.com/pkgforge-dev/BM64Recomp-AppImage-Enhanced/releases/download/1.0.0%402026-10-22_1792689178/BM64Recompiled-1.0.0-anylinux-x86_64.AppImage>bm64recomp-bin-${version}.AppImage"
+checksum=eee9ab699ac245db4c961955211d9995e98ad641dd5eacaf684ce5561d2331d7
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/bm64recomp-bin
 	vcopy "squashfs-root/*" opt/bm64recomp-bin
+	chmod -R o-w "${DESTDIR}/opt/bm64recomp-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/bm64recomp-bin/AppRun" "${DESTDIR}/usr/bin/bm64recomp"
 	local desk
