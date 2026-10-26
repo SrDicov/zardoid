@@ -10,5 +10,3 @@ https://dist.torproject.org/torbrowser/15.0.24/tor-browser-linux-x86_64-15.0.24.
 https://github.com/Trinity-LA/Trinity-Launcher/releases/download/latest/Trinity_Launcher-x86_64.AppImage	trinity-launcher-bin	generacion
 https://github.com/Limine-Bootloader/Limine/releases/download/v12.9.4/limine-binary.tar.gz	limine-bin	generacion
 https://github.com/Ars-byte/Tui-timer/releases/download/latest/tui-timer.tar.gz	tui-timer-bin	generacion
-https://github.com/gokcehan/lf/releases/download/r42/lf-dragonfly-amd64.tar.gz	lf-bin	generacion
-https://github.com/jhspetersson/fselect/releases/download/0.10.4/fselect-x86_64-win.zip	fselect-bin	generacion
