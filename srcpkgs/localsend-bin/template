@@ -9,8 +9,10 @@ license="Apache-2.0"
 homepage="https://localsend.org"
 distfiles="https://github.com/localsend/localsend/releases/download/v${version}/LocalSend-${version}-linux-x86-64.AppImage>localsend-bin-${version}.AppImage"
 checksum=19f21613d1834f6caa69517113670461a3f10b80a2a315f86548c0663d9c0aaf
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/localsend-bin
 	vcopy "squashfs-root/*" opt/localsend-bin
+	chmod -R o-w "${DESTDIR}/opt/localsend-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/localsend-bin/AppRun" "${DESTDIR}/usr/bin/localsend"
 	local desk

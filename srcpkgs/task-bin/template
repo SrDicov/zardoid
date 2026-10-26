@@ -1,0 +1,21 @@
+# Template file for 'task-bin'
+pkgname=task-bin
+version=3.54.0
+revision=1
+archs="x86_64*"
+short_desc="Fast, cross-platform build tool inspired by Make, designed for
+ modern"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://taskfile.dev"
+distfiles="https://github.com/go-task/task/releases/download/v${version}/task_linux_amd64.tar.gz"
+checksum=680859dbb4d881a9c72d4d9a8f510825450849af8567deacd7302c01124416fb
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'task'
+	vlicense 'LICENSE'
+}

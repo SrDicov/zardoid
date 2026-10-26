@@ -1,0 +1,19 @@
+# Template file for 'opentofu-bin'
+pkgname=opentofu-bin
+version=1.13.2
+revision=1
+archs="x86_64*"
+short_desc="OpenTofu lets you declaratively manage your cloud infrastructure"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MPL-2.0"
+homepage="https://opentofu.org"
+distfiles="https://github.com/opentofu/opentofu/releases/download/v${version}/tofu_${version}_linux_amd64.tar.gz"
+checksum=ac05d9952662c7db28dd57e93f0a68018837bfdf9342384ec0987977c16a9645
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'tofu'
+}

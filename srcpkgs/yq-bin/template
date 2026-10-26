@@ -1,0 +1,21 @@
+# Template file for 'yq-bin'
+pkgname=yq-bin
+version=4.54.1
+revision=1
+archs="x86_64*"
+short_desc="Yq is a portable command-line YAML, JSON, XML, CSV, TOML, HCL and"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://mikefarah.gitbook.io/yq/"
+distfiles="https://github.com/mikefarah/yq/releases/download/v${version}/yq_linux_amd64.tar.gz"
+checksum=e68a456f90c577af3fe4960184b3a3cf5c461e0348407c10f107da3a5fec8972
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'yq_linux_amd64' 'yq'
+	vman 'yq.1'
+	vlicense "${FILESDIR}/LICENSE"
+}

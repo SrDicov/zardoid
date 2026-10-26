@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/voidstrap-bin
 	vcopy "squashfs-root/*" opt/voidstrap-bin
+	chmod -R o-w "${DESTDIR}/opt/voidstrap-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/voidstrap-bin/AppRun" "${DESTDIR}/usr/bin/voidstrap"
 	local desk

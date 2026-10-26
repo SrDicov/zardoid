@@ -1,0 +1,21 @@
+# Template file for 'doggo-bin'
+pkgname=doggo-bin
+version=1.4.2
+revision=1
+archs="x86_64*"
+short_desc="Dog: Command-line DNS Client for Humans. Written in Golang"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://doggo.mrkaran.dev/"
+distfiles="https://github.com/mr-karan/doggo/releases/download/v${version}/doggo_web_${version}_linux_amd64.tar.gz"
+checksum=9bbaec4682bb0171b6ba07af9789899f578d5cfe1a83b952c4221f4b209cfc1b
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'doggo-web.bin' 'doggo'
+	vinstall 'docs/favicon.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'docs/_astro/doggo.CZjkYmFM_Z1MHm8S.png' 644 usr/share/icons/hicolor/128x128/apps
+}

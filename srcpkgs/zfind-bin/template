@@ -1,0 +1,21 @@
+# Template file for 'zfind-bin'
+pkgname=zfind-bin
+version=0.4.7
+revision=1
+archs="x86_64*"
+short_desc="Search for files (even inside tar/zip/7z/rar) using a SQL-WHERE
+ filter"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/laktak/zfind"
+distfiles="https://github.com/laktak/zfind/releases/download/v${version}/zfind-linux-amd64.tar.gz"
+checksum=fb016f67fda4be03ca781f4092aa8274fd72b6dbbe3491562b77cb6ecac53757
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'zfind'
+	vlicense "${FILESDIR}/LICENSE"
+}

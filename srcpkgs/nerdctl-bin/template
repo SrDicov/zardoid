@@ -1,0 +1,20 @@
+# Template file for 'nerdctl-bin'
+pkgname=nerdctl-bin
+version=2.4.1
+revision=1
+archs="x86_64*"
+short_desc="ContaiNERD CTL - Docker-compatible CLI for containerd, with support
+ for"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/containerd/nerdctl"
+distfiles="https://github.com/containerd/nerdctl/releases/download/v${version}/nerdctl-${version}-linux-amd64.tar.gz"
+checksum=f6bbf02fd8a299cbcbc71a0bad113c1b63b3f33689bbb7d51b0fa98c6d361d5e
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'nerdctl'
+}

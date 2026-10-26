@@ -1,0 +1,20 @@
+# Template file for 'sequin-bin'
+pkgname=sequin-bin
+version=0.3.1
+revision=1
+archs="x86_64*"
+short_desc="Human-readable ANSI sequences 🪩"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/charmbracelet/sequin"
+distfiles="https://github.com/charmbracelet/sequin/releases/download/v${version}/sequin_${version}_Linux_x86_64.tar.gz"
+checksum=62a5f1378421a0fef4d747eb29cb9e85d5f8597469df612ee26b21c012556f82
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'sequin'
+	vlicense 'LICENSE'
+}

@@ -1,0 +1,20 @@
+# Template file for 'vegeta-bin'
+pkgname=vegeta-bin
+version=12.13.0
+revision=1
+archs="x86_64*"
+short_desc="HTTP load testing tool and library. It's over 9000!"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="http://godoc.org/github.com/tsenart/vegeta/lib"
+distfiles="https://github.com/tsenart/vegeta/releases/download/v${version}/vegeta_${version}_linux_amd64.tar.gz"
+checksum=e8759ce45c14e18374bdccd3ba6068197bc3a9f9b7e484db3837f701b9d12e61
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'vegeta'
+	vlicense "${FILESDIR}/LICENSE"
+}

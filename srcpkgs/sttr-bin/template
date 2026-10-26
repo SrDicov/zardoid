@@ -1,0 +1,20 @@
+# Template file for 'sttr-bin'
+pkgname=sttr-bin
+version=0.2.30
+revision=1
+archs="x86_64*"
+short_desc="Cross-platform, cli app to perform various operations on string"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/abhimanyu003/sttr"
+distfiles="https://github.com/abhimanyu003/sttr/releases/download/v${version}/sttr_Linux_x86_64.tar.gz"
+checksum=f4cb5b240853b53f67d7b789c9cf5969e794675c5c38aad2ed5ff2c065be4c19
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'sttr'
+	vlicense 'LICENSE'
+}

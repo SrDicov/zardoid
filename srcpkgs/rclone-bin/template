@@ -1,0 +1,23 @@
+# Template file for 'rclone-bin'
+pkgname=rclone-bin
+version=1.75.2
+revision=1
+archs="x86_64*"
+hostmakedepends="unzip"
+short_desc="Rsync for cloud storage\" - Google Drive, S3, Dropbox, Backblaze
+ B2, One"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://rclone.org"
+distfiles="https://github.com/rclone/rclone/releases/download/v${version}/rclone-v${version}-linux-amd64.zip"
+checksum=349ac8fba6ff65d6247043f1750cdcb518ec5d500ef91463a10d37c0ccdf3702
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'rclone'
+	vman 'rclone.1'
+	vlicense "${FILESDIR}/LICENSE"
+}

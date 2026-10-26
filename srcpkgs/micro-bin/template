@@ -1,0 +1,24 @@
+# Template file for 'micro-bin'
+pkgname=micro-bin
+version=2.0.15
+revision=1
+archs="x86_64*"
+short_desc="Modern and intuitive terminal-based text editor"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://micro-editor.github.io"
+distfiles="https://github.com/micro-editor/micro/releases/download/v${version}/micro-${version}-linux64-static.tar.gz"
+checksum=267d238eac1e26ed053d13d4d48bd421b87f9eb538b604f0b2f74a85598b6cc2
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'micro'
+	vinstall 'micro.desktop' 644 usr/share/applications
+	vinstall 'micro.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vman 'micro.1'
+	vlicense 'LICENSE-THIRD-PARTY'
+	vlicense 'LICENSE'
+}

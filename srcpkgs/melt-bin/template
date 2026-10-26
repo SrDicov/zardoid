@@ -1,0 +1,21 @@
+# Template file for 'melt-bin'
+pkgname=melt-bin
+version=0.6.2
+revision=1
+archs="x86_64*"
+short_desc="Backup and restore Ed25519 SSH keys with seed words 🫠"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/charmbracelet/melt"
+distfiles="https://github.com/charmbracelet/melt/releases/download/v${version}/melt_${version}_Linux_x86_64.tar.gz"
+checksum=82f543dcade2244a86196a506a28dcd41b55d5e0be71d692d291fc4f6803ac82
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'melt'
+	vman 'manpages/melt.1.gz'
+	vlicense 'LICENSE.md'
+}

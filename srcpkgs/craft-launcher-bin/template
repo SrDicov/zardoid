@@ -1,6 +1,6 @@
 # Template file for 'craft-launcher-bin'
 pkgname=craft-launcher-bin
-version=0.7.0
+version=0.8.1
 revision=1
 archs="x86_64"
 short_desc="Craft App Launcher"
@@ -8,7 +8,7 @@ maintainer="SrDicov <SrDicov@gmail.com>"
 license="Apache-2.0"
 homepage="https://github.com/storytold/craft-launcher"
 distfiles="https://github.com/storytold/craft-launcher/releases/download/v${version}/artcraft-launcher-${version}-linux-x86_64.AppImage>craft-launcher-bin-${version}.AppImage"
-checksum=f80b9bdcfeb92bc88a54d07e7f2e03f1880f3fcf25c1511864b3d4118ecee1d8
+checksum=83cdba12e4f9be2d7556ed53aecb927e0d9b8a30fbceb36a2c8b768d65b4fd83
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
