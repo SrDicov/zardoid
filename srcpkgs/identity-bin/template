@@ -1,6 +1,6 @@
 # Template file for 'identity-bin'
 pkgname=identity-bin
-version=26.03
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of the Identity application for comparing
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage of the Identity application for comparing
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/pkgforge-dev/Identity-AppImage"
-distfiles="https://github.com/pkgforge-dev/Identity-AppImage/releases/download/${version}-2%402026-10-01_1790876178/Identity-${version}-2-anylinux-x86_64.AppImage>identity-bin-${version}.AppImage"
-checksum=ecd3e2c0602eeb1593970e7841c9fb6ebe87881c5a01e3fc56de785852baf825
+distfiles="https://github.com/pkgforge-dev/Identity-AppImage/releases/download/26.03-2%402026-10-22_1792689007/Identity-26.03-2-anylinux-x86_64.AppImage>identity-bin-${version}.AppImage"
+checksum=09c8342e61d85462d886a2d60810347f288552c8a0089d4ac0da3d83810b323f
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/identity-bin
 	vcopy "squashfs-root/*" opt/identity-bin
+	chmod -R o-w "${DESTDIR}/opt/identity-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/identity-bin/AppRun" "${DESTDIR}/usr/bin/identity"
 	local desk

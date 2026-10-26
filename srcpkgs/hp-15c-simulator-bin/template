@@ -1,6 +1,6 @@
 # Template file for 'hp-15c-simulator-bin'
 pkgname=hp-15c-simulator-bin
-version=5.1.00
+version=20261025
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of HP-15C Simulator
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage of HP-15C Simulator
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/HP-15C-Simulator-AppImage"
-distfiles="https://github.com/pkgforge-dev/HP-15C-Simulator-AppImage/releases/download/${version}%402026-10-01_1790876019/HP-15C-${version}-anylinux-x86_64.AppImage>hp-15c-simulator-bin-${version}.AppImage"
-checksum=7aa86ac5309cfeb9e0b89a22f3edb23ff628bd59e75bc575b93b6a2ce8b60cc3
+distfiles="https://github.com/pkgforge-dev/HP-15C-Simulator-AppImage/releases/download/5.1.00%402026-10-25_1792907024/HP-15C-5.1.00-anylinux-x86_64.AppImage>hp-15c-simulator-bin-${version}.AppImage"
+checksum=f5ec6835d8436b1c19958dc0ab6cb2091a2684a65c7e40cbc9144f1082aefe66
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/hp-15c-simulator-bin
 	vcopy "squashfs-root/*" opt/hp-15c-simulator-bin
+	chmod -R o-w "${DESTDIR}/opt/hp-15c-simulator-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/hp-15c-simulator-bin/AppRun" "${DESTDIR}/usr/bin/hp-15c-simulator"
 	local desk

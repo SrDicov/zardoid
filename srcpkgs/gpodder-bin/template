@@ -1,14 +1,14 @@
 # Template file for 'gpodder-bin'
 pkgname=gpodder-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of gPodder [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/gPodder-AppImage"
-distfiles="https://github.com/pkgforge-dev/gPodder-AppImage/releases/download/3.11.5-6%402026-10-01_1790876438/gPodder-3.11.5-6-anylinux-x86_64.AppImage>gpodder-bin-${version}.AppImage"
-checksum=8357accf89d7336a3c887d01411a10750c5b0b3d6824518252457c384648ecea
+distfiles="https://github.com/pkgforge-dev/gPodder-AppImage/releases/download/3.11.5-6%402026-10-22_1792688874/gPodder-3.11.5-6-anylinux-x86_64.AppImage>gpodder-bin-${version}.AppImage"
+checksum=4df028968d578fcea15b99fd1e9fbc5a83cde8c58f787bd31013b37769937b46
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/gpodder-bin
 	vcopy "squashfs-root/*" opt/gpodder-bin
+	chmod -R o-w "${DESTDIR}/opt/gpodder-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/gpodder-bin/AppRun" "${DESTDIR}/usr/bin/gpodder"
 	local desk

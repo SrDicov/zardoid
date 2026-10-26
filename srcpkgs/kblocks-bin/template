@@ -1,14 +1,14 @@
 # Template file for 'kblocks-bin'
 pkgname=kblocks-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of KBlocks [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/KBlocks-AppImage"
-distfiles="https://github.com/pkgforge-dev/KBlocks-AppImage/releases/download/26.08.1-1%402026-10-01_1790875830/KBlocks-26.08.1-1-anylinux-x86_64.AppImage>kblocks-bin-${version}.AppImage"
-checksum=7b4e3381e1cf58cbdb2110311a30814e8a278cdf6b2e3da66ba4f042a534cee8
+distfiles="https://github.com/pkgforge-dev/KBlocks-AppImage/releases/download/26.08.2-1%402026-10-22_1792688765/KBlocks-26.08.2-1-anylinux-x86_64.AppImage>kblocks-bin-${version}.AppImage"
+checksum=f3bd019d3d0b2008fc354b8174c41c427aea803cf3cb1852f007fc1dd5bca03c
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/kblocks-bin
 	vcopy "squashfs-root/*" opt/kblocks-bin
+	chmod -R o-w "${DESTDIR}/opt/kblocks-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/kblocks-bin/AppRun" "${DESTDIR}/usr/bin/kblocks"
 	local desk

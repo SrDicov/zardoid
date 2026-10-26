@@ -1,16 +1,18 @@
 # Template file for 'kcalc-bin'
 pkgname=kcalc-bin
-version=26.08.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of KCalc [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/KCalc-AppImage"
-distfiles="https://github.com/pkgforge-dev/KCalc-AppImage/releases/download/${version}-1%402026-10-01_1790874267/KCalc-${version}-1-anylinux-x86_64.AppImage>kcalc-bin-${version}.AppImage"
-checksum=20f8b5804e331ed177822a14e4fac22857c84e44ee3df9eeff30f969cc214144
+distfiles="https://github.com/pkgforge-dev/KCalc-AppImage/releases/download/26.08.2-1%402026-10-22_1792688721/KCalc-26.08.2-1-anylinux-x86_64.AppImage>kcalc-bin-${version}.AppImage"
+checksum=cedc4e131c332f4e4a0bbfd04940a387693b981f3ef195400457f2b0478f87fa
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/kcalc-bin
 	vcopy "squashfs-root/*" opt/kcalc-bin
+	chmod -R o-w "${DESTDIR}/opt/kcalc-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/kcalc-bin/AppRun" "${DESTDIR}/usr/bin/kcalc"
 	local desk

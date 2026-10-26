@@ -1,14 +1,14 @@
 # Template file for 'graphs-bin'
 pkgname=graphs-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of the Graphs data plot editor application"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Graphs-AppImage"
-distfiles="https://github.com/pkgforge-dev/Graphs-AppImage/releases/download/2.0.7-1%402026-10-01_1790876615/Graphs-2.0.7-1-anylinux-x86_64.AppImage>graphs-bin-${version}.AppImage"
-checksum=7f719c7d102dee84b7edfdff25824189671b12d73c7f1bdd6a0b73aff4b93e15
+distfiles="https://github.com/pkgforge-dev/Graphs-AppImage/releases/download/2.0.7-1%402026-10-22_1792689244/Graphs-2.0.7-1-anylinux-x86_64.AppImage>graphs-bin-${version}.AppImage"
+checksum=f53f7cf0bd43507fd1d9dd860eea6a9b922cdacf5266bb8bdd9143da5a61d117
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/graphs-bin
 	vcopy "squashfs-root/*" opt/graphs-bin
+	chmod -R o-w "${DESTDIR}/opt/graphs-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/graphs-bin/AppRun" "${DESTDIR}/usr/bin/graphs"
 	local desk

@@ -1,16 +1,18 @@
 # Template file for 'gram-bin'
 pkgname=gram-bin
-version=3.3.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Gram [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Gram-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/Gram-AppImage-Enhanced/releases/download/${version}%402026-10-01_1790876590/Gram-${version}-anylinux-x86_64.AppImage>gram-bin-${version}.AppImage"
-checksum=94c10236e733ccf545afacdf12bf18d4568df012aeee3c6fd3ea7df2a64c9404
+distfiles="https://github.com/pkgforge-dev/Gram-AppImage-Enhanced/releases/download/3.3.0%402026-10-22_1792689240/Gram-3.3.0-anylinux-x86_64.AppImage>gram-bin-${version}.AppImage"
+checksum=a0d35200d8790a397c30c53349bd6bdb30636e0ab87df2ba44dec288ff12b2a1
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/gram-bin
 	vcopy "squashfs-root/*" opt/gram-bin
+	chmod -R o-w "${DESTDIR}/opt/gram-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/gram-bin/AppRun" "${DESTDIR}/usr/bin/gram"
 	local desk

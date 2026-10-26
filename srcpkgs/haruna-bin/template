@@ -1,14 +1,14 @@
 # Template file for 'haruna-bin'
 pkgname=haruna-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Haruna [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Haruna-AppImage"
-distfiles="https://github.com/pkgforge-dev/Haruna-AppImage/releases/download/1.8.1-2%402026-10-01_1790876675/Haruna-1.8.1-2-anylinux-x86_64.AppImage>haruna-bin-${version}.AppImage"
-checksum=9cdfa8c024d83440c123af68761ea79d36894cc2f28a65458c60b965759d950d
+distfiles="https://github.com/pkgforge-dev/Haruna-AppImage/releases/download/1.8.1-2%402026-10-22_1792689078/Haruna-1.8.1-2-anylinux-x86_64.AppImage>haruna-bin-${version}.AppImage"
+checksum=4de11fb727110d3783a7e20afa80461968eceb765a04f9d6c152ac6a1a6740f5
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/haruna-bin
 	vcopy "squashfs-root/*" opt/haruna-bin
+	chmod -R o-w "${DESTDIR}/opt/haruna-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/haruna-bin/AppRun" "${DESTDIR}/usr/bin/haruna"
 	local desk

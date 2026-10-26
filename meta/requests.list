@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/GoldenDict-ng-AppImage/releases/download/26.8.0-1%402026-10-22_1792688778/GoldenDict-ng-26.8.0-1-anylinux-x86_64.AppImage goldendict-ng-bin
-https://github.com/pkgforge-dev/gPodder-AppImage/releases/download/3.11.5-6%402026-10-22_1792688874/gPodder-3.11.5-6-anylinux-x86_64.AppImage gpodder-bin
-https://github.com/pkgforge-dev/Gradia-AppImage/releases/download/1.13.0%402026-10-22_1792688704/Gradia-1.13.0-anylinux-x86_64.AppImage gradia-bin
-https://github.com/pkgforge-dev/Gram-AppImage-Enhanced/releases/download/3.3.0%402026-10-22_1792689240/Gram-3.3.0-anylinux-x86_64.AppImage gram-bin
-https://github.com/pkgforge-dev/Graphs-AppImage/releases/download/2.0.7-1%402026-10-22_1792689244/Graphs-2.0.7-1-anylinux-x86_64.AppImage graphs-bin
-https://github.com/pkgforge-dev/gThumb-AppImage/releases/download/3.12.12-1%402026-10-22_1792689093/gThumb-3.12.12-1-anylinux-x86_64.AppImage gthumb-bin
-https://github.com/pkgforge-dev/Haruna-AppImage/releases/download/1.8.1-2%402026-10-22_1792689078/Haruna-1.8.1-2-anylinux-x86_64.AppImage haruna-bin
-https://github.com/pkgforge-dev/Hatari-AppImage/releases/download/2.6.1-1%402026-10-25_1792902484/Hatari-2.6.1-1-anylinux-x86_64.AppImage hatari-bin
-https://github.com/imputnet/helium-linux/releases/download/0.20.1.1/helium-0.20.1.1-x86_64.AppImage helium-bin
-https://github.com/pkgforge-dev/HP-15C-Simulator-AppImage/releases/download/5.1.00%402026-10-25_1792907024/HP-15C-5.1.00-anylinux-x86_64.AppImage hp-15c-simulator-bin
-https://github.com/pkgforge-dev/Identity-AppImage/releases/download/26.03-2%402026-10-22_1792689007/Identity-26.03-2-anylinux-x86_64.AppImage identity-bin
-https://github.com/pkgforge-dev/iloader-AppImage-Enhanced/releases/download/v2.4.0%402026-10-22_1792679817/iloader-v2.4.0-anylinux-x86_64.AppImage iloader-bin
-https://github.com/pkgforge-dev/img2pdf-AppImage/releases/download/0.6.3-1%402026-10-22_1792688432/img2pdf-0.6.3-1-anylinux-x86_64.AppImage img2pdf-bin
-https://github.com/pkgforge-dev/Impression-AppImage/releases/download/3.8.0-1%402026-10-22_1792689451/Impression-3.8.0-1-anylinux-x86_64.AppImage impression-bin
-https://github.com/pkgforge-dev/innoextract-AppImage/releases/download/1.9-17%402026-10-25_1792907224/innoextract-1.9-17-anylinux-x86_64.AppImage innoextract-bin
-https://github.com/pkgforge-dev/Iris-AppImage-Enhanced/releases/download/0.20-alpha%402026-10-22_1792688988/Iris-0.20-alpha-anylinux-x86_64.AppImage iris-bin
-https://github.com/pkgforge-dev/ITGmania-AppImage/releases/download/1.3.0%402026-10-22_1792689331/ITGmania-1.3.0-anylinux-x86_64.AppImage itgmania-bin
-https://github.com/pkgforge-dev/Kate-AppImage-Enhanced/releases/download/26.08.2-1%402026-10-22_1792688284/Kate-26.08.2-1-anylinux-x86_64.AppImage kate-bin
-https://github.com/pkgforge-dev/KBlocks-AppImage/releases/download/26.08.2-1%402026-10-22_1792688765/KBlocks-26.08.2-1-anylinux-x86_64.AppImage kblocks-bin
-https://github.com/pkgforge-dev/KCalc-AppImage/releases/download/26.08.2-1%402026-10-22_1792688721/KCalc-26.08.2-1-anylinux-x86_64.AppImage kcalc-bin
 https://github.com/pkgforge-dev/kdenlive-AppImage-Enhanced/releases/download/26.08.2-2%402026-10-22_1792689031/Kdenlive-26.08.2-2-anylinux-x86_64.AppImage kdenlive-bin
 https://github.com/pkgforge-dev/KeePassXC-AppImage-Enhanced/releases/download/2.7.12-5%402026-10-22_1792689086/KeePassXC-2.7.12-5-anylinux-x86_64.AppImage keepassxc-bin
 https://github.com/pkgforge-dev/Keypunch-AppImage/releases/download/v7.0%402026-10-22_1792689031/Keypunch-v7.0-anylinux-x86_64.AppImage keypunch-bin
