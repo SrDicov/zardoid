@@ -351,15 +351,10 @@ fn run(a: Args) -> Res<()> {
         }
         Input::Direct { url, hint_tag } => {
             let name = url.rsplit('/').next().unwrap_or("asset").to_string();
-            let tag = hint_tag
-                .clone()
-                .and_then(|t| forge::version_in(&t).or_else(|| forge::date_version(&t)))
-                .or_else(|| forge::version_in(&url))
-                .or_else(|| forge::date_version(&url))
-                .ok_or(Fail(
-                    1,
-                    "no se pudo deducir la versión del asset; usa un repo".into(),
-                ))?;
+            let tag = asset_version(hint_tag.as_deref(), &url).ok_or(Fail(
+                1,
+                "no se pudo deducir la versión del asset; usa un repo".into(),
+            ))?;
             // El índice de Belka son assets directos: sin esto no hay
             // descripción ni licencia, y xlint rechaza el template.
             let target = forge::target_from_asset(&url);
@@ -399,6 +394,10 @@ fn run(a: Args) -> Res<()> {
         3,
         "no hay ningún asset Linux x86_64 utilizable en el release".into(),
     ))?;
+
+    if let Some(what) = non_installable(&asset.name, &asset.url) {
+        return Err(Fail(3, format!("{what}: {}", asset.name)));
+    }
 
     if repo_name.is_none() {
         if let Some(p) = foreign_platform(&asset.name) {
@@ -467,6 +466,10 @@ fn run(a: Args) -> Res<()> {
     let mut flags: Vec<(String, String)> = vec![
         ("nostrip".into(), "yes".into()),
         ("noshlibprovides".into(), "yes".into()),
+        // Un binario precompilado enlaza contra SONAMEs del upstream
+        // (libpoppler.so.140, libxml2.so.16) que no existen en Void; sin esto
+        // el hook pre-pkg/04-generate-runtime-deps aborta.
+        ("allow_unknown_shlibs".into(), "yes".into()),
     ];
 
     if kind == Kind::Zip {
@@ -568,9 +571,6 @@ fn run(a: Args) -> Res<()> {
         // Los AppImage de pkgforge llevan python embebido y el hook
         // pre-pkg/03-rewrite-python-shebang aborta sin esta variable.
         flags.push(("python_version".into(), "3".into()));
-        // El AppImage trae sus propias .so (libxml2.so.16 y compania) que no
-        // existen en Void: sin esto el hook de runtime-deps aborta.
-        flags.push(("allow_unknown_shlibs".into(), "yes".into()));
         // Sin `${pkgname}`: `dq` escapa los `$` de lo que viene del upstream y
         // el fichero acabaría llamado literalmente "${pkgname}-..."; entonces
         // `skip_extraction` no coincide y xbps-src intenta extraer el AppImage.
@@ -840,17 +840,63 @@ fn foreign_platform(name: &str) -> Option<&'static str> {
     let n = name.to_ascii_lowercase();
     for (needle, label) in [
         ("freebsd", "FreeBSD"),
+        ("netbsd", "NetBSD"),
+        ("openbsd", "OpenBSD"),
+        ("dragonfly", "DragonFly"),
         ("darwin", "macOS"),
         ("macos", "macOS"),
+        ("osx", "macOS"),
         ("windows", "Windows"),
         ("win64", "Windows"),
         ("win32", "Windows"),
+        ("-win.", "Windows"),
+        ("solaris", "Solaris"),
+        ("illumos", "illumos"),
         ("aarch64", "ARM64"),
         ("arm64", "ARM64"),
+        ("loongarch", "LoongArch"),
+        ("riscv", "RISC-V"),
+        ("s390", "s390x"),
+        ("ppc64", "PowerPC"),
+        ("powerpc", "PowerPC"),
+        ("armv7", "ARMv7"),
+        ("armhf", "ARM"),
+        ("mips", "MIPS"),
+        ("i686", "i686"),
+        ("i386", "i386"),
     ] {
         if n.contains(needle) {
             return Some(label);
         }
+    }
+    None
+}
+
+/// Versión de un asset directo: el tag manda, luego el nombre del fichero.
+fn asset_version(hint: Option<&str>, url: &str) -> Option<String> {
+    hint.and_then(|t| {
+        forge::version_in(t)
+            .or_else(|| forge::date_version(t))
+            .or_else(|| version::from_tag(t))
+    })
+    .or_else(|| forge::version_in(url))
+    .or_else(|| forge::date_version(url))
+}
+
+/// Assets que no son un binario instalable: fuentes, firmas y paquetes ajenos.
+fn non_installable(name: &str, url: &str) -> Option<&'static str> {
+    let n = name.to_ascii_lowercase();
+    if n.contains("-source") || n.contains("_source") || url.contains("/archive/") {
+        return Some("asset de código fuente, no binario");
+    }
+    if n.contains(".deb.") || n.ends_with(".deb") || n.contains(".rpm.") || n.ends_with(".rpm") {
+        return Some("paquete ajeno (.deb/.rpm), no binario");
+    }
+    if [".asc", ".sig", ".zsync", ".sha256", ".sha512"]
+        .iter()
+        .any(|e| n.ends_with(e))
+    {
+        return Some("asset de firma o metadatos, no binario");
     }
     None
 }
@@ -875,6 +921,7 @@ fn appimage_body(base: &str, files_license: bool) -> String {
          \"./${{appimg}}\" --appimage-extract >/dev/null\n\
          vmkdir opt/{base}\n\
          vcopy \"squashfs-root/*\" opt/{base}\n\
+         chmod -R o-w \"${{DESTDIR}}/opt/{base}\"\n\
          vmkdir usr/bin\n\
          ln -sf \"/opt/{base}/AppRun\" \"${{DESTDIR}}/usr/bin/{stem}\"\n\
          local desk\n\
@@ -1161,7 +1208,65 @@ mod tests {
         assert_eq!(foreign_platform("tool-darwin-arm64.tar.gz"), Some("macOS"));
         assert_eq!(foreign_platform("tool-windows-x64.zip"), Some("Windows"));
         assert_eq!(foreign_platform("tool-aarch64-linux.tar.gz"), Some("ARM64"));
+        assert_eq!(
+            foreign_platform("Calculator-anylinux-loongarch64.AppImage"),
+            Some("LoongArch")
+        );
+        assert_eq!(
+            foreign_platform("tool-riscv64-linux.tar.gz"),
+            Some("RISC-V")
+        );
         assert_eq!(foreign_platform("tool-x86_64-linux.tar.gz"), None);
+        assert_eq!(foreign_platform("fselect-x86_64-win.zip"), Some("Windows"));
+        assert_eq!(foreign_platform("Voidstrap-osx-x64.tar.gz"), Some("macOS"));
+    }
+
+    #[test]
+    fn version_desde_tag_o_asset() {
+        assert_eq!(
+            asset_version(Some("11.1.1"), "https://x/App.AppImage").as_deref(),
+            Some("11.1.1")
+        );
+        assert_eq!(
+            asset_version(Some("v7.2.2"), "https://x/App.AppImage").as_deref(),
+            Some("7.2.2")
+        );
+        assert_eq!(
+            asset_version(Some("2026.1005.0-lazer"), "https://x/osu.AppImage").as_deref(),
+            Some("2026.1005.0.lazer")
+        );
+        assert_eq!(
+            asset_version(
+                Some("ba2a3628d@2026-10-01_1790876505"),
+                "https://x/A.AppImage"
+            )
+            .as_deref(),
+            Some("20261001")
+        );
+        assert_eq!(asset_version(Some("rolling"), "https://x/a.tar.gz"), None);
+        assert_eq!(
+            asset_version(None, "https://x/App-1.2.3.AppImage").as_deref(),
+            Some("1.2.3")
+        );
+    }
+
+    #[test]
+    fn assets_no_instalables() {
+        assert!(non_installable("feroxbuster_amd64.deb.zip", "https://x/f.zip").is_some());
+        assert!(non_installable("helm-v4.3.1-linux-amd64.tar.gz.asc", "https://x/h.asc").is_some());
+        assert!(non_installable("x.AppImage.zsync", "https://x/x.zsync").is_some());
+        assert!(non_installable(
+            "master.tar.gz",
+            "https://github.com/a/b/archive/refs/heads/master.tar.gz"
+        )
+        .is_some());
+        assert!(non_installable(
+            "appimagetool-corresponding-source-dwarfs.tar.xz",
+            "https://x/a.tar.xz"
+        )
+        .is_some());
+        assert!(non_installable("gh_2.102.0_linux_amd64.tar.gz", "https://x/gh.tar.gz").is_none());
+        assert!(non_installable("foo.debug.zip", "https://x/foo.debug.zip").is_none());
     }
 }
 
@@ -1266,5 +1371,17 @@ mod sec_tests {
             .find("vcopy 'share/man/*' usr/share/man")
             .expect("falta vcopy");
         assert!(mk < cp, "vmkdir debe ir antes de vcopy:\n{body}");
+    }
+
+    #[test]
+    fn appimage_quita_permiso_de_escritura_ajeno() {
+        let body = appimage_body("demo-bin", false);
+        let cp = body
+            .find("vcopy \"squashfs-root/*\" opt/demo-bin")
+            .expect("falta vcopy");
+        let chmod = body
+            .find("chmod -R o-w \"${DESTDIR}/opt/demo-bin\"")
+            .expect("falta chmod");
+        assert!(cp < chmod, "chmod debe ir tras vcopy:\n{body}");
     }
 }

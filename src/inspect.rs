@@ -1,7 +1,7 @@
 //! Descarga, hash, desempaquetado e inventario del asset.
 
 use crate::asset::Kind;
-use crate::elf::{self, Libc};
+use crate::elf::{self, Libc, Machine};
 use crate::forge::run;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -321,6 +321,11 @@ impl Inventory {
             if b.path.starts_with("bin/") {
                 s += 50;
             }
+            // Archivos multi-arquitectura: `broot_1.61.0.zip` trae
+            // aarch64-.../broot y x86_64-.../broot; solo el segundo vale.
+            if b.info.machine == Machine::X86_64 {
+                s += 500;
+            }
             if b.info.libc != Libc::Static {
                 s += 5;
             }
@@ -394,5 +399,35 @@ mod tests {
             "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
         );
         let _ = fs::remove_dir_all(&t);
+    }
+
+    #[test]
+    fn main_bin_prefiere_x86_64() {
+        let info = |machine| crate::elf::Owned {
+            class: crate::elf::Class::Elf64,
+            machine,
+            libc: Libc::Glibc,
+            pie: true,
+        };
+        let inv = Inventory {
+            files: vec![],
+            bins: vec![
+                BinEntry {
+                    path: "aarch64-unknown-linux-gnu/broot".into(),
+                    info: info(Machine::Aarch64),
+                },
+                BinEntry {
+                    path: "x86_64-unknown-linux-gnu/broot".into(),
+                    info: info(Machine::X86_64),
+                },
+            ],
+            desktop: None,
+            icons: vec![],
+            man: vec![],
+            completions: vec![],
+            licenses: vec![],
+        };
+        let chosen = inv.main_bin("broot").expect("sin binario");
+        assert_eq!(chosen.path, Path::new("x86_64-unknown-linux-gnu/broot"));
     }
 }
