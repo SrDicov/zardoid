@@ -1,14 +1,14 @@
 # Template file for 'whatsie-bin'
 pkgname=whatsie-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of WhatSie [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/WhatSie-AppImage"
-distfiles="https://github.com/pkgforge-dev/WhatSie-AppImage/releases/download/6.1.1%402026-10-01_1790876564/Whatsie-6.1.1-anylinux-x86_64.AppImage>whatsie-bin-${version}.AppImage"
-checksum=fc750432865653b611b7022e054acdb8db8df351e4b89924d3efe61115d08091
+distfiles="https://github.com/pkgforge-dev/WhatSie-AppImage/releases/download/6.1.1%402026-10-22_1792689480/Whatsie-6.1.1-anylinux-x86_64.AppImage>whatsie-bin-${version}.AppImage"
+checksum=53f31084ae44df6786bff283927609f0ebed702e5c873c63d26c1d8ff4f527e3
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/whatsie-bin
 	vcopy "squashfs-root/*" opt/whatsie-bin
+	chmod -R o-w "${DESTDIR}/opt/whatsie-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/whatsie-bin/AppRun" "${DESTDIR}/usr/bin/whatsie"
 	local desk

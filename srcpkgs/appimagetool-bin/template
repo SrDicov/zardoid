@@ -1,0 +1,19 @@
+# Template file for 'appimagetool-bin'
+pkgname=appimagetool-bin
+version=0.5.3
+revision=1
+archs="x86_64*"
+short_desc="Rust implementation of appimagetool for the Anylinux-AppImages"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/pkgforge-dev/appimagetool"
+distfiles="https://github.com/pkgforge-dev/appimagetool/releases/download/${version}/appimagetool-x86_64-linux.tar.xz"
+checksum=4cf473e3378acfa9553111bb053e8f41f038644c1a44ffdc1aa696ea8b1d64c6
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'appimagetool'
+	vlicense 'LICENSE'
+}

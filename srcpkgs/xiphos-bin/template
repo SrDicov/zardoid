@@ -1,14 +1,14 @@
 # Template file for 'xiphos-bin'
 pkgname=xiphos-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Xiphos [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Xiphos-AppImage"
-distfiles="https://github.com/pkgforge-dev/Xiphos-AppImage/releases/download/4.5.0-1%402026-10-01_1790876564/Xiphos_Bible_Guide-4.5.0-1-anylinux-x86_64.AppImage>xiphos-bin-${version}.AppImage"
-checksum=03276b029e3cdafccd36c84aede1fbfd352905aa93512e248ee5f602f195b07c
+distfiles="https://github.com/pkgforge-dev/Xiphos-AppImage/releases/download/4.5.0-1%402026-10-22_1792689341/Xiphos_Bible_Guide-4.5.0-1-anylinux-x86_64.AppImage>xiphos-bin-${version}.AppImage"
+checksum=a8639610a05e5aaefd17b4dedc83c1472522f47ad664ae46956cc32f4c9e2588
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/xiphos-bin
 	vcopy "squashfs-root/*" opt/xiphos-bin
+	chmod -R o-w "${DESTDIR}/opt/xiphos-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/xiphos-bin/AppRun" "${DESTDIR}/usr/bin/xiphos"
 	local desk

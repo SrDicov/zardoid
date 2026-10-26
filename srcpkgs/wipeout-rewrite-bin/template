@@ -1,6 +1,6 @@
 # Template file for 'wipeout-rewrite-bin'
 pkgname=wipeout-rewrite-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of wipEout Rewrite
@@ -8,8 +8,9 @@ short_desc="Unofficial AppImage of wipEout Rewrite
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/wipEout-Rewrite-AppImage"
-distfiles="https://github.com/pkgforge-dev/wipEout-Rewrite-AppImage/releases/download/b425ecb3b%402026-10-01_1790876424/wipEout_Rewrite-b425ecb3b-anylinux-x86_64.AppImage>wipeout-rewrite-bin-${version}.AppImage"
-checksum=76a4129439a26f222ffcb3b5f4a8aeaa823e19bb1eced5a67ff0ec2d0812f354
+distfiles="https://github.com/pkgforge-dev/wipEout-Rewrite-AppImage/releases/download/b425ecb3b%402026-10-22_1792688994/wipEout_Rewrite-b425ecb3b-anylinux-x86_64.AppImage>wipeout-rewrite-bin-${version}.AppImage"
+checksum=a455887304ba558ef31f0e01fc080ba1f467a7c7a4a560371c696fa00a90e1ea
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -26,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/wipeout-rewrite-bin
 	vcopy "squashfs-root/*" opt/wipeout-rewrite-bin
+	chmod -R o-w "${DESTDIR}/opt/wipeout-rewrite-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/wipeout-rewrite-bin/AppRun" "${DESTDIR}/usr/bin/wipeout-rewrite"
 	local desk

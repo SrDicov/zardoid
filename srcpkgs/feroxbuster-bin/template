@@ -1,0 +1,19 @@
+# Template file for 'feroxbuster-bin'
+pkgname=feroxbuster-bin
+version=2.13.1
+revision=1
+archs="x86_64*"
+short_desc="Fast, simple, recursive content discovery tool written in Rust"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://epi052.github.io/feroxbuster-docs/overview/"
+distfiles="https://github.com/epi052/feroxbuster/releases/download/v${version}/x86_64-linux-feroxbuster.tar.gz"
+checksum=7985c00e6803b0f25d5e9139f7472279f3f4d891429627a5cedc629e53992d80
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'feroxbuster'
+	vlicense "${FILESDIR}/LICENSE"
+}

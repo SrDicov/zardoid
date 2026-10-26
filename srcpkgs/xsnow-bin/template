@@ -1,16 +1,18 @@
 # Template file for 'xsnow-bin'
 pkgname=xsnow-bin
-version=3.9.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Xsnow [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Xsnow-AppImage"
-distfiles="https://github.com/pkgforge-dev/Xsnow-AppImage/releases/download/${version}%402026-10-01_1790876138/xsnow-${version}-anylinux-x86_64.AppImage>xsnow-bin-${version}.AppImage"
-checksum=910d430ca8a0a50f9cab052c510d37f6dddca7040b3a53facca7567d5334711d
+distfiles="https://github.com/pkgforge-dev/Xsnow-AppImage/releases/download/3.9.0%402026-10-22_1792689057/xsnow-3.9.0-anylinux-x86_64.AppImage>xsnow-bin-${version}.AppImage"
+checksum=3f52fb405eb62569c2c6300be3fa119868a35c3fd9af0468f4376f8e1b9beac4
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/xsnow-bin
 	vcopy "squashfs-root/*" opt/xsnow-bin
+	chmod -R o-w "${DESTDIR}/opt/xsnow-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/xsnow-bin/AppRun" "${DESTDIR}/usr/bin/xsnow"
 	local desk

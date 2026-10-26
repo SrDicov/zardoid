@@ -1,14 +1,15 @@
 # Template file for 'xoreos-bin'
 pkgname=xoreos-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of xoreos [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/xoreos-AppImage"
-distfiles="https://github.com/pkgforge-dev/xoreos-AppImage/releases/download/6774724d5%402026-10-01_1790876643/xoreos-6774724d5-anylinux-x86_64.AppImage>xoreos-bin-${version}.AppImage"
-checksum=16cfed87ef85cefdef701d47b06b7b0b1e1db258da0382bbbd2f1199263d072b
+distfiles="https://github.com/pkgforge-dev/xoreos-AppImage/releases/download/6774724d5%402026-10-22_1792689430/xoreos-6774724d5-anylinux-x86_64.AppImage>xoreos-bin-${version}.AppImage"
+checksum=5fe922b58415edc33e759eca08ffe7d5b3fbdf2424dc22a81a301909ebf8b6f8
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/xoreos-bin
 	vcopy "squashfs-root/*" opt/xoreos-bin
+	chmod -R o-w "${DESTDIR}/opt/xoreos-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/xoreos-bin/AppRun" "${DESTDIR}/usr/bin/xoreos"
 	local desk

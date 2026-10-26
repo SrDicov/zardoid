@@ -1,0 +1,20 @@
+# Template file for 'binfmt-bin'
+pkgname=binfmt-bin
+version=10.2.3.68
+revision=1
+archs="x86_64*"
+short_desc="Cross-platform emulator collection distributed with Docker images"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/tonistiigi/binfmt"
+distfiles="https://github.com/tonistiigi/binfmt/releases/download/deploy/v10.2.3-68/binfmt_linux-amd64.tar.gz"
+checksum=9f955e980acb29986365766db7d36383a1dbbf2159f30b532a74474f6f5dd75d
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'binfmt'
+	vlicense "${FILESDIR}/LICENSE"
+}
