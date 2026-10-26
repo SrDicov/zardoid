@@ -411,6 +411,9 @@ fn run(a: Args) -> Res<()> {
             3,
             format!("tag no convertible a version=: {}", release.tag),
         ))?;
+    // Si la versión sale del tag, la URL puede llevarla con otra forma
+    // (`2026-10-01`, `2026.1005.0-lazer`): se deja literal y se avisa.
+    let from_tag = version::from_tag(&release.tag).is_some();
 
     let src = repo_name.unwrap_or_else(|| {
         asset
@@ -480,6 +483,29 @@ fn run(a: Args) -> Res<()> {
         if a.license.is_none() && (license.is_empty() || needs_vlicense(&license)) {
             license_file = repo_license(&asset_target, &a, &mut license);
         }
+        // Los AppImage de pkgforge no publican LICENSE ni lo incluyen en el
+        // payload: se pregunta al proyecto upstream, que sí lo tiene.
+        if license.is_empty() {
+            if let Some(repo) = upstream_repo(&base) {
+                let t = Some(forge::Target {
+                    forge: forge::Forge::GitHub,
+                    repo: repo.to_string(),
+                    tag: None,
+                });
+                license_file = repo_license(&t, &a, &mut license);
+            }
+        }
+        if license.is_empty() {
+            if let Some(lic) = license_override(&base) {
+                license = lic.into();
+            }
+        }
+        if license.is_empty() {
+            if let Some((lic, notice)) = license_notice(&base) {
+                license = lic.into();
+                license_file = Some(format!("{notice}\n"));
+            }
+        }
         functions.push(("post_extract".into(), image_copy()));
         functions.push((
             "do_install".into(),
@@ -514,7 +540,10 @@ fn run(a: Args) -> Res<()> {
             None => warnings.push("no se encontró ningún ELF: revisa do_install".into()),
         }
         if inv.bins.is_empty() {
-            warnings.push("el archivo no contiene binarios ELF".into());
+            return Err(Fail(
+                3,
+                format!("el archivo no contiene binarios ELF: {}", asset.name),
+            ));
         }
         if inv.files.is_empty() {
             warnings.push("el archivo extraído está vacío".into());
@@ -525,6 +554,22 @@ fn run(a: Args) -> Res<()> {
             && (license.is_empty() || (inv.licenses.is_empty() && needs_vlicense(&license)))
         {
             license_file = repo_license(&asset_target, &a, &mut license);
+        }
+        // El forge no siempre publica LICENSE (404 en los repos de empaquetado
+        // y en hosts que no son GitHub): el archivo suele traerlo dentro.
+        if license.is_empty() {
+            license = license_from_files(&tmp, &inv.licenses).unwrap_or_default();
+        }
+        if license.is_empty() {
+            if let Some(lic) = license_override(&base) {
+                license = lic.into();
+            }
+        }
+        if license.is_empty() {
+            if let Some((lic, notice)) = license_notice(&base) {
+                license = lic.into();
+                license_file = Some(format!("{notice}\n"));
+            }
         }
         if kind == Kind::Bin {
             // xbps-src no adivina la extensión de un binario suelto: se salta
@@ -538,7 +583,7 @@ fn run(a: Args) -> Res<()> {
                 &base,
                 &version,
                 &inv,
-                needs_vlicense(&license),
+                needs_vlicense(&license) && license_file.is_none(),
                 license_file.is_some(),
             ),
         ));
@@ -552,7 +597,7 @@ fn run(a: Args) -> Res<()> {
     // Los tags de pkgforge llevan la fecha con guiones (`2026-10-01`), que no
     // es una versión válida para XBPS: se usa `20261001` y la URL va literal.
     let fecha = version.len() == 8 && version.bytes().all(|b| b.is_ascii_digit());
-    if !distfiles.contains("${version}") && !fecha {
+    if !distfiles.contains("${version}") && !fecha && !from_tag {
         return Err(Fail(
             3,
             format!(
@@ -763,6 +808,53 @@ fn repo_license(target: &Option<forge::Target>, a: &Args, license: &mut String) 
     needs_vlicense(license).then_some(body)
 }
 
+/// Proyecto upstream de los AppImage cuyo repo de empaquetado no declara
+/// licencia. Solo los casos verificados; el resto se queda sin `license=`.
+fn upstream_repo(pkg: &str) -> Option<&'static str> {
+    Some(match pkg {
+        "dolphin-emu-bin" => "dolphin-emu/dolphin",
+        "ladybird-bin" => "LadybirdBrowser/ladybird",
+        "primehack-bin" => "shiiion/dolphin",
+        "vcmi-bin" => "vcmi/vcmi",
+        _ => return None,
+    })
+}
+
+/// SPDX conocido de paquetes cuyo asset no trae licencia y que no exige
+/// `vlicense` (GPL/LGPL/Apache/MPL). Solo casos verificados.
+fn license_override(pkg: &str) -> Option<&'static str> {
+    match pkg {
+        "librewolf-bin" => Some("MPL-2.0"),
+        // El COPYING de Dolphin es un resumen ("GPLv2+") que detect_spdx no
+        // reconoce; el proyecto es GPL-2.0-or-later.
+        "dolphin-emu-bin" | "primehack-bin" => Some("GPL-2.0-or-later"),
+        _ => None,
+    }
+}
+
+/// Licencia propietaria o no declarada, con el aviso que se instala.
+fn license_notice(pkg: &str) -> Option<(&'static str, &'static str)> {
+    match pkg {
+        "cursor-bin" => Some((
+            "custom:Proprietary",
+            "Software propietario. Terminos: https://www.cursor.com/terms-of-service",
+        )),
+        "jetbrains-toolbox-bin" => Some((
+            "custom:Proprietary",
+            "Software propietario. Terminos: https://www.jetbrains.com/legal/docs/toolbox/license/",
+        )),
+        "zerotierone-static-bin" => Some((
+            "custom:Proprietary",
+            "Business Source License. Ver https://github.com/zerotier/ZeroTierOne",
+        )),
+        "ncdu-bin" => Some((
+            "custom:Unknown",
+            "Licencia no declarada por el upstream. Ver https://dev.yorhel.nl/ncdu",
+        )),
+        _ => None,
+    }
+}
+
 /// xlint exige `vlicense` para MIT/BSD/ISC/X11/AGPL/custom y lo prohíbe para
 /// GPL/LGPL/GFDL/Apache puros.
 fn needs_vlicense(license: &str) -> bool {
@@ -785,6 +877,19 @@ fn needs_vlicense(license: &str) -> bool {
     ["mit", "bsd", "isc", "x11", "agpl", "custom"]
         .iter()
         .any(|k| l.contains(k))
+}
+
+/// SPDX a partir del LICENSE/COPYING que trae el propio archivo.
+fn license_from_files(root: &Path, files: &[PathBuf]) -> Option<String> {
+    for f in files {
+        let Ok(body) = std::fs::read_to_string(root.join(f)) else {
+            continue;
+        };
+        if let Some(spdx) = detect_spdx(&body) {
+            return Some(spdx.to_string());
+        }
+    }
+    None
 }
 
 /// GitHub no detecta algunas licencias (spdx `NOASSERTION`). Heurística sobre
@@ -854,6 +959,8 @@ fn foreign_platform(name: &str) -> Option<&'static str> {
         ("illumos", "illumos"),
         ("aarch64", "ARM64"),
         ("arm64", "ARM64"),
+        ("arm-64", "ARM64"),
+        ("arm_64", "ARM64"),
         ("loongarch", "LoongArch"),
         ("riscv", "RISC-V"),
         ("s390", "s390x"),
@@ -977,9 +1084,9 @@ fn generic_body(
     if bin_paths.len() == 1 {
         lines.push(install_bin(bin_paths[0]));
     } else if bin_paths.is_empty() {
-        match inv.main_bin(base) {
-            Some(b) => lines.push(install_bin(&b.path)),
-            None => lines.push(format!("vbin {stem}")),
+        // `inv.bins` no está vacío: main_bin siempre elige uno.
+        if let Some(b) = inv.main_bin(base) {
+            lines.push(install_bin(&b.path));
         }
     } else {
         for p in &bin_paths {
@@ -1007,15 +1114,11 @@ fn generic_body(
             dir
         ));
     }
-    if inv.man.len() > 5 {
-        // `gh` trae ~300 páginas: una copia del árbol es una línea, no 300.
-        // vcopy no crea el destino; sin vmkdir, cp muere con ENOENT.
-        lines.push("vmkdir usr/share/man".to_string());
-        lines.push("vcopy 'share/man/*' usr/share/man".to_string());
-    } else {
-        for m in &inv.man {
-            lines.push(format!("vman {}", shq_versioned(m, version)));
-        }
+    // `vman` instala cada página en su sección; `vcopy` no vale porque los
+    // tarballs no siempre tienen `share/man/` (zoxide trae `zoxide.1` en la
+    // raíz) y su glob acaba en `cp: cannot stat 'share/man/*'`.
+    for m in &inv.man {
+        lines.push(format!("vman {}", shq_versioned(m, version)));
     }
     for c in &inv.completions {
         let s = c.to_string_lossy();
@@ -1353,7 +1456,7 @@ mod sec_tests {
     }
 
     #[test]
-    fn man_masivo_necesita_vmkdir() {
+    fn man_masivo_usa_vman() {
         let inv = inspect::Inventory {
             files: vec![],
             bins: vec![],
@@ -1366,11 +1469,11 @@ mod sec_tests {
             licenses: vec![],
         };
         let body = generic_body("demo-bin", "1.0", &inv, false, false);
-        let mk = body.find("vmkdir usr/share/man").expect("falta vmkdir");
-        let cp = body
-            .find("vcopy 'share/man/*' usr/share/man")
-            .expect("falta vcopy");
-        assert!(mk < cp, "vmkdir debe ir antes de vcopy:\n{body}");
+        assert_eq!(body.matches("vman ").count(), 6, "{body}");
+        assert!(
+            !body.contains("vcopy"),
+            "vcopy no maneja man pages:\n{body}"
+        );
     }
 
     #[test]

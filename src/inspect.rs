@@ -257,6 +257,10 @@ pub fn inventory(dir: &Path) -> Inventory {
                 .map(|n| n.to_string_lossy())
                 .unwrap_or_default();
             let n = n.strip_suffix(".gz").unwrap_or(&n);
+            // `libXss.so.1` acaba en `.1` pero no es una página de manual.
+            if n.contains(".so") {
+                return false;
+            }
             n.rsplit_once('.')
                 .map(|(_, e)| e.len() == 1 && e.chars().all(|c| c.is_ascii_digit() && c != '0'))
                 .unwrap_or(false)
@@ -282,11 +286,16 @@ pub fn inventory(dir: &Path) -> Inventory {
                 .file_name()
                 .map(|n| n.to_string_lossy().to_ascii_uppercase())
                 .unwrap_or_default();
-            n.starts_with("LICENSE")
+            // `license.jar` empieza por LICENSE pero no es texto de licencia.
+            let text = match f.extension().and_then(|e| e.to_str()) {
+                None => true,
+                Some(e) => matches!(e.to_ascii_lowercase().as_str(), "txt" | "md" | "rst"),
+            };
+            text && (n.starts_with("LICENSE")
                 || n.starts_with("COPYING")
                 || n.starts_with("COPYRIGHT")
                 || n.starts_with("UNLICENSE")
-                || n == "LICENCE"
+                || n == "LICENCE")
         })
         .cloned()
         .collect();
@@ -378,6 +387,19 @@ mod tests {
         assert_eq!(inv.desktop.as_deref(), Some(Path::new("demo.desktop")));
         assert_eq!(inv.licenses.len(), 1);
         assert!(inv.main_bin("demo").is_some());
+        let _ = fs::remove_dir_all(&t);
+    }
+
+    #[test]
+    fn man_no_confunde_so_con_seccion() {
+        let t = tmp();
+        fs::create_dir_all(t.join("bin")).unwrap();
+        fs::create_dir_all(t.join("share/man/man1")).unwrap();
+        fs::write(t.join("bin/libXss.so.1"), b"").unwrap();
+        fs::write(t.join("share/man/man1/foo.1"), b"").unwrap();
+        let inv = inventory(&t);
+        assert_eq!(inv.man.len(), 1, "{:?}", inv.man);
+        assert_eq!(inv.man[0], Path::new("share/man/man1/foo.1"));
         let _ = fs::remove_dir_all(&t);
     }
 
