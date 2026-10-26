@@ -1,0 +1,20 @@
+# Template file for 'csvtk-bin'
+pkgname=csvtk-bin
+version=0.38.0
+revision=1
+archs="x86_64*"
+short_desc="Cross-platform, efficient and practical CSV/TSV toolkit in Golang"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="http://bioinf.shenwei.me/csvtk"
+distfiles="https://github.com/shenwei356/csvtk/releases/download/v${version}/csvtk_linux_amd64.tar.gz"
+checksum=43eac0a8e3da02158184737298fad461d1af075f78f049aae9902d868c8846a5
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'csvtk'
+	vlicense "${FILESDIR}/LICENSE"
+}

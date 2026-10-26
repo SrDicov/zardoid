@@ -1,0 +1,20 @@
+# Template file for 'frp-bin'
+pkgname=frp-bin
+version=0.71.1
+revision=1
+archs="x86_64*"
+short_desc="Fast reverse proxy to help you expose a local server behind a NAT
+ or"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/fatedier/frp"
+distfiles="https://github.com/fatedier/frp/releases/download/v${version}/frp_${version}_linux_amd64.tar.gz"
+checksum=1d9875210972a5d1a62b2dc4c48df45ab0af05d3ca1b5e494a014428259df803
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'frpc' 'frp'
+}

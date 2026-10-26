@@ -1,0 +1,19 @@
+# Template file for 'k9s-bin'
+pkgname=k9s-bin
+version=0.51.0
+revision=1
+archs="x86_64*"
+short_desc="Kubernetes CLI To Manage Your Clusters In Style!"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://k9scli.io"
+distfiles="https://github.com/derailed/k9s/releases/download/v${version}/k9s_Linux_amd64.tar.gz"
+checksum=c3752ad51a5a4015a113819c4eeb6e55a4d0e4b8e652494797532f6fc8161dd7
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'k9s'
+}

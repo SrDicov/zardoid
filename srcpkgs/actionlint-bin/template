@@ -1,0 +1,21 @@
+# Template file for 'actionlint-bin'
+pkgname=actionlint-bin
+version=1.7.12
+revision=1
+archs="x86_64*"
+short_desc="Octocat: Static checker for GitHub Actions workflow files"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://rhysd.github.io/actionlint/"
+distfiles="https://github.com/rhysd/actionlint/releases/download/v${version}/actionlint_${version}_linux_amd64.tar.gz"
+checksum=8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'actionlint'
+	vman 'man/actionlint.1'
+	vlicense 'LICENSE.txt'
+}

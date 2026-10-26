@@ -1,0 +1,21 @@
+# Template file for 'duf-bin'
+pkgname=duf-bin
+version=0.9.1
+revision=1
+archs="x86_64*"
+short_desc="Disk Usage/Free Utility - a better 'df' alternative"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/muesli/duf"
+distfiles="https://github.com/muesli/duf/releases/download/v${version}/duf_${version}_linux_x86_64.tar.gz"
+checksum=5add851e7062c5e56939abb664705e4d14fa2d06289490aff31d51f153832de7
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'duf'
+	vman 'duf.1'
+	vlicense "${FILESDIR}/LICENSE"
+}

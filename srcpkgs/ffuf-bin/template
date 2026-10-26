@@ -1,0 +1,20 @@
+# Template file for 'ffuf-bin'
+pkgname=ffuf-bin
+version=2.3.0
+revision=1
+archs="x86_64*"
+short_desc="Fast web fuzzer written in Go"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/ffuf/ffuf"
+distfiles="https://github.com/ffuf/ffuf/releases/download/v${version}/ffuf_${version}_linux_amd64.tar.gz"
+checksum=b2a3c725fcb9da175159682f54d6e9149f2905b00d84d155e7efc5d599975ceb
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'ffuf'
+	vlicense 'LICENSE'
+}

@@ -1,0 +1,20 @@
+# Template file for 'caddy-bin'
+pkgname=caddy-bin
+version=2.11.7
+revision=1
+archs="x86_64*"
+short_desc="Fast and extensible multi-platform HTTP/1-2-3 web server with
+ automatic"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="Apache-2.0"
+homepage="https://caddyserver.com"
+distfiles="https://github.com/caddyserver/caddy/releases/download/v${version}/caddy_${version}_linux_amd64.tar.gz"
+checksum=727b91701a392de6ebc5027509f548bf39979e5216340d0faed8fa5e69c84f8b
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'caddy'
+}

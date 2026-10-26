@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_freebsd_amd64.tar.gz actionlint-bin
-https://github.com/FiloSottile/age/releases/download/v1.3.2/age-v1.3.2-freebsd-amd64.tar.gz age-bin
-https://github.com/xyproto/algernon/releases/download/v1.17.12/algernon-1.17.12-freebsd_x86_64_static.tar.gz algernon-bin
-https://github.com/caddyserver/caddy/releases/download/v2.11.7/caddy_2.11.7_freebsd_amd64.tar.gz caddy-bin
-https://github.com/shenwei356/csvtk/releases/download/v0.38.0/csvtk_freebsd_amd64.tar.gz csvtk-bin
-https://github.com/rs/curlie/releases/download/v1.8.2/curlie_1.8.2_freebsd_amd64.tar.gz curlie-bin
-https://github.com/direnv/direnv/releases/download/v2.38.2/direnv.freebsd-amd64 direnv-bin
-https://github.com/muesli/duf/releases/download/v0.9.1/duf_0.9.1_freebsd_x86_64.tar.gz duf-bin
-https://github.com/ffuf/ffuf/releases/download/v2.3.0/ffuf_2.3.0_freebsd_amd64.tar.gz ffuf-bin
-https://github.com/charmbracelet/freeze/releases/download/v0.2.2/freeze_0.2.2_Freebsd_x86_64.tar.gz freeze-bin
-https://github.com/fatedier/frp/releases/download/v0.71.1/frp_0.71.1_freebsd_amd64.tar.gz frp-bin
-https://github.com/junegunn/fzf/releases/download/v0.74.5/fzf-0.74.5-freebsd_amd64.tar.gz fzf-bin
-https://github.com/dundee/gdu/releases/download/v5.38.0/gdu_freebsd_amd64.tgz gdu-bin
-https://github.com/charmbracelet/glow/releases/download/v3.0.0/glow_3.0.0_Freebsd_x86_64.tar.gz glow-bin
-https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-freebsd-amd64.tar.gz golangci-lint-bin
-https://github.com/gopasspw/gopass/releases/download/v1.17.4/gopass-1.17.4-freebsd-amd64.tar.gz gopass-bin
-https://github.com/charmbracelet/gum/releases/download/v2.0.2/gum_2.0.2_Freebsd_x86_64.tar.gz gum-bin
-https://github.com/derailed/k9s/releases/download/v0.51.0/k9s_Freebsd_amd64.tar.gz k9s-bin
-https://github.com/jesseduffield/lazygit/releases/download/v0.66.2/lazygit_0.66.2_freebsd_x86_64.tar.gz lazygit-bin
-https://github.com/gokcehan/lf/releases/download/r42/lf-dragonfly-amd64.tar.gz lf-bin
 https://github.com/charmbracelet/melt/releases/download/v0.6.2/melt_0.6.2_Freebsd_x86_64.tar.gz melt-bin
 https://github.com/micro-editor/micro/releases/download/v2.0.15/micro-2.0.15-freebsd32.tar.gz micro-bin
 https://github.com/containerd/nerdctl/releases/download/v2.4.1/nerdctl-2.4.1-freebsd-amd64.tar.gz nerdctl-bin

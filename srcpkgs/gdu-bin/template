@@ -1,0 +1,20 @@
+# Template file for 'gdu-bin'
+pkgname=gdu-bin
+version=5.38.0
+revision=1
+archs="x86_64*"
+short_desc="Fast disk usage analyzer with console interface written in Go"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://github.com/dundee/gdu"
+distfiles="https://github.com/dundee/gdu/releases/download/v${version}/gdu_linux_amd64_static.tgz"
+checksum=e7b33d9a04597ac2caa2d7ff244023735617bb029a046ca5cf6154ef6bc1d4fe
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'gdu_linux_amd64_static' 'gdu'
+	vlicense "${FILESDIR}/LICENSE"
+}

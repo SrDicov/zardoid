@@ -1,0 +1,20 @@
+# Template file for 'gopass-bin'
+pkgname=gopass-bin
+version=1.17.4
+revision=1
+archs="x86_64*"
+short_desc="Slightly more awesome standard unix password manager for teams"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://www.gopass.pw/"
+distfiles="https://github.com/gopasspw/gopass/releases/download/v${version}/gopass-${version}-linux-amd64.tar.gz"
+checksum=fe63584ba2275409c54d060d7f601de24d03ca980b11e617cd30cd9c4814597a
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'gopass'
+	vlicense 'LICENSE'
+}

@@ -1,0 +1,19 @@
+# Template file for 'golangci-lint-bin'
+pkgname=golangci-lint-bin
+version=2.15.0
+revision=1
+archs="x86_64*"
+short_desc="Fast linters runner for Go"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://golangci-lint.run"
+distfiles="https://github.com/golangci/golangci-lint/releases/download/v${version}/golangci-lint-${version}-linux-amd64.tar.gz"
+checksum=9b7fe6a6bf6334b98decf8d86b11415ea7889afdabdd1959fdce23af2a9ebcea
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'golangci-lint'
+}
