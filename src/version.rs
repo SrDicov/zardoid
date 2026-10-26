@@ -51,6 +51,12 @@ pub fn from_tag(tag: &str) -> Option<String> {
             t = r;
         }
     }
+    // `r42` (revisión de lf): la versión es 42.
+    if let Some(r) = t.strip_prefix(['r', 'R']) {
+        if r.starts_with(|c: char| c.is_ascii_digit()) {
+            t = r;
+        }
+    }
     // `1.2.3-4` se queda como 1.2.3.4 (convención existente); no se confunde
     // con `deploy/v10.2.3-68`, que llega ya recortado al último segmento.
 
@@ -99,6 +105,7 @@ mod tests {
         assert_eq!(from_tag("proj-v1.2.3").as_deref(), Some("1.2.3"));
         assert_eq!(from_tag("1.2.3-1").as_deref(), Some("1.2.3.1"));
         assert_eq!(from_tag("deploy/v10.2.3-68").as_deref(), Some("10.2.3.68"));
+        assert_eq!(from_tag("r42").as_deref(), Some("42"));
         assert_eq!(from_tag("release/v1.2.3").as_deref(), Some("1.2.3"));
         assert_eq!(from_tag("nightly"), None);
         assert_eq!(from_tag("nope!"), None);

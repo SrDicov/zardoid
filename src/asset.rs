@@ -59,6 +59,7 @@ const REJECT: &[&str] = &[
     "win32",
     "win64",
     "win-",
+    "-win.",
     "mingw",
     ".exe",
     ".msi",
@@ -218,6 +219,7 @@ mod tests {
             "SHA256SUMS",
             "app.exe",
             "app-i686.tar.gz",
+            "fselect-x86_64-win.zip",
         ] {
             assert!(reject_reason(n).is_some(), "{n} debería rechazarse");
         }
