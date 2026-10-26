@@ -1,6 +1,6 @@
 [package]
 name = "zardoid"
-version = "0.3.8"
+version = "0.3.9"
 edition = "2021"
 description = "Genera templates de Void Linux desde releases upstream"
 license = "MIT"
