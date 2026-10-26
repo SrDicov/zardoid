@@ -1,16 +1,18 @@
 # Template file for 'sirikali-bin'
 pkgname=sirikali-bin
-version=1.8.6
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of SiriKali [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/SiriKali-AppImage"
-distfiles="https://github.com/pkgforge-dev/SiriKali-AppImage/releases/download/${version}-1%402026-10-01_1790876599/SiriKali-${version}-1-anylinux-x86_64.AppImage>sirikali-bin-${version}.AppImage"
-checksum=2b51f217291e31133e35daae28f9fce580339bb60b0df78105e4541f1877b552
+distfiles="https://github.com/pkgforge-dev/SiriKali-AppImage/releases/download/1.8.6-1%402026-10-22_1792689104/SiriKali-1.8.6-1-anylinux-x86_64.AppImage>sirikali-bin-${version}.AppImage"
+checksum=a608d25fbef91b77448ceed3691c083b9011d6dcc1156d307eebc0fe541a9340
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/sirikali-bin
 	vcopy "squashfs-root/*" opt/sirikali-bin
+	chmod -R o-w "${DESTDIR}/opt/sirikali-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/sirikali-bin/AppRun" "${DESTDIR}/usr/bin/sirikali"
 	local desk

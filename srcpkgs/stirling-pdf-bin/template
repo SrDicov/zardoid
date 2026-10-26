@@ -1,16 +1,18 @@
 # Template file for 'stirling-pdf-bin'
 pkgname=stirling-pdf-bin
-version=3.0.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Stirling-PDF. [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Stirling-PDF-AppImage"
-distfiles="https://github.com/pkgforge-dev/Stirling-PDF-AppImage/releases/download/v${version}%402026-10-01_1790876524/Stirling-PDF-v${version}-anylinux-x86_64.AppImage>stirling-pdf-bin-${version}.AppImage"
-checksum=196a309276c01d05d286a251d084935d168c769ca2fd9e17c64a0c91ec68e848
+distfiles="https://github.com/pkgforge-dev/Stirling-PDF-AppImage/releases/download/v3.2.1%402026-10-22_1792687633/Stirling-PDF-v3.2.1-anylinux-x86_64.AppImage>stirling-pdf-bin-${version}.AppImage"
+checksum=9d5f5aecfbf63f82539cfdb847168b540715d7c532c459b9d4aefe1d231d9532
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/stirling-pdf-bin
 	vcopy "squashfs-root/*" opt/stirling-pdf-bin
+	chmod -R o-w "${DESTDIR}/opt/stirling-pdf-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/stirling-pdf-bin/AppRun" "${DESTDIR}/usr/bin/stirling-pdf"
 	local desk

@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/SiriKali-AppImage/releases/download/1.8.6-1%402026-10-22_1792689104/SiriKali-1.8.6-1-anylinux-x86_64.AppImage sirikali-bin
-https://github.com/pkgforge-dev/Slack-AppImage/releases/download/4.52.182-1%402026-10-22_1792685105/Slack-4.52.182-1-anylinux-x86_64.AppImage slack-bin
-https://github.com/pkgforge-dev/Snes9x-AppImage-Enhanced/releases/download/1.63-2%402026-10-22_1792689251/Snes9x-1.63-2-anylinux-x86_64.AppImage snes9x-bin
-https://github.com/pkgforge-dev/Solaar-AppImage/releases/download/1.1.20-2%402026-10-22_1792688798/Solaar-1.1.20-2-anylinux-x86_64.AppImage solaar-bin
-https://github.com/pkgforge-dev/SongRec-AppImage/releases/download/0.7.5-1%402026-10-22_1792688843/SongRec-0.7.5-1-anylinux-x86_64.AppImage songrec-bin
-https://github.com/pkgforge-dev/Sonic-3-AIR-AppImage/releases/download/v26.03.28.0%402026-10-22_1792688597/Sonic_3_A.I.R.-v26.03.28.0-anylinux-x86_64.AppImage sonic-3-air-bin
-https://github.com/pkgforge-dev/SpaghettiKart-AppImage-Enhanced/releases/download/1.0.0%402026-10-22_1792688964/SpaghettiKart-1.0.0-anylinux-x86_64.AppImage spaghettikart-bin
-https://github.com/pkgforge-dev/Spek-AppImage/releases/download/0.8.5-4%402026-10-22_1792688856/Spek-0.8.5-4-anylinux-x86_64.AppImage spek-bin
-https://github.com/crmne/spotifast/releases/download/v0.14.1/spotifast-0.14.1-x86_64.AppImage spotifast-bin
-https://github.com/pkgforge-dev/SRB2-AppImage/releases/download/2.2.15%402026-10-22_1792687607/Sonic_Robo_Blast_2-2.2.15-anylinux-x86_64.AppImage srb2-bin
-https://github.com/pkgforge-dev/SRB2Kart-AppImage/releases/download/1.6%402026-10-22_1792688916/SRB2Kart-1.6-anylinux-x86_64.AppImage srb2kart-bin
-https://github.com/pkgforge-dev/Starfox64Recomp-AppImage/releases/download/1.0.3%402026-10-22_1792688927/Starfox_64_Recompiled-1.0.3-anylinux-x86_64.AppImage starfox64recomp-bin
-https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.87-3%402026-10-21_1792580272/Steam-1.0.0.87-3-anylinux-x86_64.AppImage steam-bin
-https://github.com/pkgforge-dev/Stella-AppImage/releases/download/7.0-1%402026-10-22_1792689228/Stella-7.0-1-anylinux-x86_64.AppImage stella-bin
-https://github.com/NovaStepStudio/StepLauncher/releases/download/v2.6.0/steplauncher-v2.6.0-linux-amd64.AppImage steplauncher-bin
-https://github.com/pkgforge-dev/Stirling-PDF-AppImage/releases/download/v3.2.1%402026-10-22_1792687633/Stirling-PDF-v3.2.1-anylinux-x86_64.AppImage stirling-pdf-bin
-https://github.com/pkgforge-dev/strawberry-AppImage/releases/download/1.2.31-1%402026-10-22_1792689134/strawberry-1.2.31-1-anylinux-x86_64.AppImage strawberry-bin
-https://github.com/pkgforge-dev/Streamlink-AppImage/releases/download/8.6.2-2%402026-10-22_1792688919/streamlink-8.6.2-2-anylinux-x86_64.AppImage streamlink-bin
-https://github.com/pkgforge-dev/SUPER-ZSNES-AppImage/releases/download/0.310%402026-10-22_1792689238/SUPER_ZSNES-0.310-anylinux-x86_64.AppImage super-zsnes-bin
-https://github.com/pkgforge-dev/sView-AppImage/releases/download/26_09%402026-10-22_1792689382/sView-26_09-anylinux-x86_64.AppImage sview-bin
 https://github.com/pkgforge-dev/swiftynotes-AppImage/releases/download/1.5.0%402026-10-22_1792632970/Swifty_Notes-1.5.0-anylinux-x86_64.AppImage swiftynotes-bin
 https://github.com/pkgforge-dev/Taisei-Project-AppImage/releases/download/1.4.6%402026-10-22_1792673550/Taisei-1.4.6-anylinux-x86_64.AppImage taisei-project-bin
 https://github.com/pkgforge-dev/Tauon-AppImage/releases/download/13.0.0%402026-10-22_1792689247/Tauon-13.0.0-anylinux-x86_64.AppImage tauon-bin

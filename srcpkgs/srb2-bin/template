@@ -1,14 +1,14 @@
 # Template file for 'srb2-bin'
 pkgname=srb2-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of SRB2 [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/SRB2-AppImage"
-distfiles="https://github.com/pkgforge-dev/SRB2-AppImage/releases/download/2.2.15%402026-10-01_1790876573/Sonic_Robo_Blast_2-2.2.15-anylinux-x86_64.AppImage>srb2-bin-${version}.AppImage"
-checksum=1d2cfcde56970e16684403d2e12542ab03897d9a406e1e996da4b932f3bd01aa
+distfiles="https://github.com/pkgforge-dev/SRB2-AppImage/releases/download/2.2.15%402026-10-22_1792687607/Sonic_Robo_Blast_2-2.2.15-anylinux-x86_64.AppImage>srb2-bin-${version}.AppImage"
+checksum=7bce231649d8bafebcce39b3861ef19afc44b686922509fc94aee2f75ae06aae
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes

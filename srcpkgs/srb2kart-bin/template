@@ -1,16 +1,18 @@
 # Template file for 'srb2kart-bin'
 pkgname=srb2kart-bin
-version=1.6
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of SRB2kart [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/SRB2Kart-AppImage"
-distfiles="https://github.com/pkgforge-dev/SRB2Kart-AppImage/releases/download/${version}%402026-10-01_1790876196/SRB2Kart-${version}-anylinux-x86_64.AppImage>srb2kart-bin-${version}.AppImage"
-checksum=38bdd247a02049817d8d7a08e48be96b097d56a90c2d5ac331096b5411684492
+distfiles="https://github.com/pkgforge-dev/SRB2Kart-AppImage/releases/download/1.6%402026-10-22_1792688916/SRB2Kart-1.6-anylinux-x86_64.AppImage>srb2kart-bin-${version}.AppImage"
+checksum=6ce56b928e7aa1aac9949e3f2654d32390cd7d6f0a6840294a6c6ceda67fb3a6
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/srb2kart-bin
 	vcopy "squashfs-root/*" opt/srb2kart-bin
+	chmod -R o-w "${DESTDIR}/opt/srb2kart-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/srb2kart-bin/AppRun" "${DESTDIR}/usr/bin/srb2kart"
 	local desk

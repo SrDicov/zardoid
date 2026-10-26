@@ -7,15 +7,37 @@ short_desc="Spotify, native and fast. One lightweight Rust app for your whole"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://spotifast.rocks/"
-distfiles="https://github.com/crmne/spotifast/releases/download/v${version}/spotifast-v${version}-x86_64-unknown-linux-gnu.tar.gz"
-checksum=f84bfa47edd188433ba224b19e326e0a368baa459a14d9414de98e59a760dcbc
+distfiles="https://github.com/crmne/spotifast/releases/download/v${version}/spotifast-${version}-x86_64.AppImage>spotifast-bin-${version}.AppImage"
+checksum=d055df257ca3c8a0dc68777fc9e3d67c50681c71a5903c9a660f44e9d1d0d9e6
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
+skip_extraction="${pkgname}-${version}.AppImage"
+
+post_extract() {
+	local f="${pkgname}-${version}.AppImage"
+	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
+}
 
 do_install() {
-	vbin 'spotifast'
-	vinstall 'packaging/applications/spotifast.desktop' 644 usr/share/applications
-	vinstall 'packaging/icons/spotifast.svg' 644 usr/share/icons/hicolor/scalable/apps
-	vlicense 'LICENSE'
+	local appimg="${pkgname}-${version}.AppImage"
+	chmod +x "${appimg}"
+	"./${appimg}" --appimage-extract >/dev/null
+	vmkdir opt/spotifast-bin
+	vcopy "squashfs-root/*" opt/spotifast-bin
+	chmod -R o-w "${DESTDIR}/opt/spotifast-bin"
+	vmkdir usr/bin
+	ln -sf "/opt/spotifast-bin/AppRun" "${DESTDIR}/usr/bin/spotifast"
+	local desk
+	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
+	if [ -n "$desk" ]; then
+		vinstall "$desk" 644 usr/share/applications
+	fi
+	local icon
+	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
+	if [ -n "$icon" ]; then
+		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
+	fi
+	vlicense "${FILESDIR}/LICENSE"
 }

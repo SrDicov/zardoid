@@ -1,14 +1,14 @@
 # Template file for 'steam-bin'
 pkgname=steam-bin
-version=20261001
+version=20261021
 revision=1
 archs="x86_64"
 short_desc="Unofficial Steam AppImage built using Runimage"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/ivan-hc/AM"
-distfiles="https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.87-3%402026-10-01_1790856625/Steam-1.0.0.87-3-anylinux-x86_64.AppImage>steam-bin-${version}.AppImage"
-checksum=a870636083ca6edc988ebe34869a187d9a746fce6d5fa4249868b640fc0c1695
+distfiles="https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.87-3%402026-10-21_1792580272/Steam-1.0.0.87-3-anylinux-x86_64.AppImage>steam-bin-${version}.AppImage"
+checksum=d2f8366589430a1993e4877f934876eed746b4d5dd66a458af2e8c2abde4806b
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/steam-bin
 	vcopy "squashfs-root/*" opt/steam-bin
+	chmod -R o-w "${DESTDIR}/opt/steam-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/steam-bin/AppRun" "${DESTDIR}/usr/bin/steam"
 	local desk

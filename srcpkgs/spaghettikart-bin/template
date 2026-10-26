@@ -1,16 +1,18 @@
 # Template file for 'spaghettikart-bin'
 pkgname=spaghettikart-bin
-version=1.0.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of SpaghettiKart [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/SpaghettiKart-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/SpaghettiKart-AppImage-Enhanced/releases/download/${version}%402026-10-01_1790876072/SpaghettiKart-${version}-anylinux-x86_64.AppImage>spaghettikart-bin-${version}.AppImage"
-checksum=c3674cfca07dfdfb0652cbf01825fd13eb56590d0783fb7939e65036226ee851
+distfiles="https://github.com/pkgforge-dev/SpaghettiKart-AppImage-Enhanced/releases/download/1.0.0%402026-10-22_1792688964/SpaghettiKart-1.0.0-anylinux-x86_64.AppImage>spaghettikart-bin-${version}.AppImage"
+checksum=695c17cabfbdc6226bc91239777bf312e7b78652be784949cc3553eb8d9a1ccc
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/spaghettikart-bin
 	vcopy "squashfs-root/*" opt/spaghettikart-bin
+	chmod -R o-w "${DESTDIR}/opt/spaghettikart-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/spaghettikart-bin/AppRun" "${DESTDIR}/usr/bin/spaghettikart"
 	local desk

@@ -1,16 +1,18 @@
 # Template file for 'songrec-bin'
 pkgname=songrec-bin
-version=0.7.5
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of SongRec [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/SongRec-AppImage"
-distfiles="https://github.com/pkgforge-dev/SongRec-AppImage/releases/download/${version}-1%402026-09-22_1790090225/SongRec-${version}-1-anylinux-x86_64.AppImage>songrec-bin-${version}.AppImage"
-checksum=af64482a27e840c37b53fa106fc59d984f222e10aab081e2487e70ec18d3177c
+distfiles="https://github.com/pkgforge-dev/SongRec-AppImage/releases/download/0.7.5-1%402026-10-22_1792688843/SongRec-0.7.5-1-anylinux-x86_64.AppImage>songrec-bin-${version}.AppImage"
+checksum=1b6c03affb2a034230a1e48511395ddf608445f138e044d4a7cdce7546000846
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/songrec-bin
 	vcopy "squashfs-root/*" opt/songrec-bin
+	chmod -R o-w "${DESTDIR}/opt/songrec-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/songrec-bin/AppRun" "${DESTDIR}/usr/bin/songrec"
 	local desk

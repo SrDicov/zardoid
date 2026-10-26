@@ -1,16 +1,18 @@
 # Template file for 'starfox64recomp-bin'
 pkgname=starfox64recomp-bin
-version=1.0.3
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Starfox 64 Recompiled"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Starfox64Recomp-AppImage"
-distfiles="https://github.com/pkgforge-dev/Starfox64Recomp-AppImage/releases/download/${version}%402026-10-01_1790876529/Starfox_64_Recompiled-${version}-anylinux-x86_64.AppImage>starfox64recomp-bin-${version}.AppImage"
-checksum=fa84a056aace1bb183a7ec470deb6a38901d27960d0969fc2e0cbcd654348df4
+distfiles="https://github.com/pkgforge-dev/Starfox64Recomp-AppImage/releases/download/1.0.3%402026-10-22_1792688927/Starfox_64_Recompiled-1.0.3-anylinux-x86_64.AppImage>starfox64recomp-bin-${version}.AppImage"
+checksum=a9167d7494998f551cbdb535fd6193fcb8abf8bd948b5f4178ee1baeed032a86
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/starfox64recomp-bin
 	vcopy "squashfs-root/*" opt/starfox64recomp-bin
+	chmod -R o-w "${DESTDIR}/opt/starfox64recomp-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/starfox64recomp-bin/AppRun" "${DESTDIR}/usr/bin/starfox64recomp"
 	local desk

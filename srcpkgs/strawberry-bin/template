@@ -1,16 +1,18 @@
 # Template file for 'strawberry-bin'
 pkgname=strawberry-bin
-version=1.2.30
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of the strawberry music player"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/pkgforge-dev/strawberry-AppImage"
-distfiles="https://github.com/pkgforge-dev/strawberry-AppImage/releases/download/${version}-1%402026-10-01_1790876544/strawberry-${version}-1-anylinux-x86_64.AppImage>strawberry-bin-${version}.AppImage"
-checksum=529254ea4a05c4780962ece1e76566b15ad48193cbdf2a0ff849ce94e9778eec
+distfiles="https://github.com/pkgforge-dev/strawberry-AppImage/releases/download/1.2.31-1%402026-10-22_1792689134/strawberry-1.2.31-1-anylinux-x86_64.AppImage>strawberry-bin-${version}.AppImage"
+checksum=81b0b64c80b3d2590d1671d9d7370f60ccfc9e449a829d8c80bf1a50fe581ce2
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/strawberry-bin
 	vcopy "squashfs-root/*" opt/strawberry-bin
+	chmod -R o-w "${DESTDIR}/opt/strawberry-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/strawberry-bin/AppRun" "${DESTDIR}/usr/bin/strawberry"
 	local desk
