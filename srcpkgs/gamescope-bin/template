@@ -1,16 +1,18 @@
 # Template file for 'gamescope-bin'
 pkgname=gamescope-bin
-version=3.16.31
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of gamescope [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/gamescope-AppImage"
-distfiles="https://github.com/pkgforge-dev/gamescope-AppImage/releases/download/${version}-1%402026-10-01_1790876541/gamescope-${version}-1-anylinux-x86_64.AppImage>gamescope-bin-${version}.AppImage"
-checksum=8da6aa8948bcbc86faad16c486dcbb7c5e3a0d563dd5b9a85bb6df8ffcdb7cd8
+distfiles="https://github.com/pkgforge-dev/gamescope-AppImage/releases/download/3.16.31-1%402026-10-22_1792689108/gamescope-3.16.31-1-anylinux-x86_64.AppImage>gamescope-bin-${version}.AppImage"
+checksum=c12237375df8257eb0a31caa1b91999bb585f74e82c46ac4268c80c50e5182af
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/gamescope-bin
 	vcopy "squashfs-root/*" opt/gamescope-bin
+	chmod -R o-w "${DESTDIR}/opt/gamescope-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/gamescope-bin/AppRun" "${DESTDIR}/usr/bin/gamescope"
 	local desk

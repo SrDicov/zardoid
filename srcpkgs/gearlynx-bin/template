@@ -1,16 +1,18 @@
 # Template file for 'gearlynx-bin'
 pkgname=gearlynx-bin
-version=1.2.33
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Gearlynx [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Gearlynx-AppImage"
-distfiles="https://github.com/pkgforge-dev/Gearlynx-AppImage/releases/download/${version}%402026-10-01_1790876355/Gearlynx-${version}-anylinux-x86_64.AppImage>gearlynx-bin-${version}.AppImage"
-checksum=4b4e570d66941a52854e1e50645f5ebf335bfa78471b1022b07708640782a229
+distfiles="https://github.com/pkgforge-dev/Gearlynx-AppImage/releases/download/1.2.35%402026-10-22_1792689339/Gearlynx-1.2.35-anylinux-x86_64.AppImage>gearlynx-bin-${version}.AppImage"
+checksum=2cd41bc948d554d03269193f4a1b728bf891670f9b45547638f6d957dcab1790
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/gearlynx-bin
 	vcopy "squashfs-root/*" opt/gearlynx-bin
+	chmod -R o-w "${DESTDIR}/opt/gearlynx-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/gearlynx-bin/AppRun" "${DESTDIR}/usr/bin/gearlynx"
 	local desk

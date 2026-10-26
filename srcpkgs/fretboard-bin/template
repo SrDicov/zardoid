@@ -1,6 +1,6 @@
 # Template file for 'fretboard-bin'
 pkgname=fretboard-bin
-version=9.1
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of the Fretboard guitar chord lookup
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage of the Fretboard guitar chord lookup
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/pkgforge-dev/Fretboard-AppImage"
-distfiles="https://github.com/pkgforge-dev/Fretboard-AppImage/releases/download/${version}-3%402026-10-01_1790876548/Fretboard-${version}-3-anylinux-x86_64.AppImage>fretboard-bin-${version}.AppImage"
-checksum=4aaddec548060b1b2c0c84244360cd3b794c2f1cfe02e47ce7217d8029d7097b
+distfiles="https://github.com/pkgforge-dev/Fretboard-AppImage/releases/download/9.1-3%402026-10-22_1792689416/Fretboard-9.1-3-anylinux-x86_64.AppImage>fretboard-bin-${version}.AppImage"
+checksum=5a2134a1733426bff46abbfd69ab8eb1c7d3645ec1e6081f8f518b0681cf28a3
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/fretboard-bin
 	vcopy "squashfs-root/*" opt/fretboard-bin
+	chmod -R o-w "${DESTDIR}/opt/fretboard-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/fretboard-bin/AppRun" "${DESTDIR}/usr/bin/fretboard"
 	local desk

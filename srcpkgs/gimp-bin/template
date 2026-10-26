@@ -1,14 +1,14 @@
 # Template file for 'gimp-bin'
 pkgname=gimp-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of GIMP that also includes PhotoGIMP"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/pkgforge-dev/GIMP-and-PhotoGIMP-AppImage"
-distfiles="https://github.com/pkgforge-dev/GIMP-and-PhotoGIMP-AppImage/releases/download/3.2.6-2%402026-10-01_1790873442/GIMP-3.2.6-2-anylinux-x86_64.AppImage>gimp-bin-${version}.AppImage"
-checksum=31cf2253c3cf343a18b0b0119eb1ce27ec9cc2b60547d31df2e744af1d9b046e
+distfiles="https://github.com/pkgforge-dev/GIMP-and-PhotoGIMP-AppImage/releases/download/3.2.6-2%402026-10-22_1792682952/GIMP-3.2.6-2-anylinux-x86_64.AppImage>gimp-bin-${version}.AppImage"
+checksum=aa1eb1f6ee41912eb2be265868f429876a6127e1d1917bffaa1fed08156fd9fc
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -26,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/gimp-bin
 	vcopy "squashfs-root/*" opt/gimp-bin
+	chmod -R o-w "${DESTDIR}/opt/gimp-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/gimp-bin/AppRun" "${DESTDIR}/usr/bin/gimp"
 	local desk

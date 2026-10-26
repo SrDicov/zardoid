@@ -1,16 +1,18 @@
 # Template file for 'gnome-calculator-bin'
 pkgname=gnome-calculator-bin
-version=50.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage for Gnome Calculator [Maintainer=@fiftydinar]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/pkgforge-dev/Gnome-Calculator-AppImage"
-distfiles="https://github.com/pkgforge-dev/Gnome-Calculator-AppImage/releases/download/${version}-1%402026-10-01_1790875858/Calculator-${version}-1-anylinux-x86_64.AppImage>gnome-calculator-bin-${version}.AppImage"
-checksum=b0423ac2445bc555fa58a3b51a15e40b6cc237da2591f55236feb9b3188b074f
+distfiles="https://github.com/pkgforge-dev/Gnome-Calculator-AppImage/releases/download/51.1-1%402026-10-22_1792686994/Calculator-51.1-1-anylinux-x86_64.AppImage>gnome-calculator-bin-${version}.AppImage"
+checksum=beb3af74b1a1d9811a0709f1037fa6659f1f6a35f6cced2b9616649b631fe064
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/gnome-calculator-bin
 	vcopy "squashfs-root/*" opt/gnome-calculator-bin
+	chmod -R o-w "${DESTDIR}/opt/gnome-calculator-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/gnome-calculator-bin/AppRun" "${DESTDIR}/usr/bin/gnome-calculator"
 	local desk

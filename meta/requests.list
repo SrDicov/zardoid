@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/GNU-FreeDink-AppImage/releases/download/109.6-2%402026-10-22_1792689303/FreeDink-109.6-2-anylinux-x86_64.AppImage freedink-bin
-https://github.com/pkgforge-dev/FreeTube-Appimage-Enhanced/releases/download/0.25.3-beta%402026-10-22_1792688932/FreeTube-0.25.3-beta-anylinux-x86_64.AppImage freetube-bin
-https://github.com/pkgforge-dev/Fretboard-AppImage/releases/download/9.1-3%402026-10-22_1792689416/Fretboard-9.1-3-anylinux-x86_64.AppImage fretboard-bin
-https://github.com/pkgforge-dev/Galculator-AppImage/releases/download/v2.1.4%402026-10-18_1792320657/Galculator-v2.1.4-anylinux-loongarch64.AppImage galculator-bin
-https://github.com/pkgforge-dev/gamescope-AppImage/releases/download/3.16.31-1%402026-10-22_1792689108/gamescope-3.16.31-1-anylinux-x86_64.AppImage gamescope-bin
-https://github.com/pkgforge-dev/Gapless-AppImage/releases/download/4.6.2-1%402026-10-22_1792689212/Gapless-4.6.2-1-anylinux-x86_64.AppImage gapless-bin
-https://github.com/pkgforge-dev/GCstar-AppImage/releases/download/1.8.0-3%402026-10-22_1792684862/GCstar-1.8.0-3-anylinux-x86_64.AppImage gcstar-bin
-https://github.com/pkgforge-dev/Gearboy-AppImage/releases/download/3.8.18%402026-10-22_1792688624/Gearboy-3.8.18-anylinux-x86_64.AppImage gearboy-bin
-https://github.com/pkgforge-dev/Geargrafx-AppImage/releases/download/1.8.4%402026-10-22_1792688737/Geargrafx-1.8.4-anylinux-x86_64.AppImage geargrafx-bin
-https://github.com/pkgforge-dev/Gear-Lever-AppImage/releases/download/4.6.2-1%402026-10-22_1792689292/Gear_Lever-4.6.2-1-anylinux-x86_64.AppImage gearlever-bin
-https://github.com/pkgforge-dev/Gearlynx-AppImage/releases/download/1.2.35%402026-10-22_1792689339/Gearlynx-1.2.35-anylinux-x86_64.AppImage gearlynx-bin
-https://github.com/pkgforge-dev/Gearsystem-AppImage/releases/download/3.9.22%402026-10-22_1792689332/Gearsystem-3.9.22-anylinux-x86_64.AppImage gearsystem-bin
-https://github.com/pkgforge-dev/Ghostscript-AppImage/releases/download/10.08.0-1%402026-10-22_1792688639/gs-10.08.0-1-anylinux-x86_64.AppImage ghostscript-bin
-https://github.com/pkgforge-dev/Ghostship-AppImage-Enhanced/releases/download/3.0.0%402026-10-22_1792688945/Ghostship-3.0.0-anylinux-x86_64.AppImage ghostship-bin
-https://github.com/pkgforge-dev/gImageReader-AppImage/releases/download/3.4.3-3%402026-10-22_1792689115/gImageReader-3.4.3-3-anylinux-x86_64.AppImage gimagereader-bin
-https://github.com/pkgforge-dev/GIMP-and-PhotoGIMP-AppImage/releases/download/3.2.6-2%402026-10-22_1792682952/GIMP-3.2.6-2-anylinux-x86_64.AppImage gimp-bin
-https://github.com/pkgforge-dev/Gnome-Calculator-AppImage/releases/download/51.1-1%402026-10-22_1792686994/Calculator-51.1-1-anylinux-x86_64.AppImage gnome-calculator-bin
-https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage/releases/download/51.1-1%402026-10-22_1792688828/System_Monitor-51.1-1-anylinux-x86_64.AppImage gnome-system-monitor-bin
-https://github.com/pkgforge-dev/Gnome-Text-Editor-AppImage/releases/download/51.0-1%402026-10-22_1792689265/Text_Editor-51.0-1-anylinux-x86_64.AppImage gnome-text-editor-bin
-https://github.com/pkgforge-dev/Gnome-Web-AppImage/releases/download/51.1-2%402026-10-22_1792688914/Web-51.1-2-anylinux-x86_64.AppImage gnome-web-bin
 https://github.com/pkgforge-dev/GoldenDict-ng-AppImage/releases/download/26.8.0-1%402026-10-22_1792688778/GoldenDict-ng-26.8.0-1-anylinux-x86_64.AppImage goldendict-ng-bin
 https://github.com/pkgforge-dev/gPodder-AppImage/releases/download/3.11.5-6%402026-10-22_1792688874/gPodder-3.11.5-6-anylinux-x86_64.AppImage gpodder-bin
 https://github.com/pkgforge-dev/Gradia-AppImage/releases/download/1.13.0%402026-10-22_1792688704/Gradia-1.13.0-anylinux-x86_64.AppImage gradia-bin

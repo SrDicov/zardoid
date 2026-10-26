@@ -1,6 +1,6 @@
 # Template file for 'gnome-system-monitor-bin'
 pkgname=gnome-system-monitor-bin
-version=50.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage for Gnome System Monitor
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage for Gnome System Monitor
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage"
-distfiles="https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage/releases/download/${version}-1%402026-10-01_1790876443/System_Monitor-${version}-1-anylinux-x86_64.AppImage>gnome-system-monitor-bin-${version}.AppImage"
-checksum=9c489af565fca61223b681c14574d1e651fec581489fd89f0c22810701e84445
+distfiles="https://github.com/pkgforge-dev/Gnome-System-Monitor-AppImage/releases/download/51.1-1%402026-10-22_1792688828/System_Monitor-51.1-1-anylinux-x86_64.AppImage>gnome-system-monitor-bin-${version}.AppImage"
+checksum=c7b7f46a515cd85006d44651836fef55fe084ffcf7f9c6d7b07004c74c4f89f1
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/gnome-system-monitor-bin
 	vcopy "squashfs-root/*" opt/gnome-system-monitor-bin
+	chmod -R o-w "${DESTDIR}/opt/gnome-system-monitor-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/gnome-system-monitor-bin/AppRun" "${DESTDIR}/usr/bin/gnome-system-monitor"
 	local desk

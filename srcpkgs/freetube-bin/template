@@ -1,14 +1,15 @@
 # Template file for 'freetube-bin'
 pkgname=freetube-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of FreeTube [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/FreeTube-Appimage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/FreeTube-Appimage-Enhanced/releases/download/0.25.3-beta%402026-10-01_1790876372/FreeTube-0.25.3-beta-anylinux-x86_64.AppImage>freetube-bin-${version}.AppImage"
-checksum=ebd465989dc3a08e31899ffd1fabb72b201d9e6a988d43357cb84eb8856c495d
+distfiles="https://github.com/pkgforge-dev/FreeTube-Appimage-Enhanced/releases/download/0.25.3-beta%402026-10-22_1792688932/FreeTube-0.25.3-beta-anylinux-x86_64.AppImage>freetube-bin-${version}.AppImage"
+checksum=1dc2526b6baa31b51b85d26665625ca65d697fc9d46c08f25626bca62926ce75
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/freetube-bin
 	vcopy "squashfs-root/*" opt/freetube-bin
+	chmod -R o-w "${DESTDIR}/opt/freetube-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/freetube-bin/AppRun" "${DESTDIR}/usr/bin/freetube"
 	local desk

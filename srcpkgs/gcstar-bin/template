@@ -1,16 +1,18 @@
 # Template file for 'gcstar-bin'
 pkgname=gcstar-bin
-version=1.8.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of GCstar [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/GCstar-AppImage"
-distfiles="https://github.com/pkgforge-dev/GCstar-AppImage/releases/download/${version}-3%402026-10-01_1790876371/GCstar-${version}-3-anylinux-x86_64.AppImage>gcstar-bin-${version}.AppImage"
-checksum=b7df8ea2f2c1103f73b9b94cdd0abc8e292867fb885b842dab5d43f4aa9a93d0
+distfiles="https://github.com/pkgforge-dev/GCstar-AppImage/releases/download/1.8.0-3%402026-10-22_1792684862/GCstar-1.8.0-3-anylinux-x86_64.AppImage>gcstar-bin-${version}.AppImage"
+checksum=82f37a706584e772a8637fb073f2f9c70834df1df70015617647d88ef9268366
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/gcstar-bin
 	vcopy "squashfs-root/*" opt/gcstar-bin
+	chmod -R o-w "${DESTDIR}/opt/gcstar-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/gcstar-bin/AppRun" "${DESTDIR}/usr/bin/gcstar"
 	local desk
