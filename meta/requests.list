@@ -15,5 +15,3 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/zen-browser/desktop/releases/download/1.23.3b/zen.linux-x86_64.tar.xz zen-browser-bin
-https://github.com/rafalb8/ZeroTierOne-Static/releases/download/1.16.2/zerotier-one-x86_64.tar.gz zerotierone-static-bin

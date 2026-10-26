@@ -7,33 +7,18 @@ short_desc="Welcome to a calmer internet"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MPL-2.0"
 homepage="https://zen-browser.app"
-distfiles="https://github.com/zen-browser/desktop/releases/download/${version}/zen-x86_64.AppImage>zen-browser-bin-${version}.AppImage"
-checksum=8f6b7a55ae8fd013147f40f592d12188dd26f19f4a4748e01b51e9747bd44bac
+distfiles="https://github.com/zen-browser/desktop/releases/download/${version}/zen.linux-x86_64.tar.xz"
+checksum=bb2045d3e21654d40fe841250092eeadfd2c1fc831eefb509222773c8bdca149
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
-skip_extraction="${pkgname}-${version}.AppImage"
-
-post_extract() {
-	local f="${pkgname}-${version}.AppImage"
-	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
-}
 
 do_install() {
-	local appimg="${pkgname}-${version}.AppImage"
-	chmod +x "${appimg}"
-	"./${appimg}" --appimage-extract >/dev/null
-	vmkdir opt/zen-browser-bin
-	vcopy "squashfs-root/*" opt/zen-browser-bin
-	vmkdir usr/bin
-	ln -sf "/opt/zen-browser-bin/AppRun" "${DESTDIR}/usr/bin/zen-browser"
-	local desk
-	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
-	if [ -n "$desk" ]; then
-		vinstall "$desk" 644 usr/share/applications
-	fi
-	local icon
-	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
-	if [ -n "$icon" ]; then
-		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
-	fi
+	vbin 'updater'
+	vinstall 'icons/updater.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'browser/chrome/icons/default/default16.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'browser/chrome/icons/default/default32.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'browser/chrome/icons/default/default64.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'browser/chrome/icons/default/default48.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'browser/chrome/icons/default/default128.png' 644 usr/share/icons/hicolor/128x128/apps
 }
