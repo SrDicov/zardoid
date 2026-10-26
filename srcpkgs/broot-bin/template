@@ -1,0 +1,21 @@
+# Template file for 'broot-bin'
+pkgname=broot-bin
+version=1.61.0
+revision=1
+archs="x86_64"
+hostmakedepends="unzip"
+short_desc="New way to see and navigate directory trees"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="MIT"
+homepage="https://dystroy.org/broot"
+distfiles="https://github.com/Canop/broot/releases/download/v${version}/broot_${version}.zip"
+checksum=6cafe8e993fb8e5684eb25549703a4fb9dec61ac6a8f1947cbed6566cb4e58e5
+allow_unknown_shlibs=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'x86_64-unknown-linux-gnu/broot'
+	vman 'broot.1'
+	vlicense "${FILESDIR}/LICENSE"
+}

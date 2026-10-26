@@ -7,36 +7,39 @@ short_desc="Local co-op split-screen launcher for Linux"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/splitux-gg/splitux"
-distfiles="https://github.com/splitux-gg/splitux/releases/download/v${version}/Splitux-v${version}-x86_64.AppImage>splitux-bin-${version}.AppImage"
-checksum=2b653dfaacc0f6fee0233c905311de1704c5448d67981b79f6534fa222c4335a
+distfiles="https://github.com/splitux-gg/splitux/releases/download/v${version}/splitux-v${version}-linux-x86_64.tar.gz"
+checksum=0b7fb2f0a0b2e2553a33a58a9f903a41f1379e146467108ddb611952a271ea04
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
-python_version=3
-skip_extraction="${pkgname}-${version}.AppImage"
-
-post_extract() {
-	local f="${pkgname}-${version}.AppImage"
-	cp "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${f}" .
-}
 
 do_install() {
-	local appimg="${pkgname}-${version}.AppImage"
-	chmod +x "${appimg}"
-	"./${appimg}" --appimage-extract >/dev/null
-	vmkdir opt/splitux-bin
-	vcopy "squashfs-root/*" opt/splitux-bin
-	vmkdir usr/bin
-	ln -sf "/opt/splitux-bin/AppRun" "${DESTDIR}/usr/bin/splitux"
-	local desk
-	desk="$(find squashfs-root -maxdepth 3 -name '*.desktop' | head -n1)"
-	if [ -n "$desk" ]; then
-		vinstall "$desk" 644 usr/share/applications
-	fi
-	local icon
-	icon="$(find squashfs-root -name '*.png' -o -name '*.svg' | head -n1)"
-	if [ -n "$icon" ]; then
-		vinstall "$icon" 644 usr/share/icons/hicolor/256x256/apps
-	fi
-	vlicense "${FILESDIR}/LICENSE"
+	vbin 'bin/gamescope'
+	vbin 'bin/gamescopectl'
+	vbin 'bin/gamescopereaper'
+	vinstall 'splitux.desktop' 644 usr/share/applications
+	vinstall 'assets/windows-logo.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/logo.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/linux-logo.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/icon.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/executable_icon.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/controllermap.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'assets/BTN_Y.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_X.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_STICK_R.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_STICK_L.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_START_NEW.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_SELECT.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_RT.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_RB.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_LT.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_LB.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_DPAD_UP.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_DPAD_RIGHT.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_DPAD_LEFT.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_DPAD_DOWN.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_DPAD.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_B.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'assets/BTN_A.png' 644 usr/share/icons/hicolor/128x128/apps
+	vlicense 'LICENSE'
 }

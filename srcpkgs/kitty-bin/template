@@ -1,0 +1,124 @@
+# Template file for 'kitty-bin'
+pkgname=kitty-bin
+version=0.49.2
+revision=1
+archs="x86_64"
+short_desc="If you live in the terminal, kitty is made for you! Cross-platform,"
+maintainer="SrDicov <SrDicov@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://sw.kovidgoyal.net/kitty/"
+distfiles="https://github.com/kovidgoyal/kitty/releases/download/v${version}/kitty-${version}-x86_64.txz"
+checksum=d573618b911e9c461bd421b96c13c74c7f1cb2f1ac9c327818d4ff84366cf5c6
+allow_unknown_shlibs=yes
+nopie=yes
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin 'bin/kitten'
+	vbin 'bin/kitty'
+	vbin 'bin/slangc'
+	vinstall 'share/applications/kitty.desktop' 644 usr/share/applications
+	vinstall 'lib/kitty/logo/kitty.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'lib/kitty/logo/kitty-128.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'lib/kitty/logo/beam-cursor@2x.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'lib/kitty/logo/beam-cursor.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/icons/hicolor/scalable/apps/kitty.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'share/icons/hicolor/256x256/apps/kitty.png' 644 usr/share/icons/hicolor/256x256/apps
+	vinstall 'share/doc/kitty/html/_static/poster.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_static/plus.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_static/minus.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_static/kitty.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'share/doc/kitty/html/_static/file.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_static/copy-button.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'share/doc/kitty/html/_static/check-solid.svg' 644 usr/share/icons/hicolor/scalable/apps
+	vinstall 'share/doc/kitty/html/_images/unicode.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/transfer.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/themes.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/splits.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_wide-gamut-colors_93c46a12.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_unscroll_98a1c6ca.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_underlines_c33f785f.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_text-sizing-protocol_974e580e.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_support_daeae705.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_shell-integration_4b2a7549.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_sessions_7cc12e6e.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_remote-control_7371e6b3.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_rc_protocol_ea1138ef.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_quickstart_9d1a56df.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_quake-screenshots_d232c5bb.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_protocol-extensions_ea5204ed.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_press-mentions_3ce20e22.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_pointer-shapes_96e448ee.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_pipe_168d77ad.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_performance_76c80d2e.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_overview_249bd848.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_open_actions_b5f13270.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_multiple-cursors-protocol_49ab6a61.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_misc-protocol_baba0cc2.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_marks_66066db1.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_mapping_aea5afa6.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_layouts_49b07683.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_launch_717c78bb.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_unicode_input_f1ba948b.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_transfer_009949a9.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_themes_72ee7bcd.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_ssh_d0cb65fa.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_remote_file_c5782e6e.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_quick-access-terminal_cdc578f3.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_query_terminal_bcf6bdb9.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_panel_f0055a23.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_notify_4b21ed12.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_intro_2aa247aa.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_icat_8f870112.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_hyperlinked_grep_bce050dc.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_hints_cf0d0da9.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_dnd_a8e5aa91.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_diff_56ec1326.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_developing-builtin-kittens_70cf5f2d.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_desktop-ui_4b8fd2af.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_custom_264d6309.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_command-palette_ec8e68ff.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_clipboard_af529e2d.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_choose-fonts_14869f23.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_choose-files_eb203c8f.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_kittens_broadcast_4dfe59be.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_keyboard-protocol_37967379.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_invocation_05c40da8.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_intro_vid_14889341.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_integrations_89a2636c.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_index_f767dd9c.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_graphics-protocol_96eb2627.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_glossary_e93f6fff.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_generated_ssh-copy_26aa9e71.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_generated_save-as-session_b77c65fc.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_generated_rc_4121b4bb.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_generated_matching_f5ed7c14.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_generated_launch_2c8ae1a7.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_generated_color-names_a1b155fe.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_file-transfer-protocol_67d60cd4.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_faq_6acfb156.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_dnd-protocol_bbf3df2d.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_desktop-notifications_9e55697a.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_deccara_77e64daf.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_custom-shaders_69b092c7.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_conf_6d817f14.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_color-stack_b2e66ffc.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_clipboard_673291d1.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_changelog_9055a468.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_build_e554a463.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_binary_478594b0.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/social_previews/summary_actions_1745a1bd.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/screenshot.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/remote_file.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/panel.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/hints_mode.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/font-fine-tune.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/family-selection.png' 644 usr/share/icons/hicolor/128x128/apps
+	vinstall 'share/doc/kitty/html/_images/diff.png' 644 usr/share/icons/hicolor/128x128/apps
+	vmkdir usr/share/man
+	vcopy 'share/man/*' usr/share/man
+	vinstall 'lib/kitty/shell-integration/fish/vendor_completions.d/kitty.fish' 644 usr/share/fish/vendor_completions.d
+	vinstall 'lib/kitty/shell-integration/fish/vendor_completions.d/kitten.fish' 644 usr/share/fish/vendor_completions.d
+	vinstall 'lib/kitty/shell-integration/fish/vendor_completions.d/clone-in-kitty.fish' 644 usr/share/fish/vendor_completions.d
+}
