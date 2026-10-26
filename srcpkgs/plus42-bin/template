@@ -1,16 +1,18 @@
 # Template file for 'plus42-bin'
 pkgname=plus42-bin
-version=1.3.15
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Plus42 [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Plus42-AppImage"
-distfiles="https://github.com/pkgforge-dev/Plus42-AppImage/releases/download/${version}%402026-10-01_1790876240/Plus42-${version}-anylinux-x86_64.AppImage>plus42-bin-${version}.AppImage"
-checksum=0522c6a9e7d4041fd5e92417c595850f62aa0a40ac6479aa5aa61c05b181f5c8
+distfiles="https://github.com/pkgforge-dev/Plus42-AppImage/releases/download/1.3.15%402026-10-22_1792688395/Plus42-1.3.15-anylinux-x86_64.AppImage>plus42-bin-${version}.AppImage"
+checksum=42c77bd5f4ece6eb8e28f2ff541789995d0e08a855c03a323b8406d2a1be9ff4
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/plus42-bin
 	vcopy "squashfs-root/*" opt/plus42-bin
+	chmod -R o-w "${DESTDIR}/opt/plus42-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/plus42-bin/AppRun" "${DESTDIR}/usr/bin/plus42"
 	local desk

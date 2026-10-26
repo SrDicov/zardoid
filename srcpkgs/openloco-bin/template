@@ -1,16 +1,18 @@
 # Template file for 'openloco-bin'
 pkgname=openloco-bin
-version=26.09
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of OpenLoco [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/OpenLoco-AppImage"
-distfiles="https://github.com/pkgforge-dev/OpenLoco-AppImage/releases/download/${version}%402026-10-01_1790876342/OpenLoco-${version}-anylinux-x86_64.AppImage>openloco-bin-${version}.AppImage"
-checksum=f628346d575ce153d14355fca6033729f1ed3e8556af5fcd33a5c3f8825d0b28
+distfiles="https://github.com/pkgforge-dev/OpenLoco-AppImage/releases/download/26.09%402026-10-22_1792688961/OpenLoco-26.09-anylinux-x86_64.AppImage>openloco-bin-${version}.AppImage"
+checksum=969719549aa1d4451a7d9e1ee029d3d7e63d7815658f69aadcdfd38d36aeafa3
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/openloco-bin
 	vcopy "squashfs-root/*" opt/openloco-bin
+	chmod -R o-w "${DESTDIR}/opt/openloco-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/openloco-bin/AppRun" "${DESTDIR}/usr/bin/openloco"
 	local desk

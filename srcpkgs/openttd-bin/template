@@ -1,16 +1,18 @@
 # Template file for 'openttd-bin'
 pkgname=openttd-bin
-version=15.3
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of OpenTTD [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/OpenTTD-AppImage"
-distfiles="https://github.com/pkgforge-dev/OpenTTD-AppImage/releases/download/${version}-1%402026-10-01_1790876107/OpenTTD-${version}-1-anylinux-x86_64.AppImage>openttd-bin-${version}.AppImage"
-checksum=d85b181e3fc6f583f923464eb5c34b33033f5676bb4420bf940d6108f72c4d18
+distfiles="https://github.com/pkgforge-dev/OpenTTD-AppImage/releases/download/15.3-1%402026-10-22_1792689148/OpenTTD-15.3-1-anylinux-x86_64.AppImage>openttd-bin-${version}.AppImage"
+checksum=14f074c64bd7d4f2dcdfd2ba35cdf28a285b1bb23fc8bee0b5337daa5b7f6416
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/openttd-bin
 	vcopy "squashfs-root/*" opt/openttd-bin
+	chmod -R o-w "${DESTDIR}/opt/openttd-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/openttd-bin/AppRun" "${DESTDIR}/usr/bin/openttd"
 	local desk

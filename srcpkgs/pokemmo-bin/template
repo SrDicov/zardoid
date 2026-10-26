@@ -1,16 +1,18 @@
 # Template file for 'pokemmo-bin'
 pkgname=pokemmo-bin
-version=4.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of PokeMMO [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/PokeMMO-AppImage"
-distfiles="https://github.com/pkgforge-dev/PokeMMO-AppImage/releases/download/${version}%402026-10-01_1790876351/PokeMMO-${version}-anylinux-x86_64.AppImage>pokemmo-bin-${version}.AppImage"
-checksum=7683d61e4326456ab3a8d0a985207da58f8188b4cb41fd8c4de6ca2a0abaf27f
+distfiles="https://github.com/pkgforge-dev/PokeMMO-AppImage/releases/download/4.0%402026-10-22_1792689204/PokeMMO-4.0-anylinux-x86_64.AppImage>pokemmo-bin-${version}.AppImage"
+checksum=5811a4c894dcc252b145871252b8e368e6a518516c2ea17ec9434f894e100ca2
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/pokemmo-bin
 	vcopy "squashfs-root/*" opt/pokemmo-bin
+	chmod -R o-w "${DESTDIR}/opt/pokemmo-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/pokemmo-bin/AppRun" "${DESTDIR}/usr/bin/pokemmo"
 	local desk

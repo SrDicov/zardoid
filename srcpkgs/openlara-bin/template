@@ -1,14 +1,15 @@
 # Template file for 'openlara-bin'
 pkgname=openlara-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of OpenLara [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/OpenLara-AppImage"
-distfiles="https://github.com/pkgforge-dev/OpenLara-AppImage/releases/download/3b268ca4b%402026-10-01_1790876333/OpenLara-3b268ca4b-anylinux-x86_64.AppImage>openlara-bin-${version}.AppImage"
-checksum=3717f24951e50c755b6380561d5a9e4f78117930700a38dce43b3dfa336710d4
+distfiles="https://github.com/pkgforge-dev/OpenLara-AppImage/releases/download/3b268ca4b%402026-10-22_1792689432/OpenLara-3b268ca4b-anylinux-x86_64.AppImage>openlara-bin-${version}.AppImage"
+checksum=763a61e58819d7e179010035f551eb87b4c99b7f9c5b42a334e569a74aede921
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/openlara-bin
 	vcopy "squashfs-root/*" opt/openlara-bin
+	chmod -R o-w "${DESTDIR}/opt/openlara-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/openlara-bin/AppRun" "${DESTDIR}/usr/bin/openlara"
 	local desk

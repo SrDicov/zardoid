@@ -1,14 +1,15 @@
 # Template file for 'openra-bin'
 pkgname=openra-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of OpenRA containing all 3 game modes"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/OpenRA-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/OpenRA-AppImage-Enhanced/releases/download/20250330-5%402026-10-01_1790876392/OpenRA-20250330-5-anylinux-x86_64.AppImage>openra-bin-${version}.AppImage"
-checksum=af541b63b7486c65b045d67e4963cac7f3f4b97d291febe73ece09be5b5b5fce
+distfiles="https://github.com/pkgforge-dev/OpenRA-AppImage-Enhanced/releases/download/20250330-5%402026-10-22_1792688504/OpenRA-20250330-5-anylinux-x86_64.AppImage>openra-bin-${version}.AppImage"
+checksum=26be3f41aa471f25ce5110294a2b6c3200bab1b3d33e0fd476d80189cc415c37
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/openra-bin
 	vcopy "squashfs-root/*" opt/openra-bin
+	chmod -R o-w "${DESTDIR}/opt/openra-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/openra-bin/AppRun" "${DESTDIR}/usr/bin/openra"
 	local desk

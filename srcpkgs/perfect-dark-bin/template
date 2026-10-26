@@ -1,14 +1,15 @@
 # Template file for 'perfect-dark-bin'
 pkgname=perfect-dark-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Perfect Dark [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Perfect-Dark-AppImage"
-distfiles="https://github.com/pkgforge-dev/Perfect-Dark-AppImage/releases/download/32a1cb9f2%402026-10-01_1790876698/Perfect_Dark-32a1cb9f2-anylinux-x86_64.AppImage>perfect-dark-bin-${version}.AppImage"
-checksum=34c87304b7045ac8c90ecfef495d4aea5cec71b36976dcfe0b7b05f8a524a9b9
+distfiles="https://github.com/pkgforge-dev/Perfect-Dark-AppImage/releases/download/32a1cb9f2%402026-10-22_1792689281/Perfect_Dark-32a1cb9f2-anylinux-x86_64.AppImage>perfect-dark-bin-${version}.AppImage"
+checksum=29138ebe20e15c988d8b06bfa68b5226dd6ff57ee2b8e89803bd515ada28cb21
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/perfect-dark-bin
 	vcopy "squashfs-root/*" opt/perfect-dark-bin
+	chmod -R o-w "${DESTDIR}/opt/perfect-dark-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/perfect-dark-bin/AppRun" "${DESTDIR}/usr/bin/perfect-dark"
 	local desk

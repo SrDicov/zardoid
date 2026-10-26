@@ -1,14 +1,15 @@
 # Template file for 'pcexhumed-bin'
 pkgname=pcexhumed-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of PCExhumed [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/PCExhumed-AppImage"
-distfiles="https://github.com/pkgforge-dev/PCExhumed-AppImage/releases/download/497385d64%402026-10-01_1790875458/PCExhumed-497385d64-anylinux-x86_64.AppImage>pcexhumed-bin-${version}.AppImage"
-checksum=66bab57f2ae34f8602550f406fdabc792e5c23d02562f3b1f66c2607434fd2d3
+distfiles="https://github.com/pkgforge-dev/PCExhumed-AppImage/releases/download/497385d64%402026-10-22_1792688549/PCExhumed-497385d64-anylinux-x86_64.AppImage>pcexhumed-bin-${version}.AppImage"
+checksum=d54d4e8fa5e92dbbd8a92ce67f4ff8d33eb958e113dc12d549d7015e664f88ae
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/pcexhumed-bin
 	vcopy "squashfs-root/*" opt/pcexhumed-bin
+	chmod -R o-w "${DESTDIR}/opt/pcexhumed-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/pcexhumed-bin/AppRun" "${DESTDIR}/usr/bin/pcexhumed"
 	local desk

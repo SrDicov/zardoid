@@ -1,14 +1,15 @@
 # Template file for 'openjazz-bin'
 pkgname=openjazz-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of OpenJazz [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/OpenJazz-AppImage"
-distfiles="https://github.com/pkgforge-dev/OpenJazz-AppImage/releases/download/a1626f4ed%402026-10-01_1790863901/OpenJazz-a1626f4ed-anylinux-x86_64.AppImage>openjazz-bin-${version}.AppImage"
-checksum=fac090e7bd49445a3877fc71f954b84f113403c6a85ea77720470c10236e1b07
+distfiles="https://github.com/pkgforge-dev/OpenJazz-AppImage/releases/download/a1626f4ed%402026-10-22_1792673047/OpenJazz-a1626f4ed-anylinux-x86_64.AppImage>openjazz-bin-${version}.AppImage"
+checksum=39b91773dd19f8c486df00285653d9de288dfcf724fb61313171ca939a01e875
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/openjazz-bin
 	vcopy "squashfs-root/*" opt/openjazz-bin
+	chmod -R o-w "${DESTDIR}/opt/openjazz-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/openjazz-bin/AppRun" "${DESTDIR}/usr/bin/openjazz"
 	local desk
