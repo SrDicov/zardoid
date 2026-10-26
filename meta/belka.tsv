@@ -1,5 +1,4 @@
 # nombre	version	url	sha256	descripcion	exec	categoria	terminal	tipo
-ryclop	0.0.1	https://github.com/SrDicov/ryclop/releases/download/v0.0.1/ryclop-v0.0.1-x86_64-linux-musl.tar.gz
 act	0.2.89	https://github.com/nektos/act/releases/download/v0.2.89/act_Linux_x86_64.tar.gz	0191d6f1f3b716b5c55820032605d05fc3c1cdbf581ebeff655019e5dd1524c0	Run your GitHub Actions locally 🚀	act	Utility	N	tar
 actionlint	1.7.12	https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_freebsd_amd64.tar.gz	3de1b027d0b749e81d6d972cbf5d14dc708a275248da1ba4eed4a9af707d1339	:octocat: Static checker for GitHub Actions workflow files	actionlint	Utility	N	tar
 aeris	0.2.1	https://github.com/pkgforge/aeris/releases/download/v0.2.1/aeris-x86_64-linux.tar.xz	a4427398eba4e6e88f296b6c801d7b87e248dbef94a0c0e98b92e1b570723d70	Manages your package managers	aeris	Utility	N	tar
