@@ -494,6 +494,10 @@ fn run(a: Args) -> Res<()> {
         ("allow_unknown_shlibs".into(), "yes".into()),
     ];
 
+    if let Some(deps) = deps_override(&base) {
+        flags.push(("depends".into(), format!("\"{deps}\"")));
+    }
+
     if kind == Kind::Zip {
         flags.push(("hostmakedepends".into(), "\"unzip\"".into()));
     }
@@ -545,24 +549,21 @@ fn run(a: Args) -> Res<()> {
         }
     } else {
         inspect::unpack(&file, kind, &tmp)?;
-        let inv = inspect::inventory(&tmp);
-        match inv.main_bin(&base) {
-            Some(m) => {
-                archs = m.info.archs();
-                if archs.is_none() {
-                    warnings.push("arquitectura ELF no mapeada: archs omitido".into());
-                }
-                if !m.info.pie {
-                    flags.push(("nopie".into(), "yes".into()));
-                }
-            }
-            None => warnings.push("no se encontró ningún ELF: revisa do_install".into()),
-        }
-        if inv.bins.is_empty() {
+        let inv = inspect::inventory(&tmp, base.trim_end_matches("-bin"));
+        if inv.bins.is_empty() && inv.scripts.is_empty() {
             return Err(Fail(
                 3,
-                format!("el archivo no contiene binarios ELF: {}", asset.name),
+                format!("el archivo no contiene binarios ni scripts: {}", asset.name),
             ));
+        }
+        if let Some(m) = inv.main_bin(&base) {
+            archs = m.info.archs();
+            if archs.is_none() {
+                warnings.push("arquitectura ELF no mapeada: archs omitido".into());
+            }
+            if !m.info.pie {
+                flags.push(("nopie".into(), "yes".into()));
+            }
         }
         if inv.files.is_empty() {
             warnings.push("el archivo extraído está vacío".into());
@@ -577,7 +578,8 @@ fn run(a: Args) -> Res<()> {
         // El forge no siempre publica LICENSE (404 en los repos de empaquetado
         // y en hosts que no son GitHub): el archivo suele traerlo dentro.
         if license.is_empty() {
-            license = license_from_files(&tmp, &inv.licenses).unwrap_or_default();
+            license =
+                license_from_files(&inspect::inner_root(&tmp), &inv.licenses).unwrap_or_default();
         }
         if license.is_empty() {
             if let Some(lic) = license_override(&base) {
@@ -825,6 +827,14 @@ fn repo_license(target: &Option<forge::Target>, a: &Args, license: &mut String) 
         }
     }
     needs_vlicense(license).then_some(body)
+}
+
+/// Dependencias de runtime que no se pueden inferir del artefacto.
+fn deps_override(pkg: &str) -> Option<&'static str> {
+    match pkg {
+        "belka-bin" => Some("curl jq"),
+        _ => None,
+    }
 }
 
 /// Proyecto upstream de los AppImage cuyo repo de empaquetado no declara
@@ -1103,8 +1113,11 @@ fn generic_body(
     if bin_paths.len() == 1 {
         lines.push(install_bin(bin_paths[0]));
     } else if bin_paths.is_empty() {
-        // `inv.bins` no está vacío: main_bin siempre elige uno.
-        if let Some(b) = inv.main_bin(base) {
+        if inv.bins.is_empty() {
+            for s in &inv.scripts {
+                lines.push(install_bin(s));
+            }
+        } else if let Some(b) = inv.main_bin(base) {
             lines.push(install_bin(&b.path));
         }
     } else {
@@ -1460,6 +1473,7 @@ mod sec_tests {
                     },
                 },
             ],
+            scripts: vec![],
             desktop: None,
             icons: vec![],
             man: vec![],
@@ -1479,6 +1493,7 @@ mod sec_tests {
         let inv = inspect::Inventory {
             files: vec![],
             bins: vec![],
+            scripts: vec![],
             desktop: None,
             icons: vec![],
             man: (1..=6)
@@ -1493,6 +1508,22 @@ mod sec_tests {
             !body.contains("vcopy"),
             "vcopy no maneja man pages:\n{body}"
         );
+    }
+
+    #[test]
+    fn scripts_se_instalan_con_vbin() {
+        let inv = inspect::Inventory {
+            files: vec![],
+            bins: vec![],
+            scripts: vec!["belka".into()],
+            desktop: None,
+            icons: vec![],
+            man: vec![],
+            completions: vec![],
+            licenses: vec![],
+        };
+        let body = generic_body("belka-bin", "2.0.1", &inv, false, false);
+        assert!(body.contains("vbin 'belka'"), "{body}");
     }
 
     #[test]

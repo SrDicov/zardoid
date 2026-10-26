@@ -4,6 +4,8 @@ use crate::asset::Kind;
 use crate::elf::{self, Libc, Machine};
 use crate::forge::run;
 use std::fs;
+use std::io::Read;
+use std::os::unix::fs::PermissionsExt;
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 
@@ -183,6 +185,7 @@ pub struct BinEntry {
 pub struct Inventory {
     pub files: Vec<PathBuf>,
     pub bins: Vec<BinEntry>,
+    pub scripts: Vec<PathBuf>,
     pub desktop: Option<PathBuf>,
     pub icons: Vec<PathBuf>,
     pub man: Vec<PathBuf>,
@@ -205,7 +208,7 @@ fn walk(root: &Path, rel: &Path, out: &mut Vec<PathBuf>) {
 }
 
 /// `None` si la extracción dejó un único directorio raíz que xbps-src hoistea.
-fn inner_root(dir: &Path) -> PathBuf {
+pub fn inner_root(dir: &Path) -> PathBuf {
     let entries: Vec<_> = fs::read_dir(dir)
         .map(|rd| {
             rd.flatten()
@@ -220,7 +223,7 @@ fn inner_root(dir: &Path) -> PathBuf {
     }
 }
 
-pub fn inventory(dir: &Path) -> Inventory {
+pub fn inventory(dir: &Path, stem: &str) -> Inventory {
     let root = inner_root(dir);
     let mut files = Vec::new();
     walk(&root, Path::new(""), &mut files);
@@ -232,6 +235,37 @@ pub fn inventory(dir: &Path) -> Inventory {
                 path: f.clone(),
                 info,
             });
+        }
+    }
+    // Scripts con shebang y bit de ejecución: Belka o ramfetch no son ELF
+    // pero sí son el artefacto del release.
+    let mut scripts = Vec::new();
+    for f in &files {
+        if bins.iter().any(|b| &b.path == f) {
+            continue;
+        }
+        let p = root.join(f);
+        let Ok(md) = fs::metadata(&p) else { continue };
+        let exec = md.permissions().mode() & 0o111 != 0;
+        // `ramfetch/ramfetch` llega sin bit de ejecución pero es el artefacto.
+        let like_pkg = f.file_name() == f.parent().and_then(|d| d.file_name());
+        // Tras hoistear el directorio raíz, el script queda como `ramfetch`.
+        let name = f.file_name().and_then(|n| n.to_str()).unwrap_or("");
+        let at_root = f.parent().map(|d| d.as_os_str().is_empty()).unwrap_or(true);
+        let root_artifact = at_root
+            && !stem.is_empty()
+            && (name == stem
+                || name.starts_with(&format!("{stem}-"))
+                || name.starts_with(&format!("{stem}.")));
+        if !(exec || like_pkg || root_artifact || f.starts_with("bin/")) {
+            continue;
+        }
+        let mut head = [0u8; 2];
+        let Ok(mut fh) = fs::File::open(&p) else {
+            continue;
+        };
+        if fh.read_exact(&mut head).is_ok() && &head == b"#!" {
+            scripts.push(f.clone());
         }
     }
     let is = |f: &Path, ext: &str| {
@@ -303,6 +337,7 @@ pub fn inventory(dir: &Path) -> Inventory {
     Inventory {
         files,
         bins,
+        scripts,
         desktop,
         icons,
         man,
@@ -381,12 +416,37 @@ mod tests {
 
         let out = t.join("x");
         unpack(&ar, Kind::TarGz, &out).unwrap();
-        let inv = inventory(&out);
+        let inv = inventory(&out, "demo");
         assert_eq!(inv.bins.len(), 1);
         assert_eq!(inv.bins[0].info.machine, crate::elf::Machine::X86_64);
         assert_eq!(inv.desktop.as_deref(), Some(Path::new("demo.desktop")));
         assert_eq!(inv.licenses.len(), 1);
         assert!(inv.main_bin("demo").is_some());
+        let _ = fs::remove_dir_all(&t);
+    }
+
+    #[test]
+    fn detecta_script_con_shebang() {
+        let t = tmp();
+        let p = t.join("belka");
+        fs::write(&p, b"#!/bin/sh\necho hola\n").unwrap();
+        let mut perm = fs::metadata(&p).unwrap().permissions();
+        perm.set_mode(0o755);
+        fs::set_permissions(&p, perm).unwrap();
+        let inv = inventory(&t, "belka");
+        assert!(inv.bins.is_empty());
+        assert_eq!(inv.scripts, vec![PathBuf::from("belka")]);
+        let _ = fs::remove_dir_all(&t);
+    }
+
+    #[test]
+    fn script_sin_bit_pero_con_nombre() {
+        let t = tmp();
+        fs::create_dir_all(t.join("ramfetch")).unwrap();
+        fs::write(t.join("LICENSE"), b"MIT").unwrap();
+        fs::write(t.join("ramfetch/ramfetch"), b"#!/bin/sh\n").unwrap();
+        let inv = inventory(&t, "ramfetch");
+        assert_eq!(inv.scripts, vec![PathBuf::from("ramfetch/ramfetch")]);
         let _ = fs::remove_dir_all(&t);
     }
 
@@ -397,7 +457,7 @@ mod tests {
         fs::create_dir_all(t.join("share/man/man1")).unwrap();
         fs::write(t.join("bin/libXss.so.1"), b"").unwrap();
         fs::write(t.join("share/man/man1/foo.1"), b"").unwrap();
-        let inv = inventory(&t);
+        let inv = inventory(&t, "demo");
         assert_eq!(inv.man.len(), 1, "{:?}", inv.man);
         assert_eq!(inv.man[0], Path::new("share/man/man1/foo.1"));
         let _ = fs::remove_dir_all(&t);
@@ -443,6 +503,7 @@ mod tests {
                     info: info(Machine::X86_64),
                 },
             ],
+            scripts: vec![],
             desktop: None,
             icons: vec![],
             man: vec![],
