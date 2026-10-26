@@ -355,9 +355,11 @@ fn run(a: Args) -> Res<()> {
             let version = asset_version(hint_tag.as_deref(), &url);
             // Si el asset indexado no sirve (fuente, firma, .deb, sin versión),
             // se resuelve el release del repo y se elige un binario de verdad.
-            let fallback = target
-                .clone()
-                .filter(|_| non_installable(&name, &url).is_some() || version.is_none());
+            let fallback = target.clone().filter(|_| {
+                non_installable(&name, &url).is_some()
+                    || version.is_none()
+                    || foreign_platform(&name).is_some()
+            });
             if let Some(t) = fallback {
                 let tok = token_for(&a, t.forge);
                 let rel = forge::latest(&t, tok.as_deref())?;
