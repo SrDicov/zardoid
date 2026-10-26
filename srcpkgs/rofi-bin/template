@@ -1,14 +1,15 @@
 # Template file for 'rofi-bin'
 pkgname=rofi-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of rofi. [Maintainer=@Samueru-sama]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/pkgforge-dev/rofi-AppImage"
-distfiles="https://github.com/pkgforge-dev/rofi-AppImage/releases/download/1ad1df6%402026-10-01_1790876520/rofi-1ad1df6-anylinux-x86_64.AppImage>rofi-bin-${version}.AppImage"
-checksum=556e1e3b18702e42562dfce6d05434642bf85a8568828f8e43ddcb1ebb5f8e0a
+distfiles="https://github.com/pkgforge-dev/rofi-AppImage/releases/download/1ad1df6%402026-10-22_1792689461/rofi-1ad1df6-anylinux-x86_64.AppImage>rofi-bin-${version}.AppImage"
+checksum=3950eec95a42f5617e15e2e391640a85f9535625bc564ff9d56b49d24cb06ba9
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/rofi-bin
 	vcopy "squashfs-root/*" opt/rofi-bin
+	chmod -R o-w "${DESTDIR}/opt/rofi-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/rofi-bin/AppRun" "${DESTDIR}/usr/bin/rofi"
 	local desk

@@ -1,6 +1,6 @@
 # Template file for 'signal-desktop-bin'
 pkgname=signal-desktop-bin
-version=8.28.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Signal that is able to work on any linux
@@ -8,10 +8,12 @@ short_desc="Unofficial AppImage of Signal that is able to work on any linux
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Signal-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/Signal-AppImage-Enhanced/releases/download/${version}-1%402026-10-01_1790876559/Signal-${version}-1-anylinux-x86_64.AppImage>signal-desktop-bin-${version}.AppImage"
-checksum=4029546bb79458732b5bcb6ddbe67c1cf305e5d747c1a234feb90fec49ba6377
+distfiles="https://github.com/pkgforge-dev/Signal-AppImage-Enhanced/releases/download/8.32.0-1%402026-10-22_1792689186/Signal-8.32.0-1-anylinux-x86_64.AppImage>signal-desktop-bin-${version}.AppImage"
+checksum=696a5eb0118c29da29fe96c3d515af64c72f6ac711dfd71797d7b22ce13271d8
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -25,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/signal-desktop-bin
 	vcopy "squashfs-root/*" opt/signal-desktop-bin
+	chmod -R o-w "${DESTDIR}/opt/signal-desktop-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/signal-desktop-bin/AppRun" "${DESTDIR}/usr/bin/signal-desktop"
 	local desk

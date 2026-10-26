@@ -1,16 +1,18 @@
 # Template file for 'rigs-of-rods-bin'
 pkgname=rigs-of-rods-bin
-version=2026.01
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Rigs of Rods [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Rigs-of-Rods-AppImage"
-distfiles="https://github.com/pkgforge-dev/Rigs-of-Rods-AppImage/releases/download/${version}%402026-10-01_1790876596/RoR-${version}-anylinux-x86_64.AppImage>rigs-of-rods-bin-${version}.AppImage"
-checksum=442f04edcbd05b35be5274a72caa804dec8e51e15aece6d8753460f16dfefd4f
+distfiles="https://github.com/pkgforge-dev/Rigs-of-Rods-AppImage/releases/download/2026.01%402026-10-22_1792689422/RoR-2026.01-anylinux-x86_64.AppImage>rigs-of-rods-bin-${version}.AppImage"
+checksum=88e3d58d69794933c2bdf0eb944d39ab0c4979a5e71cecf66820051883d83a39
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/rigs-of-rods-bin
 	vcopy "squashfs-root/*" opt/rigs-of-rods-bin
+	chmod -R o-w "${DESTDIR}/opt/rigs-of-rods-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/rigs-of-rods-bin/AppRun" "${DESTDIR}/usr/bin/rigs-of-rods"
 	local desk

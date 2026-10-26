@@ -1,6 +1,6 @@
 # Template file for 'sayonara-player-bin'
 pkgname=sayonara-player-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Sayonara Player
@@ -8,8 +8,8 @@ short_desc="Unofficial AppImage of Sayonara Player
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Sayonara-Player-AppImage-Enhanced"
-distfiles="https://github.com/pkgforge-dev/Sayonara-Player-AppImage-Enhanced/releases/download/1.12.0-stable1%402026-10-01_1790876682/Sayonara-1.12.0-stable1-anylinux-x86_64.AppImage>sayonara-player-bin-${version}.AppImage"
-checksum=95c2284be13967c7d009d315974a7068db87f4e7257267c5cd90fa5f3c2846c7
+distfiles="https://github.com/pkgforge-dev/Sayonara-Player-AppImage-Enhanced/releases/download/1.12.0-stable1%402026-10-22_1792689314/Sayonara-1.12.0-stable1-anylinux-x86_64.AppImage>sayonara-player-bin-${version}.AppImage"
+checksum=1e22c41288e924eeb339d325274722dd380bb56f3588922caa91dce0753e866a
 allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
@@ -27,6 +27,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/sayonara-player-bin
 	vcopy "squashfs-root/*" opt/sayonara-player-bin
+	chmod -R o-w "${DESTDIR}/opt/sayonara-player-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/sayonara-player-bin/AppRun" "${DESTDIR}/usr/bin/sayonara-player"
 	local desk

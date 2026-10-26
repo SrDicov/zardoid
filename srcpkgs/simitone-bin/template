@@ -1,14 +1,15 @@
 # Template file for 'simitone-bin'
 pkgname=simitone-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Simitone [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Simitone-AppImage"
-distfiles="https://github.com/pkgforge-dev/Simitone-AppImage/releases/download/0.8.22-forked%402026-10-01_1790866711/Simitone-0.8.22-forked-anylinux-x86_64.AppImage>simitone-bin-${version}.AppImage"
-checksum=4a82a399c24ddcf33820b9b4f9cdfec7d7c764eeb1647fd65cfc210b115e98dd
+distfiles="https://github.com/pkgforge-dev/Simitone-AppImage/releases/download/0.8.22-forked%402026-10-22_1792681265/Simitone-0.8.22-forked-anylinux-x86_64.AppImage>simitone-bin-${version}.AppImage"
+checksum=b915b60c65a50536d253279aa116487a13dc1e75d62996a8758a8dd29cf49bd6
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/simitone-bin
 	vcopy "squashfs-root/*" opt/simitone-bin
+	chmod -R o-w "${DESTDIR}/opt/simitone-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/simitone-bin/AppRun" "${DESTDIR}/usr/bin/simitone"
 	local desk

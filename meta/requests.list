@@ -15,26 +15,6 @@
 # Si el asset no trae LICENSE/COPYING, xlint rechazará el template (exige
 # vlicense): añade a mano srcpkgs/<pkg>/files/LICENSE y la línea
 # `vlicense ${FILESDIR}/LICENSE`, o usa otro asset que sí lo incluya.
-https://github.com/pkgforge-dev/RigelEngine-AppImage/releases/download/0.9.1-30afeff8%402026-10-22_1792688470/RigelEngine-0.9.1-30afeff8-anylinux-x86_64.AppImage rigelengine-bin
-https://github.com/pkgforge-dev/Rigs-of-Rods-AppImage/releases/download/2026.01%402026-10-22_1792689422/RoR-2026.01-anylinux-x86_64.AppImage rigs-of-rods-bin
-https://github.com/pkgforge-dev/RMG-AppImage-Enhanced/releases/download/0.9.0-1%402026-10-22_1792689361/RMG-0.9.0-1-anylinux-x86_64.AppImage rmg-bin
-https://github.com/pkgforge-dev/RocksnDiamonds-AppImage/releases/download/4.4.2.4-1%402026-10-22_1792689033/Rocks.N.Diamonds-4.4.2.4-1-anylinux-x86_64.AppImage rocksndiamonds-bin
-https://github.com/pkgforge-dev/rofi-AppImage/releases/download/1ad1df6%402026-10-22_1792689461/rofi-1ad1df6-anylinux-x86_64.AppImage rofi-bin
-https://github.com/pkgforge-dev/rquickshare-AppImage-Enhanced/releases/download/0.11.5-3%402026-10-22_1792689051/RQuickShare-0.11.5-3-anylinux-x86_64.AppImage rquickshare-bin
-https://github.com/pkgforge-dev/RustDesk-AppImage-Enhanced/releases/download/1.5.0-1%402026-10-22_1792689332/RustDesk-1.5.0-1-anylinux-x86_64.AppImage rustdesk-bin
-https://github.com/pkgforge-dev/RVGL-AppImage/releases/download/0.1.23.1030a3%402026-10-22_1792689176/RVGL_Launcher-0.1.23.1030a3-anylinux-x86_64.AppImage rvgl-bin
-https://github.com/pkgforge-dev/SameBoy-AppImage/releases/download/1.0.3-2%402026-10-22_1792689463/SameBoy-1.0.3-2-anylinux-x86_64.AppImage sameboy-bin
-https://github.com/pkgforge-dev/Satty-AppImage/releases/download/0.22.0-1%402026-10-22_1792689078/Satty-0.22.0-1-anylinux-x86_64.AppImage satty-bin
-https://github.com/pkgforge-dev/Sayonara-Player-AppImage-Enhanced/releases/download/1.12.0-stable1%402026-10-22_1792689314/Sayonara-1.12.0-stable1-anylinux-x86_64.AppImage sayonara-player-bin
-https://github.com/pkgforge-dev/ScummVM-AppImage/releases/download/2026.4.0-1%402026-10-22_1792688032/ScummVM-2026.4.0-1-anylinux-x86_64.AppImage scummvm-bin
-https://github.com/pkgforge-dev/SDLPoP-AppImage/releases/download/3c5add5fb%402026-10-22_1792689431/SDLPoP-3c5add5fb-anylinux-x86_64.AppImage sdlpop-bin
-https://github.com/pkgforge-dev/Secrets-AppImage/releases/download/14.0-1%402026-10-22_1792688657/Secrets-14.0-1-anylinux-x86_64.AppImage secrets-bin
-https://github.com/pkgforge-dev/servo-AppImage/releases/download/v0.7.0%402026-10-22_1792689049/Servo-v0.7.0-anylinux-x86_64.AppImage servo-bin
-https://github.com/pkgforge-dev/Shotwell-AppImage/releases/download/33.0-2%402026-10-22_1792688678/Shotwell-33.0-2-anylinux-x86_64.AppImage shotwell-bin
-https://github.com/pkgforge-dev/Signal-AppImage-Enhanced/releases/download/8.32.0-1%402026-10-22_1792689186/Signal-8.32.0-1-anylinux-x86_64.AppImage signal-desktop-bin
-https://github.com/pkgforge-dev/Simitone-AppImage/releases/download/0.8.22-forked%402026-10-22_1792681265/Simitone-0.8.22-forked-anylinux-x86_64.AppImage simitone-bin
-https://github.com/pkgforge-dev/SimpleX-Chat-AppImage-Enhanced/releases/download/v7.0.3%402026-10-22_1792689329/simplex-v7.0.3-anylinux-x86_64.AppImage simplex-chat-bin
-https://github.com/pkgforge-dev/Simutrans-AppImage/releases/download/125.0.1-1%402026-10-22_1792688249/Simutrans-125.0.1-1-anylinux-x86_64.AppImage simutrans-bin
 https://github.com/pkgforge-dev/SiriKali-AppImage/releases/download/1.8.6-1%402026-10-22_1792689104/SiriKali-1.8.6-1-anylinux-x86_64.AppImage sirikali-bin
 https://github.com/pkgforge-dev/Slack-AppImage/releases/download/4.52.182-1%402026-10-22_1792685105/Slack-4.52.182-1-anylinux-x86_64.AppImage slack-bin
 https://github.com/pkgforge-dev/Snes9x-AppImage-Enhanced/releases/download/1.63-2%402026-10-22_1792689251/Snes9x-1.63-2-anylinux-x86_64.AppImage snes9x-bin

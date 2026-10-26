@@ -1,14 +1,15 @@
 # Template file for 'rigelengine-bin'
 pkgname=rigelengine-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of RigelEngine [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/RigelEngine-AppImage"
-distfiles="https://github.com/pkgforge-dev/RigelEngine-AppImage/releases/download/0.9.1-30afeff8%402026-10-01_1790876614/RigelEngine-0.9.1-30afeff8-anylinux-x86_64.AppImage>rigelengine-bin-${version}.AppImage"
-checksum=cbd3333a1906956be78d2aa7dfd762d5b21b06a04e992ac56f61f93f6b21fd5c
+distfiles="https://github.com/pkgforge-dev/RigelEngine-AppImage/releases/download/0.9.1-30afeff8%402026-10-22_1792688470/RigelEngine-0.9.1-30afeff8-anylinux-x86_64.AppImage>rigelengine-bin-${version}.AppImage"
+checksum=010558764bff7fb9517c49d97f152f0e6026a2953da82a3eb685966e80fd11af
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/rigelengine-bin
 	vcopy "squashfs-root/*" opt/rigelengine-bin
+	chmod -R o-w "${DESTDIR}/opt/rigelengine-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/rigelengine-bin/AppRun" "${DESTDIR}/usr/bin/rigelengine"
 	local desk

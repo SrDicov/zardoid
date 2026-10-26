@@ -1,16 +1,18 @@
 # Template file for 'scummvm-bin'
 pkgname=scummvm-bin
-version=2026.3.0
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of ScummVM [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/ScummVM-AppImage"
-distfiles="https://github.com/pkgforge-dev/ScummVM-AppImage/releases/download/${version}-1%402026-10-01_1790875406/ScummVM-${version}-1-anylinux-x86_64.AppImage>scummvm-bin-${version}.AppImage"
-checksum=3f873e5de99e1abe8b4454e6e0bcbdc20e7697d3a0a7145bac7093312c7ad86b
+distfiles="https://github.com/pkgforge-dev/ScummVM-AppImage/releases/download/2026.4.0-1%402026-10-22_1792688032/ScummVM-2026.4.0-1-anylinux-x86_64.AppImage>scummvm-bin-${version}.AppImage"
+checksum=650e40d4c5143eee19461d3f0bc450e527899944cfd1e3560b7873e235dc0bac
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/scummvm-bin
 	vcopy "squashfs-root/*" opt/scummvm-bin
+	chmod -R o-w "${DESTDIR}/opt/scummvm-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/scummvm-bin/AppRun" "${DESTDIR}/usr/bin/scummvm"
 	local desk

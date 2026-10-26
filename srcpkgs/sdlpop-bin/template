@@ -1,14 +1,15 @@
 # Template file for 'sdlpop-bin'
 pkgname=sdlpop-bin
-version=20261001
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of SDLPoP [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/SDLPoP-AppImage"
-distfiles="https://github.com/pkgforge-dev/SDLPoP-AppImage/releases/download/3c5add5fb%402026-10-01_1790876450/SDLPoP-3c5add5fb-anylinux-x86_64.AppImage>sdlpop-bin-${version}.AppImage"
-checksum=3246fe8cf58c9d3d199510dc29631cf5819b1873a6093cd354b56c069a6d45f8
+distfiles="https://github.com/pkgforge-dev/SDLPoP-AppImage/releases/download/3c5add5fb%402026-10-22_1792689431/SDLPoP-3c5add5fb-anylinux-x86_64.AppImage>sdlpop-bin-${version}.AppImage"
+checksum=59f1f38f83fc79446170cf0c137099e479dafb87251536e33cab9eea1336b6cb
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
 python_version=3
@@ -25,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/sdlpop-bin
 	vcopy "squashfs-root/*" opt/sdlpop-bin
+	chmod -R o-w "${DESTDIR}/opt/sdlpop-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/sdlpop-bin/AppRun" "${DESTDIR}/usr/bin/sdlpop"
 	local desk

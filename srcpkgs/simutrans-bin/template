@@ -1,16 +1,18 @@
 # Template file for 'simutrans-bin'
 pkgname=simutrans-bin
-version=124.5
+version=20261022
 revision=1
 archs="x86_64"
 short_desc="Unofficial AppImage of Simutrans [Maintainer=@Link4Electronics]"
 maintainer="SrDicov <SrDicov@gmail.com>"
 license="MIT"
 homepage="https://github.com/pkgforge-dev/Simutrans-AppImage"
-distfiles="https://github.com/pkgforge-dev/Simutrans-AppImage/releases/download/${version}-2%402026-10-01_1790875311/Simutrans-${version}-2-anylinux-x86_64.AppImage>simutrans-bin-${version}.AppImage"
-checksum=936b8e7bafa37bac9dec906ffe4fe90078b65bdb88bd3523ccdc94fe5fca839f
+distfiles="https://github.com/pkgforge-dev/Simutrans-AppImage/releases/download/125.0.1-1%402026-10-22_1792688249/Simutrans-125.0.1-1-anylinux-x86_64.AppImage>simutrans-bin-${version}.AppImage"
+checksum=2466715c4b69c260177c1806c09d9e650af95623d09e9614ae6712386e588084
+allow_unknown_shlibs=yes
 noshlibprovides=yes
 nostrip=yes
+python_version=3
 skip_extraction="${pkgname}-${version}.AppImage"
 
 post_extract() {
@@ -24,6 +26,7 @@ do_install() {
 	"./${appimg}" --appimage-extract >/dev/null
 	vmkdir opt/simutrans-bin
 	vcopy "squashfs-root/*" opt/simutrans-bin
+	chmod -R o-w "${DESTDIR}/opt/simutrans-bin"
 	vmkdir usr/bin
 	ln -sf "/opt/simutrans-bin/AppRun" "${DESTDIR}/usr/bin/simutrans"
 	local desk
