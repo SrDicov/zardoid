@@ -82,7 +82,16 @@ pub fn parse_input(raw: &str) -> Result<Input, String> {
                 if gitlab && !after.contains("/downloads/") {
                     continue;
                 }
-                let tag = after.split('/').next().unwrap_or("").to_string();
+                let tag = if gitlab {
+                    after.split('/').next().unwrap_or("").to_string()
+                } else {
+                    // El tag puede tener '/': `deploy/v10.2.3-68`.
+                    after
+                        .rsplit_once('/')
+                        .map(|(t, _)| t)
+                        .unwrap_or("")
+                        .to_string()
+                };
                 return Ok(Input::Direct {
                     url: s.to_string(),
                     hint_tag: (!tag.is_empty()).then_some(tag),
@@ -499,6 +508,18 @@ mod tests {
             _ => panic!("bare"),
         }
         assert!(parse_input("nada").is_err());
+    }
+
+    #[test]
+    fn tag_con_path() {
+        match parse_input("https://github.com/o/r/releases/download/deploy/v10.2.3-68/x.tar.gz")
+            .unwrap()
+        {
+            Input::Direct { hint_tag, .. } => {
+                assert_eq!(hint_tag.as_deref(), Some("deploy/v10.2.3-68"))
+            }
+            _ => panic!("direct"),
+        }
     }
 
     #[test]

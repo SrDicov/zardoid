@@ -36,6 +36,10 @@ pub fn is_prerelease(v: &str) -> bool {
 /// Devuelve `None` si el resultado no es una versión válida para XBPS.
 pub fn from_tag(tag: &str) -> Option<String> {
     let mut t = tag.trim().trim_matches('"').trim();
+    // Tags con path (`deploy/v1.2.3-4`): manda el último segmento.
+    if let Some((_, last)) = t.rsplit_once('/') {
+        t = last;
+    }
     for p in ["release-", "release/", "version-", "tag-"] {
         if let Some(r) = t.strip_prefix(p) {
             t = r;
@@ -47,6 +51,9 @@ pub fn from_tag(tag: &str) -> Option<String> {
             t = r;
         }
     }
+    // `1.2.3-4` se queda como 1.2.3.4 (convención existente); no se confunde
+    // con `deploy/v10.2.3-68`, que llega ya recortado al último segmento.
+
     // `foo-1.2.3` / `foo-v1.2.3`: prefijo con guion y sufijo numérico.
     if let Some((l, r)) = t.rsplit_once('-') {
         let r = r.strip_prefix(['v', 'V']).unwrap_or(r);
@@ -91,6 +98,8 @@ mod tests {
         assert_eq!(from_tag("v1.0.0_1").as_deref(), Some("1.0.0.1"));
         assert_eq!(from_tag("proj-v1.2.3").as_deref(), Some("1.2.3"));
         assert_eq!(from_tag("1.2.3-1").as_deref(), Some("1.2.3.1"));
+        assert_eq!(from_tag("deploy/v10.2.3-68").as_deref(), Some("10.2.3.68"));
+        assert_eq!(from_tag("release/v1.2.3").as_deref(), Some("1.2.3"));
         assert_eq!(from_tag("nightly"), None);
         assert_eq!(from_tag("nope!"), None);
         assert_eq!(from_tag("config"), None);

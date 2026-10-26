@@ -351,35 +351,54 @@ fn run(a: Args) -> Res<()> {
         }
         Input::Direct { url, hint_tag } => {
             let name = url.rsplit('/').next().unwrap_or("asset").to_string();
-            let tag = asset_version(hint_tag.as_deref(), &url).ok_or(Fail(
-                1,
-                "no se pudo deducir la versión del asset; usa un repo".into(),
-            ))?;
-            // El índice de Belka son assets directos: sin esto no hay
-            // descripción ni licencia, y xlint rechaza el template.
             let target = forge::target_from_asset(&url);
-            let meta = match &target {
-                Some(t) => fetch_meta(t, token_for(&a, t.forge).as_deref()),
-                None => Meta {
-                    desc: String::new(),
-                    license: String::new(),
-                    homepage: guess_homepage(&url),
-                },
-            };
-            asset_target = target;
-            (
-                Release {
-                    tag,
-                    prerelease: false,
-                    assets: vec![forge::Asset {
-                        name,
-                        url: url.clone(),
-                        size: 0,
-                    }],
-                },
-                meta,
-                None,
-            )
+            let version = asset_version(hint_tag.as_deref(), &url);
+            // Si el asset indexado no sirve (fuente, firma, .deb, sin versión),
+            // se resuelve el release del repo y se elige un binario de verdad.
+            let fallback = target
+                .clone()
+                .filter(|_| non_installable(&name, &url).is_some() || version.is_none());
+            if let Some(t) = fallback {
+                let tok = token_for(&a, t.forge);
+                let rel = forge::latest(&t, tok.as_deref())?;
+                let meta = fetch_meta(&t, tok.as_deref());
+                let rn = t.repo.rsplit('/').next().unwrap_or("pkg").to_string();
+                asset_target = Some(t);
+                (rel, meta, Some(rn))
+            } else {
+                let tag = version.ok_or_else(|| {
+                    let reason = non_installable(&name, &url)
+                        .map(|w| format!("{w}: {name}"))
+                        .unwrap_or_else(|| {
+                            format!("no se pudo deducir la versión del asset: {name}")
+                        });
+                    Fail(1, reason)
+                })?;
+                // El índice de Belka son assets directos: sin esto no hay
+                // descripción ni licencia, y xlint rechaza el template.
+                let meta = match &target {
+                    Some(t) => fetch_meta(t, token_for(&a, t.forge).as_deref()),
+                    None => Meta {
+                        desc: String::new(),
+                        license: String::new(),
+                        homepage: guess_homepage(&url),
+                    },
+                };
+                asset_target = target;
+                (
+                    Release {
+                        tag,
+                        prerelease: false,
+                        assets: vec![forge::Asset {
+                            name,
+                            url: url.clone(),
+                            size: 0,
+                        }],
+                    },
+                    meta,
+                    None,
+                )
+            }
         }
     };
 
